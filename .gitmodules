@@ -1,0 +1,6 @@
+[submodule "LRender"]
+	path = LRender
+	url = https://github.com/jobtalle/LRender
+[submodule "LParse"]
+	path = LParse
+	url = https://github.com/jobtalle/LParse

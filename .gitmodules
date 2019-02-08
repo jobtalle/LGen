@@ -4,3 +4,6 @@
 [submodule "LParse"]
 	path = LParse
 	url = https://github.com/jobtalle/LParse
+[submodule "glfw"]
+	path = glfw
+	url = https://github.com/glfw/glfw

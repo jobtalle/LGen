@@ -1,11 +1,13 @@
 #include "command.h"
 
-LGen::Command::Command(const std::vector<std::string> triggers) :
+using namespace LGen;
+
+Command::Command(const std::vector<std::string> triggers) :
 	triggers(triggers) {
 
 }
 
-bool LGen::Command::apply(const Input &input) {
+bool Command::apply(const Input &input) {
 	if(!applicable(input.getKeyword()))
 		return false;
 
@@ -14,7 +16,7 @@ bool LGen::Command::apply(const Input &input) {
 	return true;
 }
 
-bool LGen::Command::applicable(const std::string input) const {
+bool Command::applicable(const std::string input) const {
 	for(const std::string trigger : triggers)
 		if(trigger == input)
 			return true;

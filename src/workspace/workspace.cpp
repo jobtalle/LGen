@@ -1,5 +1,7 @@
 #include "workspace.h"
 
-LGen::Workspace::Workspace() {
+using namespace LGen;
+
+Workspace::Workspace() {
 
 }

@@ -2,14 +2,16 @@
 
 #include <iostream>
 
-const size_t LGen::Monitor::DEFAULT_WIDTH = 1024;
-const size_t LGen::Monitor::DEFAULT_HEIGHT = 768;
-const size_t LGen::Monitor::GL_VERSION_MAJOR = 4;
-const size_t LGen::Monitor::GL_VERSION_MINOR = 4;
+using namespace LGen;
+
+const size_t Monitor::DEFAULT_WIDTH = 1024;
+const size_t Monitor::DEFAULT_HEIGHT = 768;
+const size_t Monitor::GL_VERSION_MAJOR = 4;
+const size_t Monitor::GL_VERSION_MINOR = 4;
 
 static size_t monitorCount = 0;
 
-LGen::Monitor::Monitor(const char *title) {
+Monitor::Monitor(const char *title) {
 	if(monitorCount++ == 0)
 		glfwStart();
 
@@ -19,23 +21,23 @@ LGen::Monitor::Monitor(const char *title) {
 	glfwMakeContextCurrent(window);
 }
 
-LGen::Monitor::~Monitor() {
+Monitor::~Monitor() {
 	glfwDestroyWindow(window);
 
 	if(--monitorCount == 0)
 		glfwStop();
 }
 
-void LGen::Monitor::start() {
+void Monitor::start() {
 	while(!terminate)
 		poll();
 }
 
-void LGen::Monitor::stop() {
+void Monitor::stop() {
 	terminate = true;
 }
 
-void LGen::Monitor::glfwStart() {
+void Monitor::glfwStart() {
 	glfwInit();
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VERSION_MAJOR);
@@ -43,11 +45,11 @@ void LGen::Monitor::glfwStart() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
-void LGen::Monitor::glfwStop() {
+void Monitor::glfwStop() {
 	glfwTerminate();
 }
 
-void LGen::Monitor::poll() {
+void Monitor::poll() {
 	glfwSwapBuffers(window);
 	glfwPollEvents();
 }

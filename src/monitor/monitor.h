@@ -7,7 +7,7 @@
 #include <atomic>
 #include <GLFW/glfw3.h>
 
-class L::Monitor {
+class L::Monitor final {
 public:
 	Monitor(const char *title);
 	~Monitor();
@@ -24,6 +24,6 @@ private:
 	static void glfwStop();
 	void poll();
 
-	GLFWwindow *window_;
-	std::atomic<bool> terminate_;
+	GLFWwindow *window;
+	std::atomic<bool> terminate;
 };

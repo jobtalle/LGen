@@ -13,26 +13,26 @@ L::Monitor::Monitor(const char *title) {
 	if(monitorCount++ == 0)
 		glfwStart();
 
-	window_ = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, title, NULL, NULL);
-	terminate_ = false;
+	window = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, title, NULL, NULL);
+	terminate = false;
 
-	glfwMakeContextCurrent(window_);
+	glfwMakeContextCurrent(window);
 }
 
 L::Monitor::~Monitor() {
-	glfwDestroyWindow(window_);
+	glfwDestroyWindow(window);
 
 	if(--monitorCount == 0)
 		glfwStop();
 }
 
 void L::Monitor::start() {
-	while(!terminate_)
+	while(!terminate)
 		poll();
 }
 
 void L::Monitor::stop() {
-	terminate_ = true;
+	terminate = true;
 }
 
 void L::Monitor::glfwStart() {
@@ -48,6 +48,6 @@ void L::Monitor::glfwStop() {
 }
 
 void L::Monitor::poll() {
-	glfwSwapBuffers(window_);
+	glfwSwapBuffers(window);
 	glfwPollEvents();
 }

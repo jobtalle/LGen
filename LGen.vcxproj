@@ -134,7 +134,10 @@
     <ClCompile Include="glfw\src\window.c" />
     <ClCompile Include="glfw\src\xkb_unicode.c" />
     <ClCompile Include="LRender\src\glad\glad.c" />
+    <ClCompile Include="src\console\command.cpp" />
+    <ClCompile Include="src\console\commands\exit.cpp" />
     <ClCompile Include="src\console\console.cpp" />
+    <ClCompile Include="src\console\input.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\monitor\monitor.cpp" />
   </ItemGroup>
@@ -153,7 +156,10 @@
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
     <ClInclude Include="include\lgen.h" />
+    <ClInclude Include="src\console\command.h" />
+    <ClInclude Include="src\console\commands\exit.h" />
     <ClInclude Include="src\console\console.h" />
+    <ClInclude Include="src\console\input.h" />
     <ClInclude Include="src\monitor\monitor.h" />
   </ItemGroup>
   <ItemGroup>

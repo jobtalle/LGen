@@ -70,11 +70,11 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>include;glfw/include;LParse/include;LRender/include;$(IncludePath)</IncludePath>
+    <IncludePath>src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>include;glfw/include;LRender/include;LParse/include;$(IncludePath)</IncludePath>
+    <IncludePath>src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

@@ -1,4 +1,4 @@
-#include "command.h"
+#include "console/command.h"
 
 using namespace LGen;
 

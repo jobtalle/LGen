@@ -1,5 +1,5 @@
-#include "console.h"
-#include "commands/exit.h"
+#include "console/console.h"
+#include "console/commands/exit.h"
 
 #include <iostream>
 #include <string>

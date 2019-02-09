@@ -1,4 +1,4 @@
-#include "input.h"
+#include "console/input.h"
 
 using namespace LGen;
 

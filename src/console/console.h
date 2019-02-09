@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../monitor/monitor.h"
+#include "monitor/monitor.h"
 
 #include <thread>
 #include <memory>

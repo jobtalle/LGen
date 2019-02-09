@@ -1,7 +1,7 @@
 #pragma once
 
-#include "input.h"
-#include "console.h"
+#include "console/input.h"
+#include "console/console.h"
 
 #include <vector>
 #include <string>

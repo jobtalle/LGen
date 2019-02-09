@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../command.h"
-#include "../console.h"
+#include "console/command.h"
+#include "console/console.h"
 
 class LGen::Command::Exit final : public LGen::Command {
 public:

@@ -12,9 +12,12 @@ public:
 	Console(L::Monitor *monitor);
 	~Console();
 	void stop();
+	void dumpFile(const std::string file);
 
 private:
 	static const std::string MSG_NOT_RECOGNIZED;
+	static const std::string FILE_INTRO;
+	static const std::string COMMAND_PREFIX;
 
 	std::vector<L::Command*> commands;
 	L::Monitor *monitor;

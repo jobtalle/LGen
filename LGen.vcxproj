@@ -71,9 +71,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>include;glfw/include;LParse/include;LRender/include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>include;glfw/include;LRender/include;LParse/include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -140,6 +142,7 @@
     <ClCompile Include="src\console\input.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\monitor\monitor.cpp" />
+    <ClCompile Include="src\workspace\workspace.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glfw\include\GLFW\glfw3.h" />
@@ -161,6 +164,7 @@
     <ClInclude Include="src\console\console.h" />
     <ClInclude Include="src\console\input.h" />
     <ClInclude Include="src\monitor\monitor.h" />
+    <ClInclude Include="src\workspace\workspace.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="glfw\src\mappings.h.in" />

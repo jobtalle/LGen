@@ -10,5 +10,7 @@ public:
 protected:
 	void application(const std::vector<std::string> arguments) override;
 
-	Console *console;
+private:
+	static const std::string KEYWORD;
+	static const std::string FILE_HELP;
 };

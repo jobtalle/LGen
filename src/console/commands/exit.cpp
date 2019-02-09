@@ -5,11 +5,10 @@
 using namespace LGen;
 
 Command::Exit::Exit(Console *console) :
-	Command({ "exit" }),
-	console(console) {
+	Command(console, { "exit" }, "text/helpExit.txt") {
 
 }
 
 void Command::Exit::application(const std::vector<std::string> arguments) {
-	console->stop();
+	getConsole()->stop();
 }

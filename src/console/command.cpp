@@ -2,24 +2,37 @@
 
 using namespace LGen;
 
-Command::Command(const std::vector<std::string> triggers) :
-	triggers(triggers) {
+Command::Command(Console *console, const std::vector<std::string> triggers, const std::string help) :
+	console(console),
+	triggers(triggers),
+	help(help) {
 
 }
 
 bool Command::apply(const Input &input) {
-	if(!applicable(input.getKeyword()))
-		return false;
+	for(const std::string trigger : triggers) {
+		if(input.getKeyword().rfind(trigger, 0) == 0) {
+			if(input.getKeyword().size() == trigger.size()) {
+				application(input.getArguments());
 
-	application(input.getArguments());
+				return true;
+			}
+			
+			if(input.getKeyword()[trigger.size()] == '?') {
+				showHelp();
 
-	return true;
-}
-
-bool Command::applicable(const std::string input) const {
-	for(const std::string trigger : triggers)
-		if(trigger == input)
-			return true;
+				return true;
+			}
+		}
+	}
 
 	return false;
+}
+
+Console *Command::getConsole() {
+	return console;
+}
+
+void Command::showHelp() {
+	console->dumpFile(help);
 }

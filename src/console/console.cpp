@@ -7,7 +7,7 @@
 
 using namespace LGen;
 
-const std::string Console::MSG_NOT_RECOGNIZED = "Command not recognized";
+const std::string Console::MSG_NOT_RECOGNIZED = "Command not recognized.";
 const std::string Console::FILE_INTRO = "text/intro.txt";
 const std::string Console::COMMAND_PREFIX = ">> ";
 

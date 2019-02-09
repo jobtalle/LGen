@@ -1,13 +1,13 @@
 #pragma once
 
 #include "../monitor/monitor.h"
-#include "command.h"
 
 #include <thread>
 #include <memory>
 #include <vector>
 
 namespace LGen {
+	class Command;
 	class Console {
 	public:
 		Console(LGen::Monitor *monitor);
@@ -20,7 +20,7 @@ namespace LGen {
 		static const std::string FILE_INTRO;
 		static const std::string COMMAND_PREFIX;
 
-		std::vector<LGen::Command*> commands;
+		std::vector<Command*> commands;
 		LGen::Monitor *monitor;
 		std::unique_ptr<std::thread> thread;
 		bool terminate = false;

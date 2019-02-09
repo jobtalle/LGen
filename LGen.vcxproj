@@ -158,7 +158,6 @@
     <ClInclude Include="glfw\src\xkb_unicode.h" />
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
-    <ClInclude Include="include\lgen.h" />
     <ClInclude Include="src\console\command.h" />
     <ClInclude Include="src\console\commands\exit.h" />
     <ClInclude Include="src\console\console.h" />

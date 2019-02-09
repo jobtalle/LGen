@@ -2,21 +2,22 @@
 
 #include "input.h"
 
-#include <lgen.h>
 #include <vector>
 #include <string>
 
-class LGen::Command {
-public:
-	Command(const std::vector<std::string> triggers);
-	bool apply(const Input &input);
+namespace LGen {
+	class Command {
+	public:
+		Command(const std::vector<std::string> triggers);
+		bool apply(const Input &input);
 
-	class Exit;
+		class Exit;
 
-protected:
-	bool applicable(const std::string input) const;
-	virtual void application(const std::vector<std::string> input) = 0;
+	protected:
+		bool applicable(const std::string input) const;
+		virtual void application(const std::vector<std::string> input) = 0;
 
-private:
-	const std::vector<std::string> triggers;
+	private:
+		const std::vector<std::string> triggers;
+	};
 };

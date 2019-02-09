@@ -1,8 +1,8 @@
 #pragma once
 
-#include <lgen.h>
-
-class LGen::Workspace {
-public:
-	Workspace();
+namespace LGen {
+	class Workspace {
+	public:
+		Workspace();
+	};
 };

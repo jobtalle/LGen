@@ -70,7 +70,10 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>glfw/include;LParse/include;LRender/include;$(IncludePath)</IncludePath>
+    <IncludePath>include;glfw/include;LParse/include;LRender/include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>include;glfw/include;LRender/include;LParse/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -104,6 +107,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PreprocessorDefinitions>_GLFW_WIN32</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>_GLFW_WIN32</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -124,7 +134,9 @@
     <ClCompile Include="glfw\src\window.c" />
     <ClCompile Include="glfw\src\xkb_unicode.c" />
     <ClCompile Include="LRender\src\glad\glad.c" />
+    <ClCompile Include="src\console\console.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\monitor\monitor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glfw\include\GLFW\glfw3.h" />
@@ -140,6 +152,9 @@
     <ClInclude Include="glfw\src\xkb_unicode.h" />
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
+    <ClInclude Include="include\lgen.h" />
+    <ClInclude Include="src\console\console.h" />
+    <ClInclude Include="src\monitor\monitor.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="glfw\src\mappings.h.in" />

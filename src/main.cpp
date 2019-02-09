@@ -1,21 +1,13 @@
 #include <iostream>
-#include <GLFW/glfw3.h>
+
+#include "console/console.h"
+#include "monitor/monitor.h"
 
 int main(int argc, char **argv) {
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	L::Monitor monitor("Monitor");
+	L::Console console(&monitor);
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
-	
-	glfwMakeContextCurrent(window);
-
-	while(!glfwWindowShouldClose(window))
-	{
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-	}
+	monitor.start();
 
 	return 0;
 }

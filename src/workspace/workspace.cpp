@@ -1,5 +1,5 @@
 #include "workspace.h"
 
-L::Workspace::Workspace() {
+LGen::Workspace::Workspace() {
 
 }

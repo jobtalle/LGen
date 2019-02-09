@@ -2,7 +2,7 @@
 
 #include <lgen.h>
 
-class L::Workspace {
+class LGen::Workspace {
 public:
 	Workspace();
 };

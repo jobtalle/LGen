@@ -5,33 +5,33 @@
 #include <string>
 #include <fstream>
 
-const std::string L::Console::MSG_NOT_RECOGNIZED = "Command not recognized";
-const std::string L::Console::FILE_INTRO = "text/intro.txt";
-const std::string L::Console::COMMAND_PREFIX = ">> ";
+const std::string LGen::Console::MSG_NOT_RECOGNIZED = "Command not recognized";
+const std::string LGen::Console::FILE_INTRO = "text/intro.txt";
+const std::string LGen::Console::COMMAND_PREFIX = ">> ";
 
-L::Console::Console(L::Monitor *monitor) :
+LGen::Console::Console(LGen::Monitor *monitor) :
 	monitor(monitor) {
 	makeCommands();
 
 	dumpFile("text/intro.txt");
 
-	thread.reset(new std::thread(std::bind(&L::Console::loop, this)));
+	thread.reset(new std::thread(std::bind(&LGen::Console::loop, this)));
 }
 
-L::Console::~Console() {
+LGen::Console::~Console() {
 	thread->join();
 
 	for(auto command : commands)
 		delete command;
 }
 
-void L::Console::stop() {
+void LGen::Console::stop() {
 	terminate = true;
 
 	monitor->stop();
 }
 
-void L::Console::dumpFile(const std::string file) {
+void LGen::Console::dumpFile(const std::string file) {
 	std::ifstream source;
 	std::string line;
 
@@ -43,7 +43,7 @@ void L::Console::dumpFile(const std::string file) {
 	source.close();
 }
 
-void L::Console::loop() {
+void LGen::Console::loop() {
 	while(!terminate) {
 		std::cout << COMMAND_PREFIX;
 
@@ -60,6 +60,6 @@ void L::Console::loop() {
 	}
 }
 
-void L::Console::makeCommands() {
+void LGen::Console::makeCommands() {
 	commands.push_back(new Command::Exit(this));
 }

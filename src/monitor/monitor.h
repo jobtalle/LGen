@@ -7,7 +7,7 @@
 #include <atomic>
 #include <GLFW/glfw3.h>
 
-class L::Monitor final {
+class LGen::Monitor final {
 public:
 	Monitor(const char *title);
 	~Monitor();

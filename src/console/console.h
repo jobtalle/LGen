@@ -7,9 +7,9 @@
 #include <memory>
 #include <vector>
 
-class L::Console {
+class LGen::Console {
 public:
-	Console(L::Monitor *monitor);
+	Console(LGen::Monitor *monitor);
 	~Console();
 	void stop();
 	void dumpFile(const std::string file);
@@ -19,8 +19,8 @@ private:
 	static const std::string FILE_INTRO;
 	static const std::string COMMAND_PREFIX;
 
-	std::vector<L::Command*> commands;
-	L::Monitor *monitor;
+	std::vector<LGen::Command*> commands;
+	LGen::Monitor *monitor;
 	std::unique_ptr<std::thread> thread;
 	bool terminate = false;
 

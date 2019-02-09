@@ -4,8 +4,8 @@
 #include "monitor/monitor.h"
 
 int main(int argc, char **argv) {
-	L::Monitor monitor("Monitor");
-	L::Console console(&monitor);
+	LGen::Monitor monitor("Monitor");
+	LGen::Console console(&monitor);
 
 	monitor.start();
 

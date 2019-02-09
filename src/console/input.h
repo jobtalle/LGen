@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-class L::Input final {
+class LGen::Input final {
 public:
 	Input(std::string source);
 	std::string getKeyword() const;

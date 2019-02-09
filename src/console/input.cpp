@@ -1,6 +1,6 @@
 #include "input.h"
 
-L::Input::Input(std::string source) {
+LGen::Input::Input(std::string source) {
 	size_t delimiterPosition = 0;
 
 	while((delimiterPosition = source.find(DELIMITER)) != std::string::npos) {
@@ -14,10 +14,10 @@ L::Input::Input(std::string source) {
 	keyword = arguments[arguments.size() - 1];
 }
 
-std::string L::Input::getKeyword() const {
+std::string LGen::Input::getKeyword() const {
 	return keyword;
 }
 
-std::vector<std::string> L::Input::getArguments() const {
+std::vector<std::string> LGen::Input::getArguments() const {
 	return arguments;
 }

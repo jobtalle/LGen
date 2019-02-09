@@ -3,7 +3,7 @@
 #include "../command.h"
 #include "../console.h"
 
-class L::Command::Exit final : public L::Command {
+class LGen::Command::Exit final : public LGen::Command {
 public:
 	Exit(Console *console);
 

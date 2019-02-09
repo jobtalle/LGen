@@ -1,11 +1,11 @@
 #include "command.h"
 
-L::Command::Command(const std::vector<std::string> triggers) :
+LGen::Command::Command(const std::vector<std::string> triggers) :
 	triggers(triggers) {
 
 }
 
-bool L::Command::apply(const Input &input) {
+bool LGen::Command::apply(const Input &input) {
 	if(!applicable(input.getKeyword()))
 		return false;
 
@@ -14,7 +14,7 @@ bool L::Command::apply(const Input &input) {
 	return true;
 }
 
-bool L::Command::applicable(const std::string input) const {
+bool LGen::Command::applicable(const std::string input) const {
 	for(const std::string trigger : triggers)
 		if(trigger == input)
 			return true;

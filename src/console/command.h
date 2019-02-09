@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 
-class L::Command {
+class LGen::Command {
 public:
 	Command(const std::vector<std::string> triggers);
 	bool apply(const Input &input);

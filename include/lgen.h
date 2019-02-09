@@ -7,5 +7,3 @@ namespace LGen {
 	class Command;
 	class Workspace;
 };
-
-namespace L = LGen;

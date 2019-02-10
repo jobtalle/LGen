@@ -14,6 +14,7 @@ Input::Input(std::string source) {
 	arguments.insert(arguments.begin(), source);
 
 	keyword = arguments[arguments.size() - 1];
+	arguments.pop_back();
 }
 
 std::string Input::getKeyword() const {

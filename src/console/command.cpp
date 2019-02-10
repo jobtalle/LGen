@@ -5,7 +5,15 @@ using namespace LGen;
 Command::Command(Console *console, const std::vector<std::string> triggers, const std::string help) :
 	console(console),
 	triggers(triggers),
-	help(help) {
+	help(help),
+	hasHelp(true) {
+
+}
+
+Command::Command(Console *console, const std::vector<std::string> triggers) :
+	console(console),
+	triggers(triggers),
+	hasHelp(false) {
 
 }
 
@@ -18,7 +26,7 @@ bool Command::apply(const Input &input) {
 				return true;
 			}
 			
-			if(input.getKeyword()[trigger.size()] == '?') {
+			if(hasHelp && input.getKeyword()[trigger.size()] == '?') {
 				showHelp();
 
 				return true;

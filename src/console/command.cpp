@@ -41,6 +41,15 @@ std::string Command::getTrigger() const {
 	return triggers[0];
 }
 
+std::vector<std::string> Command::getAliases() const {
+	std::vector<std::string> aliases;
+
+	for(unsigned int i = 1; i < triggers.size(); ++i)
+		aliases.push_back(triggers[i]);
+
+	return aliases;
+}
+
 Console *Command::getConsole() {
 	return console;
 }

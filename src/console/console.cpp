@@ -67,13 +67,8 @@ void Console::log(const std::string message, const bool prefix) const {
 	}
 }
 
-std::vector<std::string> Console::getCommands() const {
-	std::vector<std::string> triggers;
-
-	for(const Command *command : commands)
-		triggers.push_back(command->getTrigger());
-
-	return triggers;
+std::vector<Command*> Console::getCommands() const {
+	return commands;
 }
 
 void Console::loop() {

@@ -13,6 +13,7 @@ namespace LGen {
 		Command(Console *console, const std::vector<std::string> triggers);
 		bool apply(const Input &input);
 		std::string getTrigger() const;
+		std::vector<std::string> getAliases() const;
 
 		class Exit;
 		class Help;

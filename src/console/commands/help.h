@@ -11,6 +11,7 @@ protected:
 
 private:
 	static const std::string KEYWORD;
+	static const std::string ALIAS;
 	static const std::string FILE;
 	static const std::string PREFIX_COMMAND;
 };

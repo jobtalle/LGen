@@ -37,6 +37,10 @@ bool Command::apply(const Input &input) {
 	return false;
 }
 
+std::string Command::getTrigger() const {
+	return triggers[0];
+}
+
 Console *Command::getConsole() {
 	return console;
 }

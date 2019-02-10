@@ -8,5 +8,5 @@
 | Written by Job Talle (jobtalle.com/contact).                  v | /          |
 | Distributed under the MIT license.                             \|/           |
 |                                                                 |            |
-| Type '?' for help.                                              |            |
+| Type 'help' for help.                                           |            |
 ================================================================================

@@ -67,6 +67,15 @@ void Console::log(const std::string message, const bool prefix) const {
 	}
 }
 
+std::vector<std::string> Console::getCommands() const {
+	std::vector<std::string> triggers;
+
+	for(const Command *command : commands)
+		triggers.push_back(command->getTrigger());
+
+	return triggers;
+}
+
 void Console::loop() {
 	while(!terminate) {
 		std::cout << PREFIX_COMMAND;

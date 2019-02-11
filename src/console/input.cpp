@@ -2,19 +2,16 @@
 
 using namespace LGen;
 
-Input::Input(std::string source) {
-	size_t delimiterPosition = 0;
+Input::Input(std::string input) :
+	Input(splitInput(input)) {
 
-	while((delimiterPosition = source.find(DELIMITER)) != std::string::npos) {
-		arguments.insert(arguments.begin(), source.substr(0, delimiterPosition));
+}
 
-		source.erase(0, delimiterPosition + 1);
-	}
+Input::Input(std::vector<std::string> &arguments) {
+	keyword = arguments[0];
 
-	arguments.insert(arguments.begin(), source);
-
-	keyword = arguments[arguments.size() - 1];
-	arguments.pop_back();
+	for(auto argument = arguments.begin() + 1; argument < arguments.end(); ++argument)
+		this->arguments.push_back(*argument);
 }
 
 std::string Input::getKeyword() const {
@@ -23,4 +20,19 @@ std::string Input::getKeyword() const {
 
 std::vector<std::string> Input::getArguments() const {
 	return arguments;
+}
+
+std::vector<std::string> Input::splitInput(std::string input) {
+	std::vector<std::string> words;
+	size_t delimiterPosition = 0;
+
+	while((delimiterPosition = input.find(DELIMITER)) != std::string::npos) {
+		words.insert(words.begin(), input.substr(0, delimiterPosition));
+
+		input.erase(0, delimiterPosition + 1);
+	}
+
+	words.insert(words.begin(), input);
+
+	return words;
 }

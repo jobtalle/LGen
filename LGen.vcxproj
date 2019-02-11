@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{C63F3F7A-DE7F-419C-A0A4-379A6934E640}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,11 +70,11 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>src;glfw/include;$(IncludePath)</IncludePath>
+    <IncludePath>LParse/src;src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>src;glfw/include;$(IncludePath)</IncludePath>
+    <IncludePath>LParse/src;src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -135,6 +135,9 @@
     <ClCompile Include="glfw\src\win32_window.c" />
     <ClCompile Include="glfw\src\window.c" />
     <ClCompile Include="glfw\src\xkb_unicode.c" />
+    <ClCompile Include="LParse\src\rule.cpp" />
+    <ClCompile Include="LParse\src\sentence.cpp" />
+    <ClCompile Include="LParse\src\token.cpp" />
     <ClCompile Include="LRender\src\glad\glad.c" />
     <ClCompile Include="src\console\command.cpp" />
     <ClCompile Include="src\console\commands\exit.cpp" />
@@ -157,6 +160,9 @@
     <ClInclude Include="glfw\src\win32_joystick.h" />
     <ClInclude Include="glfw\src\win32_platform.h" />
     <ClInclude Include="glfw\src\xkb_unicode.h" />
+    <ClInclude Include="LParse\src\rule.h" />
+    <ClInclude Include="LParse\src\sentence.h" />
+    <ClInclude Include="LParse\src\token.h" />
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
     <ClInclude Include="src\console\command.h" />

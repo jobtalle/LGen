@@ -67,7 +67,7 @@ void Console::log(const std::string message, const bool prefix) const {
 	}
 }
 
-std::vector<Command*> Console::getCommands() const {
+const std::vector<Command*> Console::getCommands() const {
 	return commands;
 }
 

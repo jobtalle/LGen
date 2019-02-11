@@ -15,7 +15,7 @@ namespace LGen {
 		void stop();
 		void dumpFile(const std::string file, const bool prefix = true) const;
 		void log(const std::string message, const bool prefix = true) const;
-		std::vector<Command*> getCommands() const;
+		const std::vector<Command*> getCommands() const;
 
 	private:
 		static const size_t LINE_WIDTH = 80;

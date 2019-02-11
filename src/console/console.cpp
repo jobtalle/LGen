@@ -71,7 +71,7 @@ std::vector<Command*> Console::makeCommands(Console *console) {
 	std::vector<Command*> commands;
 
 	commands.push_back(new Command::Exit(console));
-	commands.push_back(new Command::Help(console));
+	commands.push_back(new Command::Help());
 
 	return commands;
 }
@@ -83,7 +83,7 @@ void Console::loop() {
 		std::string input;
 		std::getline(std::cin, input);
 
-		if(commandList.apply(Input(input)))
+		if(commandList.apply(*this, Input(input)))
 			goto next;
 
 		log(MSG_NOT_RECOGNIZED);

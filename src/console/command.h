@@ -9,9 +9,9 @@
 namespace LGen {
 	class Command {
 	public:
-		Command(Console *console, const std::vector<std::string> triggers, const std::string help);
-		Command(Console *console, const std::vector<std::string> triggers);
-		bool apply(const Input &input);
+		Command(const std::vector<std::string> triggers, const std::string help);
+		Command(const std::vector<std::string> triggers);
+		bool apply(const Console &console, const Input &input);
 		const std::string &getTrigger() const;
 		std::vector<std::string> getAliases() const;
 
@@ -19,15 +19,13 @@ namespace LGen {
 		class Help;
 
 	protected:
-		virtual void application(const std::vector<std::string> arguments) = 0;
-		Console *getConsole() const;
+		virtual void application(const Console &console, const std::vector<std::string> arguments) = 0;
 
 	private:
 		const bool hasHelp;
-		Console *console;
 		const std::vector<std::string> triggers;
 		const std::string help;
 
-		void showHelp() const;
+		void showHelp(const Console &console) const;
 	};
 };

@@ -7,15 +7,15 @@ const std::string Command::Help::ALIAS = "?";
 const std::string Command::Help::FILE = "text/help.txt";
 const std::string Command::Help::PREFIX_COMMAND = "- ";
 
-Command::Help::Help(Console *console) :
-	Command(console, { KEYWORD, ALIAS }) {
+Command::Help::Help() :
+	Command({ KEYWORD, ALIAS }) {
 
 }
 
-void Command::Help::application(const std::vector<std::string> arguments) {
-	getConsole()->dumpFile(FILE);
+void Command::Help::application(const Console &console, const std::vector<std::string> arguments) {
+	console.dumpFile(FILE);
 
-	for(const Command *command : getConsole()->getCommandList().getCommands()) {
+	for(const Command *command : console.getCommandList().getCommands()) {
 		std::string keywords = command->getTrigger();
 		std::vector<std::string> aliases = command->getAliases();
 
@@ -32,6 +32,6 @@ void Command::Help::application(const std::vector<std::string> arguments) {
 			keywords += ")";
 		}
 
-		getConsole()->log(PREFIX_COMMAND + keywords);
+		console.log(PREFIX_COMMAND + keywords);
 	}
 }

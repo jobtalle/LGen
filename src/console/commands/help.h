@@ -4,10 +4,10 @@
 
 class LGen::Command::Help final : public LGen::Command {
 public:
-	Help(Console *console);
+	Help();
 
 protected:
-	void application(const std::vector<std::string> arguments) override;
+	void application(const Console &console, const std::vector<std::string> arguments) override;
 
 private:
 	static const std::string KEYWORD;

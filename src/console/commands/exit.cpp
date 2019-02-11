@@ -7,13 +7,14 @@ const std::string Command::Exit::FILE_HELP = "text/helpExit.txt";
 const std::string Command::Exit::MSG_ARGUMENTS = "The exit command takes no arguments.";
 
 Command::Exit::Exit(Console *console) :
-	Command(console, { KEYWORD }, FILE_HELP) {
+	Command({ KEYWORD }, FILE_HELP),
+	console(console) {
 
 }
 
-void Command::Exit::application(const std::vector<std::string> arguments) {
+void Command::Exit::application(const Console &console, const std::vector<std::string> arguments) {
 	if(arguments.size() == 0)
-		getConsole()->stop();
+		this->console->stop();
 	else
-		getConsole()->log(MSG_ARGUMENTS);
+		console.log(MSG_ARGUMENTS);
 }

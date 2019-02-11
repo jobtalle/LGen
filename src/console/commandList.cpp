@@ -1,5 +1,6 @@
 #include "console/command.h"
 #include "console/commandList.h"
+#include "console/console.h"
 
 using namespace LGen;
 
@@ -13,9 +14,9 @@ CommandList::~CommandList() {
 		delete command;
 }
 
-bool CommandList::apply(const Input &input) const {
+bool CommandList::apply(const Console &console, const Input &input) const {
 	for(auto command : commands)
-		if(command->apply(input))
+		if(command->apply(console, input))
 			return true;
 
 	return false;

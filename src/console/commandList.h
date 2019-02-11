@@ -6,11 +6,12 @@
 
 namespace LGen {
 	class Command;
+	class Console;
 	class CommandList final {
 	public:
 		CommandList(const std::vector<Command*> &commands);
 		~CommandList();
-		bool apply(const Input &input) const;
+		bool apply(const Console &console, const Input &input) const;
 		const std::vector<Command*> &getCommands() const;
 
 	private:

@@ -2,32 +2,30 @@
 
 using namespace LGen;
 
-Command::Command(Console *console, const std::vector<std::string> triggers, const std::string help) :
-	console(console),
+Command::Command(const std::vector<std::string> triggers, const std::string help) :
 	triggers(triggers),
 	help(help),
 	hasHelp(true) {
 
 }
 
-Command::Command(Console *console, const std::vector<std::string> triggers) :
-	console(console),
+Command::Command(const std::vector<std::string> triggers) :
 	triggers(triggers),
 	hasHelp(false) {
 
 }
 
-bool Command::apply(const Input &input) {
+bool Command::apply(const Console &console, const Input &input) {
 	for(const std::string trigger : triggers) {
 		if(input.getKeyword().rfind(trigger, 0) == 0) {
 			if(input.getKeyword().size() == trigger.size()) {
-				application(input.getArguments());
+				application(console, input.getArguments());
 
 				return true;
 			}
 			
 			if(hasHelp && input.getKeyword()[trigger.size()] == '?') {
-				showHelp();
+				showHelp(console);
 
 				return true;
 			}
@@ -50,10 +48,6 @@ std::vector<std::string> Command::getAliases() const {
 	return aliases;
 }
 
-Console *Command::getConsole() const {
-	return console;
-}
-
-void Command::showHelp() const {
-	console->dumpFile(help);
+void Command::showHelp(const Console &console) const {
+	console.dumpFile(help);
 }

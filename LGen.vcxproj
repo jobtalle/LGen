@@ -140,6 +140,7 @@
     <ClCompile Include="LParse\src\token.cpp" />
     <ClCompile Include="LRender\src\glad\glad.c" />
     <ClCompile Include="src\console\command.cpp" />
+    <ClCompile Include="src\console\commandList.cpp" />
     <ClCompile Include="src\console\commands\exit.cpp" />
     <ClCompile Include="src\console\commands\help.cpp" />
     <ClCompile Include="src\console\console.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
     <ClInclude Include="src\console\command.h" />
+    <ClInclude Include="src\console\commandList.h" />
     <ClInclude Include="src\console\commands\exit.h" />
     <ClInclude Include="src\console\commands\help.h" />
     <ClInclude Include="src\console\console.h" />

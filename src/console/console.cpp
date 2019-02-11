@@ -14,9 +14,8 @@ const std::string Console::PREFIX_COMMAND = ">> ";
 const std::string Console::PREFIX_LOG = "   ";
 
 Console::Console(Monitor *monitor) :
-	monitor(monitor) {
-	makeCommands();
-
+	monitor(monitor),
+	commandList(makeCommands(this)) {
 	dumpFile("text/intro.txt", false);
 
 	thread.reset(new std::thread(std::bind(&Console::loop, this)));
@@ -24,9 +23,6 @@ Console::Console(Monitor *monitor) :
 
 Console::~Console() {
 	thread->join();
-
-	for(auto command : commands)
-		delete command;
 }
 
 void Console::stop() {
@@ -67,7 +63,16 @@ void Console::log(const std::string message, const bool prefix) const {
 	}
 }
 
-const std::vector<Command*> Console::getCommands() const {
+const CommandList &Console::getCommandList() const {
+	return commandList;
+}
+
+std::vector<Command*> Console::makeCommands(Console *console) {
+	std::vector<Command*> commands;
+
+	commands.push_back(new Command::Exit(console));
+	commands.push_back(new Command::Help(console));
+
 	return commands;
 }
 
@@ -78,17 +83,11 @@ void Console::loop() {
 		std::string input;
 		std::getline(std::cin, input);
 
-		for(auto command : commands)
-			if(command->apply(Input(input)))
-				goto next;
+		if(commandList.apply(Input(input)))
+			goto next;
 
 		log(MSG_NOT_RECOGNIZED);
 
 	next:;
 	}
-}
-
-void Console::makeCommands() {
-	commands.push_back(new Command::Exit(this));
-	commands.push_back(new Command::Help(this));
 }

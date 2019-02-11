@@ -19,7 +19,7 @@ namespace LGen {
 		class Help;
 
 	protected:
-		virtual void application(const std::vector<std::string> input) = 0;
+		virtual void application(const std::vector<std::string> arguments) = 0;
 		Console *getConsole() const;
 
 	private:

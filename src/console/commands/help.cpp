@@ -15,7 +15,7 @@ Command::Help::Help(Console *console) :
 void Command::Help::application(const std::vector<std::string> arguments) {
 	getConsole()->dumpFile(FILE);
 
-	for(const Command *command : getConsole()->getCommands()) {
+	for(const Command *command : getConsole()->getCommandList().getCommands()) {
 		std::string keywords = command->getTrigger();
 		std::vector<std::string> aliases = command->getAliases();
 

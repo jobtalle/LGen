@@ -12,14 +12,15 @@ CommandList::CommandList(const std::vector<Command*> &commands) :
 }
 
 CommandList::~CommandList() {
-	for(auto const &command : commands)
+	for(auto const command : commands)
 		delete command;
 }
 
 bool CommandList::apply(const Console &console, const Input &input) const {
-	for(auto const &command : commands)
+	for(auto const command : commands) {
 		if(command->apply(console, input))
 			return true;
+	}
 
 	return false;
 }
@@ -29,7 +30,7 @@ const std::vector<Command*> &CommandList::getCommands() const {
 }
 
 void CommandList::enumerateKeywords(const Console &console) const {
-	for(auto const &command : commands) {
+	for(auto const command : commands) {
 		std::string keywords = command->getTrigger();
 		const std::vector<std::string> &aliases = command->getAliases();
 

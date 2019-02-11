@@ -57,7 +57,7 @@ void Console::log(const std::string message, const bool prefix) const {
 
 	lines.push_back(remainder);
 
-	for(const std::string line : lines) {
+	for(const std::string &line : lines) {
 		if(prefix)
 			std::cout << PREFIX_LOG << line << std::endl;
 		else

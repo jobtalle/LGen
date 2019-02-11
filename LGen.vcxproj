@@ -137,6 +137,7 @@
     <ClCompile Include="glfw\src\xkb_unicode.c" />
     <ClCompile Include="LParse\src\rule.cpp" />
     <ClCompile Include="LParse\src\sentence.cpp" />
+    <ClCompile Include="LParse\src\system.cpp" />
     <ClCompile Include="LParse\src\token.cpp" />
     <ClCompile Include="LRender\src\glad\glad.c" />
     <ClCompile Include="src\console\command.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="glfw\src\xkb_unicode.h" />
     <ClInclude Include="LParse\src\rule.h" />
     <ClInclude Include="LParse\src\sentence.h" />
+    <ClInclude Include="LParse\src\system.h" />
     <ClInclude Include="LParse\src\token.h" />
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />

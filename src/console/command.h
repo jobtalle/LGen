@@ -20,11 +20,15 @@ namespace LGen {
 
 		class Exit;
 		class Help;
+		class System;
 
 	protected:
-		virtual void application(const Console &console, const std::vector<std::string> arguments) = 0;
+		virtual void application(const Console &console, const std::vector<std::string> arguments);
 
 	private:
+		static const std::string MSG_HELP_LIST;
+		static const std::string MSG_NEED_MORE_ARGUMENTS;
+
 		const bool hasHelp;
 		const std::vector<std::string> triggers;
 		const std::string help;

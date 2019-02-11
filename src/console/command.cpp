@@ -2,6 +2,9 @@
 
 using namespace LGen;
 
+const std::string Command::MSG_HELP_LIST = "Available commands:";
+const std::string Command::MSG_NEED_MORE_ARGUMENTS = "This command needs more arguments.";
+
 Command::Command(const std::vector<std::string> triggers) :
 	triggers(triggers),
 	hasHelp(false) {
@@ -31,8 +34,14 @@ bool Command::apply(const Console &console, const Input &input) {
 				return true;
 			}
 			
-			if(hasHelp && input.getKeyword()[trigger.size()] == '?') {
-				showHelp(console);
+			else if(input.getKeyword()[trigger.size()] == '?') {
+				if(commandList) {
+					console.log(MSG_HELP_LIST);
+					
+					commandList->enumerateKeywords(console);
+				}
+				else if(hasHelp)
+					showHelp(console);
 
 				return true;
 			}
@@ -53,6 +62,10 @@ std::vector<std::string> Command::getAliases() const {
 		aliases.push_back(*trigger);
 
 	return aliases;
+}
+
+void Command::application(const Console &console, const std::vector<std::string> arguments) {
+	console.log(MSG_NEED_MORE_ARGUMENTS);
 }
 
 void Command::showHelp(const Console &console) const {

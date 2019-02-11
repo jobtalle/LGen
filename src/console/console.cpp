@@ -1,6 +1,7 @@
 #include "console/console.h"
 #include "console/commands/exit.h"
 #include "console/commands/help.h"
+#include "console/commands/system.h"
 
 #include <iostream>
 #include <string>
@@ -72,6 +73,7 @@ std::vector<Command*> Console::makeCommands(Console *console) {
 
 	commands.push_back(new Command::Exit(console));
 	commands.push_back(new Command::Help());
+	commands.push_back(new Command::System());
 
 	return commands;
 }

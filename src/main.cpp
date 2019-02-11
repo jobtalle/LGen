@@ -11,16 +11,16 @@ int main(int argc, char **argv) {
 	std::mt19937 randomizer(randomDevice());
 
 	const LParse::Rule r1(
-		LParse::Sentence({ LParse::Token('A') }),
-		LParse::Sentence({ LParse::Token('A'), LParse::Token('B'), LParse::Token('B') }));
+		LParse::Sentence({ 'A' }),
+		LParse::Sentence({ 'A', 'B', 'B' }));
 	const LParse::Rule r2(
-		LParse::Sentence({ LParse::Token('B'), LParse::Token('B') }),
-		LParse::Sentence({ LParse::Token('A') }));
+		LParse::Sentence({ 'B', 'B' }),
+		LParse::Sentence({ 'A' }));
 	const LParse::Rule r3(
-		LParse::Sentence({ LParse::Token('B'), LParse::Token('B') }),
-		LParse::Sentence({ LParse::Token('C') }));
+		LParse::Sentence({ 'B', 'B' }),
+		LParse::Sentence({ 'C' }));
 
-	LParse::Sentence axiom({ LParse::Token('A'), LParse::Token('B'), LParse::Token('A') });
+	LParse::Sentence axiom({ 'A', 'B', 'A' });
 
 	std::cout << "Rule 1: " << r1 << std::endl;
 	std::cout << "Rule 2: " << r2 << std::endl;

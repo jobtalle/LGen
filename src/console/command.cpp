@@ -2,6 +2,12 @@
 
 using namespace LGen;
 
+Command::Command(const std::vector<std::string> triggers) :
+	triggers(triggers),
+	hasHelp(false) {
+
+}
+
 Command::Command(const std::vector<std::string> triggers, const std::string help) :
 	triggers(triggers),
 	help(help),
@@ -9,9 +15,10 @@ Command::Command(const std::vector<std::string> triggers, const std::string help
 
 }
 
-Command::Command(const std::vector<std::string> triggers) :
+Command::Command(const std::vector<std::string> triggers, const std::vector<Command*> commands) :
 	triggers(triggers),
-	hasHelp(false) {
+	hasHelp(true),
+	commandList(new CommandList(commands)) {
 
 }
 

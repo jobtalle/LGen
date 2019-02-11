@@ -29,7 +29,10 @@ bool Command::apply(const Console &console, const Input &input) {
 	for(const std::string trigger : triggers) {
 		if(input.getKeyword().rfind(trigger, 0) == 0) {
 			if(input.getKeyword().size() == trigger.size()) {
-				application(console, input.getArguments());
+				if(commandList)
+					commandList->apply(console, input.getArguments());
+				else
+					application(console, input.getArguments());
 
 				return true;
 			}

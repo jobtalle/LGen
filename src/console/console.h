@@ -2,6 +2,7 @@
 
 #include "monitor/monitor.h"
 #include "console/commandList.h"
+#include "workspace/workspace.h"
 
 #include <thread>
 #include <memory>
@@ -11,7 +12,7 @@ namespace LGen {
 	class Command;
 	class Console {
 	public:
-		Console(LGen::Monitor *monitor);
+		Console(Monitor *monitor, Workspace *workspace);
 		~Console();
 		void stop();
 		void dumpFile(const std::string file, const bool prefix = true) const;
@@ -26,7 +27,8 @@ namespace LGen {
 		static const std::string PREFIX_LOG;
 
 		const CommandList commandList;
-		LGen::Monitor *monitor;
+		Monitor *monitor;
+		Workspace *workspace;
 		std::unique_ptr<std::thread> thread;
 		bool terminate = false;
 

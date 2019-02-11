@@ -14,8 +14,9 @@ const std::string Console::FILE_INTRO = "text/intro.txt";
 const std::string Console::PREFIX_COMMAND = ">> ";
 const std::string Console::PREFIX_LOG = "   ";
 
-Console::Console(Monitor *monitor) :
+Console::Console(Monitor *monitor, Workspace *workspace) :
 	monitor(monitor),
+	workspace(workspace),
 	commandList(makeCommands(this)) {
 	dumpFile("text/intro.txt", false);
 

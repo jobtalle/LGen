@@ -26,14 +26,14 @@ int main(int argc, char **argv) {
 	axiom.print(std::cout);
 	std::cout << std::endl;
 
-	for(int i = 0; i < 5; ++i) {
+	for(int i = 0; i < 30; ++i) {
 		std::cout << "Iteration " << i << std::endl;
 
 		axiom.apply({ r1, r2, r3 }, randomizer);
-
-		axiom.print(std::cout);
-		std::cout << std::endl;
 	}
+
+	axiom.print(std::cout);
+	std::cout << std::endl;
 
 	LGen::Monitor monitor("Monitor");
 	LGen::Console console(&monitor);

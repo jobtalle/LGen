@@ -22,9 +22,10 @@ int main(int argc, char **argv) {
 
 	LParse::Sentence axiom({ LParse::Token('A'), LParse::Token('B'), LParse::Token('A') });
 
-	std::cout << "Axiom: ";
-	axiom.print(std::cout);
-	std::cout << std::endl;
+	std::cout << "Rule 1: " << r1 << std::endl;
+	std::cout << "Rule 2: " << r2 << std::endl;
+	std::cout << "Rule 3: " << r3 << std::endl;
+	std::cout << "Axiom: " << axiom << std::endl;
 
 	for(int i = 0; i < 30; ++i) {
 		std::cout << "Iteration " << i << std::endl;
@@ -32,8 +33,7 @@ int main(int argc, char **argv) {
 		axiom.apply({ r1, r2, r3 }, randomizer);
 	}
 
-	axiom.print(std::cout);
-	std::cout << std::endl;
+	std::cout << axiom << std::endl;
 
 	LGen::Monitor monitor("Monitor");
 	LGen::Console console(&monitor);

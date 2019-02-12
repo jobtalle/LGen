@@ -17,5 +17,5 @@ void Command::System::Print::application(
 	if(workspace.system)
 		console << *workspace.system;
 	else
-		console << Command::System::MSG_NO_SYSTEM;
+		console << Command::System::MSG_NO_SYSTEM << std::endl;
 }

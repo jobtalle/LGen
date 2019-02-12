@@ -11,16 +11,16 @@
 namespace LGen {
 	class Command {
 	public:
+		class Exit;
+		class Help;
+		class System;
+
 		Command(const std::vector<std::string> triggers);
 		Command(const std::vector<std::string> triggers, const std::string help);
 		Command(const std::vector<std::string> triggers, const std::vector<Command*> commands);
 		bool apply(const Console &console, const Input &input);
 		const std::string &getTrigger() const;
 		std::vector<std::string> getAliases() const;
-
-		class Exit;
-		class Help;
-		class System;
 
 	protected:
 		virtual void application(const Console &console, const std::vector<std::string> arguments);

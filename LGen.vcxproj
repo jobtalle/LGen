@@ -146,6 +146,7 @@
     <ClCompile Include="src\console\commands\help.cpp" />
     <ClCompile Include="src\console\commands\system.cpp" />
     <ClCompile Include="src\console\commands\systemDelete.cpp" />
+    <ClCompile Include="src\console\commands\systemGenerate.cpp" />
     <ClCompile Include="src\console\commands\systemNew.cpp" />
     <ClCompile Include="src\console\commands\systemPrint.cpp" />
     <ClCompile Include="src\console\console.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="src\console\commands\exit.h" />
     <ClInclude Include="src\console\commands\help.h" />
     <ClInclude Include="src\console\commands\system.h" />
+    <ClInclude Include="src\console\commands\systemGenerate.h" />
     <ClInclude Include="src\console\commands\systemDelete.h" />
     <ClInclude Include="src\console\commands\systemNew.h" />
     <ClInclude Include="src\console\commands\systemPrint.h" />

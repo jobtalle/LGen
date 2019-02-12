@@ -12,11 +12,13 @@ namespace LGen {
 	public:
 		void create();
 		void destroy();
+		std::string generate();
 		void print(std::ostream &stream) const;
 		
 	private:
 		static const std::string MSG_SYSTEM_INVALID;
 
 		std::unique_ptr<LParse::System> system;
+		std::mt19937 randomizer;
 	};
 }

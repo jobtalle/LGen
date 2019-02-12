@@ -17,6 +17,13 @@ void Workspace::System::destroy() {
 	system.reset(nullptr);
 }
 
+std::string Workspace::System::generate() {
+	if(system && system->isComplete())
+		system->generate(randomizer);
+
+	return "test";
+}
+
 void Workspace::System::print(std::ostream &stream) const {
 	if(system && system->isComplete())
 		stream << *system;

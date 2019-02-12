@@ -9,6 +9,7 @@ namespace LGen {
 
 		class New;
 		class Print;
+		class Generate;
 		class Delete;
 
 	private:

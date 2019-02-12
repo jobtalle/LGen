@@ -1,6 +1,7 @@
 #include "console/commands/system.h"
 #include "console/commands/systemNew.h"
 #include "console/commands/systemPrint.h"
+#include "console/commands/systemGenerate.h"
 #include "console/commands/systemDelete.h"
 
 using namespace LGen;
@@ -12,6 +13,7 @@ Command::System::System() :
 	Command({ KEYWORD, ALIAS }, {
 		new Command::System::New(),
 		new Command::System::Print(),
+		new Command::System::Generate(),
 		new Command::System::Delete() }) {
 
 }

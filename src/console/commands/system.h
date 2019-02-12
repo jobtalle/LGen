@@ -8,6 +8,7 @@ namespace LGen {
 		System();
 
 		class New;
+		class Print;
 
 	private:
 		static const std::string KEYWORD;

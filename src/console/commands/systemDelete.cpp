@@ -1,5 +1,4 @@
 #include "console/commands/systemDelete.h"
-#include "workspace/workspaceSystem.h"
 
 using namespace LGen;
 
@@ -15,5 +14,5 @@ void Command::System::Delete::application(
 	const std::vector<std::string> arguments,
 	Console &console,
 	Workspace &workspace) {
-	workspace.getSystem().destroy();
+	workspace.system.reset(nullptr);
 }

@@ -1,5 +1,4 @@
 #include "console/commands/systemNew.h"
-#include "workspace/workspaceSystem.h"
 
 using namespace LGen;
 
@@ -15,5 +14,5 @@ void Command::System::New::application(
 	const std::vector<std::string> arguments,
 	Console &console,
 	Workspace &workspace) {
-	workspace.getSystem().create();
+	workspace.system.reset(new LParse::System());
 }

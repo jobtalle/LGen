@@ -2,8 +2,8 @@
 
 using namespace LGen;
 
-const std::string Command::MSG_HELP_LIST = "Available commands:\n";
-const std::string Command::MSG_NEED_MORE_ARGUMENTS = "This command needs more arguments.\n";
+const std::string Command::MSG_HELP_LIST = "Available commands:";
+const std::string Command::MSG_NEED_MORE_ARGUMENTS = "This command needs more arguments.";
 
 Command::Command(const std::vector<std::string> triggers) :
 	triggers(triggers),
@@ -39,7 +39,7 @@ bool Command::apply(const Input &input, Console &console, Workspace &workspace) 
 			
 			else if(input.getKeyword()[trigger.size()] == '?') {
 				if(commandList) {
-					console.log(MSG_HELP_LIST);
+					console << MSG_HELP_LIST << std::endl;
 					
 					commandList->enumerateKeywords(console);
 				}
@@ -71,7 +71,7 @@ void Command::application(
 	const std::vector<std::string> arguments,
 	Console &console,
 	Workspace &workspace) {
-	console.log(MSG_NEED_MORE_ARGUMENTS);
+	console << MSG_NEED_MORE_ARGUMENTS << std::endl;
 }
 
 void Command::showHelp(const Console &console) const {

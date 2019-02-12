@@ -15,5 +15,7 @@ namespace LGen {
 	private:
 		static const std::string KEYWORD;
 		static const std::string ALIAS;
+		static const std::string MSG_NO_SYSTEM;
+		static const std::string MSG_SYSTEM_INCOMPLETE;
 	};
 };

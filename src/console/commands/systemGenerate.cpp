@@ -1,5 +1,4 @@
 #include "console/commands/systemGenerate.h"
-#include "workspace/workspaceSystem.h"
 
 using namespace LGen;
 
@@ -15,5 +14,14 @@ void Command::System::Generate::application(
 	const std::vector<std::string> arguments,
 	Console &console,
 	Workspace &workspace) {
-	console << workspace.getSystem().generate() << std::endl;
+	if(!workspace.system) {
+		console << Command::System::MSG_NO_SYSTEM << std::endl;
+
+		return;
+	}
+
+	if(workspace.system->isComplete())
+		console << *workspace.system->generate(workspace.randomizer) << std::endl;
+	else
+		console << Command::System::MSG_SYSTEM_INCOMPLETE << std::endl;
 }

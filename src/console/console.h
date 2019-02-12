@@ -13,13 +13,12 @@
 
 namespace LGen {
 	class Command;
-	class Console final : std::streambuf, public std::ostream {
+	class Console final : private std::streambuf, public std::ostream {
 	public:
 		Console(Monitor *monitor, Workspace *workspace);
 		~Console();
 		void stop();
 		void dumpFile(const std::string file, const bool prefix = true) const;
-		void log(const std::string message, const bool prefix = true) const;
 		const CommandList &getCommandList() const;
 		std::streambuf::int_type overflow(std::streambuf::int_type c) override;
 		int sync() override;
@@ -40,6 +39,7 @@ namespace LGen {
 
 		static std::vector<Command*> makeCommands(Console *console);
 
+		void log(const std::string message, const bool prefix = true) const;
 		void loop();
 	};
 }

@@ -8,6 +8,8 @@ using namespace LGen;
 
 const std::string Command::System::KEYWORD = "system";
 const std::string Command::System::ALIAS = "sys";
+const std::string Command::System::MSG_NO_SYSTEM = "No system is loaded.\n";
+const std::string Command::System::MSG_SYSTEM_INCOMPLETE = "The current system is incomplete.\n";
 
 Command::System::System() :
 	Command({ KEYWORD, ALIAS }, {

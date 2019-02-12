@@ -5,10 +5,12 @@
 #include "console/console.h"
 #include "monitor/monitor.h"
 
+using namespace LGen;
+
 int main(int argc, char **argv) {
-	LGen::Workspace workspace;
-	LGen::Monitor monitor("Monitor");
-	LGen::Console console(&monitor, &workspace);
+	Workspace workspace;
+	Monitor monitor("Monitor");
+	Console console(&monitor, &workspace);
 
 	monitor.start();
 

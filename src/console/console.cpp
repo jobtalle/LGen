@@ -46,26 +46,6 @@ void Console::dumpFile(const std::string file, const bool prefix) const {
 	source.close();
 }
 
-void Console::log(const std::string message, const bool prefix) const {
-	std::string remainder = message;
-	std::vector<std::string> lines;
-
-	while(remainder.size() > LINE_WIDTH) {
-		lines.push_back(remainder.substr(0, LINE_WIDTH));
-
-		remainder = remainder.substr(LINE_WIDTH, remainder.size());
-	}
-
-	lines.push_back(remainder);
-
-	for(const std::string &line : lines) {
-		if(prefix)
-			std::cout << PREFIX_LOG << line;
-		else
-			std::cout << line;
-	}
-}
-
 const CommandList &Console::getCommandList() const {
 	return commandList;
 }
@@ -91,6 +71,26 @@ std::vector<Command*> Console::makeCommands(Console *console) {
 	commands.push_back(new Command::System());
 
 	return commands;
+}
+
+void Console::log(const std::string message, const bool prefix) const {
+	std::string remainder = message;
+	std::vector<std::string> lines;
+
+	while(remainder.size() > LINE_WIDTH) {
+		lines.push_back(remainder.substr(0, LINE_WIDTH));
+
+		remainder = remainder.substr(LINE_WIDTH, remainder.size());
+	}
+
+	lines.push_back(remainder);
+
+	for(const std::string &line : lines) {
+		if(prefix)
+			std::cout << PREFIX_LOG << line;
+		else
+			std::cout << line;
+	}
 }
 
 void Console::loop() {

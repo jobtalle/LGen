@@ -15,7 +15,7 @@ namespace LGen {
 		~CommandList();
 		bool apply(const Input &input, Console &console, Workspace &workspace) const;
 		const std::vector<Command*> &getCommands() const;
-		void enumerateKeywords(const Console &console) const;
+		void enumerateKeywords(Console &console) const;
 
 	private:
 		static const std::string ENUMERATE_PREFIX;

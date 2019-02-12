@@ -153,7 +153,6 @@
     <ClCompile Include="src\console\input.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\monitor\monitor.cpp" />
-    <ClCompile Include="src\workspace\workspaceSystem.cpp" />
     <ClCompile Include="src\workspace\workspace.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +186,6 @@
     <ClInclude Include="src\console\console.h" />
     <ClInclude Include="src\console\input.h" />
     <ClInclude Include="src\monitor\monitor.h" />
-    <ClInclude Include="src\workspace\workspaceSystem.h" />
     <ClInclude Include="src\workspace\workspace.h" />
   </ItemGroup>
   <ItemGroup>

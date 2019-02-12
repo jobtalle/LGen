@@ -1,16 +1,16 @@
 #pragma once
 
+#include "lparse.h"
+
 #include <memory>
+#include <random>
 
 namespace LGen {
-	class Workspace final {
-	public:
-		class System;
+	class System;
 
+	struct Workspace {
 		Workspace();
-		~Workspace();
-		System &getSystem() const;
-	private:
-		std::unique_ptr<System> system;
+		std::mt19937 randomizer;
+		std::unique_ptr<LParse::System> system;
 	};
-};
+}

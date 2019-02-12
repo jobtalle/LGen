@@ -29,10 +29,10 @@ const std::vector<Command*> &CommandList::getCommands() const {
 	return commands;
 }
 
-void CommandList::enumerateKeywords(const Console &console) const {
+void CommandList::enumerateKeywords(Console &console) const {
 	for(auto const command : commands) {
 		std::string keywords = command->getTrigger();
-		const std::vector<std::string> &aliases = command->getAliases();
+		const std::vector<std::string> aliases = command->getAliases();
 
 		if(aliases.size()) {
 			keywords += " (";
@@ -47,6 +47,6 @@ void CommandList::enumerateKeywords(const Console &console) const {
 			keywords += ')';
 		}
 
-		console.log(ENUMERATE_PREFIX + keywords + '\n');
+		console << ENUMERATE_PREFIX << keywords << std::endl;
 	}
 }

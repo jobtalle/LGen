@@ -1,5 +1,4 @@
 #include "console/commands/systemPrint.h"
-#include "workspace/workspaceSystem.h"
 
 using namespace LGen;
 
@@ -15,5 +14,8 @@ void Command::System::Print::application(
 	const std::vector<std::string> arguments,
 	Console &console,
 	Workspace &workspace) {
-	workspace.getSystem().print(console);
+	if(workspace.system)
+		console << *workspace.system;
+	else
+		console << Command::System::MSG_NO_SYSTEM;
 }

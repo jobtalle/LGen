@@ -86,7 +86,7 @@ void Console::loop() {
 		std::string input;
 		std::getline(std::cin, input);
 
-		if(commandList.apply(*this, Input(input)))
+		if(commandList.apply(Input(input), *this, *workspace))
 			goto next;
 
 		log(MSG_NOT_RECOGNIZED);

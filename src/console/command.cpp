@@ -25,12 +25,12 @@ Command::Command(const std::vector<std::string> triggers, const std::vector<Comm
 
 }
 
-bool Command::apply(const Console &console, const Input &input) {
+bool Command::apply(const Input &input, const Console &console, Workspace &workspace) {
 	for(const std::string &trigger : triggers) {
 		if(input.getKeyword().rfind(trigger, 0) == 0) {
 			if(input.getKeyword().size() == trigger.size()) {
 				if(commandList && input.getArguments().size())
-					return commandList->apply(console, input.getArguments());
+					return commandList->apply(input.getArguments(), console, workspace);
 				else
 					application(console, input.getArguments());
 

@@ -16,9 +16,9 @@ CommandList::~CommandList() {
 		delete command;
 }
 
-bool CommandList::apply(const Console &console, const Input &input) const {
+bool CommandList::apply(const Input &input, const Console &console, Workspace &workspace) const {
 	for(auto const command : commands) {
-		if(command->apply(console, input))
+		if(command->apply(input, console, workspace))
 			return true;
 	}
 

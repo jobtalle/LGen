@@ -3,6 +3,7 @@
 #include "console/input.h"
 #include "console/console.h"
 #include "console/commandList.h"
+#include "workspace/workspace.h"
 
 #include <vector>
 #include <string>
@@ -18,7 +19,7 @@ namespace LGen {
 		Command(const std::vector<std::string> triggers);
 		Command(const std::vector<std::string> triggers, const std::string help);
 		Command(const std::vector<std::string> triggers, const std::vector<Command*> commands);
-		bool apply(const Console &console, const Input &input);
+		bool apply(const Input &input, const Console &console, Workspace &workspace);
 		const std::string &getTrigger() const;
 		std::vector<std::string> getAliases() const;
 

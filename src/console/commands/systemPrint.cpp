@@ -13,7 +13,7 @@ Command::System::Print::Print() :
 
 void Command::System::Print::application(
 	const std::vector<std::string> arguments,
-	const Console &console,
+	Console &console,
 	Workspace &workspace) {
-	workspace.getSystem().print(std::cout);
+	workspace.getSystem().print(console);
 }

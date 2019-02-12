@@ -13,7 +13,7 @@ Command::System::New::New() :
 
 void Command::System::New::application(
 	const std::vector<std::string> arguments,
-	const Console &console,
+	Console &console,
 	Workspace &workspace) {
 	workspace.getSystem().create();
 }

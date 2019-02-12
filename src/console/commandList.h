@@ -13,7 +13,7 @@ namespace LGen {
 	public:
 		CommandList(const std::vector<Command*> &commands);
 		~CommandList();
-		bool apply(const Input &input, const Console &console, Workspace &workspace) const;
+		bool apply(const Input &input, Console &console, Workspace &workspace) const;
 		const std::vector<Command*> &getCommands() const;
 		void enumerateKeywords(const Console &console) const;
 

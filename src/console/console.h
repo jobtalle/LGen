@@ -7,10 +7,12 @@
 #include <thread>
 #include <memory>
 #include <vector>
+#include <ostream>
+#include <sstream>
 
 namespace LGen {
 	class Command;
-	class Console {
+	class Console final : std::streambuf, public std::ostream {
 	public:
 		Console(Monitor *monitor, Workspace *workspace);
 		~Console();
@@ -18,6 +20,7 @@ namespace LGen {
 		void dumpFile(const std::string file, const bool prefix = true) const;
 		void log(const std::string message, const bool prefix = true) const;
 		const CommandList &getCommandList() const;
+		std::streambuf::int_type overflow(std::streambuf::int_type c) override;
 
 	private:
 		static const size_t LINE_WIDTH = 80;

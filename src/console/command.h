@@ -19,14 +19,14 @@ namespace LGen {
 		Command(const std::vector<std::string> triggers);
 		Command(const std::vector<std::string> triggers, const std::string help);
 		Command(const std::vector<std::string> triggers, const std::vector<Command*> commands);
-		bool apply(const Input &input, const Console &console, Workspace &workspace);
+		bool apply(const Input &input, Console &console, Workspace &workspace);
 		const std::string &getTrigger() const;
 		std::vector<std::string> getAliases() const;
 
 	protected:
 		virtual void application(
 			const std::vector<std::string> arguments,
-			const Console &console,
+			Console &console,
 			Workspace &workspace);
 
 	private:

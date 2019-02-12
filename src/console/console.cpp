@@ -17,7 +17,8 @@ const std::string Console::PREFIX_LOG = "   ";
 Console::Console(Monitor *monitor, Workspace *workspace) :
 	monitor(monitor),
 	workspace(workspace),
-	commandList(makeCommands(this)) {
+	commandList(makeCommands(this)),
+	std::ostream(this) {
 	dumpFile("text/intro.txt", false);
 
 	thread.reset(new std::thread(std::bind(&Console::loop, this)));
@@ -67,6 +68,12 @@ void Console::log(const std::string message, const bool prefix) const {
 
 const CommandList &Console::getCommandList() const {
 	return commandList;
+}
+
+std::streambuf::int_type Console::overflow(std::streambuf::int_type c) {
+	std::cout << char(c);
+
+	return 0;
 }
 
 std::vector<Command*> Console::makeCommands(Console *console) {

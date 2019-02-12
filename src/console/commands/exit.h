@@ -11,7 +11,7 @@ namespace LGen {
 	protected:
 		void application(
 			const std::vector<std::string> arguments,
-			const Console &console,
+			Console &console,
 			Workspace &workspace) override;
 
 	private:

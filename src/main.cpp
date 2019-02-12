@@ -5,8 +5,6 @@
 #include "console/console.h"
 #include "monitor/monitor.h"
 
-#include "rule.h"
-
 int main(int argc, char **argv) {
 	LGen::Workspace workspace;
 	LGen::Monitor monitor("Monitor");

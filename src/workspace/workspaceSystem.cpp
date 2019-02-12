@@ -7,7 +7,9 @@ const std::string Workspace::System::MSG_SYSTEM_INVALID = "The current system is
 void Workspace::System::create() {
 	system.reset(new LParse::System(
 	LParse::Sentence({ 'A' }),
-	{ LParse::Rule(LParse::Sentence({'A'}), LParse::Sentence({'B'})) },
+	{ 
+		LParse::Rule(LParse::Sentence({ 'A' }), LParse::Sentence({ 'B' })),
+		LParse::Rule(LParse::Sentence({ 'B' }), LParse::Sentence({ 'A' })) },
 	3));
 }
 

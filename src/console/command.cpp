@@ -25,7 +25,7 @@ Command::Command(const std::vector<std::string> triggers, const std::vector<Comm
 
 }
 
-bool Command::apply(const Input &input, const Console &console, Workspace &workspace) {
+bool Command::apply(const Input &input, Console &console, Workspace &workspace) {
 	for(const std::string &trigger : triggers) {
 		if(input.getKeyword().rfind(trigger, 0) == 0) {
 			if(input.getKeyword().size() == trigger.size()) {
@@ -69,7 +69,7 @@ std::vector<std::string> Command::getAliases() const {
 
 void Command::application(
 	const std::vector<std::string> arguments,
-	const Console &console,
+	Console &console,
 	Workspace &workspace) {
 	console.log(MSG_NEED_MORE_ARGUMENTS);
 }

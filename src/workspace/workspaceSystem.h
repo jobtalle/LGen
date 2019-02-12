@@ -1,7 +1,7 @@
 #pragma once
 
 #include "workspace/workspace.h"
-#include "system.h"
+#include "lparse.h"
 
 #include <memory>
 
@@ -10,7 +10,7 @@ namespace LGen {
 	public:
 		void create();
 		void destroy();
-
+		
 	private:
 		std::unique_ptr<LParse::System> system;
 	};

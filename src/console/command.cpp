@@ -32,7 +32,7 @@ bool Command::apply(const Input &input, const Console &console, Workspace &works
 				if(commandList && input.getArguments().size())
 					return commandList->apply(input.getArguments(), console, workspace);
 				else
-					application(console, input.getArguments());
+					application(input.getArguments(), console, workspace);
 
 				return true;
 			}
@@ -67,7 +67,10 @@ std::vector<std::string> Command::getAliases() const {
 	return aliases;
 }
 
-void Command::application(const Console &console, const std::vector<std::string> arguments) {
+void Command::application(
+	const std::vector<std::string> arguments,
+	const Console &console,
+	Workspace &workspace) {
 	console.log(MSG_NEED_MORE_ARGUMENTS);
 }
 

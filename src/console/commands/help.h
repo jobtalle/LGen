@@ -8,7 +8,10 @@ namespace LGen {
 		Help();
 
 	protected:
-		void application(const Console &console, const std::vector<std::string> arguments) override;
+		void application(
+			const std::vector<std::string> arguments,
+			const Console &console,
+			Workspace &workspace) override;
 
 	private:
 		static const std::string KEYWORD;

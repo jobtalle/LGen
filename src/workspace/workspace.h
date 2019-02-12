@@ -9,7 +9,7 @@ namespace LGen {
 
 		Workspace();
 		~Workspace();
-		System *getSystem() const;
+		System &getSystem() const;
 	private:
 		std::unique_ptr<System> system;
 	};

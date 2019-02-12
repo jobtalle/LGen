@@ -7,6 +7,12 @@ namespace LGen {
 	public:
 		New();
 
+	protected:
+		void application(
+			const std::vector<std::string> arguments,
+			const Console &console,
+			Workspace &workspace) override;
+
 	private:
 		static const std::string KEYWORD;
 		static const std::string FILE;

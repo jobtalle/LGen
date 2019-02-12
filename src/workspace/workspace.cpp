@@ -12,6 +12,6 @@ Workspace::~Workspace() {
 
 }
 
-Workspace::System *Workspace::getSystem() const {
-	return system.get();
+Workspace::System &Workspace::getSystem() const {
+	return *system;
 }

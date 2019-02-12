@@ -70,11 +70,11 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>LParse/src;src;glfw/include;$(IncludePath)</IncludePath>
+    <IncludePath>LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>LParse/src;src;glfw/include;$(IncludePath)</IncludePath>
+    <IncludePath>LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -165,6 +165,7 @@
     <ClInclude Include="glfw\src\win32_joystick.h" />
     <ClInclude Include="glfw\src\win32_platform.h" />
     <ClInclude Include="glfw\src\xkb_unicode.h" />
+    <ClInclude Include="LParse\include\lparse.h" />
     <ClInclude Include="LParse\src\rule.h" />
     <ClInclude Include="LParse\src\sentence.h" />
     <ClInclude Include="LParse\src\system.h" />

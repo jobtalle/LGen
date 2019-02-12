@@ -24,7 +24,10 @@ namespace LGen {
 		std::vector<std::string> getAliases() const;
 
 	protected:
-		virtual void application(const Console &console, const std::vector<std::string> arguments);
+		virtual void application(
+			const std::vector<std::string> arguments,
+			const Console &console,
+			Workspace &workspace);
 
 	private:
 		static const std::string MSG_HELP_LIST;

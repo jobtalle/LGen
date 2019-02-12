@@ -1,4 +1,4 @@
-#include "console/commands/systemPrint.h"
+#include "console/commands/system/systemPrint.h"
 
 using namespace LGen;
 

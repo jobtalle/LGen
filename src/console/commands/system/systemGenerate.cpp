@@ -1,4 +1,4 @@
-#include "console/commands/systemGenerate.h"
+#include "console/commands/system/systemGenerate.h"
 
 using namespace LGen;
 

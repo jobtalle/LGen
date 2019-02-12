@@ -1,8 +1,8 @@
 #include "console/commands/system.h"
-#include "console/commands/systemNew.h"
-#include "console/commands/systemPrint.h"
-#include "console/commands/systemGenerate.h"
-#include "console/commands/systemDelete.h"
+#include "console/commands/system/systemNew.h"
+#include "console/commands/system/systemPrint.h"
+#include "console/commands/system/systemGenerate.h"
+#include "console/commands/system/systemDelete.h"
 
 using namespace LGen;
 

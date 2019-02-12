@@ -1,4 +1,4 @@
-#include "console/commands/systemDelete.h"
+#include "console/commands/system/systemDelete.h"
 
 using namespace LGen;
 

@@ -1,4 +1,4 @@
-#include "console/commands/systemNew.h"
+#include "console/commands/system/systemNew.h"
 
 using namespace LGen;
 

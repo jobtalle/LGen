@@ -47,6 +47,6 @@ void CommandList::enumerateKeywords(const Console &console) const {
 			keywords += ')';
 		}
 
-		console.log(ENUMERATE_PREFIX + keywords);
+		console.log(ENUMERATE_PREFIX + keywords + '\n');
 	}
 }

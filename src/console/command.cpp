@@ -2,8 +2,8 @@
 
 using namespace LGen;
 
-const std::string Command::MSG_HELP_LIST = "Available commands:";
-const std::string Command::MSG_NEED_MORE_ARGUMENTS = "This command needs more arguments.";
+const std::string Command::MSG_HELP_LIST = "Available commands:\n";
+const std::string Command::MSG_NEED_MORE_ARGUMENTS = "This command needs more arguments.\n";
 
 Command::Command(const std::vector<std::string> triggers) :
 	triggers(triggers),

@@ -9,6 +9,7 @@
 #include <vector>
 #include <ostream>
 #include <sstream>
+#include <string>
 
 namespace LGen {
 	class Command;
@@ -21,6 +22,7 @@ namespace LGen {
 		void log(const std::string message, const bool prefix = true) const;
 		const CommandList &getCommandList() const;
 		std::streambuf::int_type overflow(std::streambuf::int_type c) override;
+		int sync() override;
 
 	private:
 		static const size_t LINE_WIDTH = 80;
@@ -34,6 +36,7 @@ namespace LGen {
 		Workspace *workspace;
 		std::unique_ptr<std::thread> thread;
 		bool terminate = false;
+		std::string line;
 
 		static std::vector<Command*> makeCommands(Console *console);
 

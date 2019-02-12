@@ -9,7 +9,7 @@
 
 using namespace LGen;
 
-const std::string Console::MSG_NOT_RECOGNIZED = "Command not recognized.";
+const std::string Console::MSG_NOT_RECOGNIZED = "Command not recognized.\n";
 const std::string Console::FILE_INTRO = "text/intro.txt";
 const std::string Console::PREFIX_COMMAND = ">> ";
 const std::string Console::PREFIX_LOG = "   ";
@@ -41,7 +41,7 @@ void Console::dumpFile(const std::string file, const bool prefix) const {
 	source.open(file);
 
 	while(std::getline(source, line))
-		log(line, prefix);
+		log(line + '\n', prefix);
 
 	source.close();
 }
@@ -60,9 +60,9 @@ void Console::log(const std::string message, const bool prefix) const {
 
 	for(const std::string &line : lines) {
 		if(prefix)
-			std::cout << PREFIX_LOG << line << std::endl;
+			std::cout << PREFIX_LOG << line;
 		else
-			std::cout << line << std::endl;
+			std::cout << line;
 	}
 }
 
@@ -71,7 +71,14 @@ const CommandList &Console::getCommandList() const {
 }
 
 std::streambuf::int_type Console::overflow(std::streambuf::int_type c) {
-	std::cout << char(c);
+	line += char(c);
+
+	return c;
+}
+
+int Console::sync() {
+	log(line);
+	line.clear();
 
 	return 0;
 }

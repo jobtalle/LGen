@@ -9,6 +9,7 @@ namespace LGen {
 
 		class New;
 		class Print;
+		class Delete;
 
 	private:
 		static const std::string KEYWORD;

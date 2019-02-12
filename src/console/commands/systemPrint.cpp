@@ -1,6 +1,6 @@
 #include "console/commands/systemPrint.h"
 #include "workspace/workspaceSystem.h"
-#include <iostream>
+
 using namespace LGen;
 
 const std::string Command::System::Print::KEYWORD = "print";

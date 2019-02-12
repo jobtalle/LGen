@@ -1,0 +1,1 @@
+Delete the currently selected Lindenmayer system.

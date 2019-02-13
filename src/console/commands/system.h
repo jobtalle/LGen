@@ -10,6 +10,7 @@ namespace LGen {
 		class New;
 		class Print;
 		class Generate;
+		class Axiom;
 		class Delete;
 
 	private:

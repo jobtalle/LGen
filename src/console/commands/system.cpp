@@ -2,6 +2,7 @@
 #include "console/commands/system/systemNew.h"
 #include "console/commands/system/systemPrint.h"
 #include "console/commands/system/systemGenerate.h"
+#include "console/commands/system/systemAxiom.h"
 #include "console/commands/system/systemDelete.h"
 
 using namespace LGen;
@@ -16,6 +17,7 @@ Command::System::System() :
 		new Command::System::New(),
 		new Command::System::Print(),
 		new Command::System::Generate(),
+		new Command::System::Axiom(),
 		new Command::System::Delete() }) {
 
 }

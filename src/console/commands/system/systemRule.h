@@ -8,6 +8,7 @@ namespace LGen {
 		Rule();
 
 		class Add;
+		class Remove;
 
 	private:
 		static const std::string KEYWORD;

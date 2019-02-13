@@ -146,6 +146,7 @@
     <ClCompile Include="src\console\commands\help.cpp" />
     <ClCompile Include="src\console\commands\system.cpp" />
     <ClCompile Include="src\console\commands\system\rule\systemRuleAdd.cpp" />
+    <ClCompile Include="src\console\commands\system\rule\systemRuleRemove.cpp" />
     <ClCompile Include="src\console\commands\system\systemAxiom.cpp" />
     <ClCompile Include="src\console\commands\system\systemDelete.cpp" />
     <ClCompile Include="src\console\commands\system\systemGenerate.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="src\console\commands\help.h" />
     <ClInclude Include="src\console\commands\system.h" />
     <ClInclude Include="src\console\commands\system\rule\systemRuleAdd.h" />
+    <ClInclude Include="src\console\commands\system\rule\systemRuleRemove.h" />
     <ClInclude Include="src\console\commands\system\systemAxiom.h" />
     <ClInclude Include="src\console\commands\system\systemGenerate.h" />
     <ClInclude Include="src\console\commands\system\systemDelete.h" />

@@ -41,7 +41,7 @@ void Console::dumpFile(const std::string file, const bool prefix) const {
 	source.open(file);
 
 	while(std::getline(source, line))
-		log(line + '\n', prefix);
+		log(line, prefix), log("\n");
 
 	source.close();
 }
@@ -74,13 +74,22 @@ std::vector<Command*> Console::makeCommands(Console *console) {
 }
 
 void Console::log(const std::string message, const bool prefix) const {
+	const size_t width = prefix ? LINE_WIDTH - PREFIX_LOG.size() : LINE_WIDTH;
 	std::string remainder = message;
 	std::vector<std::string> lines;
 
-	while(remainder.size() > LINE_WIDTH) {
-		lines.push_back(remainder.substr(0, LINE_WIDTH));
+	while(remainder.size() > width) {
+		size_t trimAt = width;
+		size_t resumeAt = trimAt;
+		size_t lastSpace = remainder.find_last_of(" ", LINE_WIDTH);
 
-		remainder = remainder.substr(LINE_WIDTH, remainder.size());
+		if(lastSpace != std::string::npos) {
+			trimAt = lastSpace;
+			resumeAt = trimAt + 1;
+		}
+
+		lines.push_back(remainder.substr(0, trimAt) + '\n');
+		remainder = remainder.substr(resumeAt, remainder.size());
 	}
 
 	lines.push_back(remainder);

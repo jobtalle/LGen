@@ -25,6 +25,7 @@ namespace LGen {
 
 	private:
 		static const size_t LINE_WIDTH = 80;
+		static const size_t SPACE_SEEK = 24;
 		static const std::string MSG_NOT_RECOGNIZED;
 		static const std::string FILE_INTRO;
 		static const std::string PREFIX_COMMAND;

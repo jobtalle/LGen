@@ -5,6 +5,7 @@
 #include "console/commands/system/systemAxiom.h"
 #include "console/commands/system/systemDelete.h"
 #include "console/commands/system/systemIterations.h"
+#include "console/commands/system/systemRule.h"
 
 using namespace LGen;
 
@@ -20,6 +21,7 @@ Command::System::System() :
 		new Command::System::Generate(),
 		new Command::System::Axiom(),
 		new Command::System::Iterations(),
+		new Command::System::Rule(),
 		new Command::System::Delete() }) {
 
 }

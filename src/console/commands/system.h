@@ -13,6 +13,7 @@ namespace LGen {
 		class Axiom;
 		class Iterations;
 		class Delete;
+		class Rule;
 
 	private:
 		static const std::string KEYWORD;

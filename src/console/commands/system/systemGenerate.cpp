@@ -3,10 +3,10 @@
 using namespace LGen;
 
 const std::string Command::System::Generate::KEYWORD = "generate";
-const std::string Command::System::Generate::FILE = "text/helpSystemGenerate.txt";
+const std::string Command::System::Generate::FILE_HELP = "text/helpSystemGenerate.txt";
 
 Command::System::Generate::Generate() :
-	Command({ KEYWORD }, FILE) {
+	Command({ KEYWORD }, FILE_HELP) {
 
 }
 

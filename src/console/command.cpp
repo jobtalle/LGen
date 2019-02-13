@@ -4,6 +4,7 @@ using namespace LGen;
 
 const std::string Command::MSG_HELP_LIST = "Available commands:";
 const std::string Command::MSG_NEED_MORE_ARGUMENTS = "This command needs more arguments.";
+const std::string Command::MSG_INVALID_INPUT = "The provided input is invalid.";
 
 Command::Command(const std::vector<std::string> triggers) :
 	triggers(triggers),

@@ -11,6 +11,7 @@ namespace LGen {
 		class Print;
 		class Generate;
 		class Axiom;
+		class Iterations;
 		class Delete;
 
 	private:

@@ -3,10 +3,10 @@
 using namespace LGen;
 
 const std::string Command::System::Delete::KEYWORD = "delete";
-const std::string Command::System::Delete::FILE = "text/helpSystemDelete.txt";
+const std::string Command::System::Delete::FILE_HELP = "text/helpSystemDelete.txt";
 
 Command::System::Delete::Delete() :
-	Command({ KEYWORD }, FILE) {
+	Command({ KEYWORD }, FILE_HELP) {
 
 }
 

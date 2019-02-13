@@ -4,6 +4,7 @@
 #include "console/commands/system/systemGenerate.h"
 #include "console/commands/system/systemAxiom.h"
 #include "console/commands/system/systemDelete.h"
+#include "console/commands/system/systemIterations.h"
 
 using namespace LGen;
 
@@ -18,6 +19,7 @@ Command::System::System() :
 		new Command::System::Print(),
 		new Command::System::Generate(),
 		new Command::System::Axiom(),
+		new Command::System::Iterations(),
 		new Command::System::Delete() }) {
 
 }

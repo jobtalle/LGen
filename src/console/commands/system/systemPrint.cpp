@@ -3,14 +3,14 @@
 using namespace LGen;
 
 const std::string Command::System::Print::KEYWORD = "print";
-const std::string Command::System::Print::FILE = "text/helpSystemPrint.txt";
+const std::string Command::System::Print::FILE_HELP = "text/helpSystemPrint.txt";
 const std::string Command::System::Print::MSG_AXIOM = "Axiom: ";
 const std::string Command::System::Print::MSG_RULES = "Rules: ";
 const std::string Command::System::Print::MSG_ITERATIONS = "Iterations: ";
 const std::string Command::System::Print::PREFIX_RULE = "- ";
 
 Command::System::Print::Print() :
-	Command({ KEYWORD }, FILE) {
+	Command({ KEYWORD }, FILE_HELP) {
 
 }
 

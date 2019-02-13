@@ -3,9 +3,9 @@
 #include "console/commands/system.h"
 
 namespace LGen {
-	class Command::System::Generate final : public Command {
+	class Command::System::Iterations final : public Command {
 	public:
-		Generate();
+		Iterations();
 
 	protected:
 		void application(
@@ -17,4 +17,4 @@ namespace LGen {
 		static const std::string KEYWORD;
 		static const std::string FILE_HELP;
 	};
-}
+};

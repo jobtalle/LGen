@@ -32,6 +32,7 @@ namespace LGen {
 	private:
 		static const std::string MSG_HELP_LIST;
 		static const std::string MSG_NEED_MORE_ARGUMENTS;
+		static const std::string MSG_INVALID_INPUT;
 
 		const bool hasHelp;
 		const std::vector<std::string> triggers;

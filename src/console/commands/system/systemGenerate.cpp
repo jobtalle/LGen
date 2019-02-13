@@ -6,7 +6,7 @@ const std::string Command::System::Generate::KEYWORD = "generate";
 const std::string Command::System::Generate::FILE_HELP = "text/helpSystemGenerate.txt";
 
 Command::System::Generate::Generate() :
-	Command({ KEYWORD }, FILE_HELP) {
+	Command({ KEYWORD }, FILE_HELP, 0) {
 
 }
 

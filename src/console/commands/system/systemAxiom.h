@@ -16,5 +16,6 @@ namespace LGen {
 	private:
 		static const std::string KEYWORD;
 		static const std::string FILE_HELP;
+		static const unsigned char ARG_SENTENCE = 0;
 	};
 };

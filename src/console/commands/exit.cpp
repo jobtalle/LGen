@@ -4,10 +4,9 @@ using namespace LGen;
 
 const std::string Command::Exit::KEYWORD = "exit";
 const std::string Command::Exit::FILE_HELP = "text/helpExit.txt";
-const std::string Command::Exit::MSG_ARGUMENTS = "The exit command takes no arguments.";
 
 Command::Exit::Exit(Console *console) :
-	Command({ KEYWORD }, FILE_HELP),
+	Command({ KEYWORD }, FILE_HELP, 0),
 	console(console) {
 
 }

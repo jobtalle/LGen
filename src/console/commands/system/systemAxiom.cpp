@@ -6,7 +6,7 @@ const std::string Command::System::Axiom::KEYWORD = "axiom";
 const std::string Command::System::Axiom::FILE_HELP = "text/helpSystemAxiom.txt";
 
 Command::System::Axiom::Axiom() :
-	Command({ KEYWORD }, FILE_HELP) {
+	Command({ KEYWORD }, FILE_HELP, 1) {
 
 }
 
@@ -20,11 +20,5 @@ void Command::System::Axiom::application(
 		return;
 	}
 
-	if(arguments.size() == 0) {
-		console << Command::MSG_NEED_MORE_ARGUMENTS << std::endl;
-
-		return;
-	}
-
-	workspace.system->setAxiom(arguments[0]);
+	workspace.system->setAxiom(arguments[ARG_SENTENCE]);
 }

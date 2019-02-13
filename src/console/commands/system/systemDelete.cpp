@@ -6,7 +6,7 @@ const std::string Command::System::Delete::KEYWORD = "delete";
 const std::string Command::System::Delete::FILE_HELP = "text/helpSystemDelete.txt";
 
 Command::System::Delete::Delete() :
-	Command({ KEYWORD }, FILE_HELP) {
+	Command({ KEYWORD }, FILE_HELP, 0) {
 
 }
 

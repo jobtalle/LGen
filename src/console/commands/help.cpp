@@ -7,7 +7,7 @@ const std::string Command::Help::ALIAS = "?";
 const std::string Command::Help::FILE = "text/help.txt";
 
 Command::Help::Help() :
-	Command({ KEYWORD, ALIAS }) {
+	Command({ KEYWORD, ALIAS }, 0) {
 
 }
 

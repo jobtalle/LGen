@@ -10,7 +10,7 @@ const std::string Command::System::Print::MSG_ITERATIONS = "Iterations: ";
 const std::string Command::System::Print::PREFIX_RULE = "- ";
 
 Command::System::Print::Print() :
-	Command({ KEYWORD }, FILE_HELP) {
+	Command({ KEYWORD }, FILE_HELP, 0) {
 
 }
 

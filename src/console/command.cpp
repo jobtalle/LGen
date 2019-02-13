@@ -4,25 +4,31 @@ using namespace LGen;
 
 const std::string Command::MSG_HELP_LIST = "Available commands:";
 const std::string Command::MSG_NEED_MORE_ARGUMENTS = "This command needs more arguments.";
+const std::string Command::MSG_THIS_COMMAND_TAKES = "This command needs ";
+const std::string Command::MSG_ARGUMENT = " argument.";
+const std::string Command::MSG_ARGUMENTS = " arguments.";
 const std::string Command::MSG_INVALID_INPUT = "The provided input is invalid.";
 
-Command::Command(const std::vector<std::string> triggers) :
+Command::Command(const std::vector<std::string> triggers, const char args) :
 	triggers(triggers),
-	hasHelp(false) {
+	hasHelp(false),
+	args(args) {
 
 }
 
-Command::Command(const std::vector<std::string> triggers, const std::string help) :
+Command::Command(const std::vector<std::string> triggers, const std::string help, const char args) :
 	triggers(triggers),
 	help(help),
-	hasHelp(true) {
+	hasHelp(true),
+	args(args) {
 
 }
 
-Command::Command(const std::vector<std::string> triggers, const std::vector<Command*> commands) :
+Command::Command(const std::vector<std::string> triggers, const std::vector<Command*> commands, const char args) :
 	triggers(triggers),
 	hasHelp(true),
-	commandList(new CommandList(commands)) {
+	commandList(new CommandList(commands)),
+	args(args) {
 
 }
 
@@ -32,8 +38,16 @@ bool Command::apply(const Input &input, Console &console, Workspace &workspace) 
 			if(input.getKeyword().size() == trigger.size()) {
 				if(commandList && input.getArguments().size())
 					return commandList->apply(input.getArguments(), console, workspace);
-				else
-					application(input.getArguments(), console, workspace);
+				else {
+					if(args == -1 || args == input.getArguments().size())
+						application(input.getArguments(), console, workspace);
+					else {
+						if(args == 1)
+							console << MSG_THIS_COMMAND_TAKES << std::to_string(args) << MSG_ARGUMENT << std::endl;
+						else
+							console << MSG_THIS_COMMAND_TAKES << std::to_string(args) << MSG_ARGUMENTS << std::endl;
+					}
+				}
 
 				return true;
 			}

@@ -22,6 +22,7 @@ Command::System::System() :
 		new Command::System::Axiom(),
 		new Command::System::Iterations(),
 		new Command::System::Rule(),
-		new Command::System::Delete() }) {
+		new Command::System::Delete()
+	}) {
 
 }

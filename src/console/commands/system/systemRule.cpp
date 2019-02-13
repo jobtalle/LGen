@@ -4,9 +4,10 @@
 using namespace LGen;
 
 const std::string Command::System::Rule::KEYWORD = "rule";
+const std::string Command::System::Rule::ALIAS = "r";
 
 Command::System::Rule::Rule() :
-	Command({ KEYWORD }, {
+	Command({ KEYWORD, ALIAS }, {
 		new Command::System::Rule::Add()
 	}) {
 

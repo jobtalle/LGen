@@ -3,10 +3,11 @@
 using namespace LGen;
 
 const std::string Command::System::Iterations::KEYWORD = "iterations";
+const std::string Command::System::Iterations::ALIAS = "i";
 const std::string Command::System::Iterations::FILE_HELP = "text/helpSystemIterations.txt";
 
 Command::System::Iterations::Iterations() :
-	Command({ KEYWORD }, FILE_HELP, 1) {
+	Command({ KEYWORD, ALIAS }, FILE_HELP, 1) {
 
 }
 

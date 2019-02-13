@@ -3,10 +3,11 @@
 using namespace LGen;
 
 const std::string Command::System::Axiom::KEYWORD = "axiom";
+const std::string Command::System::Axiom::ALIAS = "a";
 const std::string Command::System::Axiom::FILE_HELP = "text/helpSystemAxiom.txt";
 
 Command::System::Axiom::Axiom() :
-	Command({ KEYWORD }, FILE_HELP, 1) {
+	Command({ KEYWORD, ALIAS }, FILE_HELP, 1) {
 
 }
 

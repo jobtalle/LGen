@@ -11,14 +11,13 @@ namespace LGen {
 		public:
 			System(const std::string &file);
 			System(const LParse::System &system);
-			LParse::System *getSystem() const;
+			LParse::System getSystem() const;
 
 		private:
 			static const std::string KEY_AXIOM;
 			static const std::string KEY_ITERATIONS;
 			static const std::string KEY_RULE_COUNT;
 			static const std::string KEY_RULE_PREFIX;
-			static const std::string RULE_CONNECTIVE;
 		};
 	};
 };

@@ -156,8 +156,10 @@
     <ClCompile Include="src\console\commands\system\systemRule.cpp" />
     <ClCompile Include="src\console\console.cpp" />
     <ClCompile Include="src\console\input.cpp" />
+    <ClCompile Include="src\file\fileConfig.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\monitor\monitor.cpp" />
+    <ClCompile Include="src\utils\stringUtils.cpp" />
     <ClCompile Include="src\workspace\workspace.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -195,7 +197,9 @@
     <ClInclude Include="src\console\commands\system\systemRule.h" />
     <ClInclude Include="src\console\console.h" />
     <ClInclude Include="src\console\input.h" />
+    <ClInclude Include="src\file\fileConfig.h" />
     <ClInclude Include="src\monitor\monitor.h" />
+    <ClInclude Include="src\utils\stringUtils.h" />
     <ClInclude Include="src\workspace\workspace.h" />
   </ItemGroup>
   <ItemGroup>

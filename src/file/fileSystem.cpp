@@ -3,7 +3,6 @@
 
 #include <sstream>
 #include <vector>
-#include <iostream>
 
 using namespace LGen::File;
 

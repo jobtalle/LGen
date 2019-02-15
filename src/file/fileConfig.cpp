@@ -7,7 +7,7 @@
 using namespace LGen::File;
 
 const std::string Config::CONNECTIVE = ":";
-const std::string Config::CONNECTIVE_FORMATTED = " : ";
+const std::string Config::CONNECTIVE_FORMATTED = ": ";
 
 Config::Config() {
 

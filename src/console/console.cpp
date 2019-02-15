@@ -81,7 +81,7 @@ void Console::log(const std::string message, const bool prefix) const {
 	while(remainder.size() > width) {
 		size_t trimAt = width;
 		size_t resumeAt = trimAt;
-		size_t lastSpace = remainder.find_last_of(" ", LINE_WIDTH);
+		size_t lastSpace = remainder.find_last_of(" ", width);
 
 		if(lastSpace != std::string::npos) {
 			trimAt = lastSpace;

@@ -8,8 +8,6 @@
 using namespace LGen;
 
 int main(int argc, char **argv) {
-	File::Config config("config.txt");
-
 	Workspace workspace;
 	Monitor monitor("Monitor");
 	Console console(&monitor, &workspace);

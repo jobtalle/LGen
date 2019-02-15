@@ -14,6 +14,7 @@ namespace LGen {
 		class Iterations;
 		class Delete;
 		class Rule;
+		class Save;
 
 	private:
 		static const std::string KEYWORD;

@@ -16,12 +16,23 @@ Config::Config(const std::string &file) {
 	std::ifstream source;
 	std::string line;
 
-	source.open(file);
+	source.open(file, std::fstream::in);
 
 	while(std::getline(source, line))
 		readLine(line);
 
 	source.close();
+}
+
+void Config::save(const std::string &file) const {
+	std::ofstream dest;
+
+	dest.open(file, std::fstream::out);
+
+	for(auto pair = pairs.begin(); pair != pairs.end(); ++pair)
+		dest << pair->first << CONNECTIVE << pair->second << std::endl;
+
+	dest.close();
 }
 
 void Config::set(const std::string &key, const std::string &value) {

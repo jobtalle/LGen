@@ -5,10 +5,11 @@
 
 namespace LGen {
 	namespace File {
-		class Config final {
+		class Config {
 		public:
 			Config();
 			Config(const std::string &file);
+			void save(const std::string &file) const;
 
 		protected:
 			void set(const std::string &key, const std::string &value);

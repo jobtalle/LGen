@@ -1,0 +1,1 @@
+Save the currently selected Lindenmayer system. The parameter should be a file name to which the system will be saved as plain text. Existing files will be overwritten.

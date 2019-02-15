@@ -1,0 +1,21 @@
+#include "console/commands/system/systemLoad.h"
+#include "file/fileSystem.h"
+
+using namespace LGen;
+
+const std::string Command::System::Load::KEYWORD = "load";
+const std::string Command::System::Load::FILE_HELP = "text/helpSystemLoad.txt";
+
+Command::System::Load::Load() :
+	Command({ KEYWORD }, FILE_HELP, 1) {
+
+}
+
+void Command::System::Load::application(
+	const std::vector<std::string> arguments,
+	Console &console,
+	Workspace &workspace) {
+	const File::System file(arguments[ARG_FILE]);
+
+	workspace.system.reset(file.getSystem());
+}

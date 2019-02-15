@@ -15,6 +15,7 @@ namespace LGen {
 		class Delete;
 		class Rule;
 		class Save;
+		class Load;
 
 	private:
 		static const std::string KEYWORD;

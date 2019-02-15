@@ -19,3 +19,14 @@ std::string String::rtrim(const std::string &string) {
 std::string String::trim(const std::string &string) {
 	return ltrim(rtrim(string));
 };
+
+void String::split(
+	const std::string &string,
+	const std::string &split,
+	std::string &lhs,
+	std::string &rhs) {
+	const size_t first = string.find_first_of(split);
+	
+	lhs = string.substr(0, first);
+	rhs = string.substr(first + split.size(), string.size());
+}

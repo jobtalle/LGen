@@ -1,0 +1,1 @@
+Load a Lindenmayer system from file and make it the currently selected system. The parameter should be a file name from which the system will be loaded.

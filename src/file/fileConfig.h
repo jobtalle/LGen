@@ -17,6 +17,7 @@ namespace LGen {
 
 		private:
 			static const std::string CONNECTIVE;
+			static const std::string CONNECTIVE_FORMATTED;
 
 			std::map<std::string, std::string> pairs;
 

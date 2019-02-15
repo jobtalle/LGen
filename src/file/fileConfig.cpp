@@ -7,6 +7,7 @@
 using namespace LGen::File;
 
 const std::string Config::CONNECTIVE = ":";
+const std::string Config::CONNECTIVE_FORMATTED = " : ";
 
 Config::Config() {
 
@@ -30,7 +31,7 @@ void Config::save(const std::string &file) const {
 	dest.open(file, std::fstream::out);
 
 	for(auto pair = pairs.begin(); pair != pairs.end(); ++pair)
-		dest << pair->first << CONNECTIVE << pair->second << std::endl;
+		dest << pair->first << CONNECTIVE_FORMATTED << pair->second << std::endl;
 
 	dest.close();
 }

@@ -40,6 +40,8 @@ void Monitor::start() {
 			glfwSetWindowShouldClose(window, GLFW_FALSE);
 		}
 
+		renderer->update();
+
 		if(glfwGetWindowAttrib(window, GLFW_VISIBLE))
 			renderer->render();
 	}

@@ -16,6 +16,7 @@ Monitor::Monitor(const char *title) {
 	window = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, title, NULL, NULL);
 	terminate = false;
 
+	glfwSetWindowAttrib(window, GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
 	glfwMakeContextCurrent(window);
 
 	renderer = new LRender::Renderer();

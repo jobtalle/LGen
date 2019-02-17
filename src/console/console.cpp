@@ -28,6 +28,10 @@ Console::~Console() {
 	thread->join();
 }
 
+Monitor *Console::getMonitor() {
+	return monitor;
+}
+
 void Console::stop() {
 	terminate = true;
 
@@ -109,11 +113,7 @@ void Console::loop() {
 		std::string input;
 		std::getline(std::cin, input);
 
-		if(commandList.apply(Input(input), *this, *workspace))
-			goto next;
-
-		log(MSG_NOT_RECOGNIZED);
-
-	next:;
+		if(!commandList.apply(Input(input), *this, *workspace))
+			log(MSG_NOT_RECOGNIZED);
 	}
 }

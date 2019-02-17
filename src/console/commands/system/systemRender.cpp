@@ -1,5 +1,8 @@
 #include "console/commands/system/systemRender.h"
 
+#include <memory>
+#include <lrender.h>
+
 using namespace LGen;
 
 const std::string Command::System::Render::KEYWORD = "render";
@@ -20,5 +23,7 @@ void Command::System::Render::application(
 		return;
 	}
 	
+	std::shared_ptr<LRender::Scene> scene(new LRender::Scene());
 
+	console.getMonitor()->setScene(scene);
 }

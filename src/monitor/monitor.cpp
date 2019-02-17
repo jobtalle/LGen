@@ -1,7 +1,5 @@
 #include "monitor/monitor.h"
 
-#include <iostream>
-
 using namespace LGen;
 
 const size_t Monitor::DEFAULT_WIDTH = 1024;
@@ -19,9 +17,13 @@ Monitor::Monitor(const char *title) {
 	terminate = false;
 
 	glfwMakeContextCurrent(window);
+
+	renderer = new LRender::Renderer();
 }
 
 Monitor::~Monitor() {
+	delete renderer;
+
 	glfwDestroyWindow(window);
 
 	if(--monitorCount == 0)
@@ -29,12 +31,28 @@ Monitor::~Monitor() {
 }
 
 void Monitor::start() {
-	while(!terminate)
+	while(!terminate) {
 		poll();
+
+		if(glfwWindowShouldClose(window)) {
+			glfwHideWindow(window);
+			glfwSetWindowShouldClose(window, GLFW_FALSE);
+		}
+
+		if(glfwGetWindowAttrib(window, GLFW_VISIBLE))
+			renderer->render();
+	}
 }
 
 void Monitor::stop() {
 	terminate = true;
+}
+
+void Monitor::setScene(std::shared_ptr<LRender::Scene> scene) {
+	if(!glfwGetWindowAttrib(window, GLFW_VISIBLE))
+		glfwShowWindow(window);
+
+	renderer->setScene(scene);
 }
 
 void Monitor::glfwStart() {

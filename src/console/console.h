@@ -17,6 +17,7 @@ namespace LGen {
 	public:
 		Console(Monitor *monitor, Workspace *workspace);
 		~Console();
+		Monitor *getMonitor();
 		void stop();
 		void dumpFile(const std::string file, const bool prefix = true) const;
 		const CommandList &getCommandList() const;

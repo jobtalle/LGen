@@ -4,6 +4,7 @@
 #include <thread>
 #include <memory>
 #include <atomic>
+#include <lrender.h>
 #include <GLFW/glfw3.h>
 
 namespace LGen {
@@ -13,6 +14,7 @@ namespace LGen {
 		~Monitor();
 		void start();
 		void stop();
+		void setScene(std::shared_ptr<LRender::Scene> scene);
 
 	private:
 		static const size_t DEFAULT_WIDTH;
@@ -25,6 +27,7 @@ namespace LGen {
 		void poll();
 
 		GLFWwindow *window;
+		LRender::Renderer *renderer;
 		std::atomic<bool> terminate;
 	};
 };

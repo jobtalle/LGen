@@ -110,12 +110,14 @@
     <ClCompile>
       <PreprocessorDefinitions>_GLFW_WIN32</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PreprocessorDefinitions>_GLFW_WIN32</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -140,6 +142,8 @@
     <ClCompile Include="LParse\src\system.cpp" />
     <ClCompile Include="LParse\src\token.cpp" />
     <ClCompile Include="LRender\src\glad\glad.c" />
+    <ClCompile Include="LRender\src\math\matrix.cpp" />
+    <ClCompile Include="LRender\src\math\vector.cpp" />
     <ClCompile Include="LRender\src\renderer.cpp" />
     <ClCompile Include="LRender\src\scene\scene.cpp" />
     <ClCompile Include="src\console\command.cpp" />
@@ -188,6 +192,8 @@
     <ClInclude Include="LRender\include\lrender.h" />
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
+    <ClInclude Include="LRender\src\math\matrix.h" />
+    <ClInclude Include="LRender\src\math\vector.h" />
     <ClInclude Include="LRender\src\renderer.h" />
     <ClInclude Include="LRender\src\scene\scene.h" />
     <ClInclude Include="src\console\command.h" />

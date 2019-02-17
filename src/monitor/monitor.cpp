@@ -1,5 +1,7 @@
 #include "monitor/monitor.h"
 
+#include <iostream>
+
 using namespace LGen;
 
 const size_t Monitor::DEFAULT_WIDTH = 1024;

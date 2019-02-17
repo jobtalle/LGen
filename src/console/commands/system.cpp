@@ -8,6 +8,7 @@
 #include "console/commands/system/systemRule.h"
 #include "console/commands/system/systemSave.h"
 #include "console/commands/system/systemLoad.h"
+#include "console/commands/system/systemRender.h"
 
 using namespace LGen;
 
@@ -26,7 +27,8 @@ Command::System::System() :
 		new Command::System::Rule(),
 		new Command::System::Delete(),
 		new Command::System::Save(),
-		new Command::System::Load()
+		new Command::System::Load(),
+		new Command::System::Render()
 	}) {
 
 }

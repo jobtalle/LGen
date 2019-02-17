@@ -70,11 +70,11 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
+    <IncludePath>LRender/include;LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
+    <IncludePath>LRender/include;LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -154,6 +154,7 @@
     <ClCompile Include="src\console\commands\system\systemLoad.cpp" />
     <ClCompile Include="src\console\commands\system\systemNew.cpp" />
     <ClCompile Include="src\console\commands\system\systemPrint.cpp" />
+    <ClCompile Include="src\console\commands\system\systemRender.cpp" />
     <ClCompile Include="src\console\commands\system\systemRule.cpp" />
     <ClCompile Include="src\console\commands\system\systemSave.cpp" />
     <ClCompile Include="src\console\console.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="src\console\commands\system\systemLoad.h" />
     <ClInclude Include="src\console\commands\system\systemNew.h" />
     <ClInclude Include="src\console\commands\system\systemPrint.h" />
+    <ClInclude Include="src\console\commands\system\systemRender.h" />
     <ClInclude Include="src\console\commands\system\systemRule.h" />
     <ClInclude Include="src\console\commands\system\systemSave.h" />
     <ClInclude Include="src\console\console.h" />

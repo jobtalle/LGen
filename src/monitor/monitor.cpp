@@ -21,12 +21,15 @@ Monitor::Monitor(const char *title) {
 	glfwSetWindowAttrib(window, GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
 	glfwMakeContextCurrent(window);
 
-	renderer = new LRender::Renderer();
+	renderer.reset(new LRender::Renderer());
+	glfwSetWindowUserPointer(window, renderer.get());
+
+	glfwSetWindowSizeCallback(window, [](GLFWwindow *window, int width, int height) {
+		static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->setSize(width, height);
+	});
 }
 
 Monitor::~Monitor() {
-	delete renderer;
-
 	glfwDestroyWindow(window);
 
 	if(--monitorCount == 0)

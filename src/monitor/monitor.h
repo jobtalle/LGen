@@ -27,7 +27,7 @@ namespace LGen {
 		void poll();
 
 		GLFWwindow *window;
-		LRender::Renderer *renderer;
+		std::unique_ptr<LRender::Renderer> renderer;
 		std::atomic<bool> terminate;
 	};
 };

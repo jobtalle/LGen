@@ -22,7 +22,7 @@ void Command::System::Generate::application(
 	}
 
 	if(workspace.system->isComplete())
-		console << workspace.system->generate(workspace.randomizer) << std::endl;
+		console << *workspace.system->generate(workspace.randomizer) << std::endl;
 	else
 		console << Command::System::MSG_SYSTEM_INCOMPLETE << std::endl;
 }

@@ -1,6 +1,6 @@
 #include "console/commands/system/systemRender.h"
 
-#include <memory>
+#include <sstream>
 #include <lrender.h>
 
 using namespace LGen;
@@ -24,6 +24,10 @@ void Command::System::Render::application(
 	}
 	
 	std::shared_ptr<LRender::Scene> scene(new LRender::Scene());
+
+	scene->addAgent(LRender::Agent(
+		LRender::Vector(0, 0, 0),
+		workspace.system->generate(workspace.randomizer).getString()));
 
 	console.getMonitor()->setScene(scene);
 }

@@ -110,7 +110,7 @@
     <ClCompile>
       <PreprocessorDefinitions>_GLFW_WIN32</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,6 +145,7 @@
     <ClCompile Include="LRender\src\math\matrix.cpp" />
     <ClCompile Include="LRender\src\math\vector.cpp" />
     <ClCompile Include="LRender\src\renderer.cpp" />
+    <ClCompile Include="LRender\src\scene\agent.cpp" />
     <ClCompile Include="LRender\src\scene\scene.cpp" />
     <ClCompile Include="src\console\command.cpp" />
     <ClCompile Include="src\console\commandList.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="LRender\src\math\matrix.h" />
     <ClInclude Include="LRender\src\math\vector.h" />
     <ClInclude Include="LRender\src\renderer.h" />
+    <ClInclude Include="LRender\src\scene\agent.h" />
     <ClInclude Include="LRender\src\scene\scene.h" />
     <ClInclude Include="src\console\command.h" />
     <ClInclude Include="src\console\commandList.h" />

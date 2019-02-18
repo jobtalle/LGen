@@ -144,9 +144,12 @@
     <ClCompile Include="LRender\src\glad\glad.c" />
     <ClCompile Include="LRender\src\math\matrix.cpp" />
     <ClCompile Include="LRender\src\math\vector.cpp" />
+    <ClCompile Include="LRender\src\model.cpp" />
     <ClCompile Include="LRender\src\renderer.cpp" />
     <ClCompile Include="LRender\src\scene\agent.cpp" />
     <ClCompile Include="LRender\src\scene\scene.cpp" />
+    <ClCompile Include="LRender\src\shader.cpp" />
+    <ClCompile Include="LRender\src\vertex.cpp" />
     <ClCompile Include="src\console\command.cpp" />
     <ClCompile Include="src\console\commandList.cpp" />
     <ClCompile Include="src\console\commands\exit.cpp" />
@@ -195,9 +198,12 @@
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
     <ClInclude Include="LRender\src\math\matrix.h" />
     <ClInclude Include="LRender\src\math\vector.h" />
+    <ClInclude Include="LRender\src\model.h" />
     <ClInclude Include="LRender\src\renderer.h" />
     <ClInclude Include="LRender\src\scene\agent.h" />
     <ClInclude Include="LRender\src\scene\scene.h" />
+    <ClInclude Include="LRender\src\shader.h" />
+    <ClInclude Include="LRender\src\vertex.h" />
     <ClInclude Include="src\console\command.h" />
     <ClInclude Include="src\console\commandList.h" />
     <ClInclude Include="src\console\commands\exit.h" />

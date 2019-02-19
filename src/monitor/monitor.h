@@ -21,9 +21,14 @@ namespace LGen {
 		static const size_t DEFAULT_HEIGHT;
 		static const size_t GL_VERSION_MAJOR;
 		static const size_t GL_VERSION_MINOR;
+		static const int MOUSE_BUTTON_DRAG = GLFW_MOUSE_BUTTON_LEFT;
+		static const int MOUSE_ACTION_DRAG_START = GLFW_PRESS;
+		static const int MOUSE_ACTION_DRAG_STOP = GLFW_RELEASE;
+
 
 		static void glfwStart();
 		static void glfwStop();
+
 		void poll();
 
 		GLFWwindow *window;

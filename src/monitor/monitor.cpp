@@ -1,5 +1,7 @@
 #include "monitor/monitor.h"
 
+#include <functional>
+
 using namespace LGen;
 
 const size_t Monitor::DEFAULT_WIDTH = 1024;
@@ -24,6 +26,28 @@ Monitor::Monitor(const char *title) {
 
 	glfwSetWindowSizeCallback(window, [](GLFWwindow *window, int width, int height) {
 		static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->setSize(width, height);
+	});
+
+	glfwSetCursorPosCallback(window, [](GLFWwindow *window, double x, double y) {
+		static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseMove(x, y);
+	});
+
+	glfwSetMouseButtonCallback(window, [](GLFWwindow *window, int button, int action, int mods) {
+		switch(button) {
+		case MOUSE_BUTTON_DRAG:
+			switch(action) {
+			case MOUSE_ACTION_DRAG_START:
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress();
+
+				break;
+			case MOUSE_ACTION_DRAG_STOP:
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease();
+
+				break;
+			}
+
+			break;
+		}
 	});
 }
 

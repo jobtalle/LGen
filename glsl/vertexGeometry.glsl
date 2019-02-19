@@ -6,5 +6,5 @@ out vec3 interpolatedColor;
 void main() {
 	interpolatedColor = color;
 
-	gl_Position = vec4(position, 1);
+	gl_Position = projection * vec4(position, 1);
 }

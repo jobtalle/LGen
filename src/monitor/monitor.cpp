@@ -1,7 +1,5 @@
 #include "monitor/monitor.h"
 
-#include <iostream>
-
 using namespace LGen;
 
 const size_t Monitor::DEFAULT_WIDTH = 1024;
@@ -21,7 +19,7 @@ Monitor::Monitor(const char *title) {
 	glfwSetWindowAttrib(window, GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
 	glfwMakeContextCurrent(window);
 
-	renderer.reset(new LRender::Renderer());
+	renderer.reset(new LRender::Renderer(DEFAULT_WIDTH, DEFAULT_HEIGHT));
 	glfwSetWindowUserPointer(window, renderer.get());
 
 	glfwSetWindowSizeCallback(window, [](GLFWwindow *window, int width, int height) {

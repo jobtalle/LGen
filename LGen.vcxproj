@@ -149,6 +149,8 @@
     <ClCompile Include="LRender\src\math\vector.cpp" />
     <ClCompile Include="LRender\src\model.cpp" />
     <ClCompile Include="LRender\src\modeller\modeller.cpp" />
+    <ClCompile Include="LRender\src\modeller\node.cpp" />
+    <ClCompile Include="LRender\src\modeller\path.cpp" />
     <ClCompile Include="LRender\src\modeller\tube.cpp" />
     <ClCompile Include="LRender\src\orbit.cpp" />
     <ClCompile Include="LRender\src\renderer.cpp" />
@@ -210,6 +212,8 @@
     <ClInclude Include="LRender\src\math\vector.h" />
     <ClInclude Include="LRender\src\model.h" />
     <ClInclude Include="LRender\src\modeller\modeller.h" />
+    <ClInclude Include="LRender\src\modeller\node.h" />
+    <ClInclude Include="LRender\src\modeller\path.h" />
     <ClInclude Include="LRender\src\orbit.h" />
     <ClInclude Include="LRender\src\renderer.h" />
     <ClInclude Include="LRender\src\scene\agent.h" />

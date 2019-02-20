@@ -143,6 +143,7 @@
     <ClCompile Include="LParse\src\token.cpp" />
     <ClCompile Include="LRender\src\glad\glad.c" />
     <ClCompile Include="LRender\src\glFunctions.cpp" />
+    <ClCompile Include="LRender\src\math\constants.cpp" />
     <ClCompile Include="LRender\src\math\matrix.cpp" />
     <ClCompile Include="LRender\src\math\quaternion.cpp" />
     <ClCompile Include="LRender\src\math\vector.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
     <ClInclude Include="LRender\src\glFunctions.h" />
+    <ClInclude Include="LRender\src\math\constants.h" />
     <ClInclude Include="LRender\src\math\matrix.h" />
     <ClInclude Include="LRender\src\math\quaternion.h" />
     <ClInclude Include="LRender\src\math\vector.h" />

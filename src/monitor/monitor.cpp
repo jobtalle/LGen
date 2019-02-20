@@ -32,6 +32,13 @@ Monitor::Monitor(const char *title) {
 		static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseMove(x, y);
 	});
 
+	glfwSetScrollCallback(window, [](GLFWwindow *window, double dx, double dy) {
+		if(dy > 0)
+			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->scrollUp();
+		else
+			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->scrollDown();
+	});
+
 	glfwSetMouseButtonCallback(window, [](GLFWwindow *window, int button, int action, int mods) {
 		switch(button) {
 		case MOUSE_BUTTON_DRAG:

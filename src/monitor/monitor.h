@@ -17,10 +17,11 @@ namespace LGen {
 		void setScene(std::shared_ptr<LRender::Scene> scene);
 
 	private:
-		static const size_t DEFAULT_WIDTH;
-		static const size_t DEFAULT_HEIGHT;
-		static const size_t GL_VERSION_MAJOR;
-		static const size_t GL_VERSION_MINOR;
+		static const size_t DEFAULT_WIDTH = 1024;
+		static const size_t DEFAULT_HEIGHT = 768;
+		static const size_t GL_VERSION_MAJOR = 4;
+		static const size_t GL_VERSION_MINOR = 4;
+		static const size_t MSAA_SAMPLES = 4;
 		static const int MOUSE_BUTTON_DRAG = GLFW_MOUSE_BUTTON_LEFT;
 		static const int MOUSE_BUTTON_PAN = GLFW_MOUSE_BUTTON_RIGHT;
 		static const int MOUSE_ACTION_DRAG_START = GLFW_PRESS;

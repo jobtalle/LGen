@@ -5,11 +5,6 @@
 
 using namespace LGen;
 
-const size_t Monitor::DEFAULT_WIDTH = 1024;
-const size_t Monitor::DEFAULT_HEIGHT = 768;
-const size_t Monitor::GL_VERSION_MAJOR = 4;
-const size_t Monitor::GL_VERSION_MINOR = 4;
-
 static size_t monitorCount = 0;
 
 Monitor::Monitor(const char *title) {
@@ -112,6 +107,7 @@ void Monitor::glfwStart() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VERSION_MINOR);
 	glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_SAMPLES, MSAA_SAMPLES);
 }
 
 void Monitor::glfwStop() {

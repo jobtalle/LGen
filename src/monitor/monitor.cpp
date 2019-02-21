@@ -1,4 +1,5 @@
 #include "monitor/monitor.h"
+#include "lrender.h"
 
 #include <functional>
 
@@ -44,15 +45,27 @@ Monitor::Monitor(const char *title) {
 		case MOUSE_BUTTON_DRAG:
 			switch(action) {
 			case MOUSE_ACTION_DRAG_START:
-				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress();
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress(LRender::Renderer::MOUSE_DRAG);
 
 				break;
 			case MOUSE_ACTION_DRAG_STOP:
-				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease();
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease(LRender::Renderer::MOUSE_DRAG);
 
 				break;
 			}
 
+			break;
+		case MOUSE_BUTTON_PAN:
+			switch(action) {
+			case MOUSE_ACTION_PAN_START:
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress(LRender::Renderer::MOUSE_PAN);
+
+				break;
+			case MOUSE_ACTION_PAN_STOP:
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease(LRender::Renderer::MOUSE_PAN);
+
+				break;
+			}
 			break;
 		}
 	});

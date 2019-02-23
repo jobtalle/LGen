@@ -153,6 +153,7 @@
     <ClCompile Include="LRender\src\modeller\leaf.cpp" />
     <ClCompile Include="LRender\src\modeller\node.cpp" />
     <ClCompile Include="LRender\src\modeller\radiusSampler.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\leaf.cpp" />
     <ClCompile Include="LRender\src\modeller\shapes\tube.cpp" />
     <ClCompile Include="LRender\src\orbit.cpp" />
     <ClCompile Include="LRender\src\renderer.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="LRender\src\modeller\node.h" />
     <ClInclude Include="LRender\src\modeller\path.h" />
     <ClInclude Include="LRender\src\modeller\radiusSampler.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\leaf.h" />
     <ClInclude Include="LRender\src\modeller\shapes\tube.h" />
     <ClInclude Include="LRender\src\orbit.h" />
     <ClInclude Include="LRender\src\renderer.h" />

@@ -70,11 +70,11 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>LRender/include;LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
+    <IncludePath>LRender/src;LRender/include;LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>LRender/include;LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
+    <IncludePath>LRender/src;LRender/include;LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -154,13 +154,17 @@
     <ClCompile Include="LRender\src\modeller\leaf.cpp" />
     <ClCompile Include="LRender\src\modeller\node.cpp" />
     <ClCompile Include="LRender\src\modeller\radiusSampler.cpp" />
+    <ClCompile Include="LRender\src\modeller\seed.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\icosphere.cpp" />
     <ClCompile Include="LRender\src\modeller\shapes\leaf.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\seed.cpp" />
     <ClCompile Include="LRender\src\modeller\shapes\tube.cpp" />
     <ClCompile Include="LRender\src\orbit.cpp" />
     <ClCompile Include="LRender\src\renderer.cpp" />
     <ClCompile Include="LRender\src\scene\agent.cpp" />
     <ClCompile Include="LRender\src\scene\scene.cpp" />
     <ClCompile Include="LRender\src\shader.cpp" />
+    <ClCompile Include="LRender\src\shaders.cpp" />
     <ClCompile Include="LRender\src\uniforms.cpp" />
     <ClCompile Include="LRender\src\vertex.cpp" />
     <ClCompile Include="src\console\command.cpp" />
@@ -223,13 +227,17 @@
     <ClInclude Include="LRender\src\modeller\node.h" />
     <ClInclude Include="LRender\src\modeller\path.h" />
     <ClInclude Include="LRender\src\modeller\radiusSampler.h" />
+    <ClInclude Include="LRender\src\modeller\seed.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\icosphere.h" />
     <ClInclude Include="LRender\src\modeller\shapes\leaf.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\seed.h" />
     <ClInclude Include="LRender\src\modeller\shapes\tube.h" />
     <ClInclude Include="LRender\src\orbit.h" />
     <ClInclude Include="LRender\src\renderer.h" />
     <ClInclude Include="LRender\src\scene\agent.h" />
     <ClInclude Include="LRender\src\scene\scene.h" />
     <ClInclude Include="LRender\src\shader.h" />
+    <ClInclude Include="LRender\src\shaders.h" />
     <ClInclude Include="LRender\src\uniforms.h" />
     <ClInclude Include="LRender\src\vertex.h" />
     <ClInclude Include="src\console\command.h" />

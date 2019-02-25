@@ -158,7 +158,7 @@
     <ClCompile Include="LRender\src\modeller\shapes\icosphere.cpp" />
     <ClCompile Include="LRender\src\modeller\shapes\leaf.cpp" />
     <ClCompile Include="LRender\src\modeller\shapes\seed.cpp" />
-    <ClCompile Include="LRender\src\modeller\shapes\tube.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\branch.cpp" />
     <ClCompile Include="LRender\src\orbit.cpp" />
     <ClCompile Include="LRender\src\renderer.cpp" />
     <ClCompile Include="LRender\src\scene\agent.cpp" />
@@ -231,7 +231,7 @@
     <ClInclude Include="LRender\src\modeller\shapes\icosphere.h" />
     <ClInclude Include="LRender\src\modeller\shapes\leaf.h" />
     <ClInclude Include="LRender\src\modeller\shapes\seed.h" />
-    <ClInclude Include="LRender\src\modeller\shapes\tube.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\branch.h" />
     <ClInclude Include="LRender\src\orbit.h" />
     <ClInclude Include="LRender\src\renderer.h" />
     <ClInclude Include="LRender\src\scene\agent.h" />

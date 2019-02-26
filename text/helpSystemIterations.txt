@@ -1,1 +1,0 @@
-Set the number of iterations of the currently selected Lindenmayer system.

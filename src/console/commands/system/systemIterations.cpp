@@ -22,7 +22,7 @@ void Command::System::Iterations::application(
 	}
 
 	try {
-		workspace.system->setIterations(std::stoi(arguments[ARG_ITERATIONS]));
+		workspace.systemIterations = std::stoi(arguments[ARG_ITERATIONS]);
 	}
 	catch(...) {
 		console << Command::MSG_INVALID_INPUT << std::endl;

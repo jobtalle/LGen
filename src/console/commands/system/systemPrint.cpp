@@ -20,7 +20,6 @@ void Command::System::Print::application(
 	Workspace &workspace) {
 	if(workspace.system) {
 		console << MSG_AXIOM << workspace.system->getAxiom() << std::endl;
-		console << MSG_ITERATIONS << workspace.system->getIterations() << std::endl;
 		console << MSG_RULES << std::endl;
 
 		for(auto &rule : workspace.system->getRules())

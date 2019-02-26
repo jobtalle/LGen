@@ -12,5 +12,6 @@ namespace LGen {
 		Workspace();
 		std::mt19937 randomizer;
 		std::unique_ptr<LParse::System> system;
+		size_t systemIterations;
 	};
 }

@@ -7,7 +7,6 @@
 using namespace LGen::File;
 
 const std::string System::KEY_AXIOM = "axiom";
-const std::string System::KEY_ITERATIONS = "iterations";
 const std::string System::KEY_RULE_COUNT = "rule-count";
 const std::string System::KEY_RULE_PREFIX = "rule-";
 
@@ -18,15 +17,12 @@ System::System(const std::string &file) :
 
 System::System(const LParse::System &system) {
 	std::stringstream axiom;
-	std::stringstream iterations;
 	std::stringstream ruleCount;
 
 	axiom << system.getAxiom();
-	iterations << system.getIterations();
 	ruleCount << system.getRules().size();
 
 	set(KEY_AXIOM, axiom.str());
-	set(KEY_ITERATIONS, iterations.str());
 	set(KEY_RULE_COUNT, ruleCount.str());
 
 	for(size_t i = 0; i < system.getRules().size(); ++i) {
@@ -44,7 +40,6 @@ LParse::System System::getSystem() const {
 	const size_t ruleCount = std::stoi(get(KEY_RULE_COUNT));
 
 	system.setAxiom(get(KEY_AXIOM));
-	system.setIterations(std::stoi(get(KEY_ITERATIONS)));
 
 	for(size_t i = 0; i < ruleCount; ++i) {
 		std::string lhs, rhs;

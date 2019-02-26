@@ -27,7 +27,7 @@ void Command::System::Render::application(
 
 	scene->addAgent(LRender::Agent(
 		LRender::Vector(0, 0, 0),
-		workspace.system->generate(workspace.randomizer)->getString()));
+		workspace.system->generate(workspace.systemIterations, workspace.randomizer)->getString()));
 
 	console.getMonitor()->setScene(scene);
 }

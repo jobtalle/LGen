@@ -1,4 +1,6 @@
 #include "console/commands/system/systemRender.h"
+#include "environment/environment.h"
+#include "environment/terrain/terrainSines.h"
 
 #include <sstream>
 #include <lrender.h>
@@ -23,11 +25,11 @@ void Command::System::Render::application(
 		return;
 	}
 	
-	std::shared_ptr<LRender::Scene> scene(new LRender::Scene());
+	Environment environment(
+		std::make_shared<TerrainSines>(TerrainSines(10, 10)),
+		4);
 
-	scene->addAgent(LRender::Agent(
-		LRender::Vector(0, 0, 0),
-		workspace.system->generate(workspace.systemIterations, workspace.randomizer)->getString()));
+	environment.addAgent(Agent(*workspace.system));
 
-	console.getMonitor()->setScene(scene);
+	console.getMonitor()->setScene(environment.makeScene(workspace.randomizer));
 }

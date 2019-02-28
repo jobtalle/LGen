@@ -7,7 +7,7 @@ Input::Input(std::string input) :
 
 }
 
-Input::Input(std::vector<std::string> &arguments) {
+Input::Input(const std::vector<std::string> &arguments) {
 	keyword = *arguments.begin();
 
 	for(auto argument = arguments.begin() + 1; argument < arguments.end(); ++argument)

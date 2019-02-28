@@ -7,7 +7,7 @@ namespace LGen {
 	class Input final {
 	public:
 		Input(std::string input);
-		Input(std::vector<std::string> &arguments);
+		Input(const std::vector<std::string> &arguments);
 		std::string getKeyword() const;
 		std::vector<std::string> getArguments() const;
 

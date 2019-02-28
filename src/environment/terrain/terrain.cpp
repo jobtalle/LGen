@@ -17,5 +17,5 @@ float Terrain::getHeight() const {
 }
 
 float Terrain::get(const float x, const float y) const {
-	return sample(x / width, y / height);
+	return sample(x, y);
 }

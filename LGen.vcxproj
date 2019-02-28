@@ -159,10 +159,12 @@
     <ClCompile Include="LRender\src\modeller\shapes\leaf.cpp" />
     <ClCompile Include="LRender\src\modeller\shapes\seed.cpp" />
     <ClCompile Include="LRender\src\modeller\shapes\branch.cpp" />
+    <ClCompile Include="LRender\src\modeller\terrainModel.cpp" />
     <ClCompile Include="LRender\src\orbit.cpp" />
     <ClCompile Include="LRender\src\renderer.cpp" />
     <ClCompile Include="LRender\src\scene\agent.cpp" />
     <ClCompile Include="LRender\src\scene\scene.cpp" />
+    <ClCompile Include="LRender\src\scene\terrain.cpp" />
     <ClCompile Include="LRender\src\shader.cpp" />
     <ClCompile Include="LRender\src\shaders.cpp" />
     <ClCompile Include="LRender\src\uniforms.cpp" />
@@ -236,10 +238,12 @@
     <ClInclude Include="LRender\src\modeller\shapes\leaf.h" />
     <ClInclude Include="LRender\src\modeller\shapes\seed.h" />
     <ClInclude Include="LRender\src\modeller\shapes\branch.h" />
+    <ClInclude Include="LRender\src\modeller\terrainModel.h" />
     <ClInclude Include="LRender\src\orbit.h" />
     <ClInclude Include="LRender\src\renderer.h" />
     <ClInclude Include="LRender\src\scene\agent.h" />
     <ClInclude Include="LRender\src\scene\scene.h" />
+    <ClInclude Include="LRender\src\scene\terrain.h" />
     <ClInclude Include="LRender\src\shader.h" />
     <ClInclude Include="LRender\src\shaders.h" />
     <ClInclude Include="LRender\src\uniforms.h" />

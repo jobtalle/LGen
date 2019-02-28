@@ -1,5 +1,7 @@
 #include "terrainSines.h"
 
+#include <math.h>
+
 using namespace LGen;
 
 TerrainSines::TerrainSines(const float width, const float height) :
@@ -8,5 +10,5 @@ TerrainSines::TerrainSines(const float width, const float height) :
 }
 
 float TerrainSines::sample(const float x, const float y) const {
-	return 0;
+	return cos(sqrt(x * x + y * y) * 10);
 }

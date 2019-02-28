@@ -17,11 +17,21 @@ void Environment::clearAgents() {
 }
 
 std::shared_ptr<LRender::Scene> Environment::makeScene(std::mt19937 &randomizer) const {
-	std::shared_ptr<LRender::Scene> scene(new LRender::Scene());
+	const std::shared_ptr<Terrain> &terrainSource = terrain;
+
+	LRender::Terrain renderTerrain(
+		terrain->getWidth(),
+		terrain->getHeight(),
+		terrainSource,
+		[terrainSource](const float x, const float y) {
+			return terrainSource->get(x, y);
+		});
+
+	std::shared_ptr<LRender::Scene> scene(new LRender::Scene(renderTerrain));
 
 	for(const auto &agent : agents)
 		scene->addAgent(LRender::Agent(
-			LRender::Vector(),
+			LRender::Vector(10, terrain->get(10, 10), 10),
 			agent.generate(maxIterations, randomizer)->getString()));
 
 	return scene;

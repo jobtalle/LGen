@@ -162,7 +162,8 @@
     <ClCompile Include="LRender\src\modeller\terrainModel.cpp" />
     <ClCompile Include="LRender\src\orbit.cpp" />
     <ClCompile Include="LRender\src\renderer.cpp" />
-    <ClCompile Include="LRender\src\report.cpp" />
+    <ClCompile Include="LRender\src\report\report.cpp" />
+    <ClCompile Include="LRender\src\report\reportAgent.cpp" />
     <ClCompile Include="LRender\src\scene\agent.cpp" />
     <ClCompile Include="LRender\src\scene\scene.cpp" />
     <ClCompile Include="LRender\src\scene\terrain.cpp" />
@@ -242,7 +243,8 @@
     <ClInclude Include="LRender\src\modeller\terrainModel.h" />
     <ClInclude Include="LRender\src\orbit.h" />
     <ClInclude Include="LRender\src\renderer.h" />
-    <ClInclude Include="LRender\src\report.h" />
+    <ClInclude Include="LRender\src\report\report.h" />
+    <ClInclude Include="LRender\src\report\reportAgent.h" />
     <ClInclude Include="LRender\src\scene\agent.h" />
     <ClInclude Include="LRender\src\scene\scene.h" />
     <ClInclude Include="LRender\src\scene\terrain.h" />

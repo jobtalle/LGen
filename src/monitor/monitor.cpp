@@ -92,7 +92,7 @@ void Monitor::start() {
 void Monitor::stop() {
 	terminate = true;
 }
-#include <iostream>
+
 void Monitor::setScene(std::shared_ptr<LRender::Scene> scene) {
 	if(!glfwGetWindowAttrib(window, GLFW_VISIBLE))
 		glfwShowWindow(window);

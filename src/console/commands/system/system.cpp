@@ -1,4 +1,4 @@
-#include "console/commands/system.h"
+#include "system.h"
 #include "console/commands/system/systemNew.h"
 #include "console/commands/system/systemPrint.h"
 #include "console/commands/system/systemGenerate.h"

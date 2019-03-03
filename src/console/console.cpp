@@ -1,7 +1,7 @@
 #include "console/console.h"
 #include "console/commands/exit.h"
 #include "console/commands/help.h"
-#include "console/commands/system.h"
+#include "console/commands/system/system.h"
 
 #include <iostream>
 #include <string>

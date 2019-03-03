@@ -4,6 +4,6 @@ using namespace LGen;
 
 Workspace::Workspace() :
 	randomizer(std::random_device()()),
-	systemIterations(0) {
+	systemIterations(ITERATIONS_DEFAULT) {
 
 }

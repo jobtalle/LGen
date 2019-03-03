@@ -1,6 +1,6 @@
 #pragma once
 
-#include "console/commands/system.h"
+#include "console/commands/system/system.h"
 
 namespace LGen {
 	class Command::System::Rule final : public Command {

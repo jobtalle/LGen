@@ -27,7 +27,7 @@ void Command::System::Render::application(
 	
 	Environment environment(
 		std::make_shared<TerrainSines>(TerrainSines(20, 20)),
-		5);
+		workspace.systemIterations);
 
 	environment.addAgent(Agent(*workspace.system));
 

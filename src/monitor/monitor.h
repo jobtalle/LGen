@@ -14,7 +14,8 @@ namespace LGen {
 		~Monitor();
 		void start();
 		void stop();
-		void setScene(std::shared_ptr<LRender::Scene> scene);
+		void makeVisible() const;
+		LRender::Renderer *getRenderer() const;
 
 	private:
 		static const size_t DEFAULT_WIDTH = 1024;

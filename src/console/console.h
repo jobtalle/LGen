@@ -39,8 +39,6 @@ namespace LGen {
 		bool terminate = false;
 		std::string line;
 
-		static std::vector<Command*> makeCommands(Console *console);
-
 		void log(const std::string message, const bool prefix = true) const;
 		void loop();
 	};

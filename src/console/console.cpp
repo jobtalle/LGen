@@ -2,6 +2,7 @@
 #include "console/commands/exit.h"
 #include "console/commands/help.h"
 #include "console/commands/system/system.h"
+#include "console/commands/render/render.h"
 
 #include <iostream>
 #include <string>
@@ -17,7 +18,12 @@ const std::string Console::PREFIX_LOG = "   ";
 Console::Console(Monitor *monitor, Workspace *workspace) :
 	monitor(monitor),
 	workspace(workspace),
-	commandList(makeCommands(this)),
+	commandList({
+		std::make_shared<Command::Exit>(this),
+		std::make_shared<Command::Help>(),
+		std::make_shared<Command::System>(),
+		std::make_shared<Command::Render>()
+	}),
 	std::ostream(this) {
 	dumpFile("text/intro.txt", false);
 
@@ -65,16 +71,6 @@ int Console::sync() {
 	line.clear();
 
 	return 0;
-}
-
-std::vector<Command*> Console::makeCommands(Console *console) {
-	std::vector<Command*> commands;
-
-	commands.push_back(new Command::Exit(console));
-	commands.push_back(new Command::Help());
-	commands.push_back(new Command::System());
-
-	return commands;
 }
 
 void Console::log(const std::string message, const bool prefix) const {

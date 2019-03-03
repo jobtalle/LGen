@@ -6,14 +6,9 @@ using namespace LGen;
 
 const std::string CommandList::ENUMERATE_PREFIX = "- ";
 
-CommandList::CommandList(const std::vector<Command*> &commands) :
+CommandList::CommandList(const std::vector<std::shared_ptr<Command>> &commands) :
 	commands(commands) {
 
-}
-
-CommandList::~CommandList() {
-	for(auto const command : commands)
-		delete command;
 }
 
 bool CommandList::apply(const Input &input, Console &console, Workspace &workspace) const {
@@ -25,7 +20,7 @@ bool CommandList::apply(const Input &input, Console &console, Workspace &workspa
 	return false;
 }
 
-const std::vector<Command*> &CommandList::getCommands() const {
+const std::vector<std::shared_ptr<Command>> &CommandList::getCommands() const {
 	return commands;
 }
 

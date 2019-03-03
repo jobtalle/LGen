@@ -1,9 +1,9 @@
 #include "console/commands/system/systemRender.h"
 #include "environment/environment.h"
 #include "environment/terrain/terrainSines.h"
+#include "lrender.h"
 
 #include <sstream>
-#include <lrender.h>
 
 using namespace LGen;
 
@@ -14,7 +14,7 @@ Command::System::Render::Render() :
 	Command({ KEYWORD }, FILE_HELP, 0) {
 
 }
-
+#include <iostream>
 void Command::System::Render::application(
 	const std::vector<std::string> arguments,
 	Console &console,
@@ -31,5 +31,11 @@ void Command::System::Render::application(
 
 	environment.addAgent(Agent(*workspace.system));
 
-	console.getMonitor()->setScene(environment.makeScene(workspace.randomizer));
+	console.getMonitor()->makeVisible();
+	console.getMonitor()->getRenderer()->setScene(
+		environment.makeScene(workspace.randomizer),
+		[](LRender::Report &report) {
+			std::cout << "Size: " << report.getAgents()[0].getLimits().getMaximum() - report.getAgents()[0].getLimits().getMinimum() << std::endl;
+			std::cout << "Area: " << report.getAgents()[0].getArea().getArea() << std::endl;
+		});
 }

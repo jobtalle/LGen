@@ -5,7 +5,7 @@
 #include "console/commands/system/systemAxiom.h"
 #include "console/commands/system/systemDelete.h"
 #include "console/commands/system/systemIterations.h"
-#include "console/commands/system/systemRule.h"
+#include "console/commands/system/rule/systemRule.h"
 #include "console/commands/system/systemSave.h"
 #include "console/commands/system/systemLoad.h"
 #include "console/commands/system/systemRender.h"
@@ -19,16 +19,17 @@ const std::string Command::System::MSG_SYSTEM_INCOMPLETE = "The current system i
 
 Command::System::System() :
 	Command({ KEYWORD, ALIAS }, {
-		new Command::System::New(),
-		new Command::System::Print(),
-		new Command::System::Generate(),
-		new Command::System::Axiom(),
-		new Command::System::Iterations(),
-		new Command::System::Rule(),
-		new Command::System::Delete(),
-		new Command::System::Save(),
-		new Command::System::Load(),
-		new Command::System::Render()
+		std::make_shared<Command::System::New>(),
+		std::make_shared<Command::System::Print>(),
+		std::make_shared<Command::System::Generate>(),
+		std::make_shared<Command::System::Axiom>(),
+		std::make_shared<Command::System::Iterations>(),
+		std::make_shared<Command::System::Rule>(),
+		std::make_shared<Command::System::Delete>(),
+		std::make_shared<Command::System::Save>(),
+		std::make_shared<Command::System::Load>(),
+		std::make_shared<Command::System::Render>(),
+		std::make_shared<Command::System::New>()
 	}) {
 
 }

@@ -24,7 +24,7 @@ Command::Command(const std::vector<std::string> triggers, const std::string help
 
 }
 
-Command::Command(const std::vector<std::string> triggers, const std::vector<Command*> commands, const char args) :
+Command::Command(const std::vector<std::string> triggers, const std::vector<std::shared_ptr<Command>> commands, const char args) :
 	triggers(triggers),
 	hasHelp(true),
 	commandList(new CommandList(commands)),

@@ -40,11 +40,11 @@ Monitor::Monitor(const char *title) {
 		case MOUSE_BUTTON_DRAG:
 			switch(action) {
 			case MOUSE_ACTION_DRAG_START:
-				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress(LRender::Renderer::MOUSE_DRAG);
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress(LRender::Renderer::DRAG);
 
 				break;
 			case MOUSE_ACTION_DRAG_STOP:
-				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease(LRender::Renderer::MOUSE_DRAG);
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease(LRender::Renderer::DRAG);
 
 				break;
 			}
@@ -53,11 +53,11 @@ Monitor::Monitor(const char *title) {
 		case MOUSE_BUTTON_PAN:
 			switch(action) {
 			case MOUSE_ACTION_PAN_START:
-				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress(LRender::Renderer::MOUSE_PAN);
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress(LRender::Renderer::PAN);
 
 				break;
 			case MOUSE_ACTION_PAN_STOP:
-				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease(LRender::Renderer::MOUSE_PAN);
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease(LRender::Renderer::PAN);
 
 				break;
 			}
@@ -98,8 +98,8 @@ void Monitor::makeVisible() const {
 		glfwShowWindow(window);
 }
 
-LRender::Renderer *Monitor::getRenderer() const {
-	return renderer.get();
+void Monitor::enqueue(const std::shared_ptr<const LRender::Renderer::Task> task) {
+	renderer->enqueue(task);
 }
 
 void Monitor::glfwStart() {

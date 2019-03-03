@@ -14,5 +14,6 @@ void Command::Render::Wireframe::application(
 	const std::vector<std::string> arguments,
 	Console &console,
 	Workspace &workspace) {
-	console.getMonitor()->getRenderer()->setMode(LRender::Renderer::RenderMode::RENDER_WIREFRAME);
+	console.getMonitor()->enqueue(
+		std::make_shared<LRender::Renderer::Task::Mode>(LRender::Renderer::Mode::WIREFRAME));
 }

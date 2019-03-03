@@ -15,7 +15,7 @@ namespace LGen {
 		void start();
 		void stop();
 		void makeVisible() const;
-		LRender::Renderer *getRenderer() const;
+		void enqueue(const std::shared_ptr<const LRender::Renderer::Task> task);
 
 	private:
 		static const size_t DEFAULT_WIDTH = 1024;

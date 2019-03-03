@@ -15,5 +15,6 @@ void Command::Render::Default::application(
 	const std::vector<std::string> arguments,
 	Console &console,
 	Workspace &workspace) {
-	console.getMonitor()->getRenderer()->setMode(LRender::Renderer::RenderMode::RENDER_DEFAULT);
+	console.getMonitor()->enqueue(
+		std::make_shared<LRender::Renderer::Task::Mode>(LRender::Renderer::Mode::DEFAULT));
 }

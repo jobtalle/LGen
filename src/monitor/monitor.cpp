@@ -92,13 +92,14 @@ void Monitor::start() {
 void Monitor::stop() {
 	terminate = true;
 }
-
+#include <iostream>
 void Monitor::setScene(std::shared_ptr<LRender::Scene> scene) {
 	if(!glfwGetWindowAttrib(window, GLFW_VISIBLE))
 		glfwShowWindow(window);
 
 	renderer->setScene(scene, [](LRender::Report &report) {
-
+		std::cout << "Size: " << report.getAgents()[0].getLimits().getMaximum() - report.getAgents()[0].getLimits().getMinimum() << std::endl;
+		std::cout << "Area: " << report.getAgents()[0].getArea().getArea() << std::endl;
 	});
 }
 

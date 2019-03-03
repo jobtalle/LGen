@@ -9,6 +9,7 @@ namespace LGen {
 		public:
 			Config();
 			Config(const std::string &file);
+			virtual ~Config() = default;
 			void save(const std::string &file) const;
 
 		protected:

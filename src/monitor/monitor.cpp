@@ -98,7 +98,7 @@ void Monitor::makeVisible() const {
 		glfwShowWindow(window);
 }
 
-void Monitor::enqueue(const std::shared_ptr<const LRender::Renderer::Task> task) {
+void Monitor::enqueue(const std::shared_ptr<LRender::Renderer::Task> task) {
 	renderer->enqueue(task);
 }
 

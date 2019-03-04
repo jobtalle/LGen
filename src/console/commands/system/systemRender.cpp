@@ -31,12 +31,13 @@ void Command::System::Render::application(
 
 	environment.addAgent(Agent(*workspace.system));
 
+	auto task = std::make_shared<LRender::Renderer::Task::Scene>(environment.makeScene(workspace.randomizer));
+
 	console.getMonitor()->makeVisible();
-	console.getMonitor()->enqueue(
-		std::make_shared<LRender::Renderer::Task::Scene>(
-			environment.makeScene(workspace.randomizer),
-			[](LRender::Report &report) {
-				std::cout << "Size: " << report.getAgents()[0].getLimits().getMaximum() - report.getAgents()[0].getLimits().getMinimum() << std::endl;
-				std::cout << "Area: " << report.getAgents()[0].getArea().getArea() << std::endl;
-			}));
+	console.getMonitor()->enqueue(task);
+
+	auto report = task->getReport();
+
+	std::cout << "Size: " << report->getAgents()[0].getLimits().getMaximum() - report->getAgents()[0].getLimits().getMinimum() << std::endl;
+	std::cout << "Area: " << report->getAgents()[0].getArea().getArea() << std::endl;
 }

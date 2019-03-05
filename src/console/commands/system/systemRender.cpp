@@ -29,7 +29,9 @@ void Command::System::Render::application(
 		std::make_shared<TerrainSines>(TerrainSines(20, 20)),
 		workspace.systemIterations);
 
-	environment.addAgent(Agent(*workspace.system));
+	environment.addAgent(Agent(*workspace.system, 3, 3));
+	environment.addAgent(Agent(*workspace.system, 5, 5));
+	environment.addAgent(Agent(*workspace.system, 7, 7));
 
 	auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(environment.makeScene(workspace.randomizer));
 

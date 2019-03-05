@@ -31,7 +31,10 @@ std::shared_ptr<LRender::Scene> Environment::makeScene(std::mt19937 &randomizer)
 
 	for(const auto &agent : agents)
 		scene->addAgent(LRender::Agent(
-			LRender::Vector(10, terrain->get(10, 10), 10),
+			LRender::Vector(
+				agent.getX(),
+				terrain->get(agent.getX(), agent.getY()),
+				agent.getY()),
 			agent.generate(maxIterations, randomizer)->getString()));
 
 	return scene;

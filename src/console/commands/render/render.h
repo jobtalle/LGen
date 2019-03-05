@@ -7,8 +7,7 @@ namespace LGen {
 	public:
 		Render();
 
-		class Default;
-		class Wireframe;
+		class Mode;
 
 	private:
 		static const std::string KEYWORD;

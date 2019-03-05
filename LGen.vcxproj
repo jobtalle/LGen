@@ -165,7 +165,7 @@
     <ClCompile Include="LRender\src\renderer\passes\renderPassViewWireframe.cpp" />
     <ClCompile Include="LRender\src\renderer\renderer.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskMode.cpp" />
-    <ClCompile Include="LRender\src\renderer\tasks\taskScene.cpp" />
+    <ClCompile Include="LRender\src\renderer\tasks\taskSceneReport.cpp" />
     <ClCompile Include="LRender\src\renderer\uniforms\uniforms.cpp" />
     <ClCompile Include="LRender\src\renderer\uniforms\uniformsView.cpp" />
     <ClCompile Include="LRender\src\report\report.cpp" />
@@ -182,9 +182,10 @@
     <ClCompile Include="src\console\commandList.cpp" />
     <ClCompile Include="src\console\commands\exit.cpp" />
     <ClCompile Include="src\console\commands\help.cpp" />
+    <ClCompile Include="src\console\commands\render\mode\renderMode.cpp" />
     <ClCompile Include="src\console\commands\render\render.cpp" />
-    <ClCompile Include="src\console\commands\render\renderDefault.cpp" />
-    <ClCompile Include="src\console\commands\render\renderWireframe.cpp" />
+    <ClCompile Include="src\console\commands\render\mode\renderModeDefault.cpp" />
+    <ClCompile Include="src\console\commands\render\mode\renderModeWireframe.cpp" />
     <ClCompile Include="src\console\commands\system\system.cpp" />
     <ClCompile Include="src\console\commands\system\rule\systemRuleAdd.cpp" />
     <ClCompile Include="src\console\commands\system\rule\systemRuleRemove.cpp" />
@@ -258,7 +259,7 @@
     <ClInclude Include="LRender\src\renderer\renderer.h" />
     <ClInclude Include="LRender\src\renderer\tasks\task.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskMode.h" />
-    <ClInclude Include="LRender\src\renderer\tasks\taskScene.h" />
+    <ClInclude Include="LRender\src\renderer\tasks\taskSceneReport.h" />
     <ClInclude Include="LRender\src\renderer\uniforms\uniforms.h" />
     <ClInclude Include="LRender\src\renderer\uniforms\uniformsView.h" />
     <ClInclude Include="LRender\src\report\report.h" />
@@ -275,9 +276,10 @@
     <ClInclude Include="src\console\commandList.h" />
     <ClInclude Include="src\console\commands\exit.h" />
     <ClInclude Include="src\console\commands\help.h" />
+    <ClInclude Include="src\console\commands\render\mode\renderMode.h" />
     <ClInclude Include="src\console\commands\render\render.h" />
-    <ClInclude Include="src\console\commands\render\renderDefault.h" />
-    <ClInclude Include="src\console\commands\render\renderWireframe.h" />
+    <ClInclude Include="src\console\commands\render\mode\renderModeDefault.h" />
+    <ClInclude Include="src\console\commands\render\mode\renderModeWireframe.h" />
     <ClInclude Include="src\console\commands\system\system.h" />
     <ClInclude Include="src\console\commands\system\rule\systemRuleAdd.h" />
     <ClInclude Include="src\console\commands\system\rule\systemRuleRemove.h" />

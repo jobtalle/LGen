@@ -1,11 +1,11 @@
 #pragma once
 
-#include "console/commands/render/render.h"
+#include "console/commands/render/mode/renderMode.h"
 
 namespace LGen {
-	class Command::Render::Default final : public Command {
+	class Command::Render::Mode::Wireframe final : public Command {
 	public:
-		Default();
+		Wireframe();
 
 	protected:
 		void application(
@@ -15,7 +15,6 @@ namespace LGen {
 
 	private:
 		static const std::string KEYWORD;
-		static const std::string ALIAS;
 		static const std::string FILE_HELP;
 	};
 };

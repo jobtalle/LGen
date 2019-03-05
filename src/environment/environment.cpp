@@ -27,7 +27,7 @@ std::shared_ptr<LRender::Scene> Environment::makeScene(std::mt19937 &randomizer)
 			return terrainSource->get(x, y);
 		});
 
-	std::shared_ptr<LRender::Scene> scene(new LRender::Scene(renderTerrain));
+	std::shared_ptr<LRender::Scene> scene(std::make_shared<LRender::Scene>(renderTerrain));
 
 	for(const auto &agent : agents)
 		scene->addAgent(LRender::Agent(

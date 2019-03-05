@@ -5,7 +5,8 @@
 #include <memory>
 #include <atomic>
 #include <lrender.h>
-#include <GLFW/glfw3.h>
+
+#include "monitor/glfwLoader.h"
 
 namespace LGen {
 	class Monitor final {
@@ -18,11 +19,8 @@ namespace LGen {
 		void enqueue(const std::shared_ptr<LRender::Renderer::Task> task);
 
 	private:
-		static const size_t DEFAULT_WIDTH = 1024;
-		static const size_t DEFAULT_HEIGHT = 768;
-		static const size_t GL_VERSION_MAJOR = 4;
-		static const size_t GL_VERSION_MINOR = 4;
-		static const size_t MSAA_SAMPLES = 4;
+		static const size_t DEFAULT_WIDTH;
+		static const size_t DEFAULT_HEIGHT;
 		static const int MOUSE_BUTTON_DRAG = GLFW_MOUSE_BUTTON_LEFT;
 		static const int MOUSE_BUTTON_PAN = GLFW_MOUSE_BUTTON_RIGHT;
 		static const int MOUSE_ACTION_DRAG_START = GLFW_PRESS;
@@ -30,12 +28,10 @@ namespace LGen {
 		static const int MOUSE_ACTION_PAN_START = MOUSE_ACTION_DRAG_START;
 		static const int MOUSE_ACTION_PAN_STOP = MOUSE_ACTION_DRAG_STOP;
 
-		static void glfwStart();
-		static void glfwStop();
-
 		void poll();
 
 		GLFWwindow *window;
+		GLFWLoader glfwLoader;
 		std::unique_ptr<LRender::Renderer> renderer;
 		std::atomic<bool> terminate;
 	};

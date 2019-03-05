@@ -5,19 +5,17 @@
 
 using namespace LGen;
 
-static size_t monitorCount = 0;
+const size_t Monitor::DEFAULT_WIDTH = 1024;
+const size_t Monitor::DEFAULT_HEIGHT = 768;
 
 Monitor::Monitor(const char *title) {
-	if(monitorCount++ == 0)
-		glfwStart();
-
 	window = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, title, NULL, NULL);
 	terminate = false;
 
 	glfwSetWindowAttrib(window, GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
 	glfwMakeContextCurrent(window);
-
-	renderer.reset(new LRender::Renderer(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+	
+	renderer = std::make_unique<LRender::Renderer>(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	glfwSetWindowUserPointer(window, renderer.get());
 
 	glfwSetWindowSizeCallback(window, [](GLFWwindow *window, int width, int height) {
@@ -68,9 +66,6 @@ Monitor::Monitor(const char *title) {
 
 Monitor::~Monitor() {
 	glfwDestroyWindow(window);
-
-	if(--monitorCount == 0)
-		glfwStop();
 }
 
 void Monitor::start() {
@@ -100,20 +95,6 @@ void Monitor::makeVisible() const {
 
 void Monitor::enqueue(const std::shared_ptr<LRender::Renderer::Task> task) {
 	renderer->enqueue(task);
-}
-
-void Monitor::glfwStart() {
-	glfwInit();
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VERSION_MAJOR);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VERSION_MINOR);
-	glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_SAMPLES, MSAA_SAMPLES);
-}
-
-void Monitor::glfwStop() {
-	glfwTerminate();
 }
 
 void Monitor::poll() {

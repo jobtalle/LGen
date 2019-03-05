@@ -14,5 +14,5 @@ void Command::System::New::application(
 	const std::vector<std::string> arguments,
 	Console &console,
 	Workspace &workspace) {
-	workspace.system.reset(new LParse::System());
+	workspace.system = std::make_unique<LParse::System>();
 }

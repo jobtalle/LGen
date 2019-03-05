@@ -19,7 +19,7 @@ void Command::System::Load::application(
 	try {
 		const File::System file(arguments[ARG_FILE]);
 
-		workspace.system.reset(new LParse::System(file.getSystem()));
+		workspace.system = std::make_unique<LParse::System>(file.getSystem());
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

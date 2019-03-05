@@ -14,5 +14,5 @@ void Command::System::Delete::application(
 	const std::vector<std::string> arguments,
 	Console &console,
 	Workspace &workspace) {
-	workspace.system.reset(nullptr);
+	workspace.system = nullptr;
 }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
 project(LGen)
 
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS "-std=c++14")
 
 add_definitions(-D_GLFW_X11=1 -D_GLFW_GLX=1 -D_GLFW_USE_OPENGL=1)
 

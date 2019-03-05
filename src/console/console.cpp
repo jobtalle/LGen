@@ -29,7 +29,7 @@ Console::Console(Monitor *monitor, Workspace *workspace) :
 	std::ostream(this) {
 	dumpFile("text/intro.txt", false);
 
-	thread.reset(new std::thread(std::bind(&Console::loop, this)));
+	thread = std::make_unique<std::thread>(std::bind(&Console::loop, this));
 }
 
 Console::~Console() {

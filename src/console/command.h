@@ -16,6 +16,7 @@ namespace LGen {
 		class Help;
 		class System;
 		class Render;
+		class Environment;
 
 		Command(const std::vector<std::string> triggers, const char args = -1);
 		Command(const std::vector<std::string> triggers, const std::string help, const char args = -1);

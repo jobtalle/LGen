@@ -3,6 +3,7 @@
 #include "console/commands/help.h"
 #include "console/commands/system/system.h"
 #include "console/commands/render/render.h"
+#include "console/commands/environment/environment.h"
 
 #include <iostream>
 #include <string>
@@ -22,7 +23,8 @@ Console::Console(Monitor *monitor, Workspace *workspace) :
 		std::make_shared<Command::Exit>(this),
 		std::make_shared<Command::Help>(),
 		std::make_shared<Command::System>(),
-		std::make_shared<Command::Render>()
+		std::make_shared<Command::Render>(),
+		std::make_shared<Command::Environment>()
 	}),
 	std::ostream(this) {
 	dumpFile("text/intro.txt", false);

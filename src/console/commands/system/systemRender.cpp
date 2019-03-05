@@ -25,7 +25,7 @@ void Command::System::Render::application(
 		return;
 	}
 	
-	Environment environment(
+	LGen::Environment environment(
 		std::make_shared<TerrainSines>(TerrainSines(20, 20)),
 		workspace.systemIterations);
 

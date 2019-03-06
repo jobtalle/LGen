@@ -211,6 +211,7 @@
     <ClCompile Include="src\file\fileConfig.cpp" />
     <ClCompile Include="src\file\fileSystem.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\monitor\glfwLoader.cpp" />
     <ClCompile Include="src\monitor\monitor.cpp" />
     <ClCompile Include="src\utils\stringUtils.cpp" />
     <ClCompile Include="src\workspace\workspace.cpp" />
@@ -307,6 +308,7 @@
     <ClInclude Include="src\environment\terrain\terrainSines.h" />
     <ClInclude Include="src\file\fileConfig.h" />
     <ClInclude Include="src\file\fileSystem.h" />
+    <ClInclude Include="src\monitor\glfwLoader.h" />
     <ClInclude Include="src\monitor\monitor.h" />
     <ClInclude Include="src\utils\stringUtils.h" />
     <ClInclude Include="src\workspace\workspace.h" />

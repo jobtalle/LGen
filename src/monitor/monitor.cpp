@@ -61,6 +61,10 @@ Monitor::Monitor(const char *title) :
 	});
 }
 
+Monitor::~Monitor() {
+	glfwLoader.makeCurrent();
+}
+
 void Monitor::start() {
 	while(!terminate) {
 		poll();

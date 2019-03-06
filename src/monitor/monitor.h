@@ -12,6 +12,7 @@ namespace LGen {
 	class Monitor final {
 	public:
 		Monitor(const char *title);
+		~Monitor();
 		void start();
 		void stop();
 		void makeVisible() const;

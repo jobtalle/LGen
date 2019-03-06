@@ -4,12 +4,34 @@
 
 using namespace LGen;
 
-bool GLFWLoader::initialized = false;
+size_t GLFWLoader::initialized = 0;
 
-GLFWLoader::GLFWLoader() {
-	if(initialized)
-		return;
-		
+GLFWLoader::GLFWLoader(const size_t width, const size_t height, const char *title) {
+	if(initialized++ == 0)
+		initialize();
+
+	window = glfwCreateWindow(width, height, title, NULL, NULL);
+
+	glfwSetWindowAttrib(window, GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
+	makeCurrent();
+}
+
+GLFWLoader::~GLFWLoader() {
+	glfwDestroyWindow(window);
+
+	if(--initialized == 0)
+		glfwTerminate();
+}
+
+GLFWwindow *GLFWLoader::getWindow() const {
+	return window;
+}
+
+void GLFWLoader::makeCurrent() const {
+	glfwMakeContextCurrent(window);
+}
+
+void GLFWLoader::initialize() {
 	glfwInit();
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VERSION_MAJOR);
@@ -19,9 +41,6 @@ GLFWLoader::GLFWLoader() {
 	glfwWindowHint(GLFW_SAMPLES, MSAA_SAMPLES);
 }
 
-GLFWLoader::~GLFWLoader() {
-	if(!initialized)
-		return;
-	
+void GLFWLoader::free() {
 	glfwTerminate();
 }

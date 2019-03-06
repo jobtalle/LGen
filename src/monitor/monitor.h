@@ -12,7 +12,6 @@ namespace LGen {
 	class Monitor final {
 	public:
 		Monitor(const char *title);
-		~Monitor();
 		void start();
 		void stop();
 		void makeVisible() const;
@@ -30,7 +29,6 @@ namespace LGen {
 
 		void poll();
 
-		GLFWwindow *window;
 		GLFWLoader glfwLoader;
 		std::unique_ptr<LRender::Renderer> renderer;
 		std::atomic<bool> terminate;

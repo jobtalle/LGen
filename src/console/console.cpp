@@ -16,9 +16,8 @@ const std::string Console::FILE_INTRO = "text/intro.txt";
 const std::string Console::PREFIX_COMMAND = ">> ";
 const std::string Console::PREFIX_LOG = "   ";
 
-Console::Console(Monitor *monitor, Workspace *workspace) :
+Console::Console(Monitor *const monitor) :
 	monitor(monitor),
-	workspace(workspace),
 	commandList({
 		std::make_shared<Command::Exit>(this),
 		std::make_shared<Command::Help>(),
@@ -111,7 +110,7 @@ void Console::loop() {
 		std::string input;
 		std::getline(std::cin, input);
 
-		if(!commandList.apply(Input(input), *this, *workspace))
+		if(!commandList.apply(Input(input), *this))
 			log(MSG_NOT_RECOGNIZED);
 	}
 }

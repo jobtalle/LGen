@@ -12,8 +12,7 @@ Command::System::Rule::Add::Add() :
 
 void Command::System::Rule::Add::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	if(!workspace.system) {
 		console << Command::System::MSG_NO_SYSTEM << std::endl;
 

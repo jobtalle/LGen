@@ -1,7 +1,6 @@
 #pragma once
 
 #include "console/input.h"
-#include "workspace/workspace.h"
 
 #include <string>
 #include <vector>
@@ -13,7 +12,7 @@ namespace LGen {
 	class CommandList final {
 	public:
 		CommandList(const std::vector<std::shared_ptr<Command>> &commands);
-		bool apply(const Input &input, Console &console, Workspace &workspace) const;
+		bool apply(const Input &input, Console &console) const;
 		const std::vector<std::shared_ptr<Command>> &getCommands() const;
 		void enumerateKeywords(Console &console) const;
 

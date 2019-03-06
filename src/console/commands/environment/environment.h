@@ -3,7 +3,7 @@
 #include "console/command.h"
 
 namespace LGen {
-	class Command::Environment final : public Command{
+	class Command::Environment final : public Command {
 	public:
 		Environment();
 

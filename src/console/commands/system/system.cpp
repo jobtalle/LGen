@@ -17,6 +17,8 @@ const std::string Command::System::ALIAS = "sys";
 const std::string Command::System::MSG_NO_SYSTEM = "No system is loaded.";
 const std::string Command::System::MSG_SYSTEM_INCOMPLETE = "The current system is incomplete.";
 
+struct Command::System::Workspace Command::System::workspace = Command::System::Workspace();
+
 Command::System::System() :
 	Command({ KEYWORD, ALIAS }, {
 		std::make_shared<Command::System::New>(),
@@ -31,5 +33,11 @@ Command::System::System() :
 		std::make_shared<Command::System::Render>(),
 		std::make_shared<Command::System::New>()
 	}) {
+
+}
+
+Command::System::Workspace::Workspace() :
+	system(nullptr),
+	iterations(4) {
 
 }

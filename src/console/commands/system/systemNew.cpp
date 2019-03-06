@@ -12,7 +12,6 @@ Command::System::New::New() :
 
 void Command::System::New::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	workspace.system = std::make_unique<LParse::System>();
 }

@@ -13,8 +13,7 @@ Command::Exit::Exit(Console *console) :
 
 void Command::Exit::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	if(arguments.size() == 0)
 		this->console->stop();
 	else

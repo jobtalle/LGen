@@ -12,7 +12,6 @@ Command::Environment::New::New() :
 
 void Command::Environment::New::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 
 }

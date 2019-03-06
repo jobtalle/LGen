@@ -14,8 +14,7 @@ Command::System::Save::Save() :
 
 void Command::System::Save::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	if(!workspace.system) {
 		console << Command::System::MSG_NO_SYSTEM << std::endl;
 

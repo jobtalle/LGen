@@ -2,20 +2,19 @@
 
 #include "monitor/monitor.h"
 #include "console/commandList.h"
-#include "workspace/workspace.h"
 
 #include <thread>
 #include <memory>
-#include <vector>
 #include <ostream>
 #include <sstream>
 #include <string>
 
 namespace LGen {
 	class Command;
+
 	class Console final : private std::streambuf, public std::ostream {
 	public:
-		Console(Monitor *monitor, Workspace *workspace);
+		Console(Monitor *const monitor);
 		~Console();
 		Monitor *getMonitor();
 		void stop();
@@ -33,8 +32,7 @@ namespace LGen {
 		static const std::string PREFIX_LOG;
 
 		const CommandList commandList;
-		Monitor *monitor;
-		Workspace *workspace;
+		Monitor *const monitor;
 		std::unique_ptr<std::thread> thread;
 		bool terminate = false;
 		std::string line;

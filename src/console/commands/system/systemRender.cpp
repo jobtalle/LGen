@@ -17,8 +17,7 @@ Command::System::Render::Render() :
 #include <iostream>
 void Command::System::Render::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	if(!workspace.system) {
 		console << Command::System::MSG_NO_SYSTEM << std::endl;
 
@@ -27,7 +26,7 @@ void Command::System::Render::application(
 	
 	LGen::Environment environment(
 		std::make_shared<TerrainSines>(TerrainSines(20, 20)),
-		workspace.systemIterations);
+		workspace.iterations);
 
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 	environment.addAgent(Agent(*workspace.system, 5, 5));

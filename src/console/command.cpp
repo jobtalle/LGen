@@ -32,15 +32,15 @@ Command::Command(const std::vector<std::string> triggers, const std::vector<std:
 
 }
 
-bool Command::apply(const Input &input, Console &console, Workspace &workspace) {
+bool Command::apply(const Input &input, Console &console) {
 	for(const std::string &trigger : triggers) {
 		if(input.getKeyword().rfind(trigger, 0) == 0) {
 			if(input.getKeyword().size() == trigger.size()) {
 				if(commandList && input.getArguments().size())
-					return commandList->apply(input.getArguments(), console, workspace);
+					return commandList->apply(input.getArguments(), console);
 				else {
 					if(args == -1 || args == input.getArguments().size())
-						application(input.getArguments(), console, workspace);
+						application(input.getArguments(), console);
 					else {
 						if(args == 1)
 							console << MSG_THIS_COMMAND_TAKES << std::to_string(args) << MSG_ARGUMENT << std::endl;
@@ -84,8 +84,7 @@ std::vector<std::string> Command::getAliases() const {
 
 void Command::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	console << MSG_NEED_MORE_ARGUMENTS << std::endl;
 }
 

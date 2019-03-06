@@ -13,8 +13,7 @@ Command::System::Generate::Generate() :
 
 void Command::System::Generate::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	if(!workspace.system) {
 		console << Command::System::MSG_NO_SYSTEM << std::endl;
 
@@ -22,7 +21,9 @@ void Command::System::Generate::application(
 	}
 
 	if(workspace.system->isComplete())
-		console << *workspace.system->generate(workspace.systemIterations, workspace.randomizer) << std::endl;
+		console << *workspace.system->generate(
+			workspace.iterations,
+			workspace.randomizer) << std::endl;
 	else
 		console << Command::System::MSG_SYSTEM_INCOMPLETE << std::endl;
 }

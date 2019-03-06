@@ -13,8 +13,7 @@ Command::Render::Mode::Default::Default() :
 
 void Command::Render::Mode::Default::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	console.getMonitor()->enqueue(
 		std::make_shared<LRender::Renderer::Task::Mode>(LRender::Renderer::Mode::DEFAULT));
 }

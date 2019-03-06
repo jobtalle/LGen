@@ -11,9 +11,9 @@ CommandList::CommandList(const std::vector<std::shared_ptr<Command>> &commands) 
 
 }
 
-bool CommandList::apply(const Input &input, Console &console, Workspace &workspace) const {
+bool CommandList::apply(const Input &input, Console &console) const {
 	for(auto const command : commands) {
-		if(command->apply(input, console, workspace))
+		if(command->apply(input, console))
 			return true;
 	}
 

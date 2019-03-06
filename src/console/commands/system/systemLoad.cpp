@@ -14,8 +14,7 @@ Command::System::Load::Load() :
 
 void Command::System::Load::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	try {
 		const File::System file(arguments[ARG_FILE]);
 

@@ -12,7 +12,6 @@ Command::System::Delete::Delete() :
 
 void Command::System::Delete::application(
 	const std::vector<std::string> arguments,
-	Console &console,
-	Workspace &workspace) {
+	Console &console) {
 	workspace.system = nullptr;
 }

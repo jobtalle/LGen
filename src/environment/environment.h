@@ -11,13 +11,18 @@
 namespace LGen {
 	class Environment final {
 	public:
-		Environment(const std::shared_ptr<Terrain> terrain, const size_t maxIterations);
+		Environment();
+		void setTerrain(const std::shared_ptr<Terrain> terrain);
+		void setMaxIterations(const size_t maxIterations);
 		void addAgent(const Agent &agent);
 		void clearAgents();
 		std::shared_ptr<LRender::Scene> makeScene(std::mt19937 &randomizer) const;
+		bool isComplete() const;
 
 	private:
-		const std::shared_ptr<Terrain> terrain;
+		static const size_t DEFAULT_MAX_ITERATIONS = 4;
+
+		std::shared_ptr<Terrain> terrain;
 		std::vector<Agent> agents;
 		size_t maxIterations;
 	};

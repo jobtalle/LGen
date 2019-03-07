@@ -13,5 +13,5 @@ Command::Environment::Delete::Delete() :
 void Command::Environment::Delete::application(
 	const std::vector<std::string> arguments,
 	Console &console) {
-
+	workspace.environment = nullptr;
 }

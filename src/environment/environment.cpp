@@ -2,10 +2,17 @@
 
 using namespace LGen;
 
-Environment::Environment(const std::shared_ptr<Terrain> terrain, const size_t maxIterations) :
-	terrain(std::move(terrain)),
-	maxIterations(maxIterations) {
+Environment::Environment() :
+	maxIterations(DEFAULT_MAX_ITERATIONS) {
 
+}
+
+void Environment::setTerrain(const std::shared_ptr<Terrain> terrain) {
+	this->terrain = terrain;
+}
+
+void Environment::setMaxIterations(const size_t maxIterations) {
+	this->maxIterations = maxIterations;
 }
 
 void Environment::addAgent(const Agent &agent) {
@@ -38,4 +45,11 @@ std::shared_ptr<LRender::Scene> Environment::makeScene(std::mt19937 &randomizer)
 			agent.generate(maxIterations, randomizer)->getString()));
 
 	return scene;
+}
+
+bool Environment::isComplete() const {
+	if(!terrain)
+		return false;
+
+	return true;
 }

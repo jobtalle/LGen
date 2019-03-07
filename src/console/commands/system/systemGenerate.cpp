@@ -20,10 +20,7 @@ void Command::System::Generate::application(
 		return;
 	}
 
-	if(workspace.system->isComplete())
-		console << *workspace.system->generate(
-			workspace.iterations,
-			workspace.randomizer) << std::endl;
-	else
-		console << Command::System::MSG_SYSTEM_INCOMPLETE << std::endl;
+	console << *workspace.system->generate(
+		workspace.iterations,
+		workspace.randomizer) << std::endl;
 }

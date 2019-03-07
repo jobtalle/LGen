@@ -23,7 +23,9 @@ float TerrainDropwave::sample(const float x, const float y) const {
 	const float dy = y - getHeight() * 0.5f;
 	const float dxf = dx / (getWidth() * 0.5f);
 	const float dyf = dy / (getHeight() * 0.5f);
-	const float falloff = 1 - std::min(1.0f, std::sqrt(dxf * dxf + dyf * dyf));
+	const float falloff = (std::cos(std::min(
+		1.0f,
+		std::sqrt(dxf * dxf + dyf * dyf)) * Utils::Math::PI) + 1) * 0.5f;
 
 	return (1 + cos(sqrt(dx * dx + dy * dy) * Utils::Math::PI * 2 / period)) * 0.5f * falloff;
 }

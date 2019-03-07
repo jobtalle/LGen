@@ -21,4 +21,4 @@ namespace LGen {
 
 		const std::vector<std::shared_ptr<Command>> commands;
 	};
-};
+}

@@ -14,4 +14,4 @@ namespace LGen {
 		static const std::string KEYWORD;
 		static const std::string ALIAS;
 	};
-};
+}

@@ -26,4 +26,4 @@ namespace LGen {
 		std::vector<Agent> agents;
 		size_t maxIterations;
 	};
-};
+}

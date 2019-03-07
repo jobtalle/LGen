@@ -3,7 +3,7 @@
 #include "console/commands/system/system.h"
 
 namespace LGen {
-	class Command::System::Generate final : public Command {
+	class Command::System::Generate final : public Command{
 	public:
 		Generate();
 

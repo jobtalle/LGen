@@ -22,4 +22,4 @@ namespace LGen {
 		static void initialize();
 		static void free();
 	};
-};
+}

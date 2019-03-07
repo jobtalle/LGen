@@ -19,4 +19,4 @@ namespace LGen {
 			static const std::string KEY_RULE_PREFIX;
 		};
 	};
-};
+}

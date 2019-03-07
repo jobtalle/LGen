@@ -12,4 +12,4 @@ namespace LGen {
 	private:
 		static const std::string KEYWORD;
 	};
-};
+}

@@ -1,6 +1,7 @@
 #include "environment.h"
 #include "console/commands/environment/environmentNew.h"
 #include "console/commands/environment/environmentDelete.h"
+#include "console/commands/environment/environmentRender.h"
 
 using namespace LGen;
 
@@ -14,7 +15,8 @@ struct Command::Environment::Workspace Command::Environment::workspace = Command
 Command::Environment::Environment() :
 	Command({ KEYWORD, ALIAS }, {
 		std::make_shared<Command::Environment::New>(),
-		std::make_shared<Command::Environment::Delete>()
+		std::make_shared<Command::Environment::Delete>(),
+		std::make_shared<Command::Environment::Render>()
 	}) {
 
 }

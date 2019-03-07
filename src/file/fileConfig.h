@@ -25,4 +25,4 @@ namespace LGen {
 			void readLine(const std::string &line);
 		};
 	}
-};
+}

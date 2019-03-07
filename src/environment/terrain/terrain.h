@@ -15,4 +15,4 @@ namespace LGen {
 		const float width;
 		const float height;
 	};
-};
+}

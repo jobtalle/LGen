@@ -46,4 +46,4 @@ namespace LGen {
 
 		void showHelp(const Console &console) const;
 	};
-};
+}

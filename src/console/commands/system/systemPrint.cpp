@@ -25,5 +25,5 @@ void Command::System::Print::application(
 			console << PREFIX_RULE << rule << std::endl;
 	}
 	else
-		console << Command::System::MSG_NO_SYSTEM << std::endl;
+		console << MSG_NO_SYSTEM << std::endl;
 }

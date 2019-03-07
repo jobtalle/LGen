@@ -15,7 +15,7 @@ void Command::System::Iterations::application(
 	const std::vector<std::string> arguments,
 	Console &console) {
 	if(!workspace.system) {
-		console << Command::System::MSG_NO_SYSTEM << std::endl;
+		console << MSG_NO_SYSTEM << std::endl;
 
 		return;
 	}
@@ -24,6 +24,6 @@ void Command::System::Iterations::application(
 		workspace.iterations = std::stoi(arguments[ARG_ITERATIONS]);
 	}
 	catch(...) {
-		console << Command::MSG_INVALID_INPUT << std::endl;
+		console << MSG_INVALID_INPUT << std::endl;
 	}
 }

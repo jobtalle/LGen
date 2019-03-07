@@ -16,7 +16,7 @@ void Command::System::Save::application(
 	const std::vector<std::string> arguments,
 	Console &console) {
 	if(!workspace.system) {
-		console << Command::System::MSG_NO_SYSTEM << std::endl;
+		console << MSG_NO_SYSTEM << std::endl;
 
 		return;
 	}

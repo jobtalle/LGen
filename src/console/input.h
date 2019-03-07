@@ -19,4 +19,4 @@ namespace LGen {
 
 		static std::vector<std::string> splitInput(std::string input);
 	};
-};
+}

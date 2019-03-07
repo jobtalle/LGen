@@ -183,6 +183,8 @@
     <ClCompile Include="src\console\commands\environment\environment.cpp" />
     <ClCompile Include="src\console\commands\environment\environmentDelete.cpp" />
     <ClCompile Include="src\console\commands\environment\environmentNew.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentRender.cpp" />
+    <ClCompile Include="src\console\commands\environment\terrain\environmentTerrain.cpp" />
     <ClCompile Include="src\console\commands\exit.cpp" />
     <ClCompile Include="src\console\commands\help.cpp" />
     <ClCompile Include="src\console\commands\render\mode\renderMode.cpp" />
@@ -280,6 +282,8 @@
     <ClInclude Include="src\console\commands\environment\environment.h" />
     <ClInclude Include="src\console\commands\environment\environmentDelete.h" />
     <ClInclude Include="src\console\commands\environment\environmentNew.h" />
+    <ClInclude Include="src\console\commands\environment\environmentRender.h" />
+    <ClInclude Include="src\console\commands\environment\terrain\environmentTerrain.h" />
     <ClInclude Include="src\console\commands\exit.h" />
     <ClInclude Include="src\console\commands\help.h" />
     <ClInclude Include="src\console\commands\render\mode\renderMode.h" />

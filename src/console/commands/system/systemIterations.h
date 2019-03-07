@@ -18,4 +18,4 @@ namespace LGen {
 		static const std::string FILE_HELP;
 		static const unsigned char ARG_ITERATIONS = 0;
 	};
-};
+}

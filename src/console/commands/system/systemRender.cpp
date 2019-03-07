@@ -19,7 +19,7 @@ void Command::System::Render::application(
 	const std::vector<std::string> arguments,
 	Console &console) {
 	if(!workspace.system) {
-		console << Command::System::MSG_NO_SYSTEM << std::endl;
+		console << MSG_NO_SYSTEM << std::endl;
 
 		return;
 	}
@@ -27,7 +27,7 @@ void Command::System::Render::application(
 	LGen::Environment environment;
 
 	environment.setTerrain(std::make_shared<TerrainSines>(20, 20));
-	environment.setMaxIterations(7);
+	environment.setMaxIterations(workspace.iterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 	environment.addAgent(Agent(*workspace.system, 5, 5));
 	environment.addAgent(Agent(*workspace.system, 7, 7));

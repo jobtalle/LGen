@@ -36,6 +36,6 @@ Command::System::System() :
 }
 
 Command::System::Workspace::Workspace() :
-	iterations(4) {
+	iterations(ITERATIONS_DEFAULT) {
 
 }

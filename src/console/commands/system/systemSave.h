@@ -18,4 +18,4 @@ namespace LGen {
 		static const std::string MSG_ERROR;
 		static const unsigned char ARG_FILE = 0;
 	};
-};
+}

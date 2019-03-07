@@ -22,4 +22,4 @@ namespace LGen {
 			static const std::string WHITESPACES;
 		};
 	}
-};
+}

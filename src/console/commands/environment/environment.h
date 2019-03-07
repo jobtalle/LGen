@@ -4,6 +4,7 @@
 #include "environment/environment.h"
 
 #include <memory>
+#include <random>
 
 namespace LGen {
 	class Command::Environment final : public Command {
@@ -12,6 +13,7 @@ namespace LGen {
 
 		class New;
 		class Delete;
+		class Render;
 
 	private:
 		static const std::string KEYWORD;
@@ -22,7 +24,8 @@ namespace LGen {
 		static struct Workspace {
 			Workspace();
 
+			std::mt19937 randomizer;
 			std::unique_ptr<LGen::Environment> environment;
 		} workspace;
 	};
-};
+}

@@ -19,4 +19,4 @@ namespace LGen {
 		static const unsigned char ARG_LHS = 0;
 		static const unsigned char ARG_RHS = 1;
 	};
-};
+}

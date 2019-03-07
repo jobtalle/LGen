@@ -26,6 +26,7 @@ namespace LGen {
 		static const std::string KEYWORD;
 		static const std::string ALIAS;
 		static const std::string MSG_NO_SYSTEM;
+		static const size_t ITERATIONS_DEFAULT = 5;
 
 		static struct Workspace {
 			Workspace();
@@ -35,4 +36,4 @@ namespace LGen {
 			size_t iterations;
 		} workspace;
 	};
-};
+}

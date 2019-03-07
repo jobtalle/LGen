@@ -8,4 +8,4 @@ namespace LGen {
 		TerrainSines(const float width, const float height);
 		float sample(const float x, const float y) const override;
 	};
-};
+}

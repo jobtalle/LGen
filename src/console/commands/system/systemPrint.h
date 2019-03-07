@@ -20,4 +20,4 @@ namespace LGen {
 		static const std::string MSG_ITERATIONS;
 		static const std::string PREFIX_RULE;
 	};
-};
+}

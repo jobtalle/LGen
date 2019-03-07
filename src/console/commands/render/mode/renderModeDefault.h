@@ -17,4 +17,4 @@ namespace LGen {
 		static const std::string ALIAS;
 		static const std::string FILE_HELP;
 	};
-};
+}

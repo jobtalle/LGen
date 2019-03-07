@@ -1,11 +1,11 @@
 #pragma once
 
-#include "console/commands/system/system.h"
+#include "console/commands/environment/environment.h"
 
 namespace LGen {
-	class Command::System::Delete final : public Command {
+	class Command::Environment::Render final : public Command {
 	public:
-		Delete();
+		Render();
 
 	protected:
 		void application(

@@ -34,4 +34,4 @@ namespace LGen {
 		std::unique_ptr<LRender::Renderer> renderer;
 		std::atomic<bool> terminate;
 	};
-};
+}

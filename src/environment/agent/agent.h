@@ -19,4 +19,4 @@ namespace LGen {
 		const float x;
 		const float y;
 	};
-};
+}

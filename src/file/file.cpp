@@ -1,4 +1,4 @@
-#include "file/fileConfig.h"
+#include "file.h"
 #include "utils/stringUtils.h"
 
 #include <fstream>
@@ -6,14 +6,14 @@
 
 using namespace LGen::File;
 
-const std::string Config::CONNECTIVE = ":";
-const std::string Config::CONNECTIVE_FORMATTED = ": ";
+const std::string File::CONNECTIVE = ":";
+const std::string File::CONNECTIVE_FORMATTED = ": ";
 
-Config::Config() {
+File::File() {
 
 }
 
-Config::Config(const std::string &file) {
+File::File(const std::string &file) {
 	std::ifstream source;
 	std::string line;
 
@@ -25,7 +25,7 @@ Config::Config(const std::string &file) {
 	source.close();
 }
 
-void Config::save(const std::string &file) const {
+void File::save(const std::string &file) const {
 	std::ofstream dest;
 
 	dest.open(file, std::fstream::out);
@@ -36,18 +36,18 @@ void Config::save(const std::string &file) const {
 	dest.close();
 }
 
-void Config::set(const std::string &key, const std::string &value) {
+void File::set(const std::string &key, const std::string &value) {
 	pairs[key] = value;
 }
 
-const std::string Config::get(const std::string &key) const {
+const std::string File::get(const std::string &key) const {
 	if(pairs.find(key) == pairs.end())
 		return "";
 	
 	return pairs.at(key);
 }
 
-void Config::readLine(const std::string &line) {
+void File::readLine(const std::string &line) {
 	auto connective = line.find_first_of(CONNECTIVE);
 
 	if(connective == std::string::npos)

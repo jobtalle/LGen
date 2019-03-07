@@ -1,13 +1,13 @@
 #pragma once
 
 #include "lparse.h"
-#include "file/fileConfig.h"
+#include "file/file.h"
 
 #include <string>
 
 namespace LGen {
 	namespace File {
-		class System final : public Config {
+		class System final : public File {
 		public:
 			System(const std::string &file);
 			System(const LParse::System &system);

@@ -7,7 +7,7 @@ using namespace LGen::File;
 const std::string Environment::KEY_MAX_ITERATIONS = "max-iterations";
 
 Environment::Environment(const std::string &file) :
-	Config(file) {
+	File(file) {
 
 }
 

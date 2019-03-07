@@ -5,11 +5,11 @@
 
 namespace LGen {
 	namespace File {
-		class Config {
+		class File {
 		public:
-			Config();
-			Config(const std::string &file);
-			virtual ~Config() = default;
+			File();
+			File(const std::string &file);
+			virtual ~File() = default;
 			void save(const std::string &file) const;
 
 		protected:

@@ -11,7 +11,7 @@ const std::string System::KEY_RULE_COUNT = "rule-count";
 const std::string System::KEY_RULE_PREFIX = "rule-";
 
 System::System(const std::string &file) :
-	Config(file) {
+	File(file) {
 
 }
 

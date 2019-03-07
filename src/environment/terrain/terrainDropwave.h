@@ -3,9 +3,9 @@
 #include "terrain.h"
 
 namespace LGen {
-	class TerrainSines : public Terrain {
+	class TerrainDropwave : public Terrain {
 	public:
-		TerrainSines(const float width, const float height);
+		TerrainDropwave(const float width, const float height);
 		float sample(const float x, const float y) const override;
 	};
 }

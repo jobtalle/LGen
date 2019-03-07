@@ -2,6 +2,7 @@
 #include "console/commands/environment/environmentNew.h"
 #include "console/commands/environment/environmentDelete.h"
 #include "console/commands/environment/environmentRender.h"
+#include "console/commands/environment/terrain/environmentTerrain.h"
 
 using namespace LGen;
 
@@ -16,7 +17,8 @@ Command::Environment::Environment() :
 	Command({ KEYWORD, ALIAS }, {
 		std::make_shared<Command::Environment::New>(),
 		std::make_shared<Command::Environment::Delete>(),
-		std::make_shared<Command::Environment::Render>()
+		std::make_shared<Command::Environment::Render>(),
+		std::make_shared<Command::Environment::Terrain>()
 	}) {
 
 }

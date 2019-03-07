@@ -1,6 +1,6 @@
 #include "console/commands/system/systemRender.h"
 #include "environment/environment.h"
-#include "environment/terrain/terrainSines.h"
+#include "environment/terrain/terrainDropwave.h"
 #include "lrender.h"
 
 #include <sstream>
@@ -26,7 +26,7 @@ void Command::System::Render::application(
 	
 	LGen::Environment environment;
 
-	environment.setTerrain(std::make_shared<TerrainSines>(20, 20));
+	environment.setTerrain(std::make_shared<TerrainDropwave>(20, 20));
 	environment.setMaxIterations(workspace.iterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 	environment.addAgent(Agent(*workspace.system, 5, 5));

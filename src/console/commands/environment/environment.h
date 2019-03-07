@@ -14,6 +14,7 @@ namespace LGen {
 		class New;
 		class Delete;
 		class Render;
+		class Terrain;
 
 	private:
 		static const std::string KEYWORD;

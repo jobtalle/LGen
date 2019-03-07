@@ -1,15 +1,15 @@
-#include "terrainSines.h"
+#include "terrainDropwave.h"
 
 #include <math.h>
 
 using namespace LGen;
 
-TerrainSines::TerrainSines(const float width, const float height) :
+TerrainDropwave::TerrainDropwave(const float width, const float height) :
 	Terrain(width, height) {
 
 }
 
-float TerrainSines::sample(const float x, const float y) const {
+float TerrainDropwave::sample(const float x, const float y) const {
 	const float dx = x - getWidth() * 0.5f;
 	const float dy = y - getHeight() * 0.5f;
 

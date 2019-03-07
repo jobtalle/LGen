@@ -19,6 +19,10 @@ void Environment::addAgent(const Agent &agent) {
 	agents.push_back(agent);
 }
 
+size_t Environment::getMaxIterations() const {
+	return maxIterations;
+}
+
 void Environment::clearAgents() {
 	agents.clear();
 }

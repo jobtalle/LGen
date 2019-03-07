@@ -182,8 +182,10 @@
     <ClCompile Include="src\console\commandList.cpp" />
     <ClCompile Include="src\console\commands\environment\environment.cpp" />
     <ClCompile Include="src\console\commands\environment\environmentDelete.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentLoad.cpp" />
     <ClCompile Include="src\console\commands\environment\environmentNew.cpp" />
     <ClCompile Include="src\console\commands\environment\environmentRender.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentSave.cpp" />
     <ClCompile Include="src\console\commands\environment\terrain\environmentTerrain.cpp" />
     <ClCompile Include="src\console\commands\environment\terrain\environmentTerrainDropwave.cpp" />
     <ClCompile Include="src\console\commands\exit.cpp" />
@@ -212,6 +214,7 @@
     <ClCompile Include="src\environment\terrain\terrain.cpp" />
     <ClCompile Include="src\environment\terrain\terrainDropwave.cpp" />
     <ClCompile Include="src\file\fileConfig.cpp" />
+    <ClCompile Include="src\file\fileEnvironment.cpp" />
     <ClCompile Include="src\file\fileSystem.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\monitor\glfwLoader.cpp" />
@@ -282,8 +285,10 @@
     <ClInclude Include="src\console\commandList.h" />
     <ClInclude Include="src\console\commands\environment\environment.h" />
     <ClInclude Include="src\console\commands\environment\environmentDelete.h" />
+    <ClInclude Include="src\console\commands\environment\environmentLoad.h" />
     <ClInclude Include="src\console\commands\environment\environmentNew.h" />
     <ClInclude Include="src\console\commands\environment\environmentRender.h" />
+    <ClInclude Include="src\console\commands\environment\environmentSave.h" />
     <ClInclude Include="src\console\commands\environment\terrain\environmentTerrain.h" />
     <ClInclude Include="src\console\commands\environment\terrain\environmentTerrainDropwave.h" />
     <ClInclude Include="src\console\commands\exit.h" />
@@ -312,6 +317,7 @@
     <ClInclude Include="src\environment\terrain\terrain.h" />
     <ClInclude Include="src\environment\terrain\terrainDropwave.h" />
     <ClInclude Include="src\file\fileConfig.h" />
+    <ClInclude Include="src\file\fileEnvironment.h" />
     <ClInclude Include="src\file\fileSystem.h" />
     <ClInclude Include="src\monitor\glfwLoader.h" />
     <ClInclude Include="src\monitor\monitor.h" />

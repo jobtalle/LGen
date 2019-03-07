@@ -26,7 +26,7 @@ void Command::System::Render::application(
 	
 	LGen::Environment environment;
 
-	environment.setTerrain(std::make_shared<TerrainDropwave>(20, 20));
+	environment.setTerrain(std::make_shared<TerrainDropwave>(20, 20, 1));
 	environment.setMaxIterations(workspace.iterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 	environment.addAgent(Agent(*workspace.system, 5, 5));

@@ -7,7 +7,7 @@ const std::string Command::Environment::Terrain::Dropwave::KEYWORD = "dropwave";
 const std::string Command::Environment::Terrain::Dropwave::FILE_HELP = "text/helpEnvironmentTerrainDropwave.txt";
 
 Command::Environment::Terrain::Dropwave::Dropwave() :
-	Command({ KEYWORD }, FILE_HELP, 2) {
+	Command({ KEYWORD }, FILE_HELP, 3) {
 
 }
 
@@ -23,8 +23,9 @@ void Command::Environment::Terrain::Dropwave::application(
 	try {
 		auto width = std::stof(arguments[ARG_WIDTH]);
 		auto height = std::stof(arguments[ARG_HEIGHT]);
+		auto period = std::stof(arguments[ARG_PERIOD]);
 
-		workspace.environment->setTerrain(std::make_shared<TerrainDropwave>(width, height));
+		workspace.environment->setTerrain(std::make_shared<TerrainDropwave>(width, height, period));
 	}
 	catch(...) {
 		console << MSG_INVALID_INPUT << std::endl;

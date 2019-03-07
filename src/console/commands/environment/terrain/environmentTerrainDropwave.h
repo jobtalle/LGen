@@ -17,5 +17,6 @@ namespace LGen {
 		static const std::string FILE_HELP;
 		static const unsigned char ARG_WIDTH = 0;
 		static const unsigned char ARG_HEIGHT = 1;
+		static const unsigned char ARG_PERIOD = 2;
 	};
 }

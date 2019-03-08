@@ -15,10 +15,16 @@ namespace LGen {
 		void save(const std::string &file) const;
 		void printValues(std::ostream &stream, const std::string &indent = "") const;
 		void printFiles(std::ostream &stream, const std::string &indent = "") const;
+
 		void set(const std::string &key, const std::string &value);
+		void set(const std::string &key, const float value);
+		void set(const std::string &key, const int value);
 		void set(const std::string &key, const File &file);
-		void get(const std::string &key, std::string &value) const;
-		void get(const std::string &key, File &file) const;
+
+		std::string getString(const std::string &key) const;
+		float getFloat(const std::string &key) const;
+		int getInt(const std::string &key) const;
+		File getFile(const std::string &key) const;
 
 	private:
 		static const std::string CONNECTIVE;

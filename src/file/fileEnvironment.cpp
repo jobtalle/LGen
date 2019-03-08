@@ -13,7 +13,7 @@ const std::string FileEnvironment::KEY_TERRAIN = "terrain";
 File FileEnvironment::serialize(const Environment &environment) {
 	File file;
 
-	file.set(KEY_MAX_ITERATIONS, std::to_string(environment.getMaxIterations()));
+	file.set(KEY_MAX_ITERATIONS, static_cast<int>(environment.getMaxIterations()));
 	file.set(KEY_TERRAIN, FileTerrain::serialize(*std::dynamic_pointer_cast<TerrainDropwave>(environment.getTerrain())));
 
 	return file;
@@ -22,14 +22,8 @@ File FileEnvironment::serialize(const Environment &environment) {
 Environment FileEnvironment::deserialize(const File &file) {
 	Environment environment;
 
-	std::string maxIterations;
-	File terrainFile;
-
-	file.get(KEY_MAX_ITERATIONS, maxIterations);
-	file.get(KEY_TERRAIN, terrainFile);
-
-	environment.setMaxIterations(std::stoi(maxIterations));
-	environment.setTerrain(FileTerrain::deserialize(terrainFile));
+	environment.setMaxIterations(file.getInt(KEY_MAX_ITERATIONS));
+	environment.setTerrain(FileTerrain::deserialize(file.getFile(KEY_TERRAIN)));
 
 	return environment;
 }

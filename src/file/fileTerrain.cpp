@@ -20,9 +20,7 @@ File FileTerrain::serialize(const TerrainDropwave& terrain) {
 }
 
 std::shared_ptr<Terrain> FileTerrain::deserialize(const File& file) {
-	std::string type;
-	
-	file.get(KEY_TYPE, type);
+	std::string type = file.getString(KEY_TYPE);
 
 	if(type == TYPE_DROPWAVE)
 		return deserializeDropwave(file);
@@ -31,25 +29,17 @@ std::shared_ptr<Terrain> FileTerrain::deserialize(const File& file) {
 }
 
 void FileTerrain::serializeDropwave(const TerrainDropwave& terrain, File& file) {
-	file.set(KEY_WIDTH, std::to_string(terrain.getWidth()));
-	file.set(KEY_HEIGHT, std::to_string(terrain.getHeight()));
-	file.set(KEY_DROPWAVE_PERIOD, std::to_string(terrain.getPeriod()));
+	file.set(KEY_WIDTH, terrain.getWidth());
+	file.set(KEY_HEIGHT, terrain.getHeight());
+	file.set(KEY_DROPWAVE_PERIOD, terrain.getPeriod());
 }
 
 
 std::shared_ptr<TerrainDropwave> FileTerrain::deserializeDropwave(const File& file) {
-	std::string width;
-	std::string height;
-	std::string period;
-
-	file.get(KEY_WIDTH, width);
-	file.get(KEY_HEIGHT, height);
-	file.get(KEY_DROPWAVE_PERIOD, period);
-
 	std::shared_ptr<TerrainDropwave> terrain = std::make_shared<TerrainDropwave>(
-		std::stof(width),
-		std::stof(height),
-		std::stof(period));
+		file.getFloat(KEY_WIDTH),
+		file.getFloat(KEY_HEIGHT),
+		file.getFloat(KEY_DROPWAVE_PERIOD));
 
 	return terrain;
 }

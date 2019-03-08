@@ -11,6 +11,8 @@ namespace LGen {
 			const float period);
 		float sample(const float x, const float y) const override;
 		float getPeriod() const;
+
+		static const std::string TYPE;
 		
 	private:
 		const float period;

@@ -6,13 +6,12 @@ const std::string FileTerrain::KEY_TYPE = "type";
 const std::string FileTerrain::KEY_WIDTH = "width";
 const std::string FileTerrain::KEY_HEIGHT = "height";
 
-const std::string FileTerrain::TYPE_DROPWAVE = "dropwave";
 const std::string FileTerrain::KEY_DROPWAVE_PERIOD = "period";
 
 File FileTerrain::serialize(const TerrainDropwave& terrain) {
 	File file;
 
-	file.set(KEY_TYPE, TYPE_DROPWAVE);
+	file.set(KEY_TYPE, TerrainDropwave::TYPE);
 
 	serializeDropwave(terrain, file);
 
@@ -22,7 +21,7 @@ File FileTerrain::serialize(const TerrainDropwave& terrain) {
 std::shared_ptr<Terrain> FileTerrain::deserialize(const File& file) {
 	std::string type = file.getString(KEY_TYPE);
 
-	if(type == TYPE_DROPWAVE)
+	if(type == TerrainDropwave::TYPE)
 		return deserializeDropwave(file);
 
 	return nullptr;

@@ -14,7 +14,9 @@ File FileEnvironment::serialize(const Environment &environment) {
 	File file;
 
 	file.set(KEY_MAX_ITERATIONS, static_cast<int>(environment.getMaxIterations()));
-	file.set(KEY_TERRAIN, FileTerrain::serialize(*std::dynamic_pointer_cast<TerrainDropwave>(environment.getTerrain())));
+
+	if(environment.getTerrain()->getType() == TerrainDropwave::TYPE)
+		file.set(KEY_TERRAIN, FileTerrain::serialize(*std::dynamic_pointer_cast<TerrainDropwave>(environment.getTerrain())));
 
 	return file;
 }

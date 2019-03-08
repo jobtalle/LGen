@@ -2,10 +2,15 @@
 
 using namespace LGen;
 
-Terrain::Terrain(const float width, const float height) :
+Terrain::Terrain(const std::string &type, const float width, const float height) :
+	type(type),
 	width(width),
 	height(height) {
 
+}
+
+const std::string& Terrain::getType() const {
+	return type;
 }
 
 float Terrain::getWidth() const {

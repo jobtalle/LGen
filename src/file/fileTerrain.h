@@ -16,7 +16,6 @@ namespace LGen {
 		static const std::string KEY_WIDTH;
 		static const std::string KEY_HEIGHT;
 
-		static const std::string TYPE_DROPWAVE;
 		static const std::string KEY_DROPWAVE_PERIOD;
 
 		static void serializeDropwave(const TerrainDropwave &terrain, File &file);

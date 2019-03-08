@@ -5,11 +5,13 @@
 
 using namespace LGen;
 
+const std::string TerrainDropwave::TYPE = "dropwave";
+
 TerrainDropwave::TerrainDropwave(
 	const float width,
 	const float height,
 	const float period) :
-	Terrain(width, height),
+	Terrain(TYPE, width, height),
 	period(period) {
 
 }

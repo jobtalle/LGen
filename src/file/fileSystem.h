@@ -13,7 +13,6 @@ namespace LGen {
 
 	private:
 		static const std::string KEY_AXIOM;
-		static const std::string KEY_RULE_COUNT;
 		static const std::string KEY_RULE_PREFIX;
 	};
 }

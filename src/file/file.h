@@ -11,10 +11,11 @@ namespace LGen {
 		File() = default;
 		File(const std::string &file);
 		File(std::vector<std::string>::const_iterator &line);
-		virtual ~File() = default;
 		void save(const std::string &file) const;
 		void printValues(std::ostream &stream, const std::string &indent = "") const;
 		void printFiles(std::ostream &stream, const std::string &indent = "") const;
+
+		bool keyExists(const std::string &key) const;
 
 		void set(const std::string &key, const std::string &value);
 		void set(const std::string &key, const float value);

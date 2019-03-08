@@ -60,6 +60,10 @@ void File::printFiles(std::ostream &stream, const std::string &indent) const {
 	}
 }
 
+bool File::keyExists(const std::string& key) const {
+	return values.find(key) != values.end() || files.find(key) != files.end();
+}
+
 void File::set(const std::string &key, const std::string &value) {
 	values[key] = value;
 }

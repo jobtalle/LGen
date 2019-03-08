@@ -7,7 +7,6 @@
 using namespace LGen;
 
 const std::string FileSystem::KEY_AXIOM = "axiom";
-const std::string FileSystem::KEY_RULE_COUNT = "rule-count";
 const std::string FileSystem::KEY_RULE_PREFIX = "rule-";
 
 File FileSystem::serialize(const LParse::System& system) {
@@ -17,7 +16,6 @@ File FileSystem::serialize(const LParse::System& system) {
 	axiom << system.getAxiom();
 
 	file.set(KEY_AXIOM, axiom.str());
-	file.set(KEY_RULE_COUNT, static_cast<int>(system.getRules().size()));
 
 	for(size_t i = 0; i < system.getRules().size(); ++i) {
 		std::stringstream rule;
@@ -34,10 +32,11 @@ LParse::System FileSystem::deserialize(const File& file) {
 	LParse::System system;
 
 	std::vector<LParse::Rule> rules;
-	const size_t rule_count = file.getInt(KEY_RULE_COUNT);
+	std::string key;
+	size_t i = 0;
 
-	for(size_t i = 0; i < rule_count; ++i) {
-		std::string rule = file.getString(KEY_RULE_PREFIX + std::to_string(i));
+	while(key = KEY_RULE_PREFIX + std::to_string(i++), file.keyExists(key)) {
+		std::string rule = file.getString(key);
 		std::string lhs;
 		std::string rhs;
 

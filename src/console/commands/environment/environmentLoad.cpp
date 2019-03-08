@@ -1,5 +1,6 @@
 #include "environmentLoad.h"
 #include "file/fileEnvironment.h"
+#include <stdlib.h>
 
 using namespace LGen;
 
@@ -16,7 +17,7 @@ void Command::Environment::Load::application(
 	const std::vector<std::string> arguments,
 	Console &console) {
 	try {
-		workspace.environment = std::make_unique<LGen::Environment>(FileEnvironment::deserialize(File(arguments[ARG_FILE])));
+		File(arguments[ARG_FILE]) >> workspace.environment;
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

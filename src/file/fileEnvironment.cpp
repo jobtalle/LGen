@@ -3,8 +3,6 @@
 
 #include "environment/terrain/terrainDropwave.h"
 
-#include <sstream>
-
 using namespace LGen;
 
 const std::string FileEnvironment::KEY_MAX_ITERATIONS = "max-iterations";
@@ -28,4 +26,16 @@ Environment FileEnvironment::deserialize(const File &file) {
 	environment.setTerrain(FileTerrain::deserialize(file.getFile(KEY_TERRAIN)));
 
 	return environment;
+}
+
+File &LGen::operator<<(File& file, const Environment &environment) {
+	file = FileEnvironment::serialize(environment);
+
+	return file;
+}
+
+const File &LGen::operator>>(const File &file, std::unique_ptr<Environment> &environment) {
+	environment = std::make_unique<LGen::Environment>(FileEnvironment::deserialize(file));
+
+	return file;
 }

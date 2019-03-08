@@ -2,6 +2,7 @@
 
 #include "file/file.h"
 #include "environment/environment.h"
+#include "lparse.h"
 
 namespace LGen {
 	class FileEnvironment final {
@@ -13,4 +14,7 @@ namespace LGen {
 		static const std::string KEY_MAX_ITERATIONS;
 		static const std::string KEY_TERRAIN;
 	};
+
+	File &operator<<(File &file, const Environment &environment);
+	const File &operator>>(const File &file, std::unique_ptr<Environment> &environment);
 }

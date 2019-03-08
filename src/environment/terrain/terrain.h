@@ -4,6 +4,7 @@ namespace LGen {
 	class Terrain {
 	public:
 		Terrain(const float width, const float height);
+		virtual ~Terrain() = default;
 		float getWidth() const;
 		float getHeight() const;
 		float get(const float x, const float y) const;

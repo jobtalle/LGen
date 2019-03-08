@@ -49,8 +49,11 @@ void File::printValues(std::ostream &stream) const {
 }
 
 void File::printFiles(std::ostream &stream) const {
-	for(const auto &pair : files)
-		stream << pair.first << CONNECTIVE_FORMATTED << pair.second << std::endl;
+	for(const auto &pair : files) {
+		stream << pair.first << CONNECTIVE_FORMATTED << BLOCK_START << std::endl;
+		stream << pair.second;
+		stream << BLOCK_CLOSE << std::endl;
+	}
 }
 
 void File::set(const std::string &key, const std::string &value) {
@@ -77,9 +80,7 @@ void File::read(std::vector<std::string>::const_iterator &line) {
 	if(value == BLOCK_START)
 		set(key, File(++line));
 	else
-		set(key, value);
-
-	++line;
+		++line, set(key, value);
 }
 
 std::ostream &operator<<(std::ostream &stream, const File &file) {

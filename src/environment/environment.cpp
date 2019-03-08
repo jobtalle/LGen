@@ -23,6 +23,10 @@ size_t Environment::getMaxIterations() const {
 	return maxIterations;
 }
 
+std::shared_ptr<Terrain> Environment::getTerrain() const {
+	return terrain;
+}
+
 void Environment::clearAgents() {
 	agents.clear();
 }

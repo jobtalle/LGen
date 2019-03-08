@@ -1,7 +1,6 @@
 #include "terrainDropwave.h"
 #include "utils/mathUtils.h"
 
-#include <math.h>
 #include <algorithm>
 
 using namespace LGen;
@@ -28,4 +27,8 @@ float TerrainDropwave::sample(const float x, const float y) const {
 		std::sqrt(dxf * dxf + dyf * dyf)) * Utils::Math::PI) + 1) * 0.5f;
 
 	return (1 + cos(sqrt(dx * dx + dy * dy) * Utils::Math::PI * 2 / period)) * 0.5f * falloff;
+}
+
+float TerrainDropwave::getPeriod() const {
+	return period;
 }

@@ -11,5 +11,6 @@ namespace LGen {
 
 	private:
 		static const std::string KEY_MAX_ITERATIONS;
+		static const std::string KEY_TERRAIN;
 	};
 }

@@ -16,6 +16,7 @@ namespace LGen {
 		void setMaxIterations(const size_t maxIterations);
 		void addAgent(const Agent &agent);
 		size_t getMaxIterations() const;
+		std::shared_ptr<Terrain> getTerrain() const;
 		void clearAgents();
 		std::shared_ptr<LRender::Scene> makeScene(std::mt19937 &randomizer) const;
 		bool isComplete() const;

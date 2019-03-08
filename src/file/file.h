@@ -15,7 +15,6 @@ namespace LGen {
 		void save(const std::string &file) const;
 		void printValues(std::ostream &stream) const;
 		void printFiles(std::ostream &stream) const;
-
 		void set(const std::string &key, const std::string &value);
 		void set(const std::string &key, const File &file);
 		void get(const std::string &key, std::string &value) const;

@@ -9,6 +9,7 @@ const std::string File::CONNECTIVE = ":";
 const std::string File::CONNECTIVE_FORMATTED = ": ";
 const std::string File::BLOCK_START = "{";
 const std::string File::BLOCK_CLOSE = "}";
+const std::string File::INDENT = "  ";
 
 File::File(const std::string &file) {
 	std::ifstream source;
@@ -43,16 +44,19 @@ void File::save(const std::string &file) const {
 	dest.close();
 }
 
-void File::printValues(std::ostream &stream) const {
+void File::printValues(std::ostream &stream, const std::string &indent) const {
 	for(const auto &pair : values)
-		stream << pair.first << CONNECTIVE_FORMATTED << pair.second << std::endl;
+		stream << indent << pair.first << CONNECTIVE_FORMATTED << pair.second << std::endl;
 }
 
-void File::printFiles(std::ostream &stream) const {
+void File::printFiles(std::ostream &stream, const std::string &indent) const {
 	for(const auto &pair : files) {
-		stream << pair.first << CONNECTIVE_FORMATTED << BLOCK_START << std::endl;
-		stream << pair.second;
-		stream << BLOCK_CLOSE << std::endl;
+		stream << indent << pair.first << CONNECTIVE_FORMATTED << BLOCK_START << std::endl;
+
+		pair.second.printValues(stream, indent + INDENT);
+		pair.second.printFiles(stream, indent + INDENT);
+
+		stream << indent << BLOCK_CLOSE << std::endl;
 	}
 }
 

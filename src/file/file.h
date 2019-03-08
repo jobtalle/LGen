@@ -13,8 +13,8 @@ namespace LGen {
 		File(std::vector<std::string>::const_iterator &line);
 		virtual ~File() = default;
 		void save(const std::string &file) const;
-		void printValues(std::ostream &stream) const;
-		void printFiles(std::ostream &stream) const;
+		void printValues(std::ostream &stream, const std::string &indent = "") const;
+		void printFiles(std::ostream &stream, const std::string &indent = "") const;
 		void set(const std::string &key, const std::string &value);
 		void set(const std::string &key, const File &file);
 		void get(const std::string &key, std::string &value) const;
@@ -25,6 +25,7 @@ namespace LGen {
 		static const std::string CONNECTIVE_FORMATTED;
 		static const std::string BLOCK_START;
 		static const std::string BLOCK_CLOSE;
+		static const std::string INDENT;
 
 		std::map<std::string, std::string> values;
 		std::map<std::string, File> files;

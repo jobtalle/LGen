@@ -16,9 +16,7 @@ void Command::Environment::Load::application(
 	const std::vector<std::string> arguments,
 	Console &console) {
 	try {
-		const File::Environment file(arguments[ARG_FILE]);
-
-		workspace.environment = std::make_unique<LGen::Environment>(file.getEnvironment());
+		workspace.environment = std::make_unique<LGen::Environment>(FileEnvironment::deserialize(File(arguments[ARG_FILE])));
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

@@ -26,7 +26,7 @@ void Command::System::Render::application(
 	
 	LGen::Environment environment;
 
-	environment.setTerrain(std::make_shared<TerrainDropwave>(20, 20, 1));
+	environment.setTerrain(std::make_shared<TerrainDropwave>(20.0f, 20.0f, 1.0f));
 	environment.setMaxIterations(workspace.iterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 	environment.addAgent(Agent(*workspace.system, 5, 5));
@@ -37,7 +37,7 @@ void Command::System::Render::application(
 	console.getMonitor()->makeVisible();
 	console.getMonitor()->enqueue(task);
 
-	auto report = task->getReport();
+	const auto report = task->getReport();
 
 	std::cout << "Size: " << report->getAgents()[0].getLimits().getMaximum() - report->getAgents()[0].getLimits().getMinimum() << std::endl;
 	std::cout << "Area: " << report->getAgents()[0].getArea().getArea() << std::endl;

@@ -4,57 +4,57 @@
 #include <sstream>
 #include <vector>
 
-using namespace LGen::File;
+using namespace LGen;
 
-const std::string System::KEY_AXIOM = "axiom";
-const std::string System::KEY_RULE_COUNT = "rule-count";
-const std::string System::KEY_RULE_PREFIX = "rule-";
+const std::string FileSystem::KEY_AXIOM = "axiom";
+const std::string FileSystem::KEY_RULE_COUNT = "rule-count";
+const std::string FileSystem::KEY_RULE_PREFIX = "rule-";
 
-System::System(const std::string &file) :
-	File(file) {
-
-}
-
-System::System(const LParse::System &system) {
+File FileSystem::serialize(const LParse::System& system) {
 	std::stringstream axiom;
-	std::stringstream ruleCount;
+	File file;
 
 	axiom << system.getAxiom();
-	ruleCount << system.getRules().size();
 
-	set(KEY_AXIOM, axiom.str());
-	set(KEY_RULE_COUNT, ruleCount.str());
+	file.set(KEY_AXIOM, axiom.str());
+	file.set(KEY_RULE_COUNT, std::to_string(system.getRules().size()));
 
 	for(size_t i = 0; i < system.getRules().size(); ++i) {
 		std::stringstream rule;
 
 		rule << system.getRules()[i];
 
-		set(KEY_RULE_PREFIX + std::to_string(i), rule.str());
+		file.set(KEY_RULE_PREFIX + std::to_string(i), rule.str());
 	}
+
+	return file;
 }
 
-LParse::System System::getSystem() const {
+LParse::System FileSystem::deserialize(const File& file) {
 	LParse::System system;
+
+	std::string axiom;
+	std::string ruleCount;
 	std::vector<LParse::Rule> rules;
-	const size_t ruleCount = std::stoi(get(KEY_RULE_COUNT));
 
-	system.setAxiom(get(KEY_AXIOM));
+	file.get(KEY_AXIOM, axiom);
+	file.get(KEY_RULE_COUNT, ruleCount);
 
-	for(size_t i = 0; i < ruleCount; ++i) {
-		std::string lhs, rhs;
+	const size_t rule_count = std::stoi(ruleCount);
 
-		Utils::String::split(
-			get(KEY_RULE_PREFIX + std::to_string(i)),
-			LParse::Rule::CONNECTIVE,
-			lhs,
-			rhs);
+	for(size_t i = 0; i < rule_count; ++i) {
+		std::string rule;
+		std::string lhs;
+		std::string rhs;
 
-		rules.push_back(LParse::Rule(
-			Utils::String::trim(lhs),
-			Utils::String::trim(rhs)));
+		file.get(KEY_RULE_PREFIX + std::to_string(i), rule);
+
+		Utils::String::split(rule, LParse::Rule::CONNECTIVE, lhs, rhs);
+
+		rules.push_back(LParse::Rule(lhs, rhs));
 	}
 
+	system.setAxiom(axiom);
 	system.setRules(rules);
 
 	return system;

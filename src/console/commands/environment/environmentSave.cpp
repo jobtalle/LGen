@@ -22,9 +22,7 @@ void Command::Environment::Save::application(
 	}
 
 	try {
-		const File::Environment file(*workspace.environment);
-
-		file.save(arguments[ARG_FILE]);
+		FileEnvironment::serialize(*workspace.environment).save(arguments[ARG_FILE]);
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

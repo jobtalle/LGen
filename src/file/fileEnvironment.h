@@ -4,15 +4,12 @@
 #include "environment/environment.h"
 
 namespace LGen {
-	namespace File {
-		class Environment final : public File {
-		public:
-			Environment(const std::string &file);
-			Environment(const LGen::Environment &environment);
-			LGen::Environment getEnvironment() const;
+	class FileEnvironment final {
+	public:
+		static File serialize(const Environment &environment);
+		static Environment deserialize(const File &file);
 
-		private:
-			static const std::string KEY_MAX_ITERATIONS;
-		};
-	}
+	private:
+		static const std::string KEY_MAX_ITERATIONS;
+	};
 }

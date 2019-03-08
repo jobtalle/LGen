@@ -12,7 +12,7 @@ namespace LGen {
 	class Environment final {
 	public:
 		Environment();
-		void setTerrain(const std::shared_ptr<Terrain> terrain);
+		void setTerrain(const std::shared_ptr<Terrain> &terrain);
 		void setMaxIterations(const size_t maxIterations);
 		void addAgent(const Agent &agent);
 		size_t getMaxIterations() const;

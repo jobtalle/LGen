@@ -22,9 +22,7 @@ void Command::System::Save::application(
 	}
 
 	try {
-		const File::System file(*workspace.system);
-
-		file.save(arguments[ARG_FILE]);
+		FileSystem::serialize(*workspace.system).save(arguments[ARG_FILE]);
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

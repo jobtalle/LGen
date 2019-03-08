@@ -7,7 +7,7 @@ Environment::Environment() :
 
 }
 
-void Environment::setTerrain(const std::shared_ptr<Terrain> terrain) {
+void Environment::setTerrain(const std::shared_ptr<Terrain> &terrain) {
 	this->terrain = terrain;
 }
 

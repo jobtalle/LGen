@@ -2,27 +2,36 @@
 
 #include <map>
 #include <string>
+#include <vector>
+#include <ostream>
 
 namespace LGen {
-	namespace File {
-		class File {
-		public:
-			File();
-			File(const std::string &file);
-			virtual ~File() = default;
-			void save(const std::string &file) const;
+	class File final {
+	public:
+		File() = default;
+		File(const std::string &file);
+		File(std::vector<std::string>::const_iterator &line);
+		virtual ~File() = default;
+		void save(const std::string &file) const;
+		void printValues(std::ostream &stream) const;
+		void printFiles(std::ostream &stream) const;
 
-		protected:
-			void set(const std::string &key, const std::string &value);
-			const std::string get(const std::string &key) const;
+		void set(const std::string &key, const std::string &value);
+		void set(const std::string &key, const File &file);
+		void get(const std::string &key, std::string &value) const;
+		void get(const std::string &key, File &file) const;
 
-		private:
-			static const std::string CONNECTIVE;
-			static const std::string CONNECTIVE_FORMATTED;
+	private:
+		static const std::string CONNECTIVE;
+		static const std::string CONNECTIVE_FORMATTED;
+		static const std::string BLOCK_START;
+		static const std::string BLOCK_CLOSE;
 
-			std::map<std::string, std::string> pairs;
+		std::map<std::string, std::string> values;
+		std::map<std::string, File> files;
 
-			void readLine(const std::string &line);
-		};
-	}
+		void read(std::vector<std::string>::const_iterator &line);
+	};
 }
+
+std::ostream &operator<<(std::ostream &stream, const LGen::File &file);

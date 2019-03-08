@@ -2,27 +2,26 @@
 
 #include <sstream>
 
-using namespace LGen::File;
+using namespace LGen;
 
-const std::string Environment::KEY_MAX_ITERATIONS = "max-iterations";
+const std::string FileEnvironment::KEY_MAX_ITERATIONS = "max-iterations";
 
-Environment::Environment(const std::string &file) :
-	File(file) {
+File FileEnvironment::serialize(const Environment &environment) {
+	File file;
 
+	file.set(KEY_MAX_ITERATIONS, std::to_string(environment.getMaxIterations()));
+
+	return file;
 }
 
-Environment::Environment(const LGen::Environment &environment) {
-	std::stringstream maxIterations;
+Environment FileEnvironment::deserialize(const File &file) {
+	Environment environment;
 
-	maxIterations << environment.getMaxIterations();
+	std::string maxIterations;
 
-	set(KEY_MAX_ITERATIONS, maxIterations.str());
-}
+	file.get(KEY_MAX_ITERATIONS, maxIterations);
 
-LGen::Environment Environment::getEnvironment() const {
-	LGen::Environment environment;
-
-	environment.setMaxIterations(std::stoi(get(KEY_MAX_ITERATIONS)));
+	environment.setMaxIterations(std::stoi(maxIterations));
 
 	return environment;
 }

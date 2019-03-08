@@ -6,7 +6,6 @@
 #include <thread>
 #include <memory>
 #include <ostream>
-#include <sstream>
 #include <string>
 
 namespace LGen {
@@ -16,7 +15,7 @@ namespace LGen {
 	public:
 		Console(Monitor *const monitor);
 		~Console();
-		Monitor *getMonitor();
+		Monitor *getMonitor() const;
 		void stop();
 		void dumpFile(const std::string file, const bool prefix = true) const;
 		const CommandList &getCommandList() const;
@@ -37,7 +36,7 @@ namespace LGen {
 		bool terminate = false;
 		std::string line;
 
-		void log(const std::string message, const bool prefix = true) const;
+		static void log(const std::string& message, const bool prefix = true);
 		void loop();
 	};
 }

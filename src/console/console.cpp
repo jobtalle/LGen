@@ -35,7 +35,7 @@ Console::~Console() {
 	thread->join();
 }
 
-Monitor *Console::getMonitor() {
+Monitor *Console::getMonitor() const {
 	return monitor;
 }
 
@@ -74,7 +74,7 @@ int Console::sync() {
 	return 0;
 }
 
-void Console::log(const std::string message, const bool prefix) const {
+void Console::log(const std::string& message, const bool prefix) {
 	const size_t width = prefix ? LINE_WIDTH - PREFIX_LOG.size() : LINE_WIDTH;
 	std::string remainder = message;
 	std::vector<std::string> lines;

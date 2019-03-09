@@ -2,11 +2,11 @@
 
 using namespace LGen;
 
-const std::string KEY_TYPE = "type";
-const std::string KEY_WIDTH = "width";
-const std::string KEY_HEIGHT = "height";
+static const std::string KEY_TYPE = "type";
+static const std::string KEY_WIDTH = "width";
+static const std::string KEY_HEIGHT = "height";
 
-const std::string KEY_DROPWAVE_PERIOD = "period";
+static const std::string KEY_DROPWAVE_PERIOD = "period";
 
 void serializeDropwave(const TerrainDropwave& terrain, File& file) {
 	file.set(KEY_WIDTH, terrain.getWidth());

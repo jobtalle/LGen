@@ -6,8 +6,8 @@
 
 using namespace LGen;
 
-const std::string KEY_AXIOM = "axiom";
-const std::string KEY_RULE_PREFIX = "rule-";
+static const std::string KEY_AXIOM = "axiom";
+static const std::string KEY_RULE_PREFIX = "rule-";
 
 File &LGen::operator<<(File &file, const std::shared_ptr<LParse::System> &system) {
 	file.set(KEY_AXIOM, system->getAxiom().getString());

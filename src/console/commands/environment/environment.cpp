@@ -13,8 +13,6 @@ const std::string Command::Environment::ALIAS = "env";
 const std::string Command::Environment::MSG_NO_ENVIRONMENT = "No environment is loaded.";
 const std::string Command::Environment::MSG_ENVIRONMENT_INCOMPLETE = "The current environment is incomplete.";
 
-struct Command::Environment::Workspace Command::Environment::workspace = Command::Environment::Workspace();
-
 Command::Environment::Environment() :
 	Command({ KEYWORD, ALIAS }, {
 		std::make_shared<Command::Environment::New>(),
@@ -24,9 +22,5 @@ Command::Environment::Environment() :
 		std::make_shared<Command::Environment::Save>(),
 		std::make_shared<Command::Environment::Load>()
 	}) {
-
-}
-
-Command::Environment::Workspace::Workspace() {
 
 }

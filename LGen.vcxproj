@@ -209,6 +209,7 @@
     <ClCompile Include="src\console\commands\system\systemSave.cpp" />
     <ClCompile Include="src\console\console.cpp" />
     <ClCompile Include="src\console\input.cpp" />
+    <ClCompile Include="src\console\workspace.cpp" />
     <ClCompile Include="src\environment\agent\agent.cpp" />
     <ClCompile Include="src\environment\environment.cpp" />
     <ClCompile Include="src\environment\terrain\terrain.cpp" />
@@ -314,6 +315,7 @@
     <ClInclude Include="src\console\commands\system\systemSave.h" />
     <ClInclude Include="src\console\console.h" />
     <ClInclude Include="src\console\input.h" />
+    <ClInclude Include="src\console\workspace.h" />
     <ClInclude Include="src\environment\agent\agent.h" />
     <ClInclude Include="src\environment\environment.h" />
     <ClInclude Include="src\environment\terrain\terrain.h" />

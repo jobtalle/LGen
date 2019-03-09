@@ -9,6 +9,8 @@ const std::string Command::MSG_ARGUMENT = " argument.";
 const std::string Command::MSG_ARGUMENTS = " arguments.";
 const std::string Command::MSG_INVALID_INPUT = "The provided input is invalid.";
 
+Workspace Command::workspace = Workspace::Workspace();
+
 Command::Command(const std::vector<std::string> triggers, const char args) :
 	triggers(triggers),
 	hasHelp(false),

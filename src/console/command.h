@@ -3,6 +3,7 @@
 #include "console/input.h"
 #include "console/console.h"
 #include "console/commandList.h"
+#include "console/workspace.h"
 
 #include <vector>
 #include <string>
@@ -37,6 +38,8 @@ namespace LGen {
 		static const std::string MSG_ARGUMENT;
 		static const std::string MSG_ARGUMENTS;
 		static const std::string MSG_INVALID_INPUT;
+
+		static class Workspace workspace;
 
 		const char args;
 		const bool hasHelp;

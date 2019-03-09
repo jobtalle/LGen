@@ -17,7 +17,7 @@ void Command::Environment::Load::application(
 	const std::vector<std::string> arguments,
 	Console &console) {
 	try {
-		File(arguments[ARG_FILE]) >> workspace.environment;
+		workspace.environment << File(arguments[ARG_FILE]);
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

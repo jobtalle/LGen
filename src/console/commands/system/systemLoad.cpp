@@ -16,7 +16,7 @@ void Command::System::Load::application(
 	const std::vector<std::string> arguments,
 	Console &console) {
 	try {
-		workspace.system = std::make_unique<LParse::System>(FileSystem::deserialize(File(arguments[ARG_FILE])));
+		workspace.system << File(arguments[ARG_FILE]);
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

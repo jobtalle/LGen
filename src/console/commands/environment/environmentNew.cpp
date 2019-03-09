@@ -13,5 +13,5 @@ Command::Environment::New::New() :
 void Command::Environment::New::application(
 	const std::vector<std::string> arguments,
 	Console &console) {
-	workspace.environment = std::make_unique<LGen::Environment>();
+	workspace.environment = std::make_shared<LGen::Environment>();
 }

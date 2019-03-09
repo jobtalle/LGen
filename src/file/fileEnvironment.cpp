@@ -1,41 +1,24 @@
 #include "fileEnvironment.h"
 #include "fileTerrain.h"
-
-#include "environment/terrain/terrainDropwave.h"
+#include "file.h"
 
 using namespace LGen;
 
-const std::string FileEnvironment::KEY_MAX_ITERATIONS = "max-iterations";
-const std::string FileEnvironment::KEY_TERRAIN = "terrain";
+static const std::string KEY_MAX_ITERATIONS = "max-iterations";
+static const std::string KEY_TERRAIN = "terrain";
 
-File FileEnvironment::serialize(const Environment &environment) {
-	File file;
-
-	file.set(KEY_MAX_ITERATIONS, static_cast<int>(environment.getMaxIterations()));
-
-	if(environment.getTerrain()->getType() == TerrainDropwave::TYPE)
-		file.set(KEY_TERRAIN, FileTerrain::serialize(*std::dynamic_pointer_cast<TerrainDropwave>(environment.getTerrain())));
+File &LGen::operator<<(File& file, const std::shared_ptr<Environment> &environment) {
+	file.set(KEY_MAX_ITERATIONS, static_cast<int>(environment->getMaxIterations()));
+	file.set(KEY_TERRAIN, File() << environment->getTerrain());
 
 	return file;
 }
 
-Environment FileEnvironment::deserialize(const File &file) {
-	Environment environment;
+std::shared_ptr<Environment> &LGen::operator<<(std::shared_ptr<Environment> &environment, const File &file) {
+	environment = std::make_shared<LGen::Environment>();
 
-	environment.setMaxIterations(file.getInt(KEY_MAX_ITERATIONS));
-	environment.setTerrain(FileTerrain::deserialize(file.getFile(KEY_TERRAIN)));
+	environment->setMaxIterations(file.getInt(KEY_MAX_ITERATIONS));
+	environment->setTerrain(std::shared_ptr<Terrain>() << file.getFile(KEY_TERRAIN));
 
 	return environment;
-}
-
-File &LGen::operator<<(File& file, const Environment &environment) {
-	file = FileEnvironment::serialize(environment);
-
-	return file;
-}
-
-const File &LGen::operator>>(const File &file, std::unique_ptr<Environment> &environment) {
-	environment = std::make_unique<LGen::Environment>(FileEnvironment::deserialize(file));
-
-	return file;
 }

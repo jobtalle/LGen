@@ -6,31 +6,19 @@
 
 using namespace LGen;
 
-const std::string FileSystem::KEY_AXIOM = "axiom";
-const std::string FileSystem::KEY_RULE_PREFIX = "rule-";
+const std::string KEY_AXIOM = "axiom";
+const std::string KEY_RULE_PREFIX = "rule-";
 
-File FileSystem::serialize(const LParse::System& system) {
-	std::stringstream axiom;
-	File file;
+File &LGen::operator<<(File &file, const std::shared_ptr<LParse::System> &system) {
+	file.set(KEY_AXIOM, system->getAxiom().getString());
 
-	axiom << system.getAxiom();
-
-	file.set(KEY_AXIOM, axiom.str());
-
-	for(size_t i = 0; i < system.getRules().size(); ++i) {
-		std::stringstream rule;
-
-		rule << system.getRules()[i];
-
-		file.set(KEY_RULE_PREFIX + std::to_string(i), rule.str());
-	}
+	for(size_t i = 0; i < system->getRules().size(); ++i)
+		file.set(KEY_RULE_PREFIX + std::to_string(i), system->getRules()[i].getString());
 
 	return file;
 }
 
-LParse::System FileSystem::deserialize(const File& file) {
-	LParse::System system;
-
+std::shared_ptr<LParse::System> &LGen::operator<<(std::shared_ptr<LParse::System> &system, const File &file) {
 	std::vector<LParse::Rule> rules;
 	std::string key;
 	size_t i = 0;
@@ -45,8 +33,10 @@ LParse::System FileSystem::deserialize(const File& file) {
 		rules.push_back(LParse::Rule(lhs, rhs));
 	}
 
-	system.setAxiom(file.getString(KEY_AXIOM));
-	system.setRules(rules);
+	system = std::make_shared<LParse::System>();
+
+	system->setAxiom(file.getString(KEY_AXIOM));
+	system->setRules(rules);
 
 	return system;
 }

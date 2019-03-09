@@ -2,43 +2,44 @@
 
 using namespace LGen;
 
-const std::string FileTerrain::KEY_TYPE = "type";
-const std::string FileTerrain::KEY_WIDTH = "width";
-const std::string FileTerrain::KEY_HEIGHT = "height";
+const std::string KEY_TYPE = "type";
+const std::string KEY_WIDTH = "width";
+const std::string KEY_HEIGHT = "height";
 
-const std::string FileTerrain::KEY_DROPWAVE_PERIOD = "period";
+const std::string KEY_DROPWAVE_PERIOD = "period";
 
-File FileTerrain::serialize(const TerrainDropwave& terrain) {
-	File file;
-
-	file.set(KEY_TYPE, TerrainDropwave::TYPE);
-
-	serializeDropwave(terrain, file);
-
-	return file;
-}
-
-std::shared_ptr<Terrain> FileTerrain::deserialize(const File& file) {
-	std::string type = file.getString(KEY_TYPE);
-
-	if(type == TerrainDropwave::TYPE)
-		return deserializeDropwave(file);
-
-	return nullptr;
-}
-
-void FileTerrain::serializeDropwave(const TerrainDropwave& terrain, File& file) {
+void serializeDropwave(const TerrainDropwave& terrain, File& file) {
 	file.set(KEY_WIDTH, terrain.getWidth());
 	file.set(KEY_HEIGHT, terrain.getHeight());
 	file.set(KEY_DROPWAVE_PERIOD, terrain.getPeriod());
 }
 
 
-std::shared_ptr<TerrainDropwave> FileTerrain::deserializeDropwave(const File& file) {
+static std::shared_ptr<TerrainDropwave> deserializeDropwave(const File& file) {
 	std::shared_ptr<TerrainDropwave> terrain = std::make_shared<TerrainDropwave>(
 		file.getFloat(KEY_WIDTH),
 		file.getFloat(KEY_HEIGHT),
 		file.getFloat(KEY_DROPWAVE_PERIOD));
+
+	return terrain;
+}
+
+File &LGen::operator<<(File &file, const std::shared_ptr<Terrain> &terrain) {
+	file.set(KEY_TYPE, terrain->getType());
+
+	if(terrain->getType() == TerrainDropwave::TYPE)
+		serializeDropwave(*std::dynamic_pointer_cast<TerrainDropwave>(terrain), file);
+
+	return file;
+}
+
+std::shared_ptr<Terrain> &LGen::operator<<(std::shared_ptr<Terrain> &terrain, const File &file) {
+	const auto type = file.getString(KEY_TYPE);
+
+	if(type == TerrainDropwave::TYPE)
+		terrain = deserializeDropwave(file);
+	else
+		terrain = nullptr;
 
 	return terrain;
 }

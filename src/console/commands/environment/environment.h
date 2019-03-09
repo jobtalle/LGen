@@ -28,7 +28,7 @@ namespace LGen {
 			Workspace();
 
 			std::mt19937 randomizer;
-			std::unique_ptr<LGen::Environment> environment;
+			std::shared_ptr<LGen::Environment> environment;
 		} workspace;
 	};
 }

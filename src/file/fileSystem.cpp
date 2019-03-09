@@ -9,16 +9,16 @@ using namespace LGen;
 static const std::string KEY_AXIOM = "axiom";
 static const std::string KEY_RULE_PREFIX = "rule-";
 
-File &LGen::operator<<(File &file, const std::shared_ptr<LParse::System> &system) {
-	file.set(KEY_AXIOM, system->getAxiom().getString());
+File &LGen::operator<<(File &file, const LParse::System &system) {
+	file.set(KEY_AXIOM, system.getAxiom().getString());
 
-	for(size_t i = 0; i < system->getRules().size(); ++i)
-		file.set(KEY_RULE_PREFIX + std::to_string(i), system->getRules()[i].getString());
+	for(size_t i = 0; i < system.getRules().size(); ++i)
+		file.set(KEY_RULE_PREFIX + std::to_string(i), system.getRules()[i].getString());
 
 	return file;
 }
 
-std::shared_ptr<LParse::System> &LGen::operator<<(std::shared_ptr<LParse::System> &system, const File &file) {
+std::unique_ptr<LParse::System> &LGen::operator<<(std::unique_ptr<LParse::System> &system, const File &file) {
 	std::vector<LParse::Rule> rules;
 	std::string key;
 	size_t i = 0;
@@ -33,7 +33,7 @@ std::shared_ptr<LParse::System> &LGen::operator<<(std::shared_ptr<LParse::System
 		rules.push_back(LParse::Rule(lhs, rhs));
 	}
 
-	system = std::make_shared<LParse::System>();
+	system = std::make_unique<LParse::System>();
 
 	system->setAxiom(file.getString(KEY_AXIOM));
 	system->setRules(rules);

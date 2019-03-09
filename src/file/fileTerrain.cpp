@@ -15,8 +15,8 @@ void serializeDropwave(const TerrainDropwave& terrain, File& file) {
 }
 
 
-static std::shared_ptr<TerrainDropwave> deserializeDropwave(const File& file) {
-	std::shared_ptr<TerrainDropwave> terrain = std::make_shared<TerrainDropwave>(
+static std::unique_ptr<TerrainDropwave> deserializeDropwave(const File& file) {
+	std::unique_ptr<TerrainDropwave> terrain = std::make_unique<TerrainDropwave>(
 		file.getFloat(KEY_WIDTH),
 		file.getFloat(KEY_HEIGHT),
 		file.getFloat(KEY_DROPWAVE_PERIOD));
@@ -24,16 +24,16 @@ static std::shared_ptr<TerrainDropwave> deserializeDropwave(const File& file) {
 	return terrain;
 }
 
-File &LGen::operator<<(File &file, const std::shared_ptr<Terrain> &terrain) {
-	file.set(KEY_TYPE, terrain->getType());
+File &LGen::operator<<(File &file, const Terrain &terrain) {
+	file.set(KEY_TYPE, terrain.getType());
 
-	if(terrain->getType() == TerrainDropwave::TYPE)
-		serializeDropwave(*std::dynamic_pointer_cast<TerrainDropwave>(terrain), file);
+	if(terrain.getType() == TerrainDropwave::TYPE)
+		serializeDropwave(static_cast<const TerrainDropwave&>(terrain), file);
 
 	return file;
 }
 
-std::shared_ptr<Terrain> &LGen::operator<<(std::shared_ptr<Terrain> &terrain, const File &file) {
+std::unique_ptr<Terrain> &LGen::operator<<(std::unique_ptr<Terrain> &terrain, const File &file) {
 	const auto type = file.getString(KEY_TYPE);
 
 	if(type == TerrainDropwave::TYPE)

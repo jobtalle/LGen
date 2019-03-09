@@ -32,7 +32,7 @@ namespace LGen {
 			Workspace();
 
 			std::mt19937 randomizer;
-			std::shared_ptr<LParse::System> system;
+			std::unique_ptr<LParse::System> system;
 			size_t iterations;
 		} workspace;
 	};

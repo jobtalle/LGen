@@ -6,6 +6,6 @@
 #include <memory>
 
 namespace LGen {
-	File &operator<<(File &file, const std::shared_ptr<Terrain> &terrain);
-	std::shared_ptr<Terrain> &operator<<(std::shared_ptr<Terrain> &terrain, const File &file);
+	File &operator<<(File &file, const Terrain &terrain);
+	std::unique_ptr<Terrain> &operator<<(std::unique_ptr<Terrain> &terrain, const File &file);
 }

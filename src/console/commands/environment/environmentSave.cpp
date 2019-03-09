@@ -22,7 +22,7 @@ void Command::Environment::Save::application(
 	}
 
 	try {
-		(File() << workspace.environment).save(arguments[ARG_FILE]);
+		(File() << *workspace.environment).save(arguments[ARG_FILE]);
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

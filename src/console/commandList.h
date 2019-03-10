@@ -11,7 +11,7 @@ namespace LGen {
 	class Console;
 	class CommandList final {
 	public:
-		CommandList(const std::vector<std::shared_ptr<Command>> &commands);
+		CommandList(std::vector<std::shared_ptr<Command>> commands);
 		bool apply(const Input &input, Console &console) const;
 		const std::vector<std::shared_ptr<Command>> &getCommands() const;
 		void enumerateKeywords(Console &console) const;

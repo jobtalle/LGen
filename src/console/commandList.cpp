@@ -1,3 +1,4 @@
+#include <utility>
 #include "console/command.h"
 #include "console/commandList.h"
 #include "console/console.h"
@@ -6,13 +7,13 @@ using namespace LGen;
 
 const std::string CommandList::ENUMERATE_PREFIX = "- ";
 
-CommandList::CommandList(const std::vector<std::shared_ptr<Command>> &commands) :
-	commands(commands) {
+CommandList::CommandList(std::vector<std::shared_ptr<Command>> commands) :
+	commands(std::move(commands)) {
 
 }
 
 bool CommandList::apply(const Input &input, Console &console) const {
-	for(auto const command : commands) {
+	for(auto const &command : commands) {
 		if(command->apply(input, console))
 			return true;
 	}

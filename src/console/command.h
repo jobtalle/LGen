@@ -1,9 +1,9 @@
 #pragma once
 
 #include "console/input.h"
-#include "console/console.h"
 #include "console/commandList.h"
 #include "console/workspace.h"
+#include "console/console.h"
 
 #include <vector>
 #include <string>

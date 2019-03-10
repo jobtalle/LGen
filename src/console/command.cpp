@@ -1,5 +1,6 @@
+#include "command.h"
+
 #include <utility>
-#include "console/command.h"
 
 using namespace LGen;
 

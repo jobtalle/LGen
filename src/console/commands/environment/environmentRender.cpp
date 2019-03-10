@@ -11,7 +11,7 @@ Command::Environment::Render::Render() :
 }
 
 void Command::Environment::Render::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	if(!workspace.environment) {
 		console << MSG_NO_ENVIRONMENT << std::endl;

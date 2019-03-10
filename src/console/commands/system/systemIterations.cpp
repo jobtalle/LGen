@@ -12,7 +12,7 @@ Command::System::Iterations::Iterations() :
 }
 
 void Command::System::Iterations::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	if(!workspace.system) {
 		console << MSG_NO_SYSTEM << std::endl;

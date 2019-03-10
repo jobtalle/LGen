@@ -11,7 +11,7 @@ Command::Render::Mode::Wireframe::Wireframe() :
 }
 
 void Command::Render::Mode::Wireframe::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	console.getMonitor()->enqueue(
 		std::make_shared<LRender::Renderer::Task::Mode>(LRender::Renderer::Mode::WIREFRAME));

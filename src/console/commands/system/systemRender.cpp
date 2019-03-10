@@ -1,6 +1,6 @@
 #include "console/commands/system/systemRender.h"
 #include "environment/environment.h"
-#include "environment/terrain/terrainDropwave.h"
+#include "environment/terrain/terrainFlat.h"
 #include "lrender.h"
 
 #include <sstream>
@@ -16,7 +16,7 @@ Command::System::Render::Render() :
 }
 #include <iostream>
 void Command::System::Render::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	if(!workspace.system) {
 		console << MSG_NO_SYSTEM << std::endl;
@@ -26,7 +26,7 @@ void Command::System::Render::application(
 	
 	LGen::Environment environment;
 
-	environment.setTerrain(std::make_shared<TerrainDropwave>(20.0f, 20.0f, 1.0f));
+	environment.setTerrain(std::make_shared<TerrainFlat>(20.0f, 20.0f));
 	environment.setMaxIterations(workspace.systemIterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 	environment.addAgent(Agent(*workspace.system, 5, 5));

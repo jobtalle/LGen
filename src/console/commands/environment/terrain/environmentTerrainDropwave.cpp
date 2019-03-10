@@ -12,7 +12,7 @@ Command::Environment::Terrain::Dropwave::Dropwave() :
 }
 
 void Command::Environment::Terrain::Dropwave::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	if(!workspace.environment) {
 		console << MSG_NO_ENVIRONMENT << std::endl;

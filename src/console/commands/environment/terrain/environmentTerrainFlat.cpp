@@ -12,7 +12,7 @@ Command::Environment::Terrain::Flat::Flat() :
 }
 
 void Command::Environment::Terrain::Flat::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	if(!workspace.environment) {
 		console << MSG_NO_ENVIRONMENT << std::endl;

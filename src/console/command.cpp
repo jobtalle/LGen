@@ -1,3 +1,4 @@
+#include <utility>
 #include "console/command.h"
 
 using namespace LGen;
@@ -11,23 +12,23 @@ const std::string Command::MSG_INVALID_INPUT = "The provided input is invalid.";
 
 Workspace Command::workspace = Workspace::Workspace();
 
-Command::Command(const std::vector<std::string> triggers, const char args) :
-	triggers(triggers),
+Command::Command(std::vector<std::string> triggers, const char args) :
+	triggers(std::move(triggers)),
 	hasHelp(false),
 	args(args) {
 
 }
 
-Command::Command(const std::vector<std::string> triggers, const std::string help, const char args) :
-	triggers(triggers),
-	help(help),
+Command::Command(std::vector<std::string> triggers, std::string help, const char args) :
+	triggers(std::move(triggers)),
+	help(std::move(help)),
 	hasHelp(true),
 	args(args) {
 
 }
 
-Command::Command(const std::vector<std::string> triggers, const std::vector<std::shared_ptr<Command>> commands, const char args) :
-	triggers(triggers),
+Command::Command(std::vector<std::string> triggers, const std::vector<std::shared_ptr<Command>> &commands, const char args) :
+	triggers(std::move(triggers)),
 	hasHelp(true),
 	commandList(std::make_unique<CommandList>(commands)),
 	args(args) {
@@ -38,7 +39,7 @@ bool Command::apply(const Input &input, Console &console) {
 	for(const std::string &trigger : triggers) {
 		if(input.getKeyword().rfind(trigger, 0) == 0) {
 			if(input.getKeyword().size() == trigger.size()) {
-				if(commandList && input.getArguments().size())
+				if(commandList && !input.getArguments().empty())
 					return commandList->apply(input.getArguments(), console);
 				else {
 					if(args == -1 || args == input.getArguments().size())
@@ -85,7 +86,7 @@ std::vector<std::string> Command::getAliases() const {
 }
 
 void Command::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	console << MSG_NEED_MORE_ARGUMENTS << std::endl;
 }

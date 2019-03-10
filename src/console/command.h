@@ -18,9 +18,9 @@ namespace LGen {
 		class Render;
 		class Environment;
 
-		Command(const std::vector<std::string> triggers, const char args = -1);
-		Command(const std::vector<std::string> triggers, const std::string help, const char args = -1);
-		Command(const std::vector<std::string> triggers, const std::vector<std::shared_ptr<Command>> commands, const char args = -1);
+		Command(std::vector<std::string> triggers, const char args = -1);
+		Command(std::vector<std::string> triggers, std::string help, const char args = -1);
+		Command(std::vector<std::string> triggers, const std::vector<std::shared_ptr<Command>> &commands, const char args = -1);
 		virtual ~Command() = default;
 		bool apply(const Input &input, Console &console);
 		const std::string &getTrigger() const;
@@ -28,7 +28,7 @@ namespace LGen {
 
 	protected:
 		virtual void application(
-			const std::vector<std::string> arguments,
+			const std::vector<std::string> &arguments,
 			Console &console);
 
 	private:
@@ -41,11 +41,11 @@ namespace LGen {
 
 		static class Workspace workspace;
 
-		const char args;
-		const bool hasHelp;
 		const std::vector<std::string> triggers;
 		const std::string help;
+		const bool hasHelp;
 		std::unique_ptr<CommandList> commandList;
+		const char args;
 
 		void showHelp(const Console &console) const;
 	};

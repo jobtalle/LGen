@@ -13,7 +13,7 @@ Command::System::Load::Load() :
 }
 
 void Command::System::Load::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	try {
 		workspace.system << File(arguments[ARG_FILE]);

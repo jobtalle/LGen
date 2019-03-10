@@ -15,7 +15,7 @@ Command::System::Print::Print() :
 }
 
 void Command::System::Print::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	if(workspace.system) {
 		console << MSG_AXIOM << workspace.system->getAxiom() << std::endl;

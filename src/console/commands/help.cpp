@@ -12,7 +12,7 @@ Command::Help::Help() :
 }
 
 void Command::Help::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	console.dumpFile(FILE);
 	console.getCommandList().enumerateKeywords(console);

@@ -14,7 +14,7 @@ Command::Environment::Load::Load() :
 }
 
 void Command::Environment::Load::application(
-	const std::vector<std::string> arguments,
+	const std::vector<std::string> &arguments,
 	Console &console) {
 	try {
 		workspace.environment << File(arguments[ARG_FILE]);

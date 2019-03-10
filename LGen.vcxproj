@@ -188,6 +188,7 @@
     <ClCompile Include="src\console\commands\environment\environmentSave.cpp" />
     <ClCompile Include="src\console\commands\environment\terrain\environmentTerrain.cpp" />
     <ClCompile Include="src\console\commands\environment\terrain\environmentTerrainDropwave.cpp" />
+    <ClCompile Include="src\console\commands\environment\terrain\environmentTerrainFlat.cpp" />
     <ClCompile Include="src\console\commands\exit.cpp" />
     <ClCompile Include="src\console\commands\help.cpp" />
     <ClCompile Include="src\console\commands\render\mode\renderMode.cpp" />
@@ -214,6 +215,7 @@
     <ClCompile Include="src\environment\environment.cpp" />
     <ClCompile Include="src\environment\terrain\terrain.cpp" />
     <ClCompile Include="src\environment\terrain\terrainDropwave.cpp" />
+    <ClCompile Include="src\environment\terrain\terrainFlat.cpp" />
     <ClCompile Include="src\file\file.cpp" />
     <ClCompile Include="src\file\fileEnvironment.cpp" />
     <ClCompile Include="src\file\fileSystem.cpp" />
@@ -294,6 +296,7 @@
     <ClInclude Include="src\console\commands\environment\environmentSave.h" />
     <ClInclude Include="src\console\commands\environment\terrain\environmentTerrain.h" />
     <ClInclude Include="src\console\commands\environment\terrain\environmentTerrainDropwave.h" />
+    <ClInclude Include="src\console\commands\environment\terrain\environmentTerrainFlat.h" />
     <ClInclude Include="src\console\commands\exit.h" />
     <ClInclude Include="src\console\commands\help.h" />
     <ClInclude Include="src\console\commands\render\mode\renderMode.h" />
@@ -320,6 +323,7 @@
     <ClInclude Include="src\environment\environment.h" />
     <ClInclude Include="src\environment\terrain\terrain.h" />
     <ClInclude Include="src\environment\terrain\terrainDropwave.h" />
+    <ClInclude Include="src\environment\terrain\terrainFlat.h" />
     <ClInclude Include="src\file\file.h" />
     <ClInclude Include="src\file\fileEnvironment.h" />
     <ClInclude Include="src\file\fileSystem.h" />

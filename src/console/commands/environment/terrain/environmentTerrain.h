@@ -8,6 +8,7 @@ namespace LGen {
 		Terrain();
 
 		class Dropwave;
+		class Flat;
 
 	private:
 		static const std::string KEYWORD;

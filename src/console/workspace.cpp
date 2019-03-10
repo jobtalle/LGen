@@ -3,6 +3,6 @@
 using namespace LGen;
 
 Workspace::Workspace() :
-	iterations(ITERATIONS_DEFAULT) {
+	systemIterations(ITERATIONS_DEFAULT) {
 
 }

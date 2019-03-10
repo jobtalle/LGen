@@ -1,7 +1,7 @@
 #pragma once
 
 #include "file/file.h"
-#include "environment/terrain/terrainDropwave.h"
+#include "environment/terrain/terrain.h"
 
 #include <memory>
 

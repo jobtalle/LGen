@@ -21,6 +21,6 @@ void Command::System::Generate::application(
 	}
 
 	console << *workspace.system->generate(
-		workspace.iterations,
+		workspace.systemIterations,
 		workspace.randomizer) << std::endl;
 }

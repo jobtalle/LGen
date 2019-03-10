@@ -21,7 +21,7 @@ void Command::System::Iterations::application(
 	}
 
 	try {
-		workspace.iterations = std::stoi(arguments[ARG_ITERATIONS]);
+		workspace.systemIterations = std::stoi(arguments[ARG_ITERATIONS]);
 	}
 	catch(...) {
 		console << MSG_INVALID_INPUT << std::endl;

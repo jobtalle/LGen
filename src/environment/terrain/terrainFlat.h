@@ -3,18 +3,13 @@
 #include "environment/terrain/terrain.h"
 
 namespace LGen {
-	class TerrainDropwave final : public Terrain {
+	class TerrainFlat final : public Terrain {
 	public:
-		TerrainDropwave(
+		TerrainFlat(
 			const float width,
-			const float height,
-			const float period);
+			const float height);
 		float sample(const float x, const float y) const override;
-		float getPeriod() const;
 
 		static const std::string TYPE;
-		
-	private:
-		const float period;
 	};
 }

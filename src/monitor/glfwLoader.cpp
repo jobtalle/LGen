@@ -11,8 +11,6 @@ GLFWLoader::GLFWLoader(const size_t width, const size_t height, const char *titl
 		initialize();
 
 	window = glfwCreateWindow(width, height, title, NULL, NULL);
-
-	glfwSetWindowAttrib(window, GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
 	makeCurrent();
 }
 

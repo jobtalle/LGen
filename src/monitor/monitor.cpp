@@ -95,8 +95,10 @@ void Monitor::start() {
 		glfwLoader.makeCurrent();
 		renderer->update();
 
-		if(glfwGetWindowAttrib(glfwLoader.getWindow(), GLFW_VISIBLE))
+		if(glfwGetWindowAttrib(glfwLoader.getWindow(), GLFW_VISIBLE)) {
+			renderer->bindDefault();
 			renderer->render();
+		}
 	}
 }
 

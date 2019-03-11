@@ -30,7 +30,25 @@ Monitor::Monitor(const char *title) :
 			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->scrollDown();
 	});
 
-	glfwSetMouseButtonCallback(glfwLoader.getWindow(), [](GLFWwindow *window, int button, int action, int mods) {
+	glfwSetKeyCallback(glfwLoader.getWindow(), [](
+		GLFWwindow *window,
+		const int key,
+		const int scancode,
+		const int action,
+		const int mods) {
+		switch(key) {
+		case KEY_CENTER_VIEW:
+			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->center();
+
+			break;
+		}
+	});
+
+	glfwSetMouseButtonCallback(glfwLoader.getWindow(), [](
+		GLFWwindow *window,
+		const int button,
+		const int action,
+		const int mods) {
 		switch(button) {
 		case MOUSE_BUTTON_DRAG:
 			switch(action) {

@@ -23,7 +23,7 @@ File::File(const std::string &file) {
 
 	source.close();
 
-	auto it = lines.begin();
+	std::vector<std::string>::const_iterator it = lines.begin();
 
 	while(it != lines.end())
 		read(it);

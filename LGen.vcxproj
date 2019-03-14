@@ -166,9 +166,11 @@
     <ClCompile Include="LRender\src\renderer\passes\renderPassViewDefault.cpp" />
     <ClCompile Include="LRender\src\renderer\passes\renderPassViewWireframe.cpp" />
     <ClCompile Include="LRender\src\renderer\renderer.cpp" />
+    <ClCompile Include="LRender\src\renderer\shaders\shaderExposure.cpp" />
     <ClCompile Include="LRender\src\renderer\shaders\shaderImage.cpp" />
     <ClCompile Include="LRender\src\renderer\target\renderTarget.cpp" />
     <ClCompile Include="LRender\src\renderer\target\renderTargetColor.cpp" />
+    <ClCompile Include="LRender\src\renderer\target\renderTargetUint.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskMode.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskSceneReport.cpp" />
     <ClCompile Include="LRender\src\renderer\uniforms\uniforms.cpp" />
@@ -278,9 +280,11 @@
     <ClInclude Include="LRender\src\renderer\passes\renderPassViewDefault.h" />
     <ClInclude Include="LRender\src\renderer\passes\renderPassViewWireframe.h" />
     <ClInclude Include="LRender\src\renderer\renderer.h" />
+    <ClInclude Include="LRender\src\renderer\shaders\shaderExposure.h" />
     <ClInclude Include="LRender\src\renderer\shaders\shaderImage.h" />
     <ClInclude Include="LRender\src\renderer\target\renderTarget.h" />
     <ClInclude Include="LRender\src\renderer\target\renderTargetColor.h" />
+    <ClInclude Include="LRender\src\renderer\target\renderTargetUint.h" />
     <ClInclude Include="LRender\src\renderer\tasks\task.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskMode.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskSceneReport.h" />

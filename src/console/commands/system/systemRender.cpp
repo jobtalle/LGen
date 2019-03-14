@@ -29,8 +29,9 @@ void Command::System::Render::application(
 	environment.setTerrain(std::make_shared<TerrainFlat>(20.0f, 20.0f));
 	environment.setMaxIterations(workspace.systemIterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
-	environment.addAgent(Agent(*workspace.system, 5, 5));
-	environment.addAgent(Agent(*workspace.system, 7, 7));
+	environment.addAgent(Agent(*workspace.system, 6, 3));
+	environment.addAgent(Agent(*workspace.system, 6, 6));
+	environment.addAgent(Agent(*workspace.system, 3, 6));
 
 	auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(environment.makeScene(workspace.randomizer));
 

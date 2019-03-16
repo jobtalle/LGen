@@ -34,7 +34,7 @@ void Command::System::Render::application(
 	environment.addAgent(Agent(*workspace.system, 3, 6));
 
 	auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(environment.makeScene(workspace.randomizer));
-
+	
 	console.getMonitor()->makeVisible();
 	console.getMonitor()->enqueue(task);
 

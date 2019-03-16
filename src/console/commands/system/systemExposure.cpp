@@ -1,4 +1,6 @@
 #include "systemExposure.h"
+#include "environment/terrain/terrainFlat.h"
+#include "lrender.h"
 
 using namespace LGen;
 
@@ -14,5 +16,23 @@ Command::System::Exposure::Exposure() :
 void Command::System::Exposure::application(
 	const std::vector<std::string> &arguments,
 	Console &console) {
-	
+	if(!workspace.system) {
+		console << MSG_NO_SYSTEM << std::endl;
+
+		return;
+	}
+
+	LGen::Environment environment;
+
+	environment.setTerrain(std::make_shared<TerrainFlat>(20.0f, 20.0f));
+	environment.setMaxIterations(workspace.systemIterations);
+	environment.addAgent(Agent(*workspace.system, 3, 3));
+	environment.addAgent(Agent(*workspace.system, 6, 3));
+	environment.addAgent(Agent(*workspace.system, 6, 6));
+	environment.addAgent(Agent(*workspace.system, 3, 6));
+
+	auto task = std::make_shared<LRender::Renderer::Task::Exposure>(environment.makeScene(workspace.randomizer));
+
+	console.getMonitor()->makeVisible();
+	console.getMonitor()->enqueue(task);
 }

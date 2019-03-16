@@ -7,7 +7,7 @@ const std::string Command::Render::KEYWORD = "render";
 
 Command::Render::Render() :
 	Command({ KEYWORD }, {
-		std::make_shared<Command::Render::Mode>()
+		std::make_shared<Mode>()
 	}) {
 
 }

@@ -181,6 +181,7 @@
     <ClCompile Include="LRender\src\report\report.cpp" />
     <ClCompile Include="LRender\src\report\reportAgent.cpp" />
     <ClCompile Include="LRender\src\report\reportArea.cpp" />
+    <ClCompile Include="LRender\src\report\reportExposure.cpp" />
     <ClCompile Include="LRender\src\report\reportLimits.cpp" />
     <ClCompile Include="LRender\src\scene\agent.cpp" />
     <ClCompile Include="LRender\src\scene\scene.cpp" />
@@ -300,6 +301,7 @@
     <ClInclude Include="LRender\src\report\report.h" />
     <ClInclude Include="LRender\src\report\reportAgent.h" />
     <ClInclude Include="LRender\src\report\reportArea.h" />
+    <ClInclude Include="LRender\src\report\reportExposure.h" />
     <ClInclude Include="LRender\src\report\reportLimits.h" />
     <ClInclude Include="LRender\src\scene\agent.h" />
     <ClInclude Include="LRender\src\scene\scene.h" />

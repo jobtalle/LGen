@@ -29,9 +29,6 @@ void Command::System::Render::application(
 	environment.setTerrain(std::make_shared<TerrainFlat>(20.0f, 20.0f));
 	environment.setMaxIterations(workspace.systemIterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
-	environment.addAgent(Agent(*workspace.system, 6, 3));
-	environment.addAgent(Agent(*workspace.system, 6, 6));
-	environment.addAgent(Agent(*workspace.system, 3, 6));
 
 	auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(environment.makeScene(workspace.randomizer));
 	
@@ -42,4 +39,5 @@ void Command::System::Render::application(
 
 	std::cout << "Size: " << report->getAgents()[0].getLimits().getMaximum() - report->getAgents()[0].getLimits().getMinimum() << std::endl;
 	std::cout << "Area: " << report->getAgents()[0].getArea().getArea() << std::endl;
+	std::cout << "Exposure: " << report->getAgents()[0].getExposure().getExposure() << std::endl;
 }

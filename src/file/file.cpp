@@ -7,9 +7,9 @@ using namespace LGen;
 
 const std::string File::CONNECTIVE = ":";
 const std::string File::CONNECTIVE_FORMATTED = ": ";
-const std::string File::BLOCK_START = "{";
-const std::string File::BLOCK_CLOSE = "}";
 const std::string File::INDENT = "  ";
+const std::string File::BLOCK_START = "{";
+const char File::BLOCK_CLOSE = '}';
 
 File::File(const std::string &file) {
 	std::ifstream source;
@@ -30,7 +30,7 @@ File::File(const std::string &file) {
 }
 
 File::File(std::vector<std::string>::const_iterator &line) {
-	while(*line != BLOCK_CLOSE)
+	while(line->back() != BLOCK_CLOSE)
 		read(line);
 
 	++line;

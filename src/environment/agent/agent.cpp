@@ -13,10 +13,10 @@ std::shared_ptr<LParse::Sentence> Agent::generate(const size_t steps, std::mt199
 	return system.generate(steps, randomizer);
 }
 
-const float Agent::getX() const {
+float Agent::getX() const {
 	return x;
 }
 
-const float Agent::getY() const {
+float Agent::getY() const {
 	return y;
 }

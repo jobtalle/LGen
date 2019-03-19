@@ -4,6 +4,7 @@
 #include "console/commands/environment/environmentRender.h"
 #include "console/commands/environment/environmentSave.h"
 #include "console/commands/environment/environmentLoad.h"
+#include "console/commands/environment/environmentInitialize.h"
 #include "console/commands/environment/terrain/environmentTerrain.h"
 
 using namespace LGen;
@@ -20,7 +21,8 @@ Command::Environment::Environment() :
 		std::make_shared<Render>(),
 		std::make_shared<Terrain>(),
 		std::make_shared<Save>(),
-		std::make_shared<Load>()
+		std::make_shared<Load>(),
+		std::make_shared<Initialize>()
 	}) {
 
 }

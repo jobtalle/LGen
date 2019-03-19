@@ -19,6 +19,21 @@ void Environment::addAgent(const Agent &agent) {
 	agents.push_back(agent);
 }
 
+void Environment::distributeAgents(const LParse::System &system, const float spacing) {
+	const size_t xCount = std::ceil(this->terrain->getWidth() / spacing);
+	const size_t yCount = std::ceil(this->terrain->getHeight() / spacing);
+	const float xSpacing = this->terrain->getWidth() / xCount;
+	const float ySpacing = this->terrain->getHeight() / yCount;
+
+	agents.clear();
+
+	for(size_t y = 1; y < yCount; ++y) for(size_t x = 1; x < xCount; ++x) {
+		auto agent = Agent(system, x * xSpacing, y * ySpacing);
+
+		addAgent(agent);
+	}
+}
+
 size_t Environment::getMaxIterations() const {
 	return maxIterations;
 }

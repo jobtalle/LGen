@@ -13,6 +13,7 @@ namespace LGen {
 		class Terrain;
 		class Save;
 		class Load;
+		class Initialize;
 
 	private:
 		static const std::string KEYWORD;

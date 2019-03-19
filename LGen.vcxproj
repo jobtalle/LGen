@@ -193,6 +193,7 @@
     <ClCompile Include="src\console\commandList.cpp" />
     <ClCompile Include="src\console\commands\environment\environment.cpp" />
     <ClCompile Include="src\console\commands\environment\environmentDelete.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentInitialize.cpp" />
     <ClCompile Include="src\console\commands\environment\environmentLoad.cpp" />
     <ClCompile Include="src\console\commands\environment\environmentNew.cpp" />
     <ClCompile Include="src\console\commands\environment\environmentRender.cpp" />
@@ -313,6 +314,7 @@
     <ClInclude Include="src\console\commandList.h" />
     <ClInclude Include="src\console\commands\environment\environment.h" />
     <ClInclude Include="src\console\commands\environment\environmentDelete.h" />
+    <ClInclude Include="src\console\commands\environment\environmentInitialize.h" />
     <ClInclude Include="src\console\commands\environment\environmentLoad.h" />
     <ClInclude Include="src\console\commands\environment\environmentNew.h" />
     <ClInclude Include="src\console\commands\environment\environmentRender.h" />

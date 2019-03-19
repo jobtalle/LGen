@@ -28,10 +28,14 @@ void Environment::distributeAgents(const LParse::System &system, const float spa
 	agents.clear();
 
 	for(size_t y = 1; y < yCount; ++y) for(size_t x = 1; x < xCount; ++x) {
-		auto agent = Agent(system, x * xSpacing, y * ySpacing);
+		const auto agent = Agent(system, x * xSpacing, y * ySpacing);
 
 		addAgent(agent);
 	}
+}
+
+const std::vector<Agent>& Environment::getAgents() const {
+	return agents;
 }
 
 size_t Environment::getMaxIterations() const {
@@ -71,8 +75,5 @@ std::shared_ptr<LRender::Scene> Environment::makeScene(std::mt19937 &randomizer)
 }
 
 bool Environment::isComplete() const {
-	if(!terrain)
-		return false;
-
-	return true;
+	return static_cast<bool>(terrain);
 }

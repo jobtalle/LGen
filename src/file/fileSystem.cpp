@@ -1,7 +1,6 @@
 #include "file/fileSystem.h"
 #include "utils/stringUtils.h"
 
-#include <sstream>
 #include <vector>
 
 using namespace LGen;

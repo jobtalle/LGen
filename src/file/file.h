@@ -32,7 +32,7 @@ namespace LGen {
 		static const std::string CONNECTIVE_FORMATTED;
 		static const std::string INDENT;
 		static const std::string BLOCK_START;
-		static const char BLOCK_CLOSE;
+		static const std::string BLOCK_CLOSE;
 
 		std::map<std::string, std::string> values;
 		std::map<std::string, File> files;

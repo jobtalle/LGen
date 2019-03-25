@@ -137,6 +137,7 @@
     <ClCompile Include="glfw\src\win32_window.c" />
     <ClCompile Include="glfw\src\window.c" />
     <ClCompile Include="glfw\src\xkb_unicode.c" />
+    <ClCompile Include="LParse\src\randomizer.cpp" />
     <ClCompile Include="LParse\src\rule.cpp" />
     <ClCompile Include="LParse\src\sentence.cpp" />
     <ClCompile Include="LParse\src\system.cpp" />
@@ -258,6 +259,7 @@
     <ClInclude Include="glfw\src\win32_platform.h" />
     <ClInclude Include="glfw\src\xkb_unicode.h" />
     <ClInclude Include="LParse\include\lparse.h" />
+    <ClInclude Include="LParse\src\randomizer.h" />
     <ClInclude Include="LParse\src\rule.h" />
     <ClInclude Include="LParse\src\sentence.h" />
     <ClInclude Include="LParse\src\system.h" />

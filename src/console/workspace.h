@@ -3,7 +3,6 @@
 #include "lparse.h"
 #include "../environment/environment.h"
 
-#include <random>
 #include <memory>
 
 namespace LGen {
@@ -11,9 +10,9 @@ namespace LGen {
 	public:
 		Workspace();
 
-		std::mt19937 randomizer;
+		LParse::Randomizer randomizer;
 		std::unique_ptr<LParse::System> system;
-		std::unique_ptr<LGen::Environment> environment;
+		std::unique_ptr<Environment> environment;
 		size_t systemIterations;
 
 	private:

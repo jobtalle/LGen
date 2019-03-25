@@ -30,7 +30,9 @@ void Command::System::Render::application(
 	environment.setMaxIterations(workspace.systemIterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 
-	auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(environment.makeScene(workspace.randomizer));
+	auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(
+		environment.makeScene(workspace.randomizer),
+		workspace.randomizer.makeRandomizer());
 	
 	console.getMonitor()->makeVisible();
 	console.getMonitor()->enqueue(task);

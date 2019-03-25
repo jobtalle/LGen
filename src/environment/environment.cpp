@@ -50,7 +50,7 @@ void Environment::clearAgents() {
 	agents.clear();
 }
 
-std::shared_ptr<LRender::Scene> Environment::makeScene(std::mt19937 &randomizer) const {
+std::shared_ptr<LRender::Scene> Environment::makeScene(LParse::Randomizer &randomizer) const {
 	const std::shared_ptr<Terrain> &terrainSource = terrain;
 
 	LRender::Terrain renderTerrain(

@@ -3,10 +3,10 @@
 #include "environment/terrain/terrain.h"
 #include "environment/agent/agent.h"
 #include "lrender.h"
+#include "lparse.h"
 
 #include <memory>
 #include <vector>
-#include <random>
 
 namespace LGen {
 	class Environment final {
@@ -20,7 +20,7 @@ namespace LGen {
 		size_t getMaxIterations() const;
 		std::shared_ptr<Terrain> getTerrain() const;
 		void clearAgents();
-		std::shared_ptr<LRender::Scene> makeScene(std::mt19937 &randomizer) const;
+		std::shared_ptr<LRender::Scene> makeScene(LParse::Randomizer &randomizer) const;
 		bool isComplete() const;
 
 	private:

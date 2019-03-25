@@ -9,7 +9,7 @@ Agent::Agent(const LParse::System &system, const float x, const float y) :
 
 }
 
-std::shared_ptr<LParse::Sentence> Agent::generate(const size_t steps, std::mt19937 &randomizer) const {
+std::shared_ptr<LParse::Sentence> Agent::generate(const size_t steps, LParse::Randomizer &randomizer) const {
 	return system.generate(steps, randomizer);
 }
 

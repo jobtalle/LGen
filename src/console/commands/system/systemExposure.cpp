@@ -31,7 +31,9 @@ void Command::System::Exposure::application(
 	environment.addAgent(Agent(*workspace.system, 6, 6));
 	environment.addAgent(Agent(*workspace.system, 3, 6));
 
-	auto task = std::make_shared<LRender::Renderer::Task::Exposure>(environment.makeScene(workspace.randomizer));
+	auto task = std::make_shared<LRender::Renderer::Task::Exposure>(
+		environment.makeScene(workspace.randomizer),
+		workspace.randomizer.makeRandomizer());
 
 	console.getMonitor()->makeVisible();
 	console.getMonitor()->enqueue(task);

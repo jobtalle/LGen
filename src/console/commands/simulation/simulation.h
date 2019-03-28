@@ -8,6 +8,7 @@ namespace LGen {
 		Simulation();
 
 		class New;
+		class Delete;
 
 	private:
 		static const std::string KEYWORD;

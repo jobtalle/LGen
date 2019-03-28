@@ -215,6 +215,7 @@
     <ClCompile Include="src\console\commands\render\mode\renderModeDefault.cpp" />
     <ClCompile Include="src\console\commands\render\mode\renderModeWireframe.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulation.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationDelete.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationNew.cpp" />
     <ClCompile Include="src\console\commands\system\system.cpp" />
     <ClCompile Include="src\console\commands\system\rule\systemRuleAdd.cpp" />
@@ -346,6 +347,7 @@
     <ClInclude Include="src\console\commands\render\mode\renderModeDefault.h" />
     <ClInclude Include="src\console\commands\render\mode\renderModeWireframe.h" />
     <ClInclude Include="src\console\commands\simulation\simulation.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationDelete.h" />
     <ClInclude Include="src\console\commands\simulation\simulationNew.h" />
     <ClInclude Include="src\console\commands\system\system.h" />
     <ClInclude Include="src\console\commands\system\rule\systemRuleAdd.h" />

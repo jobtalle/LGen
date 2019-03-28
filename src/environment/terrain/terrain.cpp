@@ -1,9 +1,11 @@
 #include "terrain.h"
 
+#include <utility>
+
 using namespace LGen;
 
-Terrain::Terrain(const std::string &type, const float width, const float height) :
-	type(type),
+Terrain::Terrain(std::string type, const float width, const float height) :
+	type(std::move(type)),
 	width(width),
 	height(height) {
 

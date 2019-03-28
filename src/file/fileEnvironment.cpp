@@ -15,7 +15,7 @@ static const std::string KEY_AGENT_Y = "y";
 File &LGen::operator<<(File& file, const Environment &environment) {
 	auto fileTerrain = File();
 	
-	fileTerrain << *environment.getTerrain();
+	fileTerrain << environment.getTerrain();
 
 	file.set(KEY_MAX_ITERATIONS, static_cast<int>(environment.getMaxIterations()));
 	file.set(KEY_TERRAIN, fileTerrain);

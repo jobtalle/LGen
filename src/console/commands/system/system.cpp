@@ -19,18 +19,18 @@ const std::string Command::System::MSG_NO_SYSTEM = "No system is loaded.";
 
 Command::System::System() :
 	Command({ KEYWORD, ALIAS }, {
-		std::make_shared<New>(),
-		std::make_shared<Print>(),
-		std::make_shared<Generate>(),
-		std::make_shared<Axiom>(),
-		std::make_shared<Iterations>(),
-		std::make_shared<Rule>(),
-		std::make_shared<Delete>(),
-		std::make_shared<Save>(),
-		std::make_shared<Load>(),
-		std::make_shared<Render>(),
-		std::make_shared<New>(),
-		std::make_shared<Exposure>()
+		std::make_unique<New>(),
+		std::make_unique<Print>(),
+		std::make_unique<Generate>(),
+		std::make_unique<Axiom>(),
+		std::make_unique<Iterations>(),
+		std::make_unique<Rule>(),
+		std::make_unique<Delete>(),
+		std::make_unique<Save>(),
+		std::make_unique<Load>(),
+		std::make_unique<Render>(),
+		std::make_unique<New>(),
+		std::make_unique<Exposure>()
 	}) {
 
 }

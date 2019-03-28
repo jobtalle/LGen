@@ -16,13 +16,13 @@ const std::string Command::Environment::MSG_ENVIRONMENT_INCOMPLETE = "The curren
 
 Command::Environment::Environment() :
 	Command({ KEYWORD, ALIAS }, {
-		std::make_shared<New>(),
-		std::make_shared<Delete>(),
-		std::make_shared<Render>(),
-		std::make_shared<Terrain>(),
-		std::make_shared<Save>(),
-		std::make_shared<Load>(),
-		std::make_shared<Initialize>()
+		std::make_unique<New>(),
+		std::make_unique<Delete>(),
+		std::make_unique<Render>(),
+		std::make_unique<Terrain>(),
+		std::make_unique<Save>(),
+		std::make_unique<Load>(),
+		std::make_unique<Initialize>()
 	}) {
 
 }

@@ -5,7 +5,7 @@
 namespace LGen {
 	class Terrain {
 	public:
-		Terrain(const std::string &type, const float width, const float height);
+		Terrain(std::string type, const float width, const float height);
 		virtual ~Terrain() = default;
 		const std::string &getType() const;
 		float getWidth() const;

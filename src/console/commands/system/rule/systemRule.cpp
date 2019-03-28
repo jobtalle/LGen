@@ -9,8 +9,8 @@ const std::string Command::System::Rule::ALIAS = "r";
 
 Command::System::Rule::Rule() :
 	Command({ KEYWORD, ALIAS }, {
-		std::make_shared<Add>(),
-		std::make_shared<Remove>()
+		std::make_unique<Add>(),
+		std::make_unique<Remove>()
 	}) {
 
 }

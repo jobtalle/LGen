@@ -2,6 +2,7 @@
 
 #include "lparse.h"
 #include "../environment/environment.h"
+#include "../simulation/simulation.h"
 
 #include <memory>
 
@@ -13,6 +14,7 @@ namespace LGen {
 		LParse::Randomizer randomizer;
 		std::unique_ptr<LParse::System> system;
 		std::unique_ptr<Environment> environment;
+		std::unique_ptr<Simulation> simulation;
 		size_t systemIterations;
 
 	private:

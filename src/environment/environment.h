@@ -18,7 +18,7 @@ namespace LGen {
 		void distributeAgents(const LParse::System &system, const float spacing);
 		const std::vector<Agent> &getAgents() const;
 		size_t getMaxIterations() const;
-		std::shared_ptr<Terrain> getTerrain() const;
+		const Terrain &getTerrain() const;
 		void clearAgents();
 		std::shared_ptr<LRender::Scene> makeScene(LParse::Randomizer &randomizer) const;
 		bool isComplete() const;

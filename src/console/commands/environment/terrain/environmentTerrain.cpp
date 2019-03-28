@@ -8,8 +8,8 @@ const std::string Command::Environment::Terrain::KEYWORD = "terrain";
 
 Command::Environment::Terrain::Terrain() :
 	Command({ KEYWORD }, {
-		std::make_shared<Dropwave>(),
-		std::make_shared<Flat>()
+		std::make_unique<Dropwave>(),
+		std::make_unique<Flat>()
 	}) {
 
 }

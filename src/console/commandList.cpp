@@ -26,11 +26,11 @@ const std::vector<std::shared_ptr<Command>> &CommandList::getCommands() const {
 }
 
 void CommandList::enumerateKeywords(Console &console) const {
-	for(auto const command : commands) {
+	for(auto const &command : commands) {
 		std::string keywords = command->getTrigger();
 		const std::vector<std::string> aliases = command->getAliases();
 
-		if(aliases.size()) {
+		if(!aliases.empty()) {
 			keywords += " (";
 
 			for(size_t alias = 0; alias < aliases.size(); ++alias) {

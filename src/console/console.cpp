@@ -4,6 +4,7 @@
 #include "console/commands/system/system.h"
 #include "console/commands/render/render.h"
 #include "console/commands/environment/environment.h"
+#include "console/commands/simulation/simulation.h"
 
 #include <iostream>
 #include <string>
@@ -17,15 +18,16 @@ const std::string Console::PREFIX_COMMAND = ">> ";
 const std::string Console::PREFIX_LOG = "   ";
 
 Console::Console(Monitor *const monitor) :
-	monitor(monitor),
+	std::ostream(this),
 	commandList({
-		std::make_shared<Command::Exit>(this),
-		std::make_shared<Command::Help>(),
-		std::make_shared<Command::System>(),
-		std::make_shared<Command::Render>(),
-		std::make_shared<Command::Environment>()
+		std::make_unique<Command::Exit>(this),
+		std::make_unique<Command::Help>(),
+		std::make_unique<Command::System>(),
+		std::make_unique<Command::Render>(),
+		std::make_unique<Command::Environment>(),
+		std::make_unique<Command::Simulation>()
 	}),
-	std::ostream(this) {
+	monitor(monitor) {
 	dumpFile("text/intro.txt", false);
 
 	thread = std::make_unique<std::thread>(std::bind(&Console::loop, this));

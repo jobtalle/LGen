@@ -7,8 +7,8 @@ Environment::Environment() :
 
 }
 
-void Environment::setTerrain(const std::shared_ptr<Terrain> &terrain) {
-	this->terrain = terrain;
+void Environment::setTerrain(std::shared_ptr<const Terrain> terrain) {
+	this->terrain = std::move(terrain);
 }
 
 void Environment::setMaxIterations(const size_t maxIterations) {
@@ -51,7 +51,7 @@ void Environment::clearAgents() {
 }
 
 std::shared_ptr<LRender::Scene> Environment::makeScene(LParse::Randomizer &randomizer) const {
-	const std::shared_ptr<Terrain> &terrainSource = terrain;
+	const std::shared_ptr<const Terrain> &terrainSource = terrain;
 
 	LRender::Terrain renderTerrain(
 		terrain->getWidth(),

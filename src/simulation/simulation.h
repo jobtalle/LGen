@@ -8,10 +8,10 @@ namespace LGen {
 	class Simulation final {
 	public:
 		Simulation() = default;
-		void setEnvironment(const std::shared_ptr<Environment> &environment);
+		void setEnvironment(std::unique_ptr<const Environment> environment);
 		const Environment &getEnvironment() const;
 
 	private:
-		std::shared_ptr<Environment> environment;
+		std::unique_ptr<const Environment> environment;
 	};
 }

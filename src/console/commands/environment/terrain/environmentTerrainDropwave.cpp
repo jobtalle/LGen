@@ -25,7 +25,7 @@ void Command::Environment::Terrain::Dropwave::application(
 		auto height = std::stof(arguments[ARG_HEIGHT]);
 		auto period = std::stof(arguments[ARG_PERIOD]);
 
-		workspace.environment->setTerrain(std::make_shared<TerrainDropwave>(width, height, period));
+		workspace.environment->setTerrain(std::make_unique<TerrainDropwave>(width, height, period));
 	}
 	catch(...) {
 		console << MSG_INVALID_INPUT << std::endl;

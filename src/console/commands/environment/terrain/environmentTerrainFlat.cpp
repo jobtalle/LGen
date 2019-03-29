@@ -24,7 +24,7 @@ void Command::Environment::Terrain::Flat::application(
 		auto width = std::stof(arguments[ARG_WIDTH]);
 		auto height = std::stof(arguments[ARG_HEIGHT]);
 
-		workspace.environment->setTerrain(std::make_shared<TerrainFlat>(width, height));
+		workspace.environment->setTerrain(std::make_unique<TerrainFlat>(width, height));
 	}
 	catch(...) {
 		console << MSG_INVALID_INPUT << std::endl;

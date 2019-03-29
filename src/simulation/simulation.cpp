@@ -2,8 +2,8 @@
 
 using namespace LGen;
 
-void Simulation::setEnvironment(const std::shared_ptr<Environment>& environment) {
-	this->environment = environment;
+void Simulation::setEnvironment(std::unique_ptr<const Environment> environment) {
+	this->environment = std::move(environment);
 }
 
 const Environment& Simulation::getEnvironment() const {

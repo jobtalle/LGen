@@ -9,9 +9,11 @@ namespace LGen {
 
 		class New;
 		class Delete;
+		class Initialize;
 
 	private:
 		static const std::string KEYWORD;
 		static const std::string ALIAS;
+		static const std::string MSG_NO_SIMULATION;
 	};
 }

@@ -1,0 +1,1 @@
+Load a simulation from file and make it the currently selected simulation. The parameter should be a file name from which the simulation will be loaded.

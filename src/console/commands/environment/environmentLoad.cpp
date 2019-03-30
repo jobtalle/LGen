@@ -1,6 +1,5 @@
 #include "environmentLoad.h"
 #include "file/fileEnvironment.h"
-#include <stdlib.h>
 
 using namespace LGen;
 

@@ -38,7 +38,7 @@ File &LGen::operator<<(File& file, const Environment &environment) {
 }
 
 std::unique_ptr<Environment> &LGen::operator<<(std::unique_ptr<Environment> &environment, const File &file) {
-	environment = std::make_unique<LGen::Environment>();
+	environment = std::make_unique<Environment>();
 	
 	std::unique_ptr<Terrain> terrain;
 

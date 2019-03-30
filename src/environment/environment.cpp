@@ -2,11 +2,6 @@
 
 using namespace LGen;
 
-Environment::Environment() :
-	maxIterations(DEFAULT_MAX_ITERATIONS) {
-
-}
-
 void Environment::setTerrain(std::shared_ptr<const Terrain> terrain) {
 	this->terrain = std::move(terrain);
 }

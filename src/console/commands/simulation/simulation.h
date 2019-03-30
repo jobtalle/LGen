@@ -10,6 +10,8 @@ namespace LGen {
 		class New;
 		class Delete;
 		class Initialize;
+		class Save;
+		class Load;
 
 	private:
 		static const std::string KEYWORD;

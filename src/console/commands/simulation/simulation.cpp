@@ -2,6 +2,7 @@
 #include "console/commands/simulation/simulationNew.h"
 #include "console/commands/simulation/simulationDelete.h"
 #include "console/commands/simulation/simulationInitialize.h"
+#include "console/commands/simulation/simulationSave.h"
 
 using namespace LGen;
 
@@ -13,7 +14,8 @@ Command::Simulation::Simulation() :
 	Command({ KEYWORD, ALIAS }, {
 		std::make_unique<New>(),
 		std::make_unique<Delete>(),
-		std::make_unique<Initialize>()
+		std::make_unique<Initialize>(),
+		std::make_unique<Save>()
 	}) {
 	
 }

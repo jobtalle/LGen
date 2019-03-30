@@ -1,0 +1,1 @@
+Save the current simulation. The parameter should be a file name to which the simulation will be saved as plain text. Existing files will be overwritten.

@@ -218,6 +218,7 @@
     <ClCompile Include="src\console\commands\simulation\simulationDelete.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationInitialize.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationNew.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationSave.cpp" />
     <ClCompile Include="src\console\commands\system\system.cpp" />
     <ClCompile Include="src\console\commands\system\rule\systemRuleAdd.cpp" />
     <ClCompile Include="src\console\commands\system\rule\systemRuleRemove.cpp" />
@@ -353,6 +354,7 @@
     <ClInclude Include="src\console\commands\simulation\simulationDelete.h" />
     <ClInclude Include="src\console\commands\simulation\simulationInitialize.h" />
     <ClInclude Include="src\console\commands\simulation\simulationNew.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationSave.h" />
     <ClInclude Include="src\console\commands\system\system.h" />
     <ClInclude Include="src\console\commands\system\rule\systemRuleAdd.h" />
     <ClInclude Include="src\console\commands\system\rule\systemRuleRemove.h" />

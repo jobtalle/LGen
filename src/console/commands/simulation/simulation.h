@@ -12,6 +12,7 @@ namespace LGen {
 		class Initialize;
 		class Save;
 		class Load;
+		class Render;
 
 	private:
 		static const std::string KEYWORD;

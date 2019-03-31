@@ -68,11 +68,15 @@ void File::set(const std::string &key, const std::string &value) {
 	values[key] = value;
 }
 
-void File::set(const std::string& key, const float value) {
+void File::set(const std::string &key, const float value) {
 	values[key] = std::to_string(value);
 }
 
-void File::set(const std::string& key, const int value) {
+void File::set(const std::string &key, const int value) {
+	values[key] = std::to_string(value);
+}
+
+void File::set(const std::string &key, const size_t value) {
 	values[key] = std::to_string(value);
 }
 
@@ -84,12 +88,16 @@ std::string File::getString(const std::string &key) const {
 	return values.at(key);
 }
 
-float File::getFloat(const std::string& key) const {
+float File::getFloat(const std::string &key) const {
 	return std::stof(values.at(key));
 }
 
-int File::getInt(const std::string& key) const {
+int File::getInt(const std::string &key) const {
 	return std::stoi(values.at(key));
+}
+
+size_t File::getSize(const std::string &key) const {
+	return std::stol(values.at(key));
 }
 
 File File::getFile(const std::string &key) const {

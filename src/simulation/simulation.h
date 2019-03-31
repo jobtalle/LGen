@@ -1,20 +1,19 @@
 #pragma once
 
-#include "../environment/environment.h"
+#include "simulation/state.h"
 
 #include <memory>
 
 namespace LGen {
 	class Simulation final {
 	public:
-		Simulation() = default;
-		Simulation(LParse::Randomizer randomizer);
-		void setEnvironment(std::unique_ptr<const Environment> environment);
-		const Environment &getEnvironment() const;
-		const LParse::Randomizer &getRandomizer() const;
+		Simulation(std::unique_ptr<const State> initial);
+		Simulation(std::unique_ptr<const State> initial, std::unique_ptr<const State> state);
+		const State &getInitial() const;
+		const State &getState() const;
 
 	private:
-		LParse::Randomizer randomizer;
-		std::unique_ptr<const Environment> environment;
+		std::unique_ptr<const State> initial;
+		std::unique_ptr<const State> state;
 	};
 }

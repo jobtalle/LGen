@@ -18,13 +18,15 @@ namespace LGen {
 		bool keyExists(const std::string &key) const;
 
 		void set(const std::string &key, const std::string &value);
-		void set(const std::string &key, const float value);
-		void set(const std::string &key, const int value);
+		void set(const std::string &key, float value);
+		void set(const std::string &key, int value);
+		void set(const std::string &key, size_t value);
 		void set(const std::string &key, const File &file);
 
 		std::string getString(const std::string &key) const;
 		float getFloat(const std::string &key) const;
 		int getInt(const std::string &key) const;
+		size_t getSize(const std::string &key) const;
 		File getFile(const std::string &key) const;
 
 	private:

@@ -180,6 +180,7 @@
     <ClCompile Include="LRender\src\renderer\target\renderTargetUint.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskExposure.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskMode.cpp" />
+    <ClCompile Include="LRender\src\renderer\tasks\taskScene.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskSceneReport.cpp" />
     <ClCompile Include="LRender\src\renderer\uniforms\uniforms.cpp" />
     <ClCompile Include="LRender\src\renderer\uniforms\uniformsLight.cpp" />
@@ -216,7 +217,6 @@
     <ClCompile Include="src\console\commands\render\mode\renderModeWireframe.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulation.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationDelete.cpp" />
-    <ClCompile Include="src\console\commands\simulation\simulationInitialize.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationLoad.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationNew.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationRender.cpp" />
@@ -247,12 +247,14 @@
     <ClCompile Include="src\file\fileEnvironment.cpp" />
     <ClCompile Include="src\file\fileRandomizer.cpp" />
     <ClCompile Include="src\file\fileSimulation.cpp" />
+    <ClCompile Include="src\file\fileState.cpp" />
     <ClCompile Include="src\file\fileSystem.cpp" />
     <ClCompile Include="src\file\fileTerrain.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\monitor\glfwLoader.cpp" />
     <ClCompile Include="src\monitor\monitor.cpp" />
     <ClCompile Include="src\simulation\simulation.cpp" />
+    <ClCompile Include="src\simulation\state.cpp" />
     <ClCompile Include="src\utils\mathUtils.cpp" />
     <ClCompile Include="src\utils\stringUtils.cpp" />
   </ItemGroup>
@@ -318,6 +320,7 @@
     <ClInclude Include="LRender\src\renderer\tasks\task.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskExposure.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskMode.h" />
+    <ClInclude Include="LRender\src\renderer\tasks\taskScene.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskSceneReport.h" />
     <ClInclude Include="LRender\src\renderer\uniforms\uniforms.h" />
     <ClInclude Include="LRender\src\renderer\uniforms\uniformsLight.h" />
@@ -354,7 +357,6 @@
     <ClInclude Include="src\console\commands\render\mode\renderModeWireframe.h" />
     <ClInclude Include="src\console\commands\simulation\simulation.h" />
     <ClInclude Include="src\console\commands\simulation\simulationDelete.h" />
-    <ClInclude Include="src\console\commands\simulation\simulationInitialize.h" />
     <ClInclude Include="src\console\commands\simulation\simulationLoad.h" />
     <ClInclude Include="src\console\commands\simulation\simulationNew.h" />
     <ClInclude Include="src\console\commands\simulation\simulationRender.h" />
@@ -385,11 +387,13 @@
     <ClInclude Include="src\file\fileEnvironment.h" />
     <ClInclude Include="src\file\fileRandomizer.h" />
     <ClInclude Include="src\file\fileSimulation.h" />
+    <ClInclude Include="src\file\fileState.h" />
     <ClInclude Include="src\file\fileSystem.h" />
     <ClInclude Include="src\file\fileTerrain.h" />
     <ClInclude Include="src\monitor\glfwLoader.h" />
     <ClInclude Include="src\monitor\monitor.h" />
     <ClInclude Include="src\simulation\simulation.h" />
+    <ClInclude Include="src\simulation\state.h" />
     <ClInclude Include="src\utils\mathUtils.h" />
     <ClInclude Include="src\utils\stringUtils.h" />
   </ItemGroup>

@@ -2,19 +2,24 @@
 
 using namespace LGen;
 
-Simulation::Simulation(const LParse::Randomizer randomizer) :
-	randomizer(randomizer) {
+Simulation::Simulation(std::unique_ptr<const State> initial) :
+	initial(std::move(initial)) {
 	
 }
 
-void Simulation::setEnvironment(std::unique_ptr<const Environment> environment) {
-	this->environment = std::move(environment);
+Simulation::Simulation(std::unique_ptr<const State> initial, std::unique_ptr<const State> state) :
+	initial(std::move(initial)),
+	state(std::move(state)) {
+
 }
 
-const Environment &Simulation::getEnvironment() const {
-	return *environment;
+const State &Simulation::getInitial() const {
+	return *initial;
 }
 
-const LParse::Randomizer& Simulation::getRandomizer() const {
-	return randomizer;
+const State &Simulation::getState() const {
+	if(state)
+		return *state;
+
+	return *initial;
 }

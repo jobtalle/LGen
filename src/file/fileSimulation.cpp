@@ -1,35 +1,41 @@
 #include "fileSimulation.h"
-#include "fileEnvironment.h"
-#include "fileRandomizer.h"
+#include "fileState.h"
 
 using namespace LGen;
 
-static const std::string KEY_ENVIRONMENT = "environment";
-static const std::string KEY_RANDOMIZER = "randomizer";
+static const std::string KEY_INITIAL = "initial";
+static const std::string KEY_STATE = "state";
+static const std::string KEY_GENERATION = "generation";
 
 File &LGen::operator<<(File &file, const Simulation &simulation) {
-	auto fileEnvironment = File();
-	auto fileRandomizer = File();
+	if(simulation.getState().getGeneration() > 0) {
+		auto fileState = File();
 
-	fileEnvironment << simulation.getEnvironment();
-	fileRandomizer << simulation.getRandomizer();
+		file.set(KEY_STATE, fileState << simulation.getState());
+	}
 
-	file.set(KEY_ENVIRONMENT, fileEnvironment);
-	file.set(KEY_RANDOMIZER, fileRandomizer);
+	auto fileInitial = File();
+
+	file.set(KEY_GENERATION, simulation.getState().getGeneration());
+	file.set(KEY_INITIAL, fileInitial << simulation.getInitial());
 
 	return file;
 }
 
 std::unique_ptr<Simulation> &LGen::operator<<(std::unique_ptr<Simulation> &simulation, const File &file) {
-	std::unique_ptr<LParse::Randomizer> randomizer;
+	std::unique_ptr<State> initial;
+	std::unique_ptr<State> state;
 
-	randomizer << file.getFile(KEY_RANDOMIZER);
+	const size_t generation = file.getSize(KEY_GENERATION);
 
-	simulation = std::make_unique<Simulation>(*randomizer);
+	initial << file.getFile(KEY_INITIAL);
 
-	std::unique_ptr<Environment> environment;
-
-	simulation->setEnvironment(std::move(environment << file.getFile(KEY_ENVIRONMENT)));
+	if(generation > 0)
+		simulation = std::make_unique<Simulation>(
+			std::move(initial),
+			std::move(state << file.getFile(KEY_STATE)));
+	else
+		simulation = std::make_unique<Simulation>(std::move(initial));
 
 	return simulation;
 }

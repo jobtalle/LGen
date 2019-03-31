@@ -1,7 +1,6 @@
 #include "simulation.h"
 #include "console/commands/simulation/simulationNew.h"
 #include "console/commands/simulation/simulationDelete.h"
-#include "console/commands/simulation/simulationInitialize.h"
 #include "console/commands/simulation/simulationSave.h"
 #include "console/commands/simulation/simulationLoad.h"
 #include "console/commands/simulation/simulationRender.h"
@@ -16,7 +15,6 @@ Command::Simulation::Simulation() :
 	Command({ KEYWORD, ALIAS }, {
 		std::make_unique<New>(),
 		std::make_unique<Delete>(),
-		std::make_unique<Initialize>(),
 		std::make_unique<Save>(),
 		std::make_unique<Load>(),
 		std::make_unique<Render>()

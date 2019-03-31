@@ -1,1 +1,1 @@
-Create a new simulation.
+Create a new simulation. An environment must exist; the initial state of the simulation will be the equal to that environment.

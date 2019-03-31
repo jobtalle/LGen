@@ -9,7 +9,6 @@ namespace LGen {
 
 		class New;
 		class Delete;
-		class Initialize;
 		class Save;
 		class Load;
 		class Render;

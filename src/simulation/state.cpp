@@ -4,11 +4,9 @@ using namespace LGen;
 
 State::State(
 	std::unique_ptr<const Environment> environment,
-	const LParse::Randomizer randomizer,
-	const size_t generation) :
+	const LParse::Randomizer randomizer) :
 	environment(std::move(environment)),
-	randomizer(randomizer),
-	generation(generation) {
+	randomizer(randomizer) {
 
 }
 
@@ -18,10 +16,6 @@ const Environment &State::getEnvironment() const {
 
 const LParse::Randomizer &State::getRandomizer() const {
 	return randomizer;
-}
-
-size_t State::getGeneration() const {
-	return generation;
 }
 
 std::shared_ptr<LRender::Renderer::Task::Scene> State::getTaskScene() const {

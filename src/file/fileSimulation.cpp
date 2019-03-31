@@ -8,7 +8,7 @@ static const std::string KEY_STATE = "state";
 static const std::string KEY_GENERATION = "generation";
 
 File &LGen::operator<<(File &file, const Simulation &simulation) {
-	if(simulation.getState().getGeneration() > 0) {
+	if(simulation.getGeneration() > 0) {
 		auto fileState = File();
 
 		file.set(KEY_STATE, fileState << simulation.getState());
@@ -16,7 +16,7 @@ File &LGen::operator<<(File &file, const Simulation &simulation) {
 
 	auto fileInitial = File();
 
-	file.set(KEY_GENERATION, simulation.getState().getGeneration());
+	file.set(KEY_GENERATION, simulation.getGeneration());
 	file.set(KEY_INITIAL, fileInitial << simulation.getInitial());
 
 	return file;
@@ -33,7 +33,8 @@ std::unique_ptr<Simulation> &LGen::operator<<(std::unique_ptr<Simulation> &simul
 	if(generation > 0)
 		simulation = std::make_unique<Simulation>(
 			std::move(initial),
-			std::move(state << file.getFile(KEY_STATE)));
+			std::move(state << file.getFile(KEY_STATE)),
+			generation);
 	else
 		simulation = std::make_unique<Simulation>(std::move(initial));
 

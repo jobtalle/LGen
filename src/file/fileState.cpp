@@ -6,7 +6,6 @@ using namespace LGen;
 
 static const std::string KEY_ENVIRONMENT = "environment";
 static const std::string KEY_RANDOMIZER = "randomizer";
-static const std::string KEY_GENERATION = "generation";
 
 File &LGen::operator<<(File &file, const State &state) {
 	auto fileEnvironment = File();
@@ -17,7 +16,6 @@ File &LGen::operator<<(File &file, const State &state) {
 
 	file.set(KEY_ENVIRONMENT, fileEnvironment);
 	file.set(KEY_RANDOMIZER, fileRandomizer);
-	file.set(KEY_GENERATION, state.getGeneration());
 
 	return file;
 }
@@ -29,7 +27,7 @@ std::unique_ptr<State> &LGen::operator<<(std::unique_ptr<State> &state, const Fi
 	environment << file.getFile(KEY_ENVIRONMENT);
 	randomizer << file.getFile(KEY_RANDOMIZER);
 
-	state = std::make_unique<State>(std::move(environment), *randomizer, file.getSize(KEY_GENERATION));
+	state = std::make_unique<State>(std::move(environment), *randomizer);
 
 	return state;
 }

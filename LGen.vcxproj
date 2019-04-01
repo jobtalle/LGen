@@ -245,6 +245,7 @@
     <ClCompile Include="src\environment\terrain\terrainFlat.cpp" />
     <ClCompile Include="src\file\file.cpp" />
     <ClCompile Include="src\file\fileEnvironment.cpp" />
+    <ClCompile Include="src\file\fileMutator.cpp" />
     <ClCompile Include="src\file\fileRandomizer.cpp" />
     <ClCompile Include="src\file\fileSimulation.cpp" />
     <ClCompile Include="src\file\fileState.cpp" />
@@ -253,6 +254,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\monitor\glfwLoader.cpp" />
     <ClCompile Include="src\monitor\monitor.cpp" />
+    <ClCompile Include="src\simulation\mutator.cpp" />
     <ClCompile Include="src\simulation\simulation.cpp" />
     <ClCompile Include="src\simulation\state.cpp" />
     <ClCompile Include="src\utils\mathUtils.cpp" />
@@ -385,6 +387,7 @@
     <ClInclude Include="src\environment\terrain\terrainFlat.h" />
     <ClInclude Include="src\file\file.h" />
     <ClInclude Include="src\file\fileEnvironment.h" />
+    <ClInclude Include="src\file\fileMutator.h" />
     <ClInclude Include="src\file\fileRandomizer.h" />
     <ClInclude Include="src\file\fileSimulation.h" />
     <ClInclude Include="src\file\fileState.h" />
@@ -392,6 +395,7 @@
     <ClInclude Include="src\file\fileTerrain.h" />
     <ClInclude Include="src\monitor\glfwLoader.h" />
     <ClInclude Include="src\monitor\monitor.h" />
+    <ClInclude Include="src\simulation\mutator.h" />
     <ClInclude Include="src\simulation\simulation.h" />
     <ClInclude Include="src\simulation\state.h" />
     <ClInclude Include="src\utils\mathUtils.h" />

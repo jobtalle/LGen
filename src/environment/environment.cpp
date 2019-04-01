@@ -3,6 +3,8 @@
 using namespace LGen;
 
 void Environment::setTerrain(std::shared_ptr<const Terrain> terrain) {
+	clearAgents();
+
 	this->terrain = std::move(terrain);
 }
 

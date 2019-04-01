@@ -29,7 +29,7 @@ std::unique_ptr<LParse::System> &LGen::operator<<(std::unique_ptr<LParse::System
 
 		Utils::String::split(rule, LParse::Rule::CONNECTIVE, lhs, rhs);
 
-		rules.push_back(LParse::Rule(lhs, rhs));
+		rules.emplace_back(lhs, rhs);
 	}
 
 	system = std::make_unique<LParse::System>();

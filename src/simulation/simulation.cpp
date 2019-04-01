@@ -55,12 +55,17 @@ void Simulation::advance(Console &console) {
 		const auto &agent = getState().getEnvironment().getAgents()[i];
 		const auto &reportAgent = report->getAgents()[i];
 
-		for(const auto &seed : reportAgent.getSeedPositions())
-			environment->addAgent(
-				Agent(
-					mutator->mutate(agent.getSystem()),
-					seed.x,
-					seed.z));
+		for(const auto &reportSeed : reportAgent.getSeeds())
+			if(
+				reportSeed.getLocation().x > 0 &&
+				reportSeed.getLocation().y > 0 &&
+				reportSeed.getLocation().x < getState().getEnvironment().getTerrain().getWidth() &&
+				reportSeed.getLocation().y < getState().getEnvironment().getTerrain().getHeight())
+				environment->addAgent(
+					Agent(
+						mutator->mutate(agent.getSystem()),
+						reportSeed.getLocation().x,
+						reportSeed.getLocation().z));
 	}
 
 	state = std::make_unique<State>(std::move(environment), randomizer);

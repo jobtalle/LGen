@@ -21,7 +21,7 @@ void Command::System::Rule::Add::application(
 
 	std::vector<LParse::Rule> rules = workspace.system->getRules();
 
-	rules.push_back(LParse::Rule(arguments[ARG_LHS], arguments[ARG_RHS]));
+	rules.emplace_back(arguments[ARG_LHS], arguments[ARG_RHS]);
 
 	workspace.system->setRules(rules);
 }

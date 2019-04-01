@@ -56,3 +56,8 @@ void Simulation::advance(Console &console) {
 	state = std::make_unique<State>(std::move(environment), randomizer);
 	++generation;
 }
+
+void Simulation::revert() {
+	generation = 0;
+	state = nullptr;
+}

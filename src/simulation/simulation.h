@@ -22,6 +22,7 @@ namespace LGen {
 		const State &getState() const;
 		size_t getGeneration() const;
 		void advance(Console &console);
+		void revert();
 
 	private:
 		const std::unique_ptr<Mutator> mutator;

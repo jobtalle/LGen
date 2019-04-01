@@ -2,6 +2,7 @@
 
 #include "simulation/state.h"
 #include "simulation/mutator.h"
+#include "console/console.h"
 
 #include <memory>
 
@@ -20,6 +21,7 @@ namespace LGen {
 		const State &getInitial() const;
 		const State &getState() const;
 		size_t getGeneration() const;
+		void advance(Console &console);
 
 	private:
 		const std::unique_ptr<Mutator> mutator;

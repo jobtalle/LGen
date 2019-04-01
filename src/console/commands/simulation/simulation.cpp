@@ -4,6 +4,7 @@
 #include "console/commands/simulation/simulationSave.h"
 #include "console/commands/simulation/simulationLoad.h"
 #include "console/commands/simulation/simulationRender.h"
+#include "console/commands/simulation/simulationAdvance.h"
 
 using namespace LGen;
 
@@ -17,7 +18,8 @@ Command::Simulation::Simulation() :
 		std::make_unique<Delete>(),
 		std::make_unique<Save>(),
 		std::make_unique<Load>(),
-		std::make_unique<Render>()
+		std::make_unique<Render>(),
+		std::make_unique<Advance>()
 	}) {
 	
 }

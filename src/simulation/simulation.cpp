@@ -41,3 +41,18 @@ const State &Simulation::getState() const {
 size_t Simulation::getGeneration() const {
 	return generation;
 }
+
+void Simulation::advance(Console &console) {
+	LParse::Randomizer randomizer = getState().getRandomizer();
+	const auto task = getState().getTaskSceneReport(&randomizer);
+
+	console.getMonitor()->enqueue(task);
+
+	const auto report = task->getReport();
+	auto environment = getState().getEnvironment().makeEmptyCopy();
+
+
+
+	state = std::make_unique<State>(std::move(environment), randomizer);
+	++generation;
+}

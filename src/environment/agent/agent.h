@@ -7,8 +7,8 @@
 namespace LGen {
 	class Agent final {
 	public:
-		Agent(const LParse::System &system, const float x, const float y);
-		std::shared_ptr<LParse::Sentence> generate(const size_t steps, LParse::Randomizer &randomizer) const;
+		Agent(const LParse::System &system, float x, float y);
+		std::shared_ptr<LParse::Sentence> generate(size_t steps, LParse::Randomizer &randomizer) const;
 		const LParse::System &getSystem() const;
 		float getX() const;
 		float getY() const;

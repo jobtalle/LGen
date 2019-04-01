@@ -23,5 +23,19 @@ std::shared_ptr<LRender::Renderer::Task::Scene> State::getTaskScene() const {
 
 	return std::make_shared<LRender::Renderer::Task::Scene>(
 		environment->makeScene(renderRandomizer),
-		renderRandomizer);
+		renderRandomizer.makeRandomizer());
+}
+
+std::shared_ptr<LRender::Renderer::Task::SceneReport> State::getTaskSceneReport(
+	LParse::Randomizer *externalRandomizer) const {
+	if(externalRandomizer)
+		return std::make_shared<LRender::Renderer::Task::SceneReport>(
+			environment->makeScene(*externalRandomizer),
+			externalRandomizer->makeRandomizer());
+
+	auto renderRandomizer = randomizer;
+
+	return std::make_shared<LRender::Renderer::Task::SceneReport>(
+		environment->makeScene(renderRandomizer),
+		renderRandomizer.makeRandomizer());
 }

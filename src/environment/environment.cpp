@@ -2,6 +2,14 @@
 
 using namespace LGen;
 
+std::unique_ptr<Environment> Environment::makeEmptyCopy() const {
+	auto environment = std::make_unique<Environment>();
+
+	environment->setTerrain(terrain);
+
+	return environment;
+}
+
 void Environment::setTerrain(std::shared_ptr<const Terrain> terrain) {
 	clearAgents();
 

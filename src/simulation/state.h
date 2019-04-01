@@ -14,6 +14,8 @@ namespace LGen {
 		const Environment &getEnvironment() const;
 		const LParse::Randomizer &getRandomizer() const;
 		std::shared_ptr<LRender::Renderer::Task::Scene> getTaskScene() const;
+		std::shared_ptr<LRender::Renderer::Task::SceneReport> getTaskSceneReport(
+			LParse::Randomizer *externalRandomizer = nullptr) const;
 
 	private:
 		const std::unique_ptr<const Environment> environment;

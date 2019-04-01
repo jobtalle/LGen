@@ -13,6 +13,7 @@ namespace LGen {
 	public:
 		Environment() = default;
 		Environment(const Environment &other) = default;
+		std::unique_ptr<Environment> makeEmptyCopy() const;
 		void setTerrain(std::shared_ptr<const Terrain> terrain);
 		void setMaxIterations(size_t maxIterations);
 		void addAgent(const Agent &agent);

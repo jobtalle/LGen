@@ -1,6 +1,6 @@
 #pragma once
 
-#include "report/reportLimits.h"
+#include "simulation/candidate.h"
 
 #include <vector>
 #include <cstddef>
@@ -9,7 +9,7 @@ namespace LGen {
 	class DensityMap final {
 	public:
 		DensityMap(float width, float height);
-		void add(const LRender::ReportLimits &limits, float density);
+		void add(const Candidate &candidate);
 		float sample(float x, float y) const;
 
 	private:

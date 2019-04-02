@@ -27,3 +27,7 @@ float Candidate::getY() const {
 const LParse::System& Candidate::getSystem() const {
 	return system;
 }
+
+const LRender::ReportLimits &Candidate::getLimits() const {
+	return limits;
+}

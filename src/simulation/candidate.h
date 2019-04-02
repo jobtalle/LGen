@@ -16,6 +16,7 @@ namespace LGen {
 		float getX() const;
 		float getY() const;
 		const LParse::System &getSystem() const;
+		const LRender::ReportLimits &getLimits() const;
 
 	private:
 		const float x;

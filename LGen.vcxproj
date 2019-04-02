@@ -258,6 +258,7 @@
     <ClCompile Include="src\monitor\glfwLoader.cpp" />
     <ClCompile Include="src\monitor\monitor.cpp" />
     <ClCompile Include="src\simulation\candidate.cpp" />
+    <ClCompile Include="src\simulation\densityMap.cpp" />
     <ClCompile Include="src\simulation\mutator.cpp" />
     <ClCompile Include="src\simulation\simulation.cpp" />
     <ClCompile Include="src\simulation\state.cpp" />
@@ -403,6 +404,7 @@
     <ClInclude Include="src\monitor\glfwLoader.h" />
     <ClInclude Include="src\monitor\monitor.h" />
     <ClInclude Include="src\simulation\candidate.h" />
+    <ClInclude Include="src\simulation\densityMap.h" />
     <ClInclude Include="src\simulation\mutator.h" />
     <ClInclude Include="src\simulation\simulation.h" />
     <ClInclude Include="src\simulation\state.h" />

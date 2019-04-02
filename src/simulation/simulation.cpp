@@ -1,5 +1,6 @@
 #include "simulation.h"
 #include "simulation/candidate.h"
+#include "simulation/densityMap.h"
 
 using namespace LGen;
 
@@ -60,9 +61,9 @@ void Simulation::advance(Console &console) {
 		for(const auto &reportSeed : reportAgent.getSeeds())
 			if(
 				reportSeed.getLocation().x > 0 &&
-				reportSeed.getLocation().y > 0 &&
+				reportSeed.getLocation().z > 0 &&
 				reportSeed.getLocation().x < getState().getEnvironment().getTerrain().getWidth() &&
-				reportSeed.getLocation().y < getState().getEnvironment().getTerrain().getHeight())
+				reportSeed.getLocation().z < getState().getEnvironment().getTerrain().getHeight())
 				candidates.emplace_back(Candidate(
 					reportSeed.getLocation().x,
 					reportSeed.getLocation().z,
@@ -71,11 +72,21 @@ void Simulation::advance(Console &console) {
 					0));
 	}
 
-	for(const auto &candidate : candidates)
+	DensityMap densityMap(
+		getState().getEnvironment().getTerrain().getWidth(),
+		getState().getEnvironment().getTerrain().getHeight());
+
+	for(const auto &candidate : candidates) {
+		if(densityMap.sample(candidate.getX(), candidate.getY()) > 1)
+			continue;
+
 		environment->addAgent(Agent(
 			mutator->mutate(candidate.getSystem()),
 			candidate.getX(),
 			candidate.getY()));
+
+		densityMap.add(candidate);
+	}
 
 	state = std::make_unique<State>(std::move(environment), randomizer);
 	++generation;

@@ -1,4 +1,5 @@
 #include "simulation.h"
+#include "simulation/candidate.h"
 
 using namespace LGen;
 
@@ -50,6 +51,7 @@ void Simulation::advance(Console &console) {
 
 	const auto report = task->getReport();
 	auto environment = getState().getEnvironment().makeEmptyCopy();
+	std::vector<Candidate> candidates;
 
 	for(size_t i = 0; i < getState().getEnvironment().getAgents().size(); ++i) {
 		const auto &agent = getState().getEnvironment().getAgents()[i];
@@ -61,12 +63,19 @@ void Simulation::advance(Console &console) {
 				reportSeed.getLocation().y > 0 &&
 				reportSeed.getLocation().x < getState().getEnvironment().getTerrain().getWidth() &&
 				reportSeed.getLocation().y < getState().getEnvironment().getTerrain().getHeight())
-				environment->addAgent(
-					Agent(
-						mutator->mutate(agent.getSystem()),
-						reportSeed.getLocation().x,
-						reportSeed.getLocation().z));
+				candidates.emplace_back(Candidate(
+					reportSeed.getLocation().x,
+					reportSeed.getLocation().z,
+					agent.getSystem(),
+					reportAgent.getLimits(),
+					0));
 	}
+
+	for(const auto &candidate : candidates)
+		environment->addAgent(Agent(
+			mutator->mutate(candidate.getSystem()),
+			candidate.getX(),
+			candidate.getY()));
 
 	state = std::make_unique<State>(std::move(environment), randomizer);
 	++generation;

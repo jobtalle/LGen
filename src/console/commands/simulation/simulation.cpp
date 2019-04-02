@@ -6,6 +6,7 @@
 #include "console/commands/simulation/simulationRender.h"
 #include "console/commands/simulation/simulationAdvance.h"
 #include "console/commands/simulation/simulationRevert.h"
+#include "console/commands/simulation/simulationSummary.h"
 
 using namespace LGen;
 
@@ -21,7 +22,8 @@ Command::Simulation::Simulation() :
 		std::make_unique<Load>(),
 		std::make_unique<Render>(),
 		std::make_unique<Advance>(),
-		std::make_unique<Revert>()
+		std::make_unique<Revert>(),
+		std::make_unique<Summary>()
 	}) {
 	
 }

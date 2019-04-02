@@ -14,6 +14,7 @@ namespace LGen {
 		class Render;
 		class Advance;
 		class Revert;
+		class Summary;
 
 	private:
 		static const std::string KEYWORD;

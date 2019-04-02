@@ -82,6 +82,6 @@ void Simulation::advance(Console &console) {
 }
 
 void Simulation::revert() {
-	generation = 0;
 	state = nullptr;
+	generation = 0;
 }

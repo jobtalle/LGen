@@ -9,7 +9,7 @@ namespace LGen {
 		Candidate(
 			float x,
 			float y,
-			LParse::System system,
+			const LParse::System &system,
 			LRender::ReportLimits limits,
 			float score);
 

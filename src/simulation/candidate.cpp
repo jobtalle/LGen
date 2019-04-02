@@ -5,7 +5,7 @@ using namespace LGen;
 Candidate::Candidate(
 	const float x,
 	const float y,
-	LParse::System system,
+	const LParse::System &system,
 	LRender::ReportLimits limits,
 	const float score) :
 	x(x),

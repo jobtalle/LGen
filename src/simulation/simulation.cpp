@@ -43,7 +43,7 @@ const State &Simulation::getState() const {
 size_t Simulation::getGeneration() const {
 	return generation;
 }
-
+#include <iostream>
 void Simulation::advance(Console &console) {
 	LParse::Randomizer randomizer = getState().getRandomizer();
 	const auto task = getState().getTaskSceneReport(&randomizer);
@@ -77,8 +77,10 @@ void Simulation::advance(Console &console) {
 		getState().getEnvironment().getTerrain().getHeight());
 
 	for(const auto &candidate : candidates) {
-		if(densityMap.sample(candidate.getX(), candidate.getY()) > 1)
+		if(densityMap.sample(candidate.getX(), candidate.getY()) > 0.5f) {
+			std::cout << "reject\n";
 			continue;
+		}
 
 		environment->addAgent(Agent(
 			mutator->mutate(candidate.getSystem()),

@@ -10,19 +10,19 @@ namespace LGen {
 			float x,
 			float y,
 			const LParse::System &system,
-			LRender::ReportLimits limits,
+			const LRender::ReportLimits &limits,
 			float score);
 
 		float getX() const;
 		float getY() const;
 		const LParse::System &getSystem() const;
-		const LRender::ReportLimits &getLimits() const;
+		float getRadius() const;
 
 	private:
 		const float x;
 		const float y;
 		const LParse::System system;
-		const LRender::ReportLimits limits;
+		const float radius;
 		const float score;
 	};
 }

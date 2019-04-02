@@ -6,12 +6,12 @@ Candidate::Candidate(
 	const float x,
 	const float y,
 	const LParse::System &system,
-	LRender::ReportLimits limits,
+	const LRender::ReportLimits &limits,
 	const float score) :
 	x(x),
 	y(y),
 	system(system),
-	limits(std::move(limits)),
+	radius(limits.getRadius()),
 	score(score) {
 	
 }
@@ -28,6 +28,6 @@ const LParse::System& Candidate::getSystem() const {
 	return system;
 }
 
-const LRender::ReportLimits &Candidate::getLimits() const {
-	return limits;
+float Candidate::getRadius() const {
+	return radius;
 }

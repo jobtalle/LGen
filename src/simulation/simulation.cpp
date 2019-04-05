@@ -85,7 +85,7 @@ void Simulation::advance(Console &console) {
 			continue;
 
 		environment->addAgent(Agent(
-			mutator->mutate(candidate.getSystem()),
+			mutator->mutate(candidate.getSystem(), randomizer),
 			candidate.getX(),
 			candidate.getY()));
 

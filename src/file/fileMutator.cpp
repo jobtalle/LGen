@@ -7,5 +7,7 @@ File &LGen::operator<<(File &file, const Mutator &mutator) {
 }
 
 std::unique_ptr<Mutator> &LGen::operator<<(std::unique_ptr<Mutator> &mutator, const File &file) {
+	mutator = std::make_unique<Mutator>();
+
 	return mutator;
 }

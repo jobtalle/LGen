@@ -2,6 +2,8 @@
 #include "simulation/candidate.h"
 #include "simulation/densityMap.h"
 
+#include <algorithm>
+
 using namespace LGen;
 
 Simulation::Simulation(
@@ -75,6 +77,8 @@ void Simulation::advance(Console &console) {
 	DensityMap densityMap(
 		getState().getEnvironment().getTerrain().getWidth(),
 		getState().getEnvironment().getTerrain().getHeight());
+
+	std::sort(candidates.begin(), candidates.end(), Candidate::compare);
 
 	for(const auto &candidate : candidates) {
 		if(densityMap.sample(candidate.getX(), candidate.getY()) > 1.5f)

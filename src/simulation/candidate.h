@@ -12,17 +12,20 @@ namespace LGen {
 			const LParse::System &system,
 			const LRender::ReportLimits &limits,
 			float score);
+		Candidate &operator=(const Candidate &other) = default;
 
 		float getX() const;
 		float getY() const;
 		const LParse::System &getSystem() const;
 		float getRadius() const;
+		float getScore() const;
+		static bool compare(const Candidate &a, const Candidate &b);
 
 	private:
-		const float x;
-		const float y;
-		const LParse::System system;
-		const float radius;
-		const float score;
+		float x;
+		float y;
+		LParse::System system;
+		float radius;
+		float score;
 	};
 }

@@ -31,3 +31,11 @@ const LParse::System& Candidate::getSystem() const {
 float Candidate::getRadius() const {
 	return radius;
 }
+
+float Candidate::getScore() const {
+	return score;
+}
+
+bool Candidate::compare(const Candidate& a, const Candidate& b) {
+	return a.getScore() > b.getScore();
+}

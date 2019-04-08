@@ -178,6 +178,17 @@ LParse::System Mutator::mutate(const LParse::System& system, LParse::Randomizer 
 			rules.push_back(rule);
 	}
 
+	if(randomizer.makeFloat() < pRuleAdd) {
+		if(randomizer.makeFloat() < pSymbolChanceNew)
+			rules.emplace_back(
+				makeToken(randomizer, &generated),
+				makeToken(randomizer));
+		else
+			rules.emplace_back(
+				makeToken(randomizer, &generated),
+				makeToken(randomizer, &generated));
+	}
+
 	LParse::System mutated;
 	LParse::Sentence newAxiom = mutate(system.getAxiom(), randomizer, true, &generated);
 

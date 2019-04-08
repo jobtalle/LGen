@@ -12,7 +12,7 @@ Command::Simulation::Advance::Advance() :
 }
 
 void Command::Simulation::Advance::application(
-	const std::vector<std::string>& arguments,
+	const std::vector<std::string> &arguments,
 	Console& console) {
 	if(!workspace.simulation) {
 		console << MSG_NO_SIMULATION << std::endl;

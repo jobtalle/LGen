@@ -13,6 +13,7 @@ namespace LGen {
 		class Load;
 		class Render;
 		class Advance;
+		class AdvanceN;
 		class Revert;
 		class Summary;
 

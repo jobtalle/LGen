@@ -219,6 +219,7 @@
     <ClCompile Include="src\console\commands\render\mode\renderModeWireframe.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulation.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationAdvance.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationAdvanceN.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationDelete.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationLoad.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationNew.cpp" />
@@ -370,6 +371,7 @@
     <ClInclude Include="src\console\commands\render\mode\renderModeWireframe.h" />
     <ClInclude Include="src\console\commands\simulation\simulation.h" />
     <ClInclude Include="src\console\commands\simulation\simulationAdvance.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationAdvanceN.h" />
     <ClInclude Include="src\console\commands\simulation\simulationDelete.h" />
     <ClInclude Include="src\console\commands\simulation\simulationLoad.h" />
     <ClInclude Include="src\console\commands\simulation\simulationNew.h" />

@@ -5,6 +5,7 @@
 #include "console/commands/simulation/simulationLoad.h"
 #include "console/commands/simulation/simulationRender.h"
 #include "console/commands/simulation/simulationAdvance.h"
+#include "console/commands/simulation/simulationAdvanceN.h"
 #include "console/commands/simulation/simulationRevert.h"
 #include "console/commands/simulation/simulationSummary.h"
 
@@ -22,6 +23,7 @@ Command::Simulation::Simulation() :
 		std::make_unique<Load>(),
 		std::make_unique<Render>(),
 		std::make_unique<Advance>(),
+		std::make_unique<AdvanceN>(),
 		std::make_unique<Revert>(),
 		std::make_unique<Summary>()
 	}) {

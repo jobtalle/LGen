@@ -40,6 +40,8 @@ namespace LGen {
 			float pSeed;
 		};
 
+		static const size_t SENTENCE_LENGTH_LIMIT = 8;
+
 		LParse::Sentence mutate(
 			const LParse::Sentence &sentence,
 			LParse::Randomizer &randomizer,

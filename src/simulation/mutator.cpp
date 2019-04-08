@@ -207,12 +207,13 @@ LParse::Sentence Mutator::mutate(
 	LParse::Randomizer &randomizer,
 	const bool allowNew,
 	const GeneratedSymbols *generated) const {
-	const auto makeBranch = randomizer.makeFloat() < pBranchAdd;
-	const auto makeLeaf = !makeBranch && randomizer.makeFloat() < pLeafAdd;
 	std::vector<LParse::Token> tokens;
 	size_t scope = 0;
 
 	for(const auto &token : sentence.getTokens()) {
+		const auto makeBranch = randomizer.makeFloat() < pBranchAdd;
+		const auto makeLeaf = !makeBranch && randomizer.makeFloat() < pLeafAdd;
+
 		switch(token.getSymbol()) {
 		case LParse::Legend::LEAF:
 			if(randomizer.makeFloat() < pLeafRemove)
@@ -261,6 +262,9 @@ LParse::Sentence Mutator::mutate(
 				
 			break;
 		}
+
+		if(tokens.size() >= SENTENCE_LENGTH_LIMIT)
+			break;
 	}
 
 	return LParse::Sentence(tokens);

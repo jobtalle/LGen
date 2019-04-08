@@ -71,7 +71,7 @@ void Simulation::advance(Console &console) {
 					reportSeed.getLocation().z,
 					agent.getSystem(),
 					reportAgent.getLimits(),
-					reportAgent.getExposure().getExposure()));
+					reportAgent.getExposure().getExposure() / reportAgent.getSize().getNodes()));
 	}
 
 	DensityMap densityMap(

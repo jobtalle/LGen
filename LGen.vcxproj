@@ -192,6 +192,7 @@
     <ClCompile Include="LRender\src\report\reportExposure.cpp" />
     <ClCompile Include="LRender\src\report\reportLimits.cpp" />
     <ClCompile Include="LRender\src\report\reportSeed.cpp" />
+    <ClCompile Include="LRender\src\report\reportSize.cpp" />
     <ClCompile Include="LRender\src\scene\agent.cpp" />
     <ClCompile Include="LRender\src\scene\scene.cpp" />
     <ClCompile Include="LRender\src\scene\terrain.cpp" />
@@ -341,6 +342,7 @@
     <ClInclude Include="LRender\src\report\reportExposure.h" />
     <ClInclude Include="LRender\src\report\reportLimits.h" />
     <ClInclude Include="LRender\src\report\reportSeed.h" />
+    <ClInclude Include="LRender\src\report\reportSize.h" />
     <ClInclude Include="LRender\src\scene\agent.h" />
     <ClInclude Include="LRender\src\scene\scene.h" />
     <ClInclude Include="LRender\src\scene\terrain.h" />

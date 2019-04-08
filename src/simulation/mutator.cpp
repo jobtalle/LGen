@@ -5,6 +5,134 @@
 
 using namespace LGen;
 
+Mutator::GeneratedSymbols::GeneratedSymbols(
+	const std::vector<LParse::Token>& generatedTokens,
+	const float pStep,
+	const float pConstant,
+	const float pRotation,
+	const float pSeed) :
+	pStep(pStep),
+	pConstant(pConstant),
+	pRotation(pRotation),
+	pSeed(pSeed) {
+	for(const auto &token : generatedTokens) {
+		switch(token.getSymbol()) {
+		case LParse::Legend::BRANCH_OPEN:
+		case LParse::Legend::BRANCH_CLOSE:
+		case LParse::Legend::LEAF:
+			continue;
+		case LParse::Legend::PITCH_INCREMENT:
+		case LParse::Legend::PITCH_DECREMENT:
+		case LParse::Legend::ROLL_INCREMENT:
+		case LParse::Legend::ROLL_DECREMENT:
+			rotations.push_back(token);
+
+			break;
+		case LParse::Legend::SEED:
+			seeds.push_back(token);
+
+			break;
+		default:
+			if(token.getSymbol() >= LParse::Legend::STEP_MIN && token.getSymbol() <= LParse::Legend::STEP_MAX)
+				steps.push_back(token);
+			else
+				constants.push_back(token);
+
+			break;
+		}
+	}
+
+	if(empty())
+		return;
+
+	if(rotations.empty()) {
+		const auto multiplier = 1.0f / (1.0f - this->pRotation);
+
+		this->pSeed *= multiplier;
+		this->pStep *= multiplier;
+		this->pConstant *= multiplier;
+		this->pRotation = 0;
+	}
+
+	if(seeds.empty()) {
+		const auto multiplier = 1.0f / (1.0f - this->pSeed);
+
+		this->pRotation *= multiplier;
+		this->pStep *= multiplier;
+		this->pConstant *= multiplier;
+		this->pSeed = 0;
+	}
+
+	if(steps.empty()) {
+		const auto multiplier = 1.0f / (1.0f - this->pStep);
+
+		this->pRotation *= multiplier;
+		this->pSeed *= multiplier;
+		this->pConstant *= multiplier;
+		this->pStep = 0;
+	}
+
+	if(constants.empty()) {
+		const auto multiplier = 1.0f / (1.0f - this->pConstant);
+
+		this->pRotation *= multiplier;
+		this->pSeed *= multiplier;
+		this->pStep *= multiplier;
+		this->pConstant = 0;
+	}
+
+	normalize();
+}
+
+const std::vector<LParse::Token>& Mutator::GeneratedSymbols::getSteps() const {
+	return steps;
+}
+
+const std::vector<LParse::Token>& Mutator::GeneratedSymbols::getConstants() const {
+	return constants;
+}
+
+const std::vector<LParse::Token>& Mutator::GeneratedSymbols::getRotations() const {
+	return rotations;
+}
+
+const std::vector<LParse::Token>& Mutator::GeneratedSymbols::getSeeds() const {
+	return seeds;
+}
+
+float Mutator::GeneratedSymbols::getPStep() const {
+	return pStep;
+}
+
+float Mutator::GeneratedSymbols::getPConstant() const {
+	return pConstant;
+}
+
+float Mutator::GeneratedSymbols::getPRotation() const {
+	return pRotation;
+}
+
+float Mutator::GeneratedSymbols::getPSeed() const {
+	return pSeed;
+}
+
+bool Mutator::GeneratedSymbols::empty() const {
+	return steps.empty() && constants.empty() && rotations.empty() && seeds.empty();
+}
+
+void Mutator::GeneratedSymbols::normalize() {
+	const auto remainder = 1.0f - pStep - pConstant - pRotation - pSeed;
+
+	if(pStep != 0)
+		pStep += remainder;
+	else if(pConstant != 0)
+		pConstant += remainder;
+	else if(pRotation != 0)
+		pRotation += remainder;
+	else
+		pSeed += remainder;
+}
+
 Mutator::Mutator() :
 	pSymbolAdd(0.005f),
 	pSymbolRemove(0.005f),
@@ -12,6 +140,7 @@ Mutator::Mutator() :
 	pSymbolChanceRotation(0.2f),
 	pSymbolChanceSeed(0.1f),
 	pSymbolChanceStep(0.4f),
+	pSymbolChanceConstant(0.3f),
 
 	pBranchAdd(0.002f),
 	pBranchRemove(0.002f),
@@ -22,17 +151,25 @@ Mutator::Mutator() :
 	pRuleDuplicate(0.003f),
 	pRuleAdd(0.001f),
 	pRuleRemove(0.004f) {
-	
+
 }
 
 LParse::System Mutator::mutate(const LParse::System& system, LParse::Randomizer &randomizer) const {
-	std::vector<LParse::Rule> rules;;
+	std::vector<LParse::Rule> rules;
+	const GeneratedSymbols generated(
+		system.getGeneratedTokens(),
+		pSymbolChanceStep,
+		pSymbolChanceConstant,
+		pSymbolChanceRotation,
+		pSymbolChanceSeed);
 
 	for(const auto &rule : system.getRules()) {
 		if(randomizer.makeFloat() < pRuleRemove)
 			continue;
 
-		const auto newRule = LParse::Rule(mutate(rule.getLhs(), randomizer), mutate(rule.getRhs(), randomizer));
+		const auto newRule = LParse::Rule(
+			mutate(rule.getLhs(), randomizer, false, &generated), 
+			mutate(rule.getRhs(), randomizer, true, &generated));
 
 		if(!newRule.getLhs().getTokens().empty())
 			rules.push_back(newRule);
@@ -42,7 +179,7 @@ LParse::System Mutator::mutate(const LParse::System& system, LParse::Randomizer 
 	}
 
 	LParse::System mutated;
-	LParse::Sentence newAxiom = mutate(system.getAxiom(), randomizer);
+	LParse::Sentence newAxiom = mutate(system.getAxiom(), randomizer, true, &generated);
 
 	if(newAxiom.getTokens().empty())
 		mutated.setAxiom(system.getAxiom());
@@ -54,24 +191,32 @@ LParse::System Mutator::mutate(const LParse::System& system, LParse::Randomizer 
 	return mutated;
 }
 
-LParse::Sentence Mutator::mutate(const LParse::Sentence& sentence, LParse::Randomizer &randomizer) const {
+LParse::Sentence Mutator::mutate(
+	const LParse::Sentence& sentence,
+	LParse::Randomizer &randomizer,
+	const bool allowNew,
+	const GeneratedSymbols *generated) const {
 	std::vector<LParse::Token> tokens;
 
 	for(const auto &token : sentence.getTokens()) {
 		switch(token.getSymbol()) {
-		case LRender::AgentModel::SYM_LEAF:
-		case LRender::AgentModel::SYM_BRANCH_OPEN:
-		case LRender::AgentModel::SYM_BRANCH_CLOSE:
+		case LParse::Legend::LEAF:
+		case LParse::Legend::BRANCH_OPEN:
+		case LParse::Legend::BRANCH_CLOSE:
 			tokens.push_back(token);
 			break;
 		default:
 			if(randomizer.makeFloat() < pSymbolRemove)
 				continue;
-			
+
+			// TODO: Maybe switch this around? New symbols will never be the first symbol as it is.
 			tokens.push_back(token);
 			
 			if(randomizer.makeFloat() < pSymbolAdd)
-				tokens.push_back(makeToken(randomizer));
+				if(randomizer.makeFloat() < pSymbolChanceNew)
+					tokens.push_back(makeToken(randomizer));
+				else
+					tokens.push_back(makeToken(randomizer, generated));
 				
 			break;
 		}
@@ -83,24 +228,42 @@ LParse::Sentence Mutator::mutate(const LParse::Sentence& sentence, LParse::Rando
 LParse::Token Mutator::makeToken(LParse::Randomizer& randomizer) const {
 	const auto chance = randomizer.makeFloat();
 
-	if(chance < pSymbolChanceRotation) {
+	if(chance <= pSymbolChanceRotation) {
 		switch(randomizer.makeInt(0, 3)) {
 		case 0:
-			return LRender::AgentModel::SYM_PITCH_INCREMENT;
+			return LParse::Legend::PITCH_INCREMENT;
 		case 1:
-			return LRender::AgentModel::SYM_PITCH_DECREMENT;
+			return LParse::Legend::PITCH_DECREMENT;
 		case 2:
-			return LRender::AgentModel::SYM_ROLL_INCREMENT;
+			return LParse::Legend::ROLL_INCREMENT;
 		default:
-			return LRender::AgentModel::SYM_ROLL_DECREMENT;
+			return LParse::Legend::ROLL_DECREMENT;
 		}
 	}
 
-	if(chance < pSymbolChanceRotation + pSymbolChanceSeed)
-		return LRender::AgentModel::SYM_SEED;
+	if(chance <= pSymbolChanceRotation + pSymbolChanceSeed)
+		return LParse::Legend::SEED;
 
-	if(chance < pSymbolChanceRotation + pSymbolChanceSeed + pSymbolChanceStep)
-		return randomizer.makeInt(LRender::AgentModel::SYM_STEP_MIN, LRender::AgentModel::SYM_STEP_MAX);
+	if(chance <= pSymbolChanceRotation + pSymbolChanceSeed + pSymbolChanceStep)
+		return randomizer.makeInt(LParse::Legend::STEP_MIN, LParse::Legend::STEP_MAX);
 
-	return randomizer.makeInt('a', 'z');
+	return randomizer.makeInt(LParse::Legend::CONST_MIN, LParse::Legend::CONST_MAX);
+}
+
+LParse::Token Mutator::makeToken(LParse::Randomizer& randomizer, const GeneratedSymbols *constraints) const {
+	if(!constraints || constraints->empty())
+		return makeToken(randomizer);
+
+	const auto chance = randomizer.makeFloat();
+
+	if(chance <= constraints->getPRotation())
+		return constraints->getRotations()[randomizer.makeInt(0, constraints->getRotations().size() - 1)];
+
+	if(chance <= constraints->getPSeed() + constraints->getPRotation())
+		return constraints->getSeeds()[randomizer.makeInt(0, constraints->getSeeds().size() - 1)];
+
+	if(chance <= constraints->getPStep() + constraints->getPSeed() + constraints->getPRotation())
+		return constraints->getSteps()[randomizer.makeInt(0, constraints->getSteps().size() - 1)];
+
+	return constraints->getConstants()[randomizer.makeInt(0, constraints->getConstants().size() - 1)];
 }

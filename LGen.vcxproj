@@ -279,6 +279,7 @@
     <ClInclude Include="glfw\src\win32_platform.h" />
     <ClInclude Include="glfw\src\xkb_unicode.h" />
     <ClInclude Include="LParse\include\lparse.h" />
+    <ClInclude Include="LParse\src\legend.h" />
     <ClInclude Include="LParse\src\randomizer.h" />
     <ClInclude Include="LParse\src\rule.h" />
     <ClInclude Include="LParse\src\sentence.h" />

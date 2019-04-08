@@ -86,6 +86,10 @@ std::vector<std::string> Command::getAliases() const {
 	return aliases;
 }
 
+size_t Command::getArity() const {
+	return args == -1 ? 0 : args;
+}
+
 void Command::application(
 	const std::vector<std::string> &arguments,
 	Console &console) {

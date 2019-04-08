@@ -19,13 +19,14 @@ namespace LGen {
 		class Environment;
 		class Simulation;
 
-		Command(std::vector<std::string> triggers, const char args = -1);
-		Command(std::vector<std::string> triggers, std::string help, const char args = -1);
+		Command(std::vector<std::string> triggers, char args = -1);
+		Command(std::vector<std::string> triggers, std::string help, char args = -1);
 		Command(std::vector<std::string> triggers, const std::vector<std::shared_ptr<Command>> &commands, const char args = -1);
 		virtual ~Command() = default;
 		bool apply(const Input &input, Console &console);
 		const std::string &getTrigger() const;
 		std::vector<std::string> getAliases() const;
+		size_t getArity() const;
 
 	protected:
 		virtual void application(

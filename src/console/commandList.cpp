@@ -42,6 +42,6 @@ void CommandList::enumerateKeywords(Console &console) const {
 			keywords += ')';
 		}
 
-		console << ENUMERATE_PREFIX << keywords << std::endl;
+		console << ENUMERATE_PREFIX << '[' << command->getArity() << "] " << keywords << std::endl;
 	}
 }

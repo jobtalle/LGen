@@ -264,6 +264,7 @@
     <ClCompile Include="src\simulation\mutator.cpp" />
     <ClCompile Include="src\simulation\simulation.cpp" />
     <ClCompile Include="src\simulation\state.cpp" />
+    <ClCompile Include="src\simulation\utility.cpp" />
     <ClCompile Include="src\utils\mathUtils.cpp" />
     <ClCompile Include="src\utils\stringUtils.cpp" />
   </ItemGroup>
@@ -413,6 +414,7 @@
     <ClInclude Include="src\simulation\mutator.h" />
     <ClInclude Include="src\simulation\simulation.h" />
     <ClInclude Include="src\simulation\state.h" />
+    <ClInclude Include="src\simulation\utility.h" />
     <ClInclude Include="src\utils\mathUtils.h" />
     <ClInclude Include="src\utils\stringUtils.h" />
   </ItemGroup>

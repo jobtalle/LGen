@@ -1,6 +1,7 @@
 #include "simulation.h"
 #include "simulation/candidate.h"
 #include "simulation/densityMap.h"
+#include "simulation/utility.h"
 
 #include <algorithm>
 
@@ -71,7 +72,7 @@ void Simulation::advance(Console &console) {
 					reportSeed.getLocation().z,
 					agent.getSystem(),
 					reportAgent.getLimits(),
-					reportAgent.getExposure().getExposure() / reportAgent.getSize().getNodes()));
+					Utility::utility(reportAgent)));
 	}
 
 	DensityMap densityMap(

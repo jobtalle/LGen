@@ -28,5 +28,9 @@ void String::split(
 	const size_t first = string.find_first_of(split);
 	
 	lhs = string.substr(0, first);
-	rhs = string.substr(first + split.size(), string.size());
+
+	if(string.size() < first + split.size())
+		rhs = "";
+	else
+		rhs = string.substr(first + split.size(), string.size());
 }

@@ -2,6 +2,8 @@
 
 using namespace LGen;
 
+const float Candidate::RADIUS_OFFSET = 0.1f;
+
 Candidate::Candidate(
 	const float x,
 	const float y,
@@ -11,7 +13,7 @@ Candidate::Candidate(
 	x(x),
 	y(y),
 	system(system),
-	radius(limits.getRadius()),
+	radius(limits.getRadius() + RADIUS_OFFSET),
 	score(score) {
 	
 }

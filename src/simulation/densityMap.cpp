@@ -14,10 +14,10 @@ DensityMap::DensityMap(const float width, const float height) :
 
 	std::fill(grid.begin(), grid.end(), 0.0f);
 }
-
+#include <iostream>
 void DensityMap::add(const Candidate &candidate) {
-	size_t left = std::floor((candidate.getX() - candidate.getRadius()) / GRID_SIZE);
-	size_t top = std::floor((candidate.getY() - candidate.getRadius()) / GRID_SIZE);
+	size_t left = std::floor(std::max(0.0f, candidate.getX() - candidate.getRadius()) / GRID_SIZE);
+	size_t top = std::floor(std::max(0.0f, candidate.getY() - candidate.getRadius()) / GRID_SIZE);
 	size_t right = std::floor((candidate.getX() + candidate.getRadius()) / GRID_SIZE);
 	size_t bottom = std::floor((candidate.getY() + candidate.getRadius()) / GRID_SIZE);
 	
@@ -27,14 +27,16 @@ void DensityMap::add(const Candidate &candidate) {
 	if(bottom >= yCells) bottom = yCells - 1;
 
 	const float squaredRadius = candidate.getRadius() * candidate.getRadius();
-
+	size_t count = 0;
 	for(size_t y = top; y <= bottom; ++y) for(size_t x = left; x <= right; ++x) {
 		const float dx = candidate.getX() - (x + 0.5f) * GRID_SIZE;
 		const float dy = candidate.getY() - (y + 0.5f) * GRID_SIZE;
 
 		if(dx * dx + dy * dy < squaredRadius)
-			grid[x + y * xCells] += 1;
+			++count, grid[x + y * xCells] += 1;
 	}
+	if(count == 0)
+		std::cout << count << std::endl;
 }
 
 float DensityMap::sample(const float x, const float y) const {

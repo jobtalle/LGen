@@ -62,10 +62,10 @@ void Simulation::advance(Console &console) {
 
 		for(const auto &reportSeed : reportAgent.getSeeds())
 			if(
-				reportSeed.getLocation().x > 0 &&
-				reportSeed.getLocation().z > 0 &&
-				reportSeed.getLocation().x < getState().getEnvironment().getTerrain().getWidth() &&
-				reportSeed.getLocation().z < getState().getEnvironment().getTerrain().getHeight())
+				reportSeed.getLocation().x >= 0 &&
+				reportSeed.getLocation().z >= 0 &&
+				reportSeed.getLocation().x <= getState().getEnvironment().getTerrain().getWidth() &&
+				reportSeed.getLocation().z <= getState().getEnvironment().getTerrain().getHeight())
 				candidates.emplace_back(Candidate(
 					reportSeed.getLocation().x,
 					reportSeed.getLocation().z,
@@ -81,7 +81,7 @@ void Simulation::advance(Console &console) {
 	std::sort(candidates.begin(), candidates.end(), Candidate::compare);
 
 	for(const auto &candidate : candidates) {
-		if(densityMap.sample(candidate.getX(), candidate.getY()) > 1.5f)
+		if(densityMap.sample(candidate.getX(), candidate.getY()) > 1)
 			continue;
 
 		environment->addAgent(Agent(

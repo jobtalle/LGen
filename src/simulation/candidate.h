@@ -22,6 +22,8 @@ namespace LGen {
 		static bool compare(const Candidate &a, const Candidate &b);
 
 	private:
+		static const float RADIUS_OFFSET;
+
 		float x;
 		float y;
 		LParse::System system;

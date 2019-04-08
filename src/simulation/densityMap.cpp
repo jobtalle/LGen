@@ -21,8 +21,6 @@ void DensityMap::add(const Candidate &candidate) {
 	size_t right = std::floor((candidate.getX() + candidate.getRadius()) / GRID_SIZE);
 	size_t bottom = std::floor((candidate.getY() + candidate.getRadius()) / GRID_SIZE);
 	
-	if(left < 0) left = 0;
-	if(top < 0) top = 0;
 	if(right >= xCells) right = xCells - 1;
 	if(bottom >= yCells) bottom = yCells - 1;
 

@@ -44,7 +44,7 @@ Mutator::GeneratedSymbols::GeneratedSymbols(
 
 	if(empty())
 		return;
-
+	
 	if(rotations.empty()) {
 		const auto multiplier = 1.0f / (1.0f - this->pRotation);
 
@@ -196,27 +196,57 @@ LParse::Sentence Mutator::mutate(
 	LParse::Randomizer &randomizer,
 	const bool allowNew,
 	const GeneratedSymbols *generated) const {
+	const auto makeBranch = randomizer.makeFloat() < pBranchAdd;
+	const auto makeLeaf = !makeBranch && randomizer.makeFloat() < pLeafAdd;
 	std::vector<LParse::Token> tokens;
+	size_t scope = 0;
 
 	for(const auto &token : sentence.getTokens()) {
 		switch(token.getSymbol()) {
 		case LParse::Legend::LEAF:
-		case LParse::Legend::BRANCH_OPEN:
-		case LParse::Legend::BRANCH_CLOSE:
+			if(randomizer.makeFloat() < pLeafRemove)
+				break;
+
 			tokens.push_back(token);
+			++scope;
+
+			break;
+		case LParse::Legend::BRANCH_OPEN:
+			if(randomizer.makeFloat() < pBranchRemove)
+				break;
+
+			tokens.push_back(token);
+			++scope;
+
+			break;
+		case LParse::Legend::BRANCH_CLOSE:
+			if(scope > 0) {
+				tokens.push_back(token);
+				--scope;
+			}
+
 			break;
 		default:
 			if(randomizer.makeFloat() < pSymbolRemove)
 				continue;
 
+			if(makeBranch)
+				tokens.emplace_back(LParse::Legend::BRANCH_OPEN);
+			else if(makeLeaf)
+				tokens.emplace_back(LParse::Legend::LEAF);
+
 			// TODO: Maybe switch this around? New symbols will never be the first symbol as it is.
 			tokens.push_back(token);
 			
-			if(randomizer.makeFloat() < pSymbolAdd)
-				if(randomizer.makeFloat() < pSymbolChanceNew)
+			if(randomizer.makeFloat() < pSymbolAdd) {
+				if(allowNew && randomizer.makeFloat() < pSymbolChanceNew)
 					tokens.push_back(makeToken(randomizer));
 				else
 					tokens.push_back(makeToken(randomizer, generated));
+			}
+
+			if(makeBranch || makeLeaf)
+				tokens.emplace_back(LParse::Legend::BRANCH_CLOSE);
 				
 			break;
 		}

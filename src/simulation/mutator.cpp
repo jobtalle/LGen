@@ -211,9 +211,6 @@ LParse::Sentence Mutator::mutate(
 	size_t scope = 0;
 
 	for(const auto &token : sentence.getTokens()) {
-		const auto makeBranch = randomizer.makeFloat() < pBranchAdd;
-		const auto makeLeaf = !makeBranch && randomizer.makeFloat() < pLeafAdd;
-
 		switch(token.getSymbol()) {
 		case LParse::Legend::LEAF:
 			if(randomizer.makeFloat() < pLeafRemove)
@@ -242,6 +239,9 @@ LParse::Sentence Mutator::mutate(
 			if(randomizer.makeFloat() < pSymbolRemove)
 				continue;
 
+			const auto makeBranch = randomizer.makeFloat() < pBranchAdd;
+			const auto makeLeaf = !makeBranch && randomizer.makeFloat() < pLeafAdd;
+			
 			if(makeBranch)
 				tokens.emplace_back(LParse::Legend::BRANCH_OPEN);
 			else if(makeLeaf)

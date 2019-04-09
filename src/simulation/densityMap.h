@@ -24,4 +24,4 @@ namespace LGen {
 		size_t getRight(float x, float radius) const;
 		size_t getBottom(float y, float radius) const;
 	};
-};
+}

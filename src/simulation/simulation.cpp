@@ -1,9 +1,6 @@
 #include "simulation.h"
 #include "simulation/candidate.h"
-#include "simulation/densityMap.h"
-#include "simulation/utility.h"
-
-#include <algorithm>
+#include "simulation/planter.h"
 
 using namespace LGen;
 
@@ -48,50 +45,16 @@ size_t Simulation::getGeneration() const {
 }
 
 void Simulation::advance(Console &console) {
-	LParse::Randomizer randomizer = getState().getRandomizer();
+	auto randomizer = getState().getRandomizer();
 	const auto task = getState().getTaskSceneReport(&randomizer);
 
 	console.getMonitor()->enqueue(task);
 
 	const auto report = task->getReport();
+	const auto planter = Planter(getState().getEnvironment().getAgents(), report->getAgents(), randomizer);
 	auto environment = getState().getEnvironment().makeEmptyCopy();
-	std::vector<Candidate> candidates;
 
-	for(size_t i = 0; i < getState().getEnvironment().getAgents().size(); ++i) {
-		const auto &agent = getState().getEnvironment().getAgents()[i];
-		const auto &reportAgent = report->getAgents()[i];
-
-		for(const auto &reportSeed : reportAgent.getSeeds())
-			if(
-				reportSeed.getLocation().x >= 0 &&
-				reportSeed.getLocation().z >= 0 &&
-				reportSeed.getLocation().x <= getState().getEnvironment().getTerrain().getWidth() &&
-				reportSeed.getLocation().z <= getState().getEnvironment().getTerrain().getHeight())
-				candidates.emplace_back(Candidate(
-					reportSeed.getLocation().x,
-					reportSeed.getLocation().z,
-					agent.getSystem(),
-					reportAgent.getLimits(),
-					Utility::utility(reportAgent)));
-	}
-
-	DensityMap densityMap(
-		getState().getEnvironment().getTerrain().getWidth(),
-		getState().getEnvironment().getTerrain().getHeight());
-
-	std::sort(candidates.begin(), candidates.end(), Candidate::compare);
-
-	for(const auto &candidate : candidates) {
-		if(densityMap.sample(candidate.getX(), candidate.getY(), candidate.getRadius()) > 1)
-			continue;
-
-		environment->addAgent(Agent(
-			mutator->mutate(candidate.getSystem(), randomizer),
-			candidate.getX(),
-			candidate.getY()));
-
-		densityMap.add(candidate);
-	}
+	planter.plant(*environment, *mutator, randomizer);
 
 	state = std::make_unique<State>(std::move(environment), randomizer);
 	++generation;

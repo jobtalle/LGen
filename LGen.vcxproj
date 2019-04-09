@@ -264,6 +264,7 @@
     <ClCompile Include="src\simulation\candidate.cpp" />
     <ClCompile Include="src\simulation\densityMap.cpp" />
     <ClCompile Include="src\simulation\mutator.cpp" />
+    <ClCompile Include="src\simulation\planter.cpp" />
     <ClCompile Include="src\simulation\simulation.cpp" />
     <ClCompile Include="src\simulation\state.cpp" />
     <ClCompile Include="src\simulation\utility.cpp" />
@@ -416,6 +417,7 @@
     <ClInclude Include="src\simulation\candidate.h" />
     <ClInclude Include="src\simulation\densityMap.h" />
     <ClInclude Include="src\simulation\mutator.h" />
+    <ClInclude Include="src\simulation\planter.h" />
     <ClInclude Include="src\simulation\simulation.h" />
     <ClInclude Include="src\simulation\state.h" />
     <ClInclude Include="src\simulation\utility.h" />

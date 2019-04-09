@@ -2,7 +2,7 @@
 
 using namespace LGen;
 
-const float Candidate::RADIUS_OFFSET = 0.1f;
+const float Candidate::RADIUS_OFFSET = 0.4f;
 
 Candidate::Candidate(
 	const float x,

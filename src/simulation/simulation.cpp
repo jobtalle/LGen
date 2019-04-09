@@ -82,7 +82,7 @@ void Simulation::advance(Console &console) {
 	std::sort(candidates.begin(), candidates.end(), Candidate::compare);
 
 	for(const auto &candidate : candidates) {
-		if(densityMap.sample(candidate.getX(), candidate.getY()) > 1)
+		if(densityMap.sample(candidate.getX(), candidate.getY(), candidate.getRadius()) > 1)
 			continue;
 
 		environment->addAgent(Agent(

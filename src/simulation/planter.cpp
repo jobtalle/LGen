@@ -14,8 +14,12 @@ Planter::Planter(
 	const std::vector<LRender::ReportAgent> &reports,
 	LParse::Randomizer &randomizer) {
 	for(size_t i = 0; i < agents.size(); ++i) {
-		const auto &agent = agents[i];
 		const auto &report = reports[i];
+
+		if(report.getSeeds().empty())
+			continue;
+
+		const auto &agent = agents[i];
 
 		for(const auto &reportSeed : report.getSeeds()) {
 			const auto direction = randomizer.makeFloat(0, LRender::Constants::PI * 2);
@@ -28,6 +32,8 @@ Planter::Planter(
 				report.getLimits(),
 				Utility::utility(report));
 		}
+
+		std::shuffle(candidates.end() - report.getSeeds().size(), candidates.end(), randomizer.getRandomizer());
 	}
 
 	std::sort(candidates.begin(), candidates.end(), Candidate::compare);

@@ -224,6 +224,7 @@
     <ClCompile Include="src\console\commands\simulation\simulationLoad.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationNew.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationRender.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationReseed.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationRevert.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationSave.cpp" />
     <ClCompile Include="src\console\commands\simulation\simulationSummary.cpp" />
@@ -376,6 +377,7 @@
     <ClInclude Include="src\console\commands\simulation\simulationLoad.h" />
     <ClInclude Include="src\console\commands\simulation\simulationNew.h" />
     <ClInclude Include="src\console\commands\simulation\simulationRender.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationReseed.h" />
     <ClInclude Include="src\console\commands\simulation\simulationRevert.h" />
     <ClInclude Include="src\console\commands\simulation\simulationSave.h" />
     <ClInclude Include="src\console\commands\simulation\simulationSummary.h" />

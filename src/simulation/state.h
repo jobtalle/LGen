@@ -11,6 +11,7 @@ namespace LGen {
 		State(
 			std::unique_ptr<const Environment> environment,
 			LParse::Randomizer randomizer);
+		void setRandomizer(LParse::Randomizer randomizer);
 		const Environment &getEnvironment() const;
 		const LParse::Randomizer &getRandomizer() const;
 		std::shared_ptr<LRender::Renderer::Task::Scene> getTaskScene() const;
@@ -19,6 +20,6 @@ namespace LGen {
 
 	private:
 		const std::unique_ptr<const Environment> environment;
-		const LParse::Randomizer randomizer;
+		LParse::Randomizer randomizer;
 	};
 }

@@ -16,6 +16,7 @@ namespace LGen {
 		class AdvanceN;
 		class Revert;
 		class Summary;
+		class Reseed;
 
 	private:
 		static const std::string KEYWORD;

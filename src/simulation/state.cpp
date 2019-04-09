@@ -10,6 +10,10 @@ State::State(
 
 }
 
+void State::setRandomizer(LParse::Randomizer randomizer) {
+	this->randomizer = randomizer;
+}
+
 const Environment &State::getEnvironment() const {
 	return *environment;
 }

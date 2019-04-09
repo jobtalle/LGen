@@ -42,15 +42,14 @@ bool Command::apply(const Input &input, Console &console) {
 			if(input.getKeyword().size() == trigger.size()) {
 				if(commandList && !input.getArguments().empty())
 					return commandList->apply(input.getArguments(), console);
+
+				if(args == -1 || args == input.getArguments().size())
+					application(input.getArguments(), console);
 				else {
-					if(args == -1 || args == input.getArguments().size())
-						application(input.getArguments(), console);
-					else {
-						if(args == 1)
-							console << MSG_THIS_COMMAND_TAKES << std::to_string(args) << MSG_ARGUMENT << std::endl;
-						else
-							console << MSG_THIS_COMMAND_TAKES << std::to_string(args) << MSG_ARGUMENTS << std::endl;
-					}
+					if(args == 1)
+						console << MSG_THIS_COMMAND_TAKES << std::to_string(args) << MSG_ARGUMENT << std::endl;
+					else
+						console << MSG_THIS_COMMAND_TAKES << std::to_string(args) << MSG_ARGUMENTS << std::endl;
 				}
 
 				return true;
@@ -87,6 +86,9 @@ std::vector<std::string> Command::getAliases() const {
 }
 
 size_t Command::getArity() const {
+	if(commandList)
+		return 1;
+
 	return args == -1 ? 0 : args;
 }
 

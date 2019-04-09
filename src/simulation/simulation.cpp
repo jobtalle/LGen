@@ -19,7 +19,7 @@ Simulation::Simulation(
 Simulation::Simulation(
 	std::unique_ptr<Mutator> mutator,
 	std::unique_ptr<const State> initial,
-	std::unique_ptr<const State> state,
+	std::unique_ptr<State> state,
 	const size_t generation) :
 	mutator(std::move(mutator)),
 	initial(std::move(initial)),
@@ -100,4 +100,8 @@ void Simulation::advance(Console &console) {
 void Simulation::revert() {
 	state = nullptr;
 	generation = 0;
+}
+
+void Simulation::reseed() const {
+	state->setRandomizer(LParse::Randomizer());
 }

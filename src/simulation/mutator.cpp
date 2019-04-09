@@ -267,6 +267,9 @@ LParse::Sentence Mutator::mutate(
 			break;
 	}
 
+	while(scope > 0)
+		--scope, tokens.emplace_back(LParse::Legend::BRANCH_CLOSE);
+
 	return LParse::Sentence(tokens);
 }
 

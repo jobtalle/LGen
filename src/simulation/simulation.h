@@ -11,10 +11,10 @@ namespace LGen {
 	public:
 		Simulation(
 			std::unique_ptr<Mutator> mutator,
-			std::unique_ptr<const State> initial);
+			std::unique_ptr<State> initial);
 		Simulation(
 			std::unique_ptr<Mutator> mutator, 
-			std::unique_ptr<const State> initial,
+			std::unique_ptr<State> initial,
 			std::unique_ptr<State> state,
 			size_t generation);
 		Mutator &getMutator() const;
@@ -23,11 +23,11 @@ namespace LGen {
 		size_t getGeneration() const;
 		void advance(Console &console);
 		void revert();
-		void reseed() const;
+		void reseed();
 
 	private:
 		const std::unique_ptr<Mutator> mutator;
-		const std::unique_ptr<const State> initial;
+		std::unique_ptr<State> initial;
 		std::unique_ptr<State> state;
 		size_t generation;
 	};

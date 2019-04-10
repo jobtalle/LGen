@@ -6,7 +6,7 @@ using namespace LGen;
 
 Simulation::Simulation(
 	std::unique_ptr<Mutator> mutator,
-	std::unique_ptr<const State> initial) :
+	std::unique_ptr<State> initial) :
 	mutator(std::move(mutator)),
 	initial(std::move(initial)),
 	generation(0) {
@@ -15,7 +15,7 @@ Simulation::Simulation(
 
 Simulation::Simulation(
 	std::unique_ptr<Mutator> mutator,
-	std::unique_ptr<const State> initial,
+	std::unique_ptr<State> initial,
 	std::unique_ptr<State> state,
 	const size_t generation) :
 	mutator(std::move(mutator)),
@@ -65,6 +65,9 @@ void Simulation::revert() {
 	generation = 0;
 }
 
-void Simulation::reseed() const {
-	state->setRandomizer(LParse::Randomizer());
+void Simulation::reseed() {
+	if(state)
+		state->setRandomizer(LParse::Randomizer());
+	else
+		initial->setRandomizer(LParse::Randomizer());
 }

@@ -1,6 +1,7 @@
 #include "planter.h"
 #include "simulation/utility.h"
 #include "simulation/densityMap.h"
+#include "utils/mathUtils.h"
 
 #include <algorithm>
 #include <cmath>
@@ -22,7 +23,7 @@ Planter::Planter(
 		const auto &agent = agents[i];
 
 		for(const auto &reportSeed : report.getSeeds()) {
-			const auto direction = randomizer.makeFloat(0, LRender::Constants::PI * 2);
+			const auto direction = randomizer.makeFloat(0, Utils::Math::PI * 2);
 			const auto distance = std::sqrt(randomizer.makeFloat(0, 1)) * reportSeed.getLocation().y;
 
 			candidates.emplace_back(

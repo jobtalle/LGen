@@ -18,6 +18,7 @@ namespace LGen {
 		static const std::string FILE_HELP;
 		static const std::string MSG_ERROR;
 		static const std::string MSG_ADVANCED;
+		static const std::string MSG_ELAPSED;
 		static const char ARG_COUNT = 0;
 	};
 }

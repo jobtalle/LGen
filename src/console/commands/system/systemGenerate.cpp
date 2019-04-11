@@ -1,4 +1,5 @@
 #include "console/commands/system/systemGenerate.h"
+#include "simulation/profiles/growthProfileUnbounded.h"
 
 using namespace LGen;
 
@@ -21,6 +22,6 @@ void Command::System::Generate::application(
 	}
 
 	console << *workspace.system->generate(
-		workspace.systemIterations,
+		GrowthProfileUnbounded(workspace.systemIterations),
 		workspace.randomizer) << std::endl;
 }

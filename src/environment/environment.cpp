@@ -1,4 +1,5 @@
 #include "environment.h"
+#include "simulation/profiles/growthProfileUnbounded.h"
 
 using namespace LGen;
 
@@ -74,7 +75,7 @@ std::shared_ptr<LRender::Scene> Environment::makeScene(LParse::Randomizer &rando
 				agent.getX(),
 				terrain->get(agent.getX(), agent.getY()),
 				agent.getY()),
-			agent.generate(maxIterations, randomizer)->getString()));
+			agent.generate(GrowthProfileUnbounded(maxIterations), randomizer)->getString()));
 
 	return scene;
 }

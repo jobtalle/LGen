@@ -136,9 +136,9 @@ void Mutator::GeneratedSymbols::normalize() {
 Mutator::Mutator() :
 	pSymbolAdd(0.005f),
 	pSymbolRemove(0.005f),
-	pSymbolChanceNew(0.3f),
-	pSymbolChanceRotation(0.2f),
-	pSymbolChanceSeed(0.1f),
+	pSymbolChanceNew(0.2f),
+	pSymbolChanceRotation(0.35f),
+	pSymbolChanceSeed(0.05f),
 	pSymbolChanceStep(0.4f),
 	pSymbolChanceConstant(0.3f),
 

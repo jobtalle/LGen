@@ -266,6 +266,7 @@
     <ClCompile Include="src\simulation\densityMap.cpp" />
     <ClCompile Include="src\simulation\mutator.cpp" />
     <ClCompile Include="src\simulation\planter.cpp" />
+    <ClCompile Include="src\simulation\profiles\growthProfileQuadratic.cpp" />
     <ClCompile Include="src\simulation\profiles\growthProfileUnbounded.cpp" />
     <ClCompile Include="src\simulation\simulation.cpp" />
     <ClCompile Include="src\simulation\state.cpp" />
@@ -422,6 +423,7 @@
     <ClInclude Include="src\simulation\densityMap.h" />
     <ClInclude Include="src\simulation\mutator.h" />
     <ClInclude Include="src\simulation\planter.h" />
+    <ClInclude Include="src\simulation\profiles\growthProfileQuadratic.h" />
     <ClInclude Include="src\simulation\profiles\growthProfileUnbounded.h" />
     <ClInclude Include="src\simulation\simulation.h" />
     <ClInclude Include="src\simulation\state.h" />

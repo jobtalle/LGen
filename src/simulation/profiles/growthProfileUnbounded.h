@@ -2,6 +2,8 @@
 
 #include "lparse.h"
 
+#include <cstddef>
+
 namespace LGen {
 	class GrowthProfileUnbounded final : public LParse::GrowthProfile {
 	public:

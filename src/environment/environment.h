@@ -17,7 +17,7 @@ namespace LGen {
 		void setTerrain(std::shared_ptr<const Terrain> terrain);
 		void setMaxIterations(size_t maxIterations);
 		void addAgent(const Agent &agent);
-		void distributeAgents(const LParse::System &system, const float spacing);
+		void distributeAgents(const LParse::System &system, float spacing);
 		const std::vector<Agent> &getAgents() const;
 		size_t getMaxIterations() const;
 		const Terrain &getTerrain() const;

@@ -75,7 +75,7 @@ std::shared_ptr<LRender::Scene> Environment::makeScene(LParse::Randomizer &rando
 				agent.getX(),
 				terrain->get(agent.getX(), agent.getY()),
 				agent.getY()),
-			agent.generate(GrowthProfileUnbounded(maxIterations), randomizer)->getString()));
+			agent.generate(terrain->getGrowthProfile(agent.getX(), agent.getY()), randomizer)->getString()));
 
 	return scene;
 }

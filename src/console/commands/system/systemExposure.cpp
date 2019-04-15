@@ -25,7 +25,6 @@ void Command::System::Exposure::application(
 	LGen::Environment environment;
 
 	environment.setTerrain(std::make_unique<TerrainFlat>(20.0f, 20.0f));
-	environment.setMaxIterations(workspace.systemIterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 	environment.addAgent(Agent(*workspace.system, 6, 3));
 	environment.addAgent(Agent(*workspace.system, 6, 6));

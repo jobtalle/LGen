@@ -1,5 +1,4 @@
 #include "environment.h"
-#include "simulation/profiles/growthProfileUnbounded.h"
 
 using namespace LGen;
 
@@ -15,10 +14,6 @@ void Environment::setTerrain(std::shared_ptr<const Terrain> terrain) {
 	clearAgents();
 
 	this->terrain = std::move(terrain);
-}
-
-void Environment::setMaxIterations(const size_t maxIterations) {
-	this->maxIterations = maxIterations;
 }
 
 void Environment::addAgent(const Agent &agent) {
@@ -42,10 +37,6 @@ void Environment::distributeAgents(const LParse::System &system, const float spa
 
 const std::vector<Agent>& Environment::getAgents() const {
 	return agents;
-}
-
-size_t Environment::getMaxIterations() const {
-	return maxIterations;
 }
 
 const Terrain &Environment::getTerrain() const {

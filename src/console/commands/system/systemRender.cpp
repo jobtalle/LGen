@@ -27,7 +27,6 @@ void Command::System::Render::application(
 	LGen::Environment environment;
 
 	environment.setTerrain(std::make_unique<TerrainFlat>(20.0f, 20.0f));
-	environment.setMaxIterations(workspace.systemIterations);
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 
 	auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(

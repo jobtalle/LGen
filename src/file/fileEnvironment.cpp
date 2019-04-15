@@ -5,7 +5,6 @@
 
 using namespace LGen;
 
-static const std::string KEY_MAX_ITERATIONS = "max-iterations";
 static const std::string KEY_TERRAIN = "terrain";
 static const std::string KEY_AGENT_PREFIX = "agent-";
 static const std::string KEY_AGENT_SYSTEM = "system";
@@ -17,7 +16,6 @@ File &LGen::operator<<(File& file, const Environment &environment) {
 	
 	fileTerrain << environment.getTerrain();
 
-	file.set(KEY_MAX_ITERATIONS, static_cast<int>(environment.getMaxIterations()));
 	file.set(KEY_TERRAIN, fileTerrain);
 
 	for(size_t i = 0; i < environment.getAgents().size(); ++i) {
@@ -42,7 +40,6 @@ std::unique_ptr<Environment> &LGen::operator<<(std::unique_ptr<Environment> &env
 	
 	std::unique_ptr<Terrain> terrain;
 
-	environment->setMaxIterations(file.getInt(KEY_MAX_ITERATIONS));
 	environment->setTerrain(std::move(terrain << file.getFile(KEY_TERRAIN)));
 
 	std::string key;

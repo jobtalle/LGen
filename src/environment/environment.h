@@ -15,21 +15,16 @@ namespace LGen {
 		Environment(const Environment &other) = default;
 		std::unique_ptr<Environment> makeEmptyCopy() const;
 		void setTerrain(std::shared_ptr<const Terrain> terrain);
-		void setMaxIterations(size_t maxIterations);
 		void addAgent(const Agent &agent);
 		void distributeAgents(const LParse::System &system, float spacing);
 		const std::vector<Agent> &getAgents() const;
-		size_t getMaxIterations() const;
 		const Terrain &getTerrain() const;
 		void clearAgents();
 		std::shared_ptr<LRender::Scene> makeScene(LParse::Randomizer &randomizer) const;
 		bool isComplete() const;
 
 	private:
-		static const size_t DEFAULT_MAX_ITERATIONS = 4;
-
 		std::shared_ptr<const Terrain> terrain;
 		std::vector<Agent> agents;
-		size_t maxIterations = DEFAULT_MAX_ITERATIONS;
 	};
 }

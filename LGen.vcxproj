@@ -245,6 +245,7 @@
     <ClCompile Include="src\console\commands\system\systemRender.cpp" />
     <ClCompile Include="src\console\commands\system\rule\systemRule.cpp" />
     <ClCompile Include="src\console\commands\system\systemSave.cpp" />
+    <ClCompile Include="src\console\commands\system\systemSelected.cpp" />
     <ClCompile Include="src\console\commands\threads.cpp" />
     <ClCompile Include="src\console\console.cpp" />
     <ClCompile Include="src\console\input.cpp" />
@@ -406,6 +407,7 @@
     <ClInclude Include="src\console\commands\system\systemRender.h" />
     <ClInclude Include="src\console\commands\system\rule\systemRule.h" />
     <ClInclude Include="src\console\commands\system\systemSave.h" />
+    <ClInclude Include="src\console\commands\system\systemSelected.h" />
     <ClInclude Include="src\console\commands\threads.h" />
     <ClInclude Include="src\console\console.h" />
     <ClInclude Include="src\console\input.h" />

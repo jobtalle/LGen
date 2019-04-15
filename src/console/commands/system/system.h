@@ -18,6 +18,7 @@ namespace LGen {
 		class Load;
 		class Render;
 		class Exposure;
+		class Selected;
 
 	private:
 		static const std::string KEYWORD;

@@ -10,6 +10,7 @@
 #include "console/commands/system/systemLoad.h"
 #include "console/commands/system/systemRender.h"
 #include "console/commands/system/systemExposure.h"
+#include "console/commands/system/systemSelected.h"
 
 using namespace LGen;
 
@@ -30,7 +31,8 @@ Command::System::System() :
 		std::make_unique<Load>(),
 		std::make_unique<Render>(),
 		std::make_unique<New>(),
-		std::make_unique<Exposure>()
+		std::make_unique<Exposure>(),
+		std::make_unique<Selected>()
 	}) {
 
 }

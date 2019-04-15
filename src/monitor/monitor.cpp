@@ -117,6 +117,10 @@ void Monitor::enqueue(const std::shared_ptr<LRender::Renderer::Task> task) {
 	renderer->enqueue(task);
 }
 
+int Monitor::getSelected() const {
+	return renderer->getSelected();
+}
+
 void Monitor::poll() {
 	glfwSwapBuffers(glfwLoader.getWindow());
 	glfwPollEvents();

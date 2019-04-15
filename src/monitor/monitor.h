@@ -17,6 +17,7 @@ namespace LGen {
 		void stop();
 		void makeVisible() const;
 		void enqueue(const std::shared_ptr<LRender::Renderer::Task> task);
+		int getSelected() const;
 
 	private:
 		static const size_t DEFAULT_WIDTH;

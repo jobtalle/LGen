@@ -5,6 +5,7 @@
 #include "console/commands/render/render.h"
 #include "console/commands/environment/environment.h"
 #include "console/commands/simulation/simulation.h"
+#include "console/commands/threads.h"
 
 #include <iostream>
 #include <string>
@@ -25,7 +26,8 @@ Console::Console(Monitor *const monitor) :
 		std::make_unique<Command::System>(),
 		std::make_unique<Command::Render>(),
 		std::make_unique<Command::Environment>(),
-		std::make_unique<Command::Simulation>()
+		std::make_unique<Command::Simulation>(),
+		std::make_unique<Command::Threads>()
 	}),
 	monitor(monitor) {
 	dumpFile("text/intro.txt", false);

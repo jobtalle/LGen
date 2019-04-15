@@ -17,6 +17,7 @@ namespace LGen {
 		class Render;
 		class Environment;
 		class Simulation;
+		class Threads;
 
 		Command(std::vector<std::string> triggers, char args = -1);
 		Command(std::vector<std::string> triggers, std::string help, char args = -1);

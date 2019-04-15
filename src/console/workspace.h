@@ -14,8 +14,10 @@ namespace LGen {
 		std::unique_ptr<Environment> environment;
 		std::unique_ptr<Simulation> simulation;
 		size_t systemIterations = ITERATIONS_DEFAULT;
+		size_t threadCount = THREAD_COUNT_DEFAULT;
 
 	private:
 		static const size_t ITERATIONS_DEFAULT = 5;
+		static const size_t THREAD_COUNT_DEFAULT = 1;
 	};
 }

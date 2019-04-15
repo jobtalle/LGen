@@ -246,6 +246,7 @@
     <ClCompile Include="src\console\commands\threads.cpp" />
     <ClCompile Include="src\console\console.cpp" />
     <ClCompile Include="src\console\input.cpp" />
+    <ClCompile Include="src\console\workspace.cpp" />
     <ClCompile Include="src\environment\agent\agent.cpp" />
     <ClCompile Include="src\environment\environment.cpp" />
     <ClCompile Include="src\environment\terrain\terrain.cpp" />

@@ -15,6 +15,7 @@ using namespace LGen;
 const std::string Command::Simulation::KEYWORD = "simulation";
 const std::string Command::Simulation::ALIAS = "sim";
 const std::string Command::Simulation::MSG_NO_SIMULATION = "No simulation is loaded.";
+const std::string Command::Simulation::MSG_INCOMPLETE_ENVIRONMENT = "The simulation environment is not complete.";
 
 Command::Simulation::Simulation() :
 	Command({ KEYWORD, ALIAS }, {

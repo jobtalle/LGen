@@ -20,6 +20,12 @@ void Command::Simulation::Advance::application(
 		return;
 	}
 
+	if(!workspace.simulation->getState().getEnvironment().isComplete()) {
+		console << MSG_INCOMPLETE_ENVIRONMENT << std::endl;
+
+		return;
+	}
+
 	workspace.simulation->advance(console);
 
 	console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene());

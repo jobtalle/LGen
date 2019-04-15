@@ -23,6 +23,12 @@ void Command::Simulation::AdvanceN::application(
 		return;
 	}
 
+	if(!workspace.simulation->getState().getEnvironment().isComplete()) {
+		console << MSG_INCOMPLETE_ENVIRONMENT << std::endl;
+
+		return;
+	}
+
 	try {
 		const size_t count = std::stoi(arguments[ARG_COUNT]);
 		Timer timer;

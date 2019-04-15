@@ -22,5 +22,6 @@ namespace LGen {
 		static const std::string KEYWORD;
 		static const std::string ALIAS;
 		static const std::string MSG_NO_SIMULATION;
+		static const std::string MSG_INCOMPLETE_ENVIRONMENT;
 	};
 }

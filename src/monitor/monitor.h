@@ -28,6 +28,7 @@ namespace LGen {
 		static const int MOUSE_ACTION_PAN_START = MOUSE_ACTION_DRAG_START;
 		static const int MOUSE_ACTION_PAN_STOP = MOUSE_ACTION_DRAG_STOP;
 		static const int KEY_CENTER_VIEW = GLFW_KEY_C;
+		static const int KEY_FOCUS_AGENT = GLFW_KEY_F;
 
 		void poll();
 

@@ -3,7 +3,7 @@
 |  | |   / ___| ___ _ __                                         v  v          |
 |  | |  | |  _ / _ \ '_ \                                     v  v\/           |
 |  | |__| |_| |  __/ | | |                                     \/ / v          |
-|  |_____\____|\___|_| |_| v0.1.0                               \ |/           |
+|  |_____\____|\___|_| |_| v0.2.0                               \ |/           |
 |                                                                \|  v         |
 | Written by Job Talle (jobtalle.com/contact).                  v | /          |
 | Distributed under the MIT license.                             \|/           |

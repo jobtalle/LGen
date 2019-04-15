@@ -1,8 +1,6 @@
 #include "monitor/monitor.h"
 #include "lrender.h"
 
-#include <functional>
-
 using namespace LGen;
 
 const size_t Monitor::DEFAULT_WIDTH = 1024;
@@ -39,6 +37,10 @@ Monitor::Monitor(const char *title) :
 		switch(key) {
 		case KEY_CENTER_VIEW:
 			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->center();
+
+			break;
+		case KEY_FOCUS_AGENT:
+			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->focus();
 
 			break;
 		}

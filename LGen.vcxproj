@@ -166,6 +166,7 @@
     <ClCompile Include="LRender\src\renderer\passes\renderPassArea.cpp" />
     <ClCompile Include="LRender\src\renderer\passes\renderPassInteger.cpp" />
     <ClCompile Include="LRender\src\renderer\passes\renderPassImage.cpp" />
+    <ClCompile Include="LRender\src\renderer\passes\renderPassMasks.cpp" />
     <ClCompile Include="LRender\src\renderer\passes\renderPassShadows.cpp" />
     <ClCompile Include="LRender\src\renderer\passes\renderPassViewDefault.cpp" />
     <ClCompile Include="LRender\src\renderer\passes\renderPassViewWireframe.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="LRender\src\renderer\tasks\taskMode.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskScene.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskSceneReport.cpp" />
+    <ClCompile Include="LRender\src\renderer\tasks\taskSelect.cpp" />
     <ClCompile Include="LRender\src\renderer\uniforms\uniforms.cpp" />
     <ClCompile Include="LRender\src\renderer\uniforms\uniformsLight.cpp" />
     <ClCompile Include="LRender\src\renderer\uniforms\uniformsShadows.cpp" />
@@ -324,6 +326,7 @@
     <ClInclude Include="LRender\src\renderer\passes\renderPassArea.h" />
     <ClInclude Include="LRender\src\renderer\passes\renderPassInteger.h" />
     <ClInclude Include="LRender\src\renderer\passes\renderPassImage.h" />
+    <ClInclude Include="LRender\src\renderer\passes\renderPassMasks.h" />
     <ClInclude Include="LRender\src\renderer\passes\renderPassShadows.h" />
     <ClInclude Include="LRender\src\renderer\passes\renderPassViewDefault.h" />
     <ClInclude Include="LRender\src\renderer\passes\renderPassViewWireframe.h" />
@@ -342,6 +345,7 @@
     <ClInclude Include="LRender\src\renderer\tasks\taskMode.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskScene.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskSceneReport.h" />
+    <ClInclude Include="LRender\src\renderer\tasks\taskSelect.h" />
     <ClInclude Include="LRender\src\renderer\uniforms\uniforms.h" />
     <ClInclude Include="LRender\src\renderer\uniforms\uniformsLight.h" />
     <ClInclude Include="LRender\src\renderer\uniforms\uniformsShadows.h" />

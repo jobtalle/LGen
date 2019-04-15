@@ -21,4 +21,6 @@ void Command::Simulation::Advance::application(
 	}
 
 	workspace.simulation->advance(console);
+
+	console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene());
 }

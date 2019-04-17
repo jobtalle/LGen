@@ -43,13 +43,14 @@ Planter::Planter(
 void Planter::plant(
 	Environment &environment,
 	const Mutator &mutator,
+	const float density,
 	LParse::Randomizer &randomizer) const {
 	DensityMap densityMap(
 		environment.getTerrain().getWidth(),
 		environment.getTerrain().getHeight());
 
 	for(const auto &candidate : candidates) {
-		if(densityMap.sample(candidate.getX(), candidate.getY(), candidate.getRadius()) > 1)
+		if(densityMap.sample(candidate.getX(), candidate.getY(), candidate.getRadius()) > density)
 			continue;
 
 		if(

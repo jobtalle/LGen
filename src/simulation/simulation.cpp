@@ -4,6 +4,8 @@
 
 using namespace LGen;
 
+const float Simulation::DENSITY_DEFAULT = 2;
+
 Simulation::Simulation(
 	std::unique_ptr<Mutator> mutator,
 	std::unique_ptr<State> initial) :
@@ -40,8 +42,16 @@ const State &Simulation::getState() const {
 	return *initial;
 }
 
+float Simulation::getDensity() const {
+	return density;
+}
+
 size_t Simulation::getGeneration() const {
 	return generation;
+}
+
+void Simulation::setDensity(const float density) {
+	this->density = density;
 }
 
 void Simulation::advance(Console &console) {
@@ -54,7 +64,7 @@ void Simulation::advance(Console &console) {
 	const auto planter = Planter(getState().getEnvironment().getAgents(), report->getAgents(), randomizer);
 	auto environment = getState().getEnvironment().makeEmptyCopy();
 
-	planter.plant(*environment, *mutator, randomizer);
+	planter.plant(*environment, *mutator, density, randomizer);
 
 	state = std::make_unique<State>(std::move(environment), randomizer);
 	++generation;

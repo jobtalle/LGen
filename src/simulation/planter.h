@@ -19,6 +19,7 @@ namespace LGen {
 		void plant(
 			Environment &environment,
 			const Mutator &mutator,
+			float density,
 			LParse::Randomizer &randomizer) const;
 
 	private:

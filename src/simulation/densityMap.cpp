@@ -12,7 +12,7 @@ DensityMap::DensityMap(const float width, const float height) :
 	yCells(std::ceil(height / GRID_SIZE)) {
 	grid.resize(xCells * yCells);
 
-	std::fill(grid.begin(), grid.end(), 0.0f);
+	std::fill(grid.begin(), grid.end(), 0);
 }
 
 void DensityMap::add(const Candidate &candidate) {
@@ -38,7 +38,7 @@ float DensityMap::sample(const float x, const float y, const float radius) const
 	const auto bottom = getBottom(y, radius);
 	const auto squaredRadius = radius * radius;
 	size_t sampleCount = 0;
-	float density = 0;
+	size_t density = 0;
 
 	for(auto yCell = top; yCell <= bottom; ++yCell) for(auto xCell = left; xCell <= right; ++xCell) {
 		const auto dx = x - (xCell + 0.5f) * GRID_SIZE;
@@ -48,7 +48,7 @@ float DensityMap::sample(const float x, const float y, const float radius) const
 			++sampleCount, density += grid[xCell + yCell * xCells];
 	}
 
-	return density / sampleCount;
+	return static_cast<float>(density) / sampleCount;
 }
 
 size_t DensityMap::getLeft(const float x, const float radius) {

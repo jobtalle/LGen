@@ -8,6 +8,7 @@ static const std::string KEY_INITIAL = "initial";
 static const std::string KEY_STATE = "state";
 static const std::string KEY_GENERATION = "generation";
 static const std::string KEY_MUTATOR = "mutator";
+static const std::string KEY_DENSITY = "density";
 
 File &LGen::operator<<(File &file, const Simulation &simulation) {
 	if(simulation.getGeneration() > 0) {
@@ -22,6 +23,7 @@ File &LGen::operator<<(File &file, const Simulation &simulation) {
 	file.set(KEY_GENERATION, simulation.getGeneration());
 	file.set(KEY_INITIAL, fileInitial << simulation.getInitial());
 	file.set(KEY_MUTATOR, fileMutator << simulation.getMutator());
+	file.set(KEY_DENSITY, simulation.getDensity());
 
 	return file;
 }
@@ -46,6 +48,8 @@ std::unique_ptr<Simulation> &LGen::operator<<(std::unique_ptr<Simulation> &simul
 		simulation = std::make_unique<Simulation>(
 			std::move(mutator),
 			std::move(initial));
+
+	simulation->setDensity(file.getFloat(KEY_DENSITY));
 
 	return simulation;
 }

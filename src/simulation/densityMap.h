@@ -17,7 +17,7 @@ namespace LGen {
 
 		const size_t xCells;
 		const size_t yCells;
-		std::vector<float> grid;
+		std::vector<size_t> grid;
 
 		static size_t getLeft(float x, float radius);
 		static size_t getTop(float y, float radius);

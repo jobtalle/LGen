@@ -17,6 +17,7 @@ namespace LGen {
 		class Revert;
 		class Summary;
 		class Reseed;
+		class Density;
 
 	private:
 		static const std::string KEYWORD;

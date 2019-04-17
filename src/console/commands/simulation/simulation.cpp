@@ -9,6 +9,7 @@
 #include "console/commands/simulation/simulationRevert.h"
 #include "console/commands/simulation/simulationSummary.h"
 #include "console/commands/simulation/simulationReseed.h"
+#include "console/commands/simulation/simulationDensity.h"
 
 using namespace LGen;
 
@@ -28,7 +29,8 @@ Command::Simulation::Simulation() :
 		std::make_unique<AdvanceN>(),
 		std::make_unique<Revert>(),
 		std::make_unique<Summary>(),
-		std::make_unique<Reseed>()
+		std::make_unique<Reseed>(),
+		std::make_unique<Density>()
 	}) {
 	
 }

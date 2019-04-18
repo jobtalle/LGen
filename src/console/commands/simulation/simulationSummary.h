@@ -18,5 +18,6 @@ namespace LGen {
 		static const std::string FILE_HELP;
 		static const std::string MSG_PREFIX_GENERATION;
 		static const std::string MSG_PREFIX_AGENTS;
+		static const std::string MSG_PREFIX_DENSITY;
 	};
 }

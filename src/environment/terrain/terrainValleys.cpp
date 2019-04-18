@@ -6,6 +6,7 @@
 using namespace LGen;
 
 const std::string TerrainValleys::TYPE = "valleys";
+const float TerrainValleys::DEAD_ZONE = 0.4f;
 
 TerrainValleys::TerrainValleys(
 	const float width,
@@ -28,7 +29,9 @@ float TerrainValleys::sample(const float x, const float y) const {
 	const auto dx = 2 * (x - xValley) / xRes;
 	const auto dy = 2 * (y - yValley) / yRes;
 
-	return std::cos(LRender::Constants::PI * std::min(1.0f, std::sqrtf(dx * dx + dy * dy))) * -0.5f + 0.5f;
+	return std::cos(LRender::Constants::PI * std::min(
+		1.0f,
+		std::max(0.0f, (1 + DEAD_ZONE) * std::sqrtf(dx * dx + dy * dy) - DEAD_ZONE))) * -0.5f + 0.5f;
 }
 
 float TerrainValleys::getResolution() const {

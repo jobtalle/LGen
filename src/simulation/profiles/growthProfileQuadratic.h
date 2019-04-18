@@ -10,11 +10,11 @@ namespace LGen {
 		GrowthProfileQuadratic(
 			size_t iterations,
 			size_t initial,
-			size_t multiplier);
+			float multiplier);
 		size_t getGrowth(size_t iteration) const override;
 
 	private:
 		const size_t initial;
-		const size_t multiplier;
+		const float multiplier;
 	};
 }

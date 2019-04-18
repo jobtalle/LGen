@@ -5,7 +5,7 @@ using namespace LGen;
 GrowthProfileQuadratic::GrowthProfileQuadratic(
 	const size_t iterations,
 	const size_t initial,
-	const size_t multiplier) :
+	const float multiplier) :
 	GrowthProfile(iterations),
 	initial(initial),
 	multiplier(multiplier) {
@@ -13,5 +13,5 @@ GrowthProfileQuadratic::GrowthProfileQuadratic(
 }
 
 size_t GrowthProfileQuadratic::getGrowth(const size_t iteration) const {
-	return initial + multiplier * iteration * iteration;
+	return initial + static_cast<size_t>(multiplier * iteration * iteration);
 }

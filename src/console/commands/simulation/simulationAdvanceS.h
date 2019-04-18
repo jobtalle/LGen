@@ -18,6 +18,7 @@ namespace LGen {
 		static const std::string MSG_ERROR;
 		static const std::string MSG_ADVANCED;
 		static const std::string MSG_OUT_OF_RANGE;
+		static const std::string MSG_LEFT;
 		static const char ARG_SECONDS = 0;
 		static const float TIME_MIN;
 		static const float TIME_MAX;

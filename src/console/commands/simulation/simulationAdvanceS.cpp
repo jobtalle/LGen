@@ -1,8 +1,6 @@
 #include "simulationAdvanceS.h"
 #include "utils/timer.h"
 
-#include <cmath>
-
 using namespace LGen;
 
 const std::string Command::Simulation::AdvanceS::KEYWORD = "advance-s";
@@ -10,6 +8,7 @@ const std::string Command::Simulation::AdvanceS::FILE_HELP = "text/helpSimulatio
 const std::string Command::Simulation::AdvanceS::MSG_ERROR = "Error while parsing the number of seconds.";
 const std::string Command::Simulation::AdvanceS::MSG_ADVANCED = "Advanced ";
 const std::string Command::Simulation::AdvanceS::MSG_OUT_OF_RANGE = "The number of seconds must be in the range ";
+const std::string Command::Simulation::AdvanceS::MSG_LEFT = "s left.";
 const float Command::Simulation::AdvanceS::TIME_MIN = 1;
 const float Command::Simulation::AdvanceS::TIME_MAX = 3600;
 
@@ -49,7 +48,7 @@ void Command::Simulation::AdvanceS::application(
 		while((time = timer.get()) < seconds) {
 			workspace.simulation->advance(console);
 
-			console << MSG_ADVANCED << ++generation << ", " << std::floor((time / seconds) * 100) << '%' << std::endl;
+			console << MSG_ADVANCED << ++generation << ", " << (seconds - time) << MSG_LEFT << std::endl;
 		}
 
 		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene());

@@ -9,6 +9,7 @@ namespace LGen {
 
 		class Dropwave;
 		class Flat;
+		class Valleys;
 
 	private:
 		static const std::string KEYWORD;

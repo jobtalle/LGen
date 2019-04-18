@@ -6,9 +6,9 @@ namespace LGen {
 	class TerrainFlat final : public Terrain {
 	public:
 		TerrainFlat(
-			const float width,
-			const float height);
-		float sample(const float x, const float y) const override;
+			float width,
+			float height);
+		float sample(float x, float y) const override;
 
 		static const std::string TYPE;
 	};

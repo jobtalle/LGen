@@ -21,9 +21,9 @@ void Command::Environment::Terrain::Dropwave::application(
 	}
 
 	try {
-		auto width = std::stof(arguments[ARG_WIDTH]);
-		auto height = std::stof(arguments[ARG_HEIGHT]);
-		auto period = std::stof(arguments[ARG_PERIOD]);
+		const auto width = std::stof(arguments[ARG_WIDTH]);
+		const auto height = std::stof(arguments[ARG_HEIGHT]);
+		const auto period = std::stof(arguments[ARG_PERIOD]);
 
 		workspace.environment->setTerrain(std::make_unique<TerrainDropwave>(width, height, period));
 	}

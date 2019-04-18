@@ -9,7 +9,7 @@ Candidate::Candidate(
 	const float y,
 	const LParse::System &system,
 	const LRender::ReportLimits &limits,
-	const float score) :
+	const double score) :
 	x(x),
 	y(y),
 	system(system),
@@ -34,7 +34,7 @@ float Candidate::getRadius() const {
 	return radius;
 }
 
-float Candidate::getScore() const {
+double Candidate::getScore() const {
 	return score;
 }
 

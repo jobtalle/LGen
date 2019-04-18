@@ -191,8 +191,8 @@
     <ClCompile Include="LRender\src\renderer\uniforms\uniformsView.cpp" />
     <ClCompile Include="LRender\src\report\report.cpp" />
     <ClCompile Include="LRender\src\report\reportAgent.cpp" />
-    <ClCompile Include="LRender\src\report\reportArea.cpp" />
     <ClCompile Include="LRender\src\report\reportExposure.cpp" />
+    <ClCompile Include="LRender\src\report\reportLeaf.cpp" />
     <ClCompile Include="LRender\src\report\reportLimits.cpp" />
     <ClCompile Include="LRender\src\report\reportSeed.cpp" />
     <ClCompile Include="LRender\src\report\reportSize.cpp" />
@@ -354,8 +354,8 @@
     <ClInclude Include="LRender\src\renderer\uniforms\uniformsView.h" />
     <ClInclude Include="LRender\src\report\report.h" />
     <ClInclude Include="LRender\src\report\reportAgent.h" />
-    <ClInclude Include="LRender\src\report\reportArea.h" />
     <ClInclude Include="LRender\src\report\reportExposure.h" />
+    <ClInclude Include="LRender\src\report\reportLeaf.h" />
     <ClInclude Include="LRender\src\report\reportLimits.h" />
     <ClInclude Include="LRender\src\report\reportSeed.h" />
     <ClInclude Include="LRender\src\report\reportSize.h" />

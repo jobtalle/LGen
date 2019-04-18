@@ -277,15 +277,19 @@ LParse::Token Mutator::makeToken(LParse::Randomizer& randomizer) const {
 	const auto chance = randomizer.makeFloat();
 
 	if(chance <= pSymbolChanceRotation) {
-		switch(randomizer.makeInt(0, 3)) {
+		switch(randomizer.makeInt(0, 5)) {
 		case 0:
 			return LParse::Legend::PITCH_INCREMENT;
 		case 1:
 			return LParse::Legend::PITCH_DECREMENT;
 		case 2:
 			return LParse::Legend::ROLL_INCREMENT;
-		default:
+		case 3:
 			return LParse::Legend::ROLL_DECREMENT;
+		case 4:
+			return LParse::Legend::YAW_INCREMENT;
+		default:
+			return LParse::Legend::YAW_DECREMENT;
 		}
 	}
 

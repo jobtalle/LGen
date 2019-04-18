@@ -15,7 +15,7 @@ double Utility::utility(const LRender::ReportAgent& report) {
 	const auto factorSeeds = 1.0f / (report.getSeeds().size() * 0.05f + 1);
 
 	for(const auto &leaf : report.getLeaves()) {
-		const auto areaFactor = leaf.getArea() * 4;
+		const auto areaFactor = leaf.getArea() * 8;
 
 		factorLeafArea += 1 - areaFactor * areaFactor;
 	}

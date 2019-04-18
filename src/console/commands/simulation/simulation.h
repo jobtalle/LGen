@@ -14,6 +14,7 @@ namespace LGen {
 		class Render;
 		class Advance;
 		class AdvanceN;
+		class AdvanceS;
 		class Revert;
 		class Summary;
 		class Reseed;

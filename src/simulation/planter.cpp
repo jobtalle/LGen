@@ -50,6 +50,9 @@ void Planter::plant(
 		environment.getTerrain().getHeight());
 
 	for(const auto &candidate : candidates) {
+		if(candidate.getScore() < 0)
+			return;
+
 		if(densityMap.sample(candidate.getX(), candidate.getY(), candidate.getRadius()) > density)
 			continue;
 

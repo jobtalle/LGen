@@ -32,7 +32,8 @@ void Command::System::Exposure::application(
 
 	auto task = std::make_shared<LRender::Renderer::Task::Exposure>(
 		environment.makeScene(workspace.randomizer),
-		workspace.randomizer.makeRandomizer());
+		workspace.randomizer.makeRandomizer(),
+		workspace.threadCount);
 
 	console.getMonitor()->makeVisible();
 	console.getMonitor()->enqueue(task);

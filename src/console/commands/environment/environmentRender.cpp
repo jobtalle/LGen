@@ -27,7 +27,8 @@ void Command::Environment::Render::application(
 
 	const auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(
 		workspace.environment->makeScene(workspace.randomizer),
-		workspace.randomizer.makeRandomizer());
+		workspace.randomizer.makeRandomizer(),
+		workspace.threadCount);
 
 	console.getMonitor()->makeVisible();
 	console.getMonitor()->enqueue(task);

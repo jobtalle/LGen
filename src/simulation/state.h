@@ -14,8 +14,10 @@ namespace LGen {
 		void setRandomizer(LParse::Randomizer randomizer);
 		const Environment &getEnvironment() const;
 		const LParse::Randomizer &getRandomizer() const;
-		std::shared_ptr<LRender::Renderer::Task::Scene> getTaskScene() const;
+		std::shared_ptr<LRender::Renderer::Task::Scene> getTaskScene(
+			size_t threads) const;
 		std::shared_ptr<LRender::Renderer::Task::SceneReport> getTaskSceneReport(
+			size_t threads,
 			LParse::Randomizer *externalRandomizer = nullptr) const;
 
 	private:

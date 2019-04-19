@@ -5,6 +5,7 @@
 #include "console/console.h"
 
 #include <memory>
+#include <cstddef>
 
 namespace LGen {
 	class Simulation final {
@@ -23,7 +24,7 @@ namespace LGen {
 		float getDensity() const;
 		size_t getGeneration() const;
 		void setDensity(float density);
-		void advance(Console &console);
+		void advance(Console &console, size_t threads);
 		void revert();
 		void reseed();
 

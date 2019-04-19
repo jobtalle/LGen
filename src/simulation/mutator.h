@@ -40,7 +40,7 @@ namespace LGen {
 			float pSeed;
 		};
 
-		static const size_t SENTENCE_LENGTH_LIMIT = 16;
+		static const size_t SENTENCE_LENGTH_LIMIT = 10;
 
 		LParse::Sentence mutate(
 			const LParse::Sentence &sentence,

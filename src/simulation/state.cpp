@@ -22,24 +22,28 @@ const LParse::Randomizer &State::getRandomizer() const {
 	return randomizer;
 }
 
-std::shared_ptr<LRender::Renderer::Task::Scene> State::getTaskScene() const {
+std::shared_ptr<LRender::Renderer::Task::Scene> State::getTaskScene(const size_t threads) const {
 	auto renderRandomizer = randomizer;
 
 	return std::make_shared<LRender::Renderer::Task::Scene>(
 		environment->makeScene(renderRandomizer),
-		renderRandomizer.makeRandomizer());
+		renderRandomizer.makeRandomizer(),
+		threads);
 }
 
 std::shared_ptr<LRender::Renderer::Task::SceneReport> State::getTaskSceneReport(
+	const size_t threads,
 	LParse::Randomizer *externalRandomizer) const {
 	if(externalRandomizer)
 		return std::make_shared<LRender::Renderer::Task::SceneReport>(
 			environment->makeScene(*externalRandomizer),
-			externalRandomizer->makeRandomizer());
+			externalRandomizer->makeRandomizer(),
+			threads);
 
 	auto renderRandomizer = randomizer;
 
 	return std::make_shared<LRender::Renderer::Task::SceneReport>(
 		environment->makeScene(renderRandomizer),
-		renderRandomizer.makeRandomizer());
+		renderRandomizer.makeRandomizer(),
+		threads);
 }

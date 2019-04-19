@@ -54,9 +54,9 @@ void Simulation::setDensity(const float density) {
 	this->density = density;
 }
 
-void Simulation::advance(Console &console) {
+void Simulation::advance(Console &console, const size_t threads) {
 	auto randomizer = getState().getRandomizer();
-	const auto task = getState().getTaskSceneReport(&randomizer);
+	const auto task = getState().getTaskSceneReport(threads, &randomizer);
 
 	console.getMonitor()->enqueue(task);
 

@@ -46,12 +46,12 @@ void Command::Simulation::AdvanceS::application(
 		double time;
 
 		while((time = timer.get()) < seconds) {
-			workspace.simulation->advance(console);
+			workspace.simulation->advance(console, workspace.threadCount);
 
 			console << MSG_ADVANCED << ++generation << ", " << (seconds - time) << MSG_LEFT << std::endl;
 		}
 
-		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene());
+		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene(workspace.threadCount));
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

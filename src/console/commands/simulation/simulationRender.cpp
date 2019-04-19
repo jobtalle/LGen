@@ -20,5 +20,5 @@ void Command::Simulation::Render::application(
 	}
 
 	console.getMonitor()->makeVisible();
-	console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene());
+	console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene(workspace.threadCount));
 }

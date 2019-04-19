@@ -34,13 +34,13 @@ void Command::Simulation::AdvanceN::application(
 		Timer timer;
 
 		for(size_t i = 0; i < count; ++i) {
-			workspace.simulation->advance(console);
+			workspace.simulation->advance(console, workspace.threadCount);
 
 			console << MSG_ADVANCED << (i + 1) << '/' << count << std::endl;
 		}
 
 		console << MSG_ELAPSED << timer.get() << 's' << std::endl;
-		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene());
+		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene(workspace.threadCount));
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

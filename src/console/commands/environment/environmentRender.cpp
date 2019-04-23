@@ -26,7 +26,7 @@ void Command::Environment::Render::application(
 	}
 
 	const auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(
-		workspace.environment->makeScene(workspace.randomizer),
+		workspace.environment->makeScene(workspace.threadCount, workspace.randomizer),
 		workspace.randomizer.makeRandomizer(),
 		workspace.threadCount);
 

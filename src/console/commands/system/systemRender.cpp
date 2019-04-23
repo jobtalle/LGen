@@ -30,7 +30,7 @@ void Command::System::Render::application(
 	environment.addAgent(Agent(*workspace.system, 3, 3));
 
 	const auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(
-		environment.makeScene(workspace.randomizer),
+		environment.makeScene(workspace.threadCount, workspace.randomizer),
 		workspace.randomizer.makeRandomizer(),
 		workspace.threadCount);
 	

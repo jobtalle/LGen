@@ -241,14 +241,16 @@ LParse::Sentence Mutator::mutate(
 
 			const auto makeBranch = randomizer.makeFloat() < pBranchAdd;
 			const auto makeLeaf = !makeBranch && randomizer.makeFloat() < pLeafAdd;
+			const auto addSymbol = randomizer.makeFloat() < pSymbolAdd;
+			const auto addSymbolPre = addSymbol ? randomizer.makeFloat(0, 1) < 0.5f : false;
 			
 			if(makeBranch)
 				tokens.emplace_back(LParse::Legend::BRANCH_OPEN);
 			else if(makeLeaf)
 				tokens.emplace_back(LParse::Legend::LEAF);
 
-			// TODO: Maybe switch this around? New symbols will never be the first symbol as it is.
-			tokens.push_back(token);
+			if(!addSymbolPre)
+				tokens.push_back(token);
 			
 			if(randomizer.makeFloat() < pSymbolAdd) {
 				if(allowNew && randomizer.makeFloat() < pSymbolChanceNew)
@@ -256,6 +258,9 @@ LParse::Sentence Mutator::mutate(
 				else
 					tokens.push_back(makeToken(randomizer, generated));
 			}
+
+			if(addSymbolPre)
+				tokens.push_back(token);
 
 			if(makeBranch || makeLeaf)
 				tokens.emplace_back(LParse::Legend::BRANCH_CLOSE);

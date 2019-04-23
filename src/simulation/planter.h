@@ -24,6 +24,7 @@ namespace LGen {
 
 	private:
 		static const float SPREAD;
+		static const float DEFAULT_SPREAD;
 
 		std::vector<Candidate> candidates;
 	};

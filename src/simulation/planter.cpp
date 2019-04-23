@@ -9,6 +9,7 @@
 using namespace LGen;
 
 const float Planter::SPREAD = 0.5f;
+const float Planter::DEFAULT_SPREAD = 0.05f;
 
 Planter::Planter(
 	const std::vector<Agent> &agents,
@@ -24,8 +25,9 @@ Planter::Planter(
 
 		for(const auto &reportSeed : report.getSeeds()) {
 			const auto direction = randomizer.makeFloat(0, Utils::Math::PI * 2);
-			const auto distance = std::sqrt(randomizer.makeFloat(0, 1)) * reportSeed.getLocation().y;
-
+			const auto distance = std::sqrt(
+				randomizer.makeFloat(0, 1)) * (reportSeed.getLocation().y - report.getPosition().y) + DEFAULT_SPREAD;
+			
 			candidates.emplace_back(
 				reportSeed.getLocation().x + std::cos(direction) * distance,
 				reportSeed.getLocation().z + std::sin(direction) * distance,

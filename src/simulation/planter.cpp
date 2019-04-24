@@ -22,6 +22,7 @@ Planter::Planter(
 			continue;
 
 		const auto &agent = agents[i];
+		const auto utility = Utility::utility(report, agent.getSystem());
 
 		for(const auto &reportSeed : report.getSeeds()) {
 			const auto direction = randomizer.makeFloat(0, Utils::Math::PI * 2);
@@ -33,7 +34,7 @@ Planter::Planter(
 				reportSeed.getLocation().z + std::sin(direction) * distance,
 				agent.getSystem(),
 				report.getLimits(),
-				Utility::utility(report));
+				utility);
 		}
 
 		std::shuffle(candidates.end() - report.getSeeds().size(), candidates.end(), randomizer.getRandomizer());

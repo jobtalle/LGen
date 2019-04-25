@@ -23,5 +23,5 @@ double Utility::utility(const LRender::ReportAgent& report, const LParse::System
 
 	factorLeafArea /= report.getLeaves().size();
 
-	return factorLeafArea * factorExposure * factorSeeds;
+	return factorLeafArea * factorExposure * factorSeeds * factorRules;
 }

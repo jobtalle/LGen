@@ -13,8 +13,8 @@ Terrain::Terrain(std::string type, const float width, const float height) :
 	for(size_t i = 0; i < GROWTH_PROFILE_RESOLUTION; ++i)
 		growthProfiles[i] = std::make_unique<GrowthProfileQuadratic>(
 			1 + static_cast<size_t>(std::ceil(4.0f * (1.0f - (static_cast<float>(i) / GROWTH_PROFILE_RESOLUTION)))),
-			12,
-			(GROWTH_PROFILE_RESOLUTION - i) * 8.0f);
+			24,
+			(GROWTH_PROFILE_RESOLUTION - i) * 10.0f);
 }
 
 const std::string& Terrain::getType() const {

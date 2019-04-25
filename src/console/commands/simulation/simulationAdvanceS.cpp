@@ -51,7 +51,7 @@ void Command::Simulation::AdvanceS::application(
 			console << MSG_ADVANCED << ++generation << ", " << (seconds - time) << MSG_LEFT << std::endl;
 		}
 
-		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskScene(workspace.threadCount));
+		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskSceneReport(workspace.threadCount));
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

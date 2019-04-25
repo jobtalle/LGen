@@ -182,7 +182,6 @@
     <ClCompile Include="LRender\src\renderer\target\renderTargetUint.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskExposure.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskMode.cpp" />
-    <ClCompile Include="LRender\src\renderer\tasks\taskScene.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskSceneReport.cpp" />
     <ClCompile Include="LRender\src\renderer\tasks\taskSelect.cpp" />
     <ClCompile Include="LRender\src\renderer\uniforms\uniforms.cpp" />
@@ -348,7 +347,6 @@
     <ClInclude Include="LRender\src\renderer\tasks\task.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskExposure.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskMode.h" />
-    <ClInclude Include="LRender\src\renderer\tasks\taskScene.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskSceneReport.h" />
     <ClInclude Include="LRender\src\renderer\tasks\taskSelect.h" />
     <ClInclude Include="LRender\src\renderer\uniforms\uniforms.h" />

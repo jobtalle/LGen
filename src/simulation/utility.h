@@ -6,7 +6,7 @@
 namespace LGen {
 	class Utility final {
 	public:
-		static double utility(const LRender::ReportAgent &report, const LParse::System &system);
+		static double utility(const LRender::ReportAgent &report);
 
 	private:
 		static const size_t MAX_ZERO_SURFACE_SYMBOLS = 55;

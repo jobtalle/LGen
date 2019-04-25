@@ -191,8 +191,10 @@
     <ClCompile Include="LRender\src\report\report.cpp" />
     <ClCompile Include="LRender\src\report\reportAgent.cpp" />
     <ClCompile Include="LRender\src\report\reportExposure.cpp" />
+    <ClCompile Include="LRender\src\report\reportGrowthProfile.cpp" />
     <ClCompile Include="LRender\src\report\reportLeaf.cpp" />
     <ClCompile Include="LRender\src\report\reportLimits.cpp" />
+    <ClCompile Include="LRender\src\report\reportRules.cpp" />
     <ClCompile Include="LRender\src\report\reportSeed.cpp" />
     <ClCompile Include="LRender\src\report\reportSize.cpp" />
     <ClCompile Include="LRender\src\scene\agent.cpp" />
@@ -216,6 +218,7 @@
     <ClCompile Include="src\console\commands\environment\terrain\environmentTerrainValleys.cpp" />
     <ClCompile Include="src\console\commands\exit.cpp" />
     <ClCompile Include="src\console\commands\help.cpp" />
+    <ClCompile Include="src\console\commands\inspect.cpp" />
     <ClCompile Include="src\console\commands\render\mode\renderMode.cpp" />
     <ClCompile Include="src\console\commands\render\render.cpp" />
     <ClCompile Include="src\console\commands\render\mode\renderModeDefault.cpp" />
@@ -356,8 +359,10 @@
     <ClInclude Include="LRender\src\report\report.h" />
     <ClInclude Include="LRender\src\report\reportAgent.h" />
     <ClInclude Include="LRender\src\report\reportExposure.h" />
+    <ClInclude Include="LRender\src\report\reportGrowthProfile.h" />
     <ClInclude Include="LRender\src\report\reportLeaf.h" />
     <ClInclude Include="LRender\src\report\reportLimits.h" />
+    <ClInclude Include="LRender\src\report\reportRules.h" />
     <ClInclude Include="LRender\src\report\reportSeed.h" />
     <ClInclude Include="LRender\src\report\reportSize.h" />
     <ClInclude Include="LRender\src\scene\agent.h" />
@@ -381,6 +386,7 @@
     <ClInclude Include="src\console\commands\environment\terrain\environmentTerrainValleys.h" />
     <ClInclude Include="src\console\commands\exit.h" />
     <ClInclude Include="src\console\commands\help.h" />
+    <ClInclude Include="src\console\commands\inspect.h" />
     <ClInclude Include="src\console\commands\render\mode\renderMode.h" />
     <ClInclude Include="src\console\commands\render\render.h" />
     <ClInclude Include="src\console\commands\render\mode\renderModeDefault.h" />

@@ -121,6 +121,10 @@ int Monitor::getSelected() const {
 	return renderer->getSelected();
 }
 
+std::shared_ptr<LRender::Report> Monitor::getReport() const {
+	return renderer->getLastReport();
+}
+
 void Monitor::poll() {
 	glfwSwapBuffers(glfwLoader.getWindow());
 	glfwPollEvents();

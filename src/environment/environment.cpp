@@ -117,7 +117,7 @@ bool Environment::isComplete() const {
 }
 
 void Environment::generateBatches(
-	std::shared_ptr<const Terrain> terrain,
+	const std::shared_ptr<const Terrain> &terrain,
 	const std::vector<AgentBatch>::iterator begin,
 	const std::vector<AgentBatch>::iterator end) {
 	for(auto batch = begin; batch < end; ++batch)
@@ -127,7 +127,11 @@ void Environment::generateBatches(
 					agent->getX(),
 					terrain->get(agent->getX(), agent->getY()),
 					agent->getY()),
-				agent->generate(terrain->getGrowthProfile(agent->getX(), agent->getY()), batch->randomizer)->getString());
+				agent->generate(
+					*terrain->getGrowthProfile(agent->getX(), agent->getY()),
+					batch->randomizer)->getString(),
+				agent->getSystem().getRules().size(),
+				terrain->getGrowthProfile(agent->getX(), agent->getY()));
 }
 
 Environment::AgentBatch::AgentBatch(

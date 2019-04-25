@@ -11,7 +11,7 @@ Terrain::Terrain(std::string type, const float width, const float height) :
 	width(width),
 	height(height) {
 	for(size_t i = 0; i < GROWTH_PROFILE_RESOLUTION; ++i)
-		growthProfiles[i] = std::make_unique<GrowthProfileQuadratic>(
+		growthProfiles[i] = std::make_shared<GrowthProfileQuadratic>(
 			1 + static_cast<size_t>(std::ceil(4.0f * (1.0f - (static_cast<float>(i) / GROWTH_PROFILE_RESOLUTION)))),
 			24,
 			(GROWTH_PROFILE_RESOLUTION - i) * 10.0f);
@@ -33,8 +33,10 @@ float Terrain::get(const float x, const float y) const {
 	return sample(x, y);
 }
 
-const LParse::GrowthProfile& Terrain::getGrowthProfile(float x, float y) const {
-	return *growthProfiles[std::min(
+const std::shared_ptr<const LParse::GrowthProfile> &Terrain::getGrowthProfile(
+	const float x,
+	const float y) const {
+	return growthProfiles[std::min(
 		static_cast<size_t>(std::floor(get(x, y) * GROWTH_PROFILE_RESOLUTION)),
 		GROWTH_PROFILE_RESOLUTION - 1)];
 }

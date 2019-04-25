@@ -40,7 +40,7 @@ namespace LGen {
 		};
 
 		static void generateBatches(
-			std::shared_ptr<const Terrain> terrain,
+			const std::shared_ptr<const Terrain> &terrain,
 			std::vector<AgentBatch>::iterator begin,
 			std::vector<AgentBatch>::iterator end);
 

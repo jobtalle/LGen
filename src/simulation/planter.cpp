@@ -22,7 +22,7 @@ Planter::Planter(
 			continue;
 
 		const auto &agent = agents[i];
-		const auto utility = Utility::utility(report, agent.getSystem());
+		const auto utility = Utility::utility(report);
 
 		for(const auto &reportSeed : report.getSeeds()) {
 			const auto direction = randomizer.makeFloat(0, Utils::Math::PI * 2);

@@ -40,7 +40,7 @@ void Command::Simulation::AdvanceN::application(
 		}
 
 		console << MSG_ELAPSED << timer.get() << 's' << std::endl;
-		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskSceneReport(workspace.threadCount));
+		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskSceneReport(workspace.threadCount, true));
 	}
 	catch(...) {
 		console << MSG_ERROR << std::endl;

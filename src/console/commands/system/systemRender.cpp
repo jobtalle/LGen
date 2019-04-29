@@ -33,6 +33,7 @@ void Command::System::Render::application(
 	const auto task = std::make_shared<LRender::Renderer::Task::SceneReport>(
 		environment.makeScene(workspace.threadCount, workspace.randomizer),
 		workspace.randomizer.makeRandomizer(),
+		true,
 		workspace.threadCount);
 	
 	console.getMonitor()->makeVisible();

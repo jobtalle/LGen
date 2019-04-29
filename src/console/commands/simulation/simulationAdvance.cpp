@@ -28,5 +28,5 @@ void Command::Simulation::Advance::application(
 
 	workspace.simulation->advance(console, workspace.threadCount);
 
-	console.getMonitor()->enqueue(workspace.simulation->getState().getTaskSceneReport(workspace.threadCount));
+	console.getMonitor()->enqueue(workspace.simulation->getState().getTaskSceneReport(workspace.threadCount, true));
 }

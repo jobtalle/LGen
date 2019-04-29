@@ -143,8 +143,10 @@
     <ClCompile Include="LParse\src\sentence.cpp" />
     <ClCompile Include="LParse\src\system.cpp" />
     <ClCompile Include="LParse\src\token.cpp" />
+    <ClCompile Include="LRender\src\lodepng\lodepng.cpp" />
     <ClCompile Include="LRender\src\model\geometry.cpp" />
     <ClCompile Include="LRender\src\glad\glad.c" />
+    <ClCompile Include="LRender\src\renderer\colors\colors.cpp" />
     <ClCompile Include="LRender\src\renderer\glFunctions.cpp" />
     <ClCompile Include="LRender\src\math\constants.cpp" />
     <ClCompile Include="LRender\src\math\matrix.cpp" />
@@ -306,9 +308,11 @@
     <ClInclude Include="LParse\src\system.h" />
     <ClInclude Include="LParse\src\token.h" />
     <ClInclude Include="LRender\include\lrender.h" />
+    <ClInclude Include="LRender\src\lodepng\lodepng.h" />
     <ClInclude Include="LRender\src\model\geometry.h" />
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
+    <ClInclude Include="LRender\src\renderer\colors\colors.h" />
     <ClInclude Include="LRender\src\renderer\glFunctions.h" />
     <ClInclude Include="LRender\src\math\constants.h" />
     <ClInclude Include="LRender\src\math\matrix.h" />

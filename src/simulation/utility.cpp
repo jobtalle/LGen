@@ -23,7 +23,7 @@ double Utility::utility(const LRender::ReportAgent& report) {
 	auto averageDelta = (report.getPosition() - report.getAverage());
 	averageDelta.y *= 0.05f;
 
-	const auto factorStability = 1.0f / (averageDelta.length() + 1);
+	const auto factorStability = 1.0f / (averageDelta.length() * 0.05f + 1);
 
 	// Leaf area
 	float factorLeafArea = 0;

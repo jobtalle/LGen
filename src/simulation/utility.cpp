@@ -14,6 +14,7 @@ double Utility::utility(const LRender::ReportAgent& report) {
 	const auto factorExposure = report.getExposure().getExposure() / report.getSize().getNodes();
 	const auto factorSeeds = 1.0f / (report.getSeeds().size() * 0.05f + 1);
 	const auto factorRules = 1.0f - report.getRules().getRuleCount() * 0.01f;
+	const auto factorStability = 1.0f / ((report.getPosition() - report.getAverage()).length() + 1);
 
 	for(const auto &leaf : report.getLeaves()) {
 		const auto areaFactor = leaf.getArea() * 8;
@@ -23,5 +24,5 @@ double Utility::utility(const LRender::ReportAgent& report) {
 
 	factorLeafArea /= report.getLeaves().size();
 
-	return factorLeafArea * factorExposure * factorSeeds * factorRules;
+	return factorLeafArea * factorExposure * factorSeeds * factorRules * factorStability;
 }

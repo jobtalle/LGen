@@ -1,7 +1,6 @@
 #pragma once
 
 #include "lrender.h"
-#include "lparse.h"
 
 namespace LGen {
 	class Utility final {

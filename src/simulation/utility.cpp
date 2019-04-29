@@ -14,7 +14,11 @@ double Utility::utility(const LRender::ReportAgent& report) {
 	const auto factorExposure = report.getExposure().getExposure() / report.getSize().getNodes();
 	const auto factorSeeds = 1.0f / (report.getSeeds().size() * 0.05f + 1);
 	const auto factorRules = 1.0f - report.getRules().getRuleCount() * 0.01f;
-	const auto factorStability = 1.0f / ((report.getPosition() - report.getAverage()).length() + 1);
+
+	auto averageDelta = (report.getPosition() - report.getAverage());
+	averageDelta.y *= 0.05f;
+
+	const auto factorStability = 1.0f / (averageDelta.length() + 1);
 
 	for(const auto &leaf : report.getLeaves()) {
 		const auto areaFactor = leaf.getArea() * 8;

@@ -10,15 +10,23 @@ double Utility::utility(const LRender::ReportAgent& report) {
 		return 0;
 	}
 
-	float factorLeafArea = 0;
+	// Exposure
 	const auto factorExposure = report.getExposure().getExposure() / report.getSize().getNodes();
+
+	// Seeds
 	const auto factorSeeds = 1.0f / (report.getSeeds().size() * 0.05f + 1);
+
+	// Rules
 	const auto factorRules = 1.0f - report.getRules().getRuleCount() * 0.01f;
 
+	// Stability
 	auto averageDelta = (report.getPosition() - report.getAverage());
 	averageDelta.y *= 0.05f;
 
 	const auto factorStability = 1.0f / (averageDelta.length() + 1);
+
+	// Leaf area
+	float factorLeafArea = 0;
 
 	for(const auto &leaf : report.getLeaves()) {
 		const auto areaFactor = leaf.getArea() * 8;
@@ -28,5 +36,7 @@ double Utility::utility(const LRender::ReportAgent& report) {
 
 	factorLeafArea /= report.getLeaves().size();
 
-	return factorLeafArea * factorExposure * factorSeeds * factorRules * factorStability;
+	const auto utility = factorLeafArea * factorExposure * factorSeeds * factorRules * factorStability;
+
+	return utility;
 }

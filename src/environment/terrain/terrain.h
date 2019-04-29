@@ -14,7 +14,7 @@ namespace LGen {
 		float getWidth() const;
 		float getHeight() const;
 		float get(float x, float y) const;
-		const std::shared_ptr<const LParse::GrowthProfile> &getGrowthProfile(float x, float y) const;
+		virtual const std::shared_ptr<const LParse::GrowthProfile> &getGrowthProfile(float x, float y) const;
 
 	protected:
 		virtual float sample(float x, float y) const = 0;

@@ -260,6 +260,7 @@
     <ClCompile Include="src\environment\agent\agent.cpp" />
     <ClCompile Include="src\environment\environment.cpp" />
     <ClCompile Include="src\environment\terrain\terrain.cpp" />
+    <ClCompile Include="src\environment\terrain\terrainDemo.cpp" />
     <ClCompile Include="src\environment\terrain\terrainDropwave.cpp" />
     <ClCompile Include="src\environment\terrain\terrainFlat.cpp" />
     <ClCompile Include="src\environment\terrain\terrainValleys.cpp" />
@@ -430,6 +431,7 @@
     <ClInclude Include="src\environment\agent\agent.h" />
     <ClInclude Include="src\environment\environment.h" />
     <ClInclude Include="src\environment\terrain\terrain.h" />
+    <ClInclude Include="src\environment\terrain\terrainDemo.h" />
     <ClInclude Include="src\environment\terrain\terrainDropwave.h" />
     <ClInclude Include="src\environment\terrain\terrainFlat.h" />
     <ClInclude Include="src\environment\terrain\terrainValleys.h" />

@@ -10,9 +10,6 @@ double Utility::utility(const LRender::ReportAgent& report) {
 		return 0;
 	}
 
-	// Exposure
-	const auto factorExposure = report.getExposure().getExposure() / report.getSize().getNodes();
-
 	// Seeds
 	const auto factorSeeds = 1.0f / (report.getSeeds().size() * 0.05f + 1);
 
@@ -27,16 +24,25 @@ double Utility::utility(const LRender::ReportAgent& report) {
 
 	// Leaf area
 	float factorLeafArea = 0;
+	float leafArea = 0;
 
 	for(const auto &leaf : report.getLeaves()) {
-		const auto areaFactor = leaf.getArea() * 8;
+		leafArea += leaf.getArea();
+
+		const auto areaFactor = std::max(0.0f, leafArea - 0.2f);
 
 		factorLeafArea += 1 - areaFactor * areaFactor;
 	}
 
 	factorLeafArea /= report.getLeaves().size();
 
-	const auto utility = factorLeafArea * factorExposure * factorSeeds * factorRules * factorStability;
+	// Exposure
+	const auto factorExposure = report.getExposure().getExposure() / leafArea;
+
+	// Efficiency
+	const auto factorEfficiency = report.getExposure().getExposure() / report.getSize().getNodes();
+
+	const auto utility = factorEfficiency * factorLeafArea * factorExposure * factorSeeds * factorRules * factorStability;
 
 	return utility;
 }

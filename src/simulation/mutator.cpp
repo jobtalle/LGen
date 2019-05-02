@@ -44,42 +44,6 @@ Mutator::GeneratedSymbols::GeneratedSymbols(
 
 	if(empty())
 		return;
-	
-	if(rotations.empty()) {
-		const auto multiplier = 1.0f / (1.0f - this->pRotation);
-
-		this->pSeed *= multiplier;
-		this->pStep *= multiplier;
-		this->pConstant *= multiplier;
-		this->pRotation = 0;
-	}
-
-	if(seeds.empty()) {
-		const auto multiplier = 1.0f / (1.0f - this->pSeed);
-
-		this->pRotation *= multiplier;
-		this->pStep *= multiplier;
-		this->pConstant *= multiplier;
-		this->pSeed = 0;
-	}
-
-	if(steps.empty()) {
-		const auto multiplier = 1.0f / (1.0f - this->pStep);
-
-		this->pRotation *= multiplier;
-		this->pSeed *= multiplier;
-		this->pConstant *= multiplier;
-		this->pStep = 0;
-	}
-
-	if(constants.empty()) {
-		const auto multiplier = 1.0f / (1.0f - this->pConstant);
-
-		this->pRotation *= multiplier;
-		this->pSeed *= multiplier;
-		this->pStep *= multiplier;
-		this->pConstant = 0;
-	}
 
 	normalize();
 }
@@ -121,6 +85,42 @@ bool Mutator::GeneratedSymbols::empty() const {
 }
 
 void Mutator::GeneratedSymbols::normalize() {
+	if(rotations.empty()) {
+		const auto multiplier = 1.0f / (1.0f - this->pRotation);
+
+		this->pSeed *= multiplier;
+		this->pStep *= multiplier;
+		this->pConstant *= multiplier;
+		this->pRotation = 0;
+	}
+
+	if(seeds.empty()) {
+		const auto multiplier = 1.0f / (1.0f - this->pSeed);
+
+		this->pRotation *= multiplier;
+		this->pStep *= multiplier;
+		this->pConstant *= multiplier;
+		this->pSeed = 0;
+	}
+
+	if(steps.empty()) {
+		const auto multiplier = 1.0f / (1.0f - this->pStep);
+
+		this->pRotation *= multiplier;
+		this->pSeed *= multiplier;
+		this->pConstant *= multiplier;
+		this->pStep = 0;
+	}
+
+	if(constants.empty()) {
+		const auto multiplier = 1.0f / (1.0f - this->pConstant);
+
+		this->pRotation *= multiplier;
+		this->pSeed *= multiplier;
+		this->pStep *= multiplier;
+		this->pConstant = 0;
+	}
+
 	const auto remainder = 1.0f - pStep - pConstant - pRotation - pSeed;
 
 	if(pStep != 0)
@@ -222,6 +222,118 @@ LParse::System Mutator::mutate(const LParse::System& system, LParse::Randomizer 
 	mutated.setRules(rules);
 
 	return mutated;
+}
+
+float Mutator::getPSymbolAdd() const {
+	return pSymbolAdd;
+}
+
+float Mutator::getPSymbolRemove() const {
+	return pSymbolRemove;
+}
+
+float Mutator::getPSymbolChanceNew() const {
+	return pSymbolChanceNew;
+}
+
+float Mutator::getPSymbolChanceRotation() const {
+	return pSymbolChanceRotation;
+}
+
+float Mutator::getPSymbolChanceSeed() const {
+	return pSymbolChanceSeed;
+}
+
+float Mutator::getPSymbolChanceStep() const {
+	return pSymbolChanceStep;
+}
+
+float Mutator::getPSymbolChanceConstant() const {
+	return pSymbolChanceConstant;
+}
+
+float Mutator::getPBranchAdd() const {
+	return pBranchAdd;
+}
+
+float Mutator::getPBranchRemove() const {
+	return pBranchRemove;
+}
+
+float Mutator::getPLeafAdd() const {
+	return pLeafAdd;
+}
+
+float Mutator::getPLeafRemove() const {
+	return pLeafRemove;
+}
+
+float Mutator::getPRuleDuplicate() const {
+	return pRuleDuplicate;
+}
+
+float Mutator::getPRuleAdd() const {
+	return pRuleAdd;
+}
+
+float Mutator::getPRuleRemove() const {
+	return pRuleRemove;
+}
+
+void Mutator::setPSymbolAdd(const float pSymbolAdd) {
+	this->pSymbolAdd = pSymbolAdd;
+}
+
+void Mutator::setPSymbolRemove(const float pSymbolRemove) {
+	this->pSymbolRemove = pSymbolRemove;
+}
+
+void Mutator::setPSymbolChanceNew(const float pSymbolChanceNew) {
+	this->pSymbolChanceNew = pSymbolChanceNew;
+}
+
+void Mutator::setPSymbolChanceRotation(const float pSymbolChanceRotation) {
+	this->pSymbolChanceRotation = pSymbolChanceRotation;
+}
+
+void Mutator::setPSymbolChanceSeed(const float pSymbolChanceSeed) {
+	this->pSymbolChanceSeed = pSymbolChanceSeed;
+}
+
+void Mutator::setPSymbolChanceStep(const float pSymbolChanceStep) {
+	this->pSymbolChanceStep = pSymbolChanceStep;
+}
+
+void Mutator::setPSymbolChanceConstant(const float pSymbolChanceConstant) {
+	this->pSymbolChanceConstant = pSymbolChanceConstant;
+}
+
+void Mutator::setPBranchAdd(const float pBranchAdd) {
+	this->pBranchAdd = pBranchAdd;
+}
+
+void Mutator::setPBranchRemove(const float pBranchRemove) {
+	this->pBranchRemove = pBranchRemove;
+}
+
+void Mutator::setPLeafAdd(const float pLeafAdd) {
+	this->pLeafAdd = pLeafAdd;
+}
+
+void Mutator::setPLeafRemove(const float pLeafRemove) {
+	this->pLeafRemove = pLeafRemove;
+}
+
+void Mutator::setPRuleDuplicate(const float pRuleDuplicate) {
+	this->pRuleDuplicate = pRuleDuplicate;
+}
+
+void Mutator::setPRuleAdd(const float pRuleAdd) {
+	this->pRuleAdd = pRuleAdd;
+}
+
+void Mutator::setPRuleRemove(const float pRuleRemove) {
+	this->pRuleRemove = pRuleRemove;
 }
 
 LParse::Sentence Mutator::mutate(

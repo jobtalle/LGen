@@ -31,7 +31,7 @@ namespace LGen {
 	private:
 		static const float DENSITY_DEFAULT;
 
-		const std::unique_ptr<Mutator> mutator;
+		std::unique_ptr<Mutator> mutator;
 		std::unique_ptr<State> initial;
 		std::unique_ptr<State> state;
 		size_t generation;

@@ -3,6 +3,8 @@
 using namespace LGen;
 
 File &LGen::operator<<(File &file, const Mutator &mutator) {
+
+
 	return file;
 }
 

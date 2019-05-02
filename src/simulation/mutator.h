@@ -22,6 +22,36 @@ namespace LGen {
 			float pRuleRemove = 0.004f);
 		LParse::System mutate(const LParse::System &system, LParse::Randomizer &randomizer) const;
 
+		float getPSymbolAdd() const;
+		float getPSymbolRemove() const;
+		float getPSymbolChanceNew() const;
+		float getPSymbolChanceRotation() const;
+		float getPSymbolChanceSeed() const;
+		float getPSymbolChanceStep() const;
+		float getPSymbolChanceConstant() const;
+		float getPBranchAdd() const;
+		float getPBranchRemove() const;
+		float getPLeafAdd() const;
+		float getPLeafRemove() const;
+		float getPRuleDuplicate() const;
+		float getPRuleAdd() const;
+		float getPRuleRemove() const;
+
+		void setPSymbolAdd(float pSymbolAdd);
+		void setPSymbolRemove(float pSymbolRemove);
+		void setPSymbolChanceNew(float pSymbolChanceNew);
+		void setPSymbolChanceRotation(float pSymbolChanceRotation);
+		void setPSymbolChanceSeed(float pSymbolChanceSeed);
+		void setPSymbolChanceStep(float pSymbolChanceStep);
+		void setPSymbolChanceConstant(float pSymbolChanceConstant);
+		void setPBranchAdd(float pBranchAdd);
+		void setPBranchRemove(float pBranchRemove);
+		void setPLeafAdd(float pLeafAdd);
+		void setPLeafRemove(float pLeafRemove);
+		void setPRuleDuplicate(float pRuleDuplicate);
+		void setPRuleAdd(float pRuleAdd);
+		void setPRuleRemove(float pRuleRemove);
+
 	private:
 		class GeneratedSymbols final {
 		public:
@@ -64,22 +94,19 @@ namespace LGen {
 		LParse::Token makeToken(LParse::Randomizer &randomizer) const;
 		LParse::Token makeToken(LParse::Randomizer &randomizer, const GeneratedSymbols *constraints) const;
 
-		const float pSymbolAdd;
-		const float pSymbolRemove;
-		const float pSymbolChanceNew;
+		float pSymbolAdd;
+		float pSymbolRemove;
+		float pSymbolChanceNew;
 		float pSymbolChanceRotation;
 		float pSymbolChanceSeed;
 		float pSymbolChanceStep;
 		float pSymbolChanceConstant;
-
-		const float pBranchAdd;
-		const float pBranchRemove;
-
-		const float pLeafAdd;
-		const float pLeafRemove;
-
-		const float pRuleDuplicate;
-		const float pRuleAdd;
-		const float pRuleRemove;
+		float pBranchAdd;
+		float pBranchRemove;
+		float pLeafAdd;
+		float pLeafRemove;
+		float pRuleDuplicate;
+		float pRuleAdd;
+		float pRuleRemove;
 	};
 }

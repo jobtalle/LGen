@@ -19,6 +19,7 @@ namespace LGen {
 		class Summary;
 		class Reseed;
 		class Density;
+		class Mutator;
 
 	private:
 		static const std::string KEYWORD;

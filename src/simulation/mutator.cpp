@@ -6,7 +6,7 @@
 using namespace LGen;
 
 const std::string Mutator::MSG_INTRO = "Mutator probabilities:";
-const std::string Mutator::MSG_PROPERTY_INDENTATION = " -";
+const std::string Mutator::MSG_PROPERTY_INDENTATION = "- ";
 const std::string Mutator::MSG_PREFIX_P_SYMBOL_ADD = MSG_PROPERTY_INDENTATION + "Symbol addition chance: ";
 const std::string Mutator::MSG_PREFIX_P_SYMBOL_REMOVE = MSG_PROPERTY_INDENTATION + "Symbol removal chance: ";
 const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_NEW = MSG_PROPERTY_INDENTATION + "New symbol introduction chance: ";

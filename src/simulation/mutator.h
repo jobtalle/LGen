@@ -2,8 +2,6 @@
 
 #include "lparse.h"
 
-#include <iostream>
-
 namespace LGen {
 	class Mutator final {
 	public:

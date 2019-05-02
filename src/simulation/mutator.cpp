@@ -133,25 +133,47 @@ void Mutator::GeneratedSymbols::normalize() {
 		pSeed += remainder;
 }
 
-Mutator::Mutator() :
-	pSymbolAdd(0.005f),
-	pSymbolRemove(0.005f),
-	pSymbolChanceNew(0.2f),
-	pSymbolChanceRotation(0.35f),
-	pSymbolChanceSeed(0.05f),
-	pSymbolChanceStep(0.4f),
-	pSymbolChanceConstant(0.3f),
+Mutator::Mutator(
+	const float pSymbolAdd,
+	const float pSymbolRemove,
+	const float pSymbolChanceNew,
+	const float pSymbolChanceRotation,
+	const float pSymbolChanceSeed,
+	const float pSymbolChanceStep,
+	const float pSymbolChanceConstant,
+	const float pBranchAdd,
+	const float pBranchRemove,
+	const float pLeafAdd,
+	const float pLeafRemove,
+	const float pRuleDuplicate,
+	const float pRuleAdd,
+	const float pRuleRemove) :
+	pSymbolAdd(pSymbolAdd),
+	pSymbolRemove(pSymbolRemove),
+	pSymbolChanceNew(pSymbolChanceNew),
+	pSymbolChanceRotation(pSymbolChanceRotation),
+	pSymbolChanceSeed(pSymbolChanceSeed),
+	pSymbolChanceStep(pSymbolChanceStep),
+	pSymbolChanceConstant(pSymbolChanceConstant),
+	pBranchAdd(pBranchAdd),
+	pBranchRemove(pBranchRemove),
+	pLeafAdd(pLeafAdd),
+	pLeafRemove(pLeafRemove),
+	pRuleDuplicate(pRuleDuplicate),
+	pRuleAdd(pRuleAdd),
+	pRuleRemove(pRuleRemove) {
+	const auto symbolChanceTotal =
+		pSymbolChanceRotation +
+		pSymbolChanceSeed +
+		pSymbolChanceStep +
+		pSymbolChanceConstant;
 
-	pBranchAdd(0.002f),
-	pBranchRemove(0.002f),
+	const auto symbolChanceNormalizer = 1.0f / symbolChanceTotal;
 
-	pLeafAdd(0.002f),
-	pLeafRemove(0.002f),
-
-	pRuleDuplicate(0.003f),
-	pRuleAdd(0.001f),
-	pRuleRemove(0.004f) {
-
+	this->pSymbolChanceRotation *= symbolChanceNormalizer;
+	this->pSymbolChanceSeed *= symbolChanceNormalizer;
+	this->pSymbolChanceStep *= symbolChanceNormalizer;
+	this->pSymbolChanceConstant *= symbolChanceNormalizer;
 }
 
 LParse::System Mutator::mutate(const LParse::System& system, LParse::Randomizer &randomizer) const {

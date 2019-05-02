@@ -29,7 +29,7 @@ double Utility::utility(const LRender::ReportAgent& report) {
 	for(const auto &leaf : report.getLeaves()) {
 		leafArea += leaf.getArea();
 
-		const auto areaFactor = std::max(0.0f, leafArea - 0.2f);
+		const auto areaFactor = std::max(0.0f, leafArea) * 7;
 
 		factorLeafArea += 1 - areaFactor * areaFactor;
 	}

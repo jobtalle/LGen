@@ -6,6 +6,8 @@
 #include "simulationMutatorPSymbolChanceSeed.h"
 #include "simulationMutatorPSymbolChanceStep.h"
 #include "simulationMutatorPSymbolChanceConstant.h"
+#include "simulationMutatorPBranchAdd.h"
+#include "simulationMutatorPBranchRemove.h"
 
 using namespace LGen;
 
@@ -20,7 +22,9 @@ Command::Simulation::Mutator::Mutator() :
 		std::make_unique<PSymbolChanceRotation>(),
 		std::make_unique<PSymbolChanceSeed>(),
 		std::make_unique<PSymbolChanceStep>(),
-		std::make_unique<PSymbolChanceConstant>()
+		std::make_unique<PSymbolChanceConstant>(),
+		std::make_unique<PBranchAdd>(),
+		std::make_unique<PBranchRemove>()
 	}) {
 	
 }

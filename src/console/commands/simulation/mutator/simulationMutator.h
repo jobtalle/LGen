@@ -14,6 +14,8 @@ namespace LGen {
 		class PSymbolChanceSeed;
 		class PSymbolChanceStep;
 		class PSymbolChanceConstant;
+		class PBranchAdd;
+		class PBranchRemove;
 
 	private:
 		static const std::string KEYWORD;

@@ -226,6 +226,8 @@
     <ClCompile Include="src\console\commands\render\mode\renderModeDefault.cpp" />
     <ClCompile Include="src\console\commands\render\mode\renderModeWireframe.cpp" />
     <ClCompile Include="src\console\commands\simulation\mutator\simulationMutator.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPBranchAdd.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPBranchRemove.cpp" />
     <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolAdd.cpp" />
     <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceConstant.cpp" />
     <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceNew.cpp" />
@@ -405,6 +407,8 @@
     <ClInclude Include="src\console\commands\render\mode\renderModeDefault.h" />
     <ClInclude Include="src\console\commands\render\mode\renderModeWireframe.h" />
     <ClInclude Include="src\console\commands\simulation\mutator\simulationMutator.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPBranchAdd.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPBranchRemove.h" />
     <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolAdd.h" />
     <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceConstant.h" />
     <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceNew.h" />

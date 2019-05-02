@@ -3,9 +3,9 @@
 #include "console/commands/simulation/mutator/simulationMutator.h"
 
 namespace LGen {
-	class Command::Simulation::Mutator::PSymbolAdd final : public Command {
+	class Command::Simulation::Mutator::PBranchAdd final : public Command {
 	public:
-		PSymbolAdd();
+		PBranchAdd();
 
 	protected:
 		void application(

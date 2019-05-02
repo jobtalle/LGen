@@ -5,6 +5,23 @@
 
 using namespace LGen;
 
+const std::string Mutator::MSG_INTRO = "Mutator probabilities:";
+const std::string Mutator::MSG_PROPERTY_INDENTATION = " -";
+const std::string Mutator::MSG_PREFIX_P_SYMBOL_ADD = MSG_PROPERTY_INDENTATION + "Symbol addition chance: ";
+const std::string Mutator::MSG_PREFIX_P_SYMBOL_REMOVE = MSG_PROPERTY_INDENTATION + "Symbol removal chance: ";
+const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_NEW = MSG_PROPERTY_INDENTATION + "New symbol introduction chance: ";
+const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_ROTATION = MSG_PROPERTY_INDENTATION + "Rotation symbol chance: ";
+const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_SEED = MSG_PROPERTY_INDENTATION + "Seed symbol chance: ";
+const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_STEP = MSG_PROPERTY_INDENTATION + "Step symbol chance: ";
+const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_CONSTANT = MSG_PROPERTY_INDENTATION + "Constant symbol chance: ";
+const std::string Mutator::MSG_PREFIX_P_BRANCH_ADD = MSG_PROPERTY_INDENTATION + "Branch creation chance: ";
+const std::string Mutator::MSG_PREFIX_P_BRANCH_REMOVE = MSG_PROPERTY_INDENTATION + "Branch removal chance: ";
+const std::string Mutator::MSG_PREFIX_P_LEAF_ADD = MSG_PROPERTY_INDENTATION + "Leaf creation chance: ";
+const std::string Mutator::MSG_PREFIX_P_LEAF_REMOVE = MSG_PROPERTY_INDENTATION + "Leaf removal chance: ";
+const std::string Mutator::MSG_PREFIX_P_RULE_DUPLICATE = MSG_PROPERTY_INDENTATION + "Rule duplication chance: ";
+const std::string Mutator::MSG_PREFIX_P_RULE_ADD = MSG_PROPERTY_INDENTATION + "Rule creation chance: ";
+const std::string Mutator::MSG_PREFIX_P_RULE_REMOVE = MSG_PROPERTY_INDENTATION + "Rule removal chance: ";
+
 Mutator::GeneratedSymbols::GeneratedSymbols(
 	const std::vector<LParse::Token>& generatedTokens,
 	const float pStep,
@@ -19,7 +36,7 @@ Mutator::GeneratedSymbols::GeneratedSymbols(
 		switch(token.getSymbol()) {
 		case LParse::Legend::BRANCH_OPEN:
 		case LParse::Legend::BRANCH_CLOSE:
-		case LParse::Legend::LEAF:
+		case LParse::Legend::LEAF_OPEN:
 			continue;
 		case LParse::Legend::PITCH_INCREMENT:
 		case LParse::Legend::PITCH_DECREMENT:
@@ -224,6 +241,24 @@ LParse::System Mutator::mutate(const LParse::System& system, LParse::Randomizer 
 	return mutated;
 }
 
+void Mutator::print(std::ostream &stream) const {
+	stream << MSG_INTRO << std::endl;
+	stream << MSG_PREFIX_P_SYMBOL_ADD << pSymbolAdd << std::endl;
+	stream << MSG_PREFIX_P_SYMBOL_REMOVE << pSymbolRemove << std::endl;
+	stream << MSG_PREFIX_P_SYMBOL_CHANCE_NEW << pSymbolChanceNew << std::endl;
+	stream << MSG_PREFIX_P_SYMBOL_CHANCE_ROTATION << pSymbolChanceRotation << std::endl;
+	stream << MSG_PREFIX_P_SYMBOL_CHANCE_SEED << pSymbolChanceSeed << std::endl;
+	stream << MSG_PREFIX_P_SYMBOL_CHANCE_STEP << pSymbolChanceStep << std::endl;
+	stream << MSG_PREFIX_P_SYMBOL_CHANCE_CONSTANT << pSymbolChanceConstant << std::endl;
+	stream << MSG_PREFIX_P_BRANCH_ADD << pBranchAdd << std::endl;
+	stream << MSG_PREFIX_P_BRANCH_REMOVE << pBranchRemove << std::endl;
+	stream << MSG_PREFIX_P_LEAF_ADD << pLeafAdd << std::endl;
+	stream << MSG_PREFIX_P_LEAF_REMOVE << pLeafRemove << std::endl;
+	stream << MSG_PREFIX_P_RULE_DUPLICATE << pRuleDuplicate << std::endl;
+	stream << MSG_PREFIX_P_RULE_ADD << pRuleAdd << std::endl;
+	stream << MSG_PREFIX_P_RULE_REMOVE << pRuleRemove << std::endl;
+}
+
 float Mutator::getPSymbolAdd() const {
 	return pSymbolAdd;
 }
@@ -346,7 +381,7 @@ LParse::Sentence Mutator::mutate(
 
 	for(const auto &token : sentence.getTokens()) {
 		switch(token.getSymbol()) {
-		case LParse::Legend::LEAF:
+		case LParse::Legend::LEAF_OPEN:
 			if(randomizer.makeFloat() < pLeafRemove)
 				break;
 
@@ -381,7 +416,7 @@ LParse::Sentence Mutator::mutate(
 			if(makeBranch)
 				tokens.emplace_back(LParse::Legend::BRANCH_OPEN);
 			else if(makeLeaf)
-				tokens.emplace_back(LParse::Legend::LEAF);
+				tokens.emplace_back(LParse::Legend::LEAF_OPEN);
 
 			if(!addSymbolPre)
 				tokens.push_back(token);

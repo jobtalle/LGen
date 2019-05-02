@@ -26,4 +26,6 @@ void Command::Simulation::Summary::application(
 	console << MSG_PREFIX_GENERATION << std::to_string(workspace.simulation->getGeneration()) << std::endl;
 	console << MSG_PREFIX_AGENTS << std::to_string(workspace.simulation->getState().getEnvironment().getAgents().size()) << std::endl;
 	console << MSG_PREFIX_DENSITY << std::to_string(workspace.simulation->getDensity()) << std::endl;
+
+	workspace.simulation->getMutator().print(console);
 }

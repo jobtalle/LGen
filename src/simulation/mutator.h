@@ -2,6 +2,8 @@
 
 #include "lparse.h"
 
+#include <iostream>
+
 namespace LGen {
 	class Mutator final {
 	public:
@@ -21,6 +23,7 @@ namespace LGen {
 			float pRuleAdd = 0.001f,
 			float pRuleRemove = 0.004f);
 		LParse::System mutate(const LParse::System &system, LParse::Randomizer &randomizer) const;
+		void print(std::ostream &stream) const;
 
 		float getPSymbolAdd() const;
 		float getPSymbolRemove() const;
@@ -85,6 +88,22 @@ namespace LGen {
 		};
 
 		static const size_t SENTENCE_LENGTH_LIMIT = 10;
+		static const std::string MSG_INTRO;
+		static const std::string MSG_PROPERTY_INDENTATION;
+		static const std::string MSG_PREFIX_P_SYMBOL_ADD;
+		static const std::string MSG_PREFIX_P_SYMBOL_REMOVE;
+		static const std::string MSG_PREFIX_P_SYMBOL_CHANCE_NEW;
+		static const std::string MSG_PREFIX_P_SYMBOL_CHANCE_ROTATION;
+		static const std::string MSG_PREFIX_P_SYMBOL_CHANCE_SEED;
+		static const std::string MSG_PREFIX_P_SYMBOL_CHANCE_STEP;
+		static const std::string MSG_PREFIX_P_SYMBOL_CHANCE_CONSTANT;
+		static const std::string MSG_PREFIX_P_BRANCH_ADD;
+		static const std::string MSG_PREFIX_P_BRANCH_REMOVE;
+		static const std::string MSG_PREFIX_P_LEAF_ADD;
+		static const std::string MSG_PREFIX_P_LEAF_REMOVE;
+		static const std::string MSG_PREFIX_P_RULE_DUPLICATE;
+		static const std::string MSG_PREFIX_P_RULE_ADD;
+		static const std::string MSG_PREFIX_P_RULE_REMOVE;
 
 		LParse::Sentence mutate(
 			const LParse::Sentence &sentence,

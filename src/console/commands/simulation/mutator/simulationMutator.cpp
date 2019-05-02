@@ -8,6 +8,11 @@
 #include "simulationMutatorPSymbolChanceConstant.h"
 #include "simulationMutatorPBranchAdd.h"
 #include "simulationMutatorPBranchRemove.h"
+#include "simulationMutatorPLeafAdd.h"
+#include "simulationMutatorPLeafRemove.h"
+#include "simulationMutatorPRuleDuplicate.h"
+#include "simulationMutatorPRuleAdd.h"
+#include "simulationMutatorPRuleRemove.h"
 
 using namespace LGen;
 
@@ -24,7 +29,12 @@ Command::Simulation::Mutator::Mutator() :
 		std::make_unique<PSymbolChanceStep>(),
 		std::make_unique<PSymbolChanceConstant>(),
 		std::make_unique<PBranchAdd>(),
-		std::make_unique<PBranchRemove>()
+		std::make_unique<PBranchRemove>(),
+		std::make_unique<PLeafAdd>(),
+		std::make_unique<PLeafRemove>(),
+		std::make_unique<PRuleDuplicate>(),
+		std::make_unique<PRuleAdd>(),
+		std::make_unique<PRuleRemove>()
 	}) {
 	
 }

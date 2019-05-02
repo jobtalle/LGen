@@ -16,6 +16,11 @@ namespace LGen {
 		class PSymbolChanceConstant;
 		class PBranchAdd;
 		class PBranchRemove;
+		class PLeafAdd;
+		class PLeafRemove;
+		class PRuleDuplicate;
+		class PRuleAdd;
+		class PRuleRemove;
 
 	private:
 		static const std::string KEYWORD;

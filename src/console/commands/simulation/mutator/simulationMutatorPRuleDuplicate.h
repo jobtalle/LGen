@@ -3,9 +3,9 @@
 #include "console/commands/simulation/mutator/simulationMutator.h"
 
 namespace LGen {
-	class Command::Simulation::Mutator::PSymbolChanceConstant final : public Command {
+	class Command::Simulation::Mutator::PRuleDuplicate final : public Command{
 	public:
-		PSymbolChanceConstant();
+		PRuleDuplicate();
 
 	protected:
 		void application(

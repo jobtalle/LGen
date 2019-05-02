@@ -3,7 +3,7 @@
 #include "console/commands/simulation/mutator/simulationMutator.h"
 
 namespace LGen {
-	class Command::Simulation::Mutator::PSymbolRemove final : public Command{
+	class Command::Simulation::Mutator::PSymbolRemove final : public Command {
 	public:
 		PSymbolRemove();
 

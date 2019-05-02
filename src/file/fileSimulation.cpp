@@ -41,12 +41,14 @@ std::unique_ptr<Simulation> &LGen::operator<<(std::unique_ptr<Simulation> &simul
 	if(generation > 0)
 		simulation = std::make_unique<Simulation>(
 			std::move(mutator),
+			std::make_unique<Utility>(), // TODO: Deserialize
 			std::move(initial),
 			std::move(state << file.getFile(KEY_STATE)),
 			generation);
 	else
 		simulation = std::make_unique<Simulation>(
 			std::move(mutator),
+			std::make_unique<Utility>(), // TODO: Deserialize
 			std::move(initial));
 
 	simulation->setDensity(file.getFloat(KEY_DENSITY));

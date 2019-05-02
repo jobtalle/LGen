@@ -22,6 +22,7 @@ void Command::Simulation::New::application(
 
 	workspace.simulation = std::make_unique<LGen::Simulation>(
 		std::make_unique<LGen::Mutator>(),
+		std::make_unique<Utility>(),
 		std::make_unique<State>(
 			std::make_unique<const LGen::Environment>(*workspace.environment),
 			workspace.randomizer));

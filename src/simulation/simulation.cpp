@@ -8,8 +8,10 @@ const float Simulation::DENSITY_DEFAULT = 2;
 
 Simulation::Simulation(
 	std::unique_ptr<Mutator> mutator,
+	std::unique_ptr<Utility> utility,
 	std::unique_ptr<State> initial) :
 	mutator(std::move(mutator)),
+	utility(std::move(utility)),
 	initial(std::move(initial)),
 	generation(0) {
 	
@@ -17,10 +19,12 @@ Simulation::Simulation(
 
 Simulation::Simulation(
 	std::unique_ptr<Mutator> mutator,
+	std::unique_ptr<Utility> utility,
 	std::unique_ptr<State> initial,
 	std::unique_ptr<State> state,
 	const size_t generation) :
 	mutator(std::move(mutator)),
+	utility(std::move(utility)),
 	initial(std::move(initial)),
 	state(std::move(state)),
 	generation(generation) {
@@ -29,6 +33,10 @@ Simulation::Simulation(
 
 Mutator &Simulation::getMutator() const {
 	return *mutator;
+}
+
+Utility &Simulation::getUtility() const {
+	return *utility;
 }
 
 const State &Simulation::getInitial() const {

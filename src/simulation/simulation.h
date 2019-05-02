@@ -2,6 +2,7 @@
 
 #include "simulation/state.h"
 #include "simulation/mutator.h"
+#include "simulation/utility.h"
 #include "console/console.h"
 
 #include <memory>
@@ -12,13 +13,16 @@ namespace LGen {
 	public:
 		Simulation(
 			std::unique_ptr<Mutator> mutator,
+			std::unique_ptr<Utility> utility,
 			std::unique_ptr<State> initial);
 		Simulation(
-			std::unique_ptr<Mutator> mutator, 
+			std::unique_ptr<Mutator> mutator,
+			std::unique_ptr<Utility> utility,
 			std::unique_ptr<State> initial,
 			std::unique_ptr<State> state,
 			size_t generation);
 		Mutator &getMutator() const;
+		Utility &getUtility() const;
 		const State &getInitial() const;
 		const State &getState() const;
 		float getDensity() const;
@@ -32,6 +36,7 @@ namespace LGen {
 		static const float DENSITY_DEFAULT;
 
 		std::unique_ptr<Mutator> mutator;
+		std::unique_ptr<Utility> utility;
 		std::unique_ptr<State> initial;
 		std::unique_ptr<State> state;
 		size_t generation;

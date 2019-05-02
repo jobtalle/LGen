@@ -16,6 +16,7 @@ namespace LGen {
 		static const std::string KEYWORD;
 		static const std::string FILE_HELP;
 		static const std::string MSG_NO_AGENT_SELECTED;
+		static const std::string MSG_NO_SIMULATION;
 		static const std::string MSG_HEAD;
 		static const std::string PROPERTY_INDENT;
 		static const std::string PROPERTY_UTILITY;

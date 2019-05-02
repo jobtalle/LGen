@@ -2,7 +2,7 @@
 
 using namespace LGen;
 
-double Utility::utility(const LRender::ReportAgent& report) {
+double Utility::utility(const LRender::ReportAgent& report) const {
 	if(report.getExposure().getExposure() == 0) {
 		if(report.getSize().getNodes() > MAX_ZERO_SURFACE_SYMBOLS)
 			return -1;

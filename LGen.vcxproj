@@ -144,6 +144,9 @@
     <ClCompile Include="LParse\src\system.cpp" />
     <ClCompile Include="LParse\src\token.cpp" />
     <ClCompile Include="LRender\src\lodepng\lodepng.cpp" />
+    <ClCompile Include="LRender\src\math\area.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\standardLeaf.cpp" />
+    <ClCompile Include="LRender\src\modeller\standardLeaf.cpp" />
     <ClCompile Include="LRender\src\model\geometry.cpp" />
     <ClCompile Include="LRender\src\glad\glad.c" />
     <ClCompile Include="LRender\src\renderer\colors\colors.cpp" />
@@ -325,6 +328,9 @@
     <ClInclude Include="LParse\src\token.h" />
     <ClInclude Include="LRender\include\lrender.h" />
     <ClInclude Include="LRender\src\lodepng\lodepng.h" />
+    <ClInclude Include="LRender\src\math\area.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\standardLeaf.h" />
+    <ClInclude Include="LRender\src\modeller\standardLeaf.h" />
     <ClInclude Include="LRender\src\model\geometry.h" />
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />

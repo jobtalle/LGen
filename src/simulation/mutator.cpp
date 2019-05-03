@@ -14,6 +14,7 @@ const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_ROTATION = MSG_PROPERTY_IN
 const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_SEED = MSG_PROPERTY_INDENTATION + "Seed symbol chance: ";
 const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_STEP = MSG_PROPERTY_INDENTATION + "Step symbol chance: ";
 const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_CONSTANT = MSG_PROPERTY_INDENTATION + "Constant symbol chance: ";
+const std::string Mutator::MSG_PREFIX_P_SYMBOL_CHANCE_LEAF = MSG_PROPERTY_INDENTATION + "Leaf symbol chance: ";
 const std::string Mutator::MSG_PREFIX_P_BRANCH_ADD = MSG_PROPERTY_INDENTATION + "Branch creation chance: ";
 const std::string Mutator::MSG_PREFIX_P_BRANCH_REMOVE = MSG_PROPERTY_INDENTATION + "Branch removal chance: ";
 const std::string Mutator::MSG_PREFIX_P_LEAF_ADD = MSG_PROPERTY_INDENTATION + "Leaf creation chance: ";
@@ -27,11 +28,13 @@ Mutator::GeneratedSymbols::GeneratedSymbols(
 	const float pStep,
 	const float pConstant,
 	const float pRotation,
-	const float pSeed) :
+	const float pSeed,
+	const float pLeaf) :
 	pStep(pStep),
 	pConstant(pConstant),
 	pRotation(pRotation),
-	pSeed(pSeed) {
+	pSeed(pSeed),
+	pLeaf(pLeaf) {
 	for(const auto &token : generatedTokens) {
 		switch(token.getSymbol()) {
 		case LParse::Legend::BRANCH_OPEN:
@@ -47,6 +50,10 @@ Mutator::GeneratedSymbols::GeneratedSymbols(
 			break;
 		case LParse::Legend::SEED:
 			seeds.push_back(token);
+
+			break;
+		case LParse::Legend::LEAF_A:
+			leaves.push_back(token);
 
 			break;
 		default:
@@ -65,20 +72,24 @@ Mutator::GeneratedSymbols::GeneratedSymbols(
 	normalize();
 }
 
-const std::vector<LParse::Token>& Mutator::GeneratedSymbols::getSteps() const {
+const std::vector<LParse::Token> &Mutator::GeneratedSymbols::getSteps() const {
 	return steps;
 }
 
-const std::vector<LParse::Token>& Mutator::GeneratedSymbols::getConstants() const {
+const std::vector<LParse::Token> &Mutator::GeneratedSymbols::getConstants() const {
 	return constants;
 }
 
-const std::vector<LParse::Token>& Mutator::GeneratedSymbols::getRotations() const {
+const std::vector<LParse::Token> &Mutator::GeneratedSymbols::getRotations() const {
 	return rotations;
 }
 
-const std::vector<LParse::Token>& Mutator::GeneratedSymbols::getSeeds() const {
+const std::vector<LParse::Token> &Mutator::GeneratedSymbols::getSeeds() const {
 	return seeds;
+}
+
+const std::vector<LParse::Token> &Mutator::GeneratedSymbols::getLeaves() const {
+	return leaves;
 }
 
 float Mutator::GeneratedSymbols::getPStep() const {
@@ -97,6 +108,10 @@ float Mutator::GeneratedSymbols::getPSeed() const {
 	return pSeed;
 }
 
+float Mutator::GeneratedSymbols::getPLeaf() const {
+	return pLeaf;
+}
+
 bool Mutator::GeneratedSymbols::empty() const {
 	return steps.empty() && constants.empty() && rotations.empty() && seeds.empty();
 }
@@ -108,6 +123,7 @@ void Mutator::GeneratedSymbols::normalize() {
 		this->pSeed *= multiplier;
 		this->pStep *= multiplier;
 		this->pConstant *= multiplier;
+		this->pLeaf *= multiplier;
 		this->pRotation = 0;
 	}
 
@@ -117,6 +133,7 @@ void Mutator::GeneratedSymbols::normalize() {
 		this->pRotation *= multiplier;
 		this->pStep *= multiplier;
 		this->pConstant *= multiplier;
+		this->pLeaf *= multiplier;
 		this->pSeed = 0;
 	}
 
@@ -126,6 +143,7 @@ void Mutator::GeneratedSymbols::normalize() {
 		this->pRotation *= multiplier;
 		this->pSeed *= multiplier;
 		this->pConstant *= multiplier;
+		this->pLeaf *= multiplier;
 		this->pStep = 0;
 	}
 
@@ -135,10 +153,21 @@ void Mutator::GeneratedSymbols::normalize() {
 		this->pRotation *= multiplier;
 		this->pSeed *= multiplier;
 		this->pStep *= multiplier;
+		this->pLeaf *= multiplier;
 		this->pConstant = 0;
 	}
 
-	const auto remainder = 1.0f - pStep - pConstant - pRotation - pSeed;
+	if(leaves.empty()) {
+		const auto multiplier = 1.0f / (1.0f - this->pLeaf);
+
+		this->pRotation *= multiplier;
+		this->pSeed *= multiplier;
+		this->pConstant *= multiplier;
+		this->pStep *= multiplier;
+		this->pLeaf = 0;
+	}
+
+	const auto remainder = 1.0f - pStep - pConstant - pRotation - pSeed - pLeaf;
 
 	if(pStep != 0)
 		pStep += remainder;
@@ -146,6 +175,8 @@ void Mutator::GeneratedSymbols::normalize() {
 		pConstant += remainder;
 	else if(pRotation != 0)
 		pRotation += remainder;
+	else if(pLeaf != 0)
+		pLeaf += remainder;
 	else
 		pSeed += remainder;
 }
@@ -158,6 +189,7 @@ Mutator::Mutator(
 	const float pSymbolChanceSeed,
 	const float pSymbolChanceStep,
 	const float pSymbolChanceConstant,
+	const float pSymbolChanceLeaf,
 	const float pBranchAdd,
 	const float pBranchRemove,
 	const float pLeafAdd,
@@ -172,6 +204,7 @@ Mutator::Mutator(
 	pSymbolChanceSeed(pSymbolChanceSeed),
 	pSymbolChanceStep(pSymbolChanceStep),
 	pSymbolChanceConstant(pSymbolChanceConstant),
+	pSymbolChanceLeaf(pSymbolChanceLeaf),
 	pBranchAdd(pBranchAdd),
 	pBranchRemove(pBranchRemove),
 	pLeafAdd(pLeafAdd),
@@ -183,7 +216,8 @@ Mutator::Mutator(
 		pSymbolChanceRotation +
 		pSymbolChanceSeed +
 		pSymbolChanceStep +
-		pSymbolChanceConstant;
+		pSymbolChanceConstant +
+		pSymbolChanceLeaf;
 
 	const auto symbolChanceNormalizer = 1.0f / symbolChanceTotal;
 
@@ -191,6 +225,7 @@ Mutator::Mutator(
 	this->pSymbolChanceSeed *= symbolChanceNormalizer;
 	this->pSymbolChanceStep *= symbolChanceNormalizer;
 	this->pSymbolChanceConstant *= symbolChanceNormalizer;
+	this->pSymbolChanceLeaf *= symbolChanceNormalizer;
 }
 
 LParse::System Mutator::mutate(const LParse::System& system, LParse::Randomizer &randomizer) const {
@@ -200,7 +235,8 @@ LParse::System Mutator::mutate(const LParse::System& system, LParse::Randomizer 
 		pSymbolChanceStep,
 		pSymbolChanceConstant,
 		pSymbolChanceRotation,
-		pSymbolChanceSeed);
+		pSymbolChanceSeed,
+		pSymbolChanceLeaf);
 
 	for(const auto &rule : system.getRules()) {
 		if(randomizer.makeFloat() < pRuleRemove)
@@ -250,6 +286,7 @@ void Mutator::print(std::ostream &stream) const {
 	stream << MSG_PREFIX_P_SYMBOL_CHANCE_SEED << pSymbolChanceSeed << std::endl;
 	stream << MSG_PREFIX_P_SYMBOL_CHANCE_STEP << pSymbolChanceStep << std::endl;
 	stream << MSG_PREFIX_P_SYMBOL_CHANCE_CONSTANT << pSymbolChanceConstant << std::endl;
+	stream << MSG_PREFIX_P_SYMBOL_CHANCE_LEAF << pSymbolChanceLeaf << std::endl;
 	stream << MSG_PREFIX_P_BRANCH_ADD << pBranchAdd << std::endl;
 	stream << MSG_PREFIX_P_BRANCH_REMOVE << pBranchRemove << std::endl;
 	stream << MSG_PREFIX_P_LEAF_ADD << pLeafAdd << std::endl;
@@ -285,6 +322,10 @@ float Mutator::getPSymbolChanceStep() const {
 
 float Mutator::getPSymbolChanceConstant() const {
 	return pSymbolChanceConstant;
+}
+
+float Mutator::getPSymbolChanceLeaf() const {
+	return pSymbolChanceLeaf;
 }
 
 float Mutator::getPBranchAdd() const {
@@ -341,6 +382,10 @@ void Mutator::setPSymbolChanceStep(const float pSymbolChanceStep) {
 
 void Mutator::setPSymbolChanceConstant(const float pSymbolChanceConstant) {
 	this->pSymbolChanceConstant = pSymbolChanceConstant;
+}
+
+void Mutator::setPSymbolChanceLeaf(const float pSymbolChanceLeaf) {
+	this->pSymbolChanceLeaf = pSymbolChanceLeaf;
 }
 
 void Mutator::setPBranchAdd(const float pBranchAdd) {
@@ -473,6 +518,9 @@ LParse::Token Mutator::makeToken(LParse::Randomizer& randomizer) const {
 	if(chance <= pSymbolChanceRotation + pSymbolChanceSeed + pSymbolChanceStep)
 		return randomizer.makeInt(LParse::Legend::STEP_MIN, LParse::Legend::STEP_MAX);
 
+	if(chance <= pSymbolChanceRotation + pSymbolChanceSeed + pSymbolChanceStep + pSymbolChanceLeaf)
+		return LParse::Legend::LEAF_A;
+
 	return randomizer.makeInt(LParse::Legend::CONST_MIN, LParse::Legend::CONST_MAX);
 }
 
@@ -490,6 +538,9 @@ LParse::Token Mutator::makeToken(LParse::Randomizer& randomizer, const Generated
 
 	if(chance <= constraints->getPStep() + constraints->getPSeed() + constraints->getPRotation())
 		return constraints->getSteps()[randomizer.makeInt(0, constraints->getSteps().size() - 1)];
+
+	if(chance <= constraints->getPLeaf() + constraints->getPStep() + constraints->getPSeed() + constraints->getPRotation())
+		return constraints->getLeaves()[randomizer.makeInt(0, constraints->getLeaves().size() - 1)];
 
 	return constraints->getConstants()[randomizer.makeInt(0, constraints->getConstants().size() - 1)];
 }

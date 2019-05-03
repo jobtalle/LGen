@@ -13,6 +13,7 @@ namespace LGen {
 			float pSymbolChanceSeed = 0.05f,     // relative to each other,
 			float pSymbolChanceStep = 0.4f,      // their total probability
 			float pSymbolChanceConstant = 0.2f,  // is 100%.
+			float pSymbolChanceLeaf = 0.1f,      //
 			float pBranchAdd = 0.002f,
 			float pBranchRemove = 0.002f,
 			float pLeafAdd = 0.002f,
@@ -30,6 +31,7 @@ namespace LGen {
 		float getPSymbolChanceSeed() const;
 		float getPSymbolChanceStep() const;
 		float getPSymbolChanceConstant() const;
+		float getPSymbolChanceLeaf() const;
 		float getPBranchAdd() const;
 		float getPBranchRemove() const;
 		float getPLeafAdd() const;
@@ -45,6 +47,7 @@ namespace LGen {
 		void setPSymbolChanceSeed(float pSymbolChanceSeed);
 		void setPSymbolChanceStep(float pSymbolChanceStep);
 		void setPSymbolChanceConstant(float pSymbolChanceConstant);
+		void setPSymbolChanceLeaf(float pSymbolChanceLeaf);
 		void setPBranchAdd(float pBranchAdd);
 		void setPBranchRemove(float pBranchRemove);
 		void setPLeafAdd(float pLeafAdd);
@@ -61,15 +64,18 @@ namespace LGen {
 				float pStep,
 				float pConstant,
 				float pRotation,
-				float pSeed);
+				float pSeed,
+				float pLeaf);
 			const std::vector<LParse::Token> &getSteps() const;
 			const std::vector<LParse::Token> &getConstants() const;
 			const std::vector<LParse::Token> &getRotations() const;
 			const std::vector<LParse::Token> &getSeeds() const;
+			const std::vector<LParse::Token> &getLeaves() const;
 			float getPStep() const;
 			float getPConstant() const;
 			float getPRotation() const;
 			float getPSeed() const;
+			float getPLeaf() const;
 			bool empty() const;
 
 		private:
@@ -79,10 +85,12 @@ namespace LGen {
 			std::vector<LParse::Token> constants;
 			std::vector<LParse::Token> rotations;
 			std::vector<LParse::Token> seeds;
+			std::vector<LParse::Token> leaves;
 			float pStep;
 			float pConstant;
 			float pRotation;
 			float pSeed;
+			float pLeaf;
 		};
 
 		static const size_t SENTENCE_LENGTH_LIMIT = 10;
@@ -95,6 +103,7 @@ namespace LGen {
 		static const std::string MSG_PREFIX_P_SYMBOL_CHANCE_SEED;
 		static const std::string MSG_PREFIX_P_SYMBOL_CHANCE_STEP;
 		static const std::string MSG_PREFIX_P_SYMBOL_CHANCE_CONSTANT;
+		static const std::string MSG_PREFIX_P_SYMBOL_CHANCE_LEAF;
 		static const std::string MSG_PREFIX_P_BRANCH_ADD;
 		static const std::string MSG_PREFIX_P_BRANCH_REMOVE;
 		static const std::string MSG_PREFIX_P_LEAF_ADD;
@@ -118,6 +127,7 @@ namespace LGen {
 		float pSymbolChanceSeed;
 		float pSymbolChanceStep;
 		float pSymbolChanceConstant;
+		float pSymbolChanceLeaf;
 		float pBranchAdd;
 		float pBranchRemove;
 		float pLeafAdd;

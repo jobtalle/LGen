@@ -8,6 +8,7 @@
 #include "simulation/mutator.h"
 
 #include <vector>
+#include "utility.h"
 
 namespace LGen {
 	class Planter final {
@@ -15,6 +16,7 @@ namespace LGen {
 		Planter(
 			const std::vector<Agent> &agents,
 			const std::vector<LRender::ReportAgent> &reports,
+			const Utility &utility,
 			LParse::Randomizer &randomizer);
 		void plant(
 			Environment &environment,

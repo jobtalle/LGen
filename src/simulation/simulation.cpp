@@ -69,7 +69,7 @@ void Simulation::advance(Console &console, const size_t threads) {
 	console.getMonitor()->enqueue(task);
 
 	const auto report = task->getReport();
-	const auto planter = Planter(getState().getEnvironment().getAgents(), report->getAgents(), randomizer);
+	const auto planter = Planter(getState().getEnvironment().getAgents(), report->getAgents(), *utility, randomizer);
 	auto environment = getState().getEnvironment().makeEmptyCopy();
 
 	planter.plant(*environment, *mutator, density, randomizer);

@@ -14,6 +14,7 @@ const float Planter::DEFAULT_SPREAD = 0.05f;
 Planter::Planter(
 	const std::vector<Agent> &agents,
 	const std::vector<LRender::ReportAgent> &reports,
+	const Utility &utility,
 	LParse::Randomizer &randomizer) {
 	for(size_t i = 0; i < agents.size(); ++i) {
 		const auto &report = reports[i];
@@ -22,7 +23,7 @@ Planter::Planter(
 			continue;
 
 		const auto &agent = agents[i];
-		const auto utility = Utility::utility(report);
+		const auto score = utility.utility(report);
 
 		for(const auto &reportSeed : report.getSeeds()) {
 			const auto direction = randomizer.makeFloat(0, Utils::Math::PI * 2);
@@ -34,7 +35,7 @@ Planter::Planter(
 				reportSeed.getLocation().z + std::sin(direction) * distance,
 				agent.getSystem(),
 				report.getLimits(),
-				utility);
+				score);
 		}
 
 		std::shuffle(candidates.end() - report.getSeeds().size(), candidates.end(), randomizer.getRandomizer());

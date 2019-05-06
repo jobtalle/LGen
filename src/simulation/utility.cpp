@@ -2,7 +2,7 @@
 
 using namespace LGen;
 
-double Utility::utility(const LRender::ReportAgent& report) const {
+double Utility::utility(const LRender::ReportAgent &report) const {
 	if(report.getExposure().getExposure() == 0) {
 		if(report.getSize().getNodes() > MAX_ZERO_SURFACE_SYMBOLS)
 			return -1;
@@ -10,19 +10,31 @@ double Utility::utility(const LRender::ReportAgent& report) const {
 		return 0;
 	}
 
-	// Seeds
-	const auto factorSeeds = 1.0f / (report.getSeeds().size() * 0.05f + 1);
+	return
+		getFactorSeeds(report) *
+		getFactorRules(report) *
+		getFactorStability(report) *
+		getFactorLeaves(report) *
+		getFactorEfficiency(report);
+}
 
-	// Rules
-	const auto factorRules = 1.0f - report.getRules().getRuleCount() * 0.01f;
+double Utility::getFactorSeeds(const LRender::ReportAgent &report) const {
+	return 1.0f / (report.getSeeds().size() * 0.05f + 1);
+}
 
-	// Stability
+double Utility::getFactorRules(const LRender::ReportAgent &report) const {
+	return 1.0f - report.getRules().getRuleCount() * 0.01f;
+}
+
+double Utility::getFactorStability(const LRender::ReportAgent &report) const {
 	auto averageDelta = (report.getPosition() - report.getAverage());
+
 	averageDelta.y *= 0.05f;
 
-	const auto factorStability = 1.0f / (averageDelta.length() * 0.05f + 1);
+	return 1.0f / (averageDelta.length() * 0.05f + 1);
+}
 
-	// Leaf area
+double Utility::getFactorLeaves(const LRender::ReportAgent &report) const {
 	float factorLeafArea = 0;
 	float leafArea = 0;
 
@@ -36,13 +48,11 @@ double Utility::utility(const LRender::ReportAgent& report) const {
 
 	factorLeafArea /= report.getLeaves().size();
 
-	// Exposure
 	const auto factorExposure = report.getExposure().getExposure() / leafArea;
 
-	// Efficiency
-	const auto factorEfficiency = report.getExposure().getExposure() / report.getSize().getNodes();
+	return factorExposure * factorLeafArea;
+}
 
-	const auto utility = factorEfficiency * factorLeafArea * factorExposure * factorSeeds * factorRules * factorStability;
-
-	return utility;
+double Utility::getFactorEfficiency(const LRender::ReportAgent &report) const {
+	return report.getExposure().getExposure() / report.getSize().getNodes();
 }

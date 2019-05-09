@@ -15,11 +15,15 @@ double Utility::utility(const LRender::ReportAgent &report) const {
 		getFactorRules(report) *
 		getFactorStability(report) *
 		getFactorLeaves(report) *
-		getFactorEfficiency(report);
+		getFactorExposure(report);
+}
+
+double Utility::getFactorExposure(const LRender::ReportAgent &report) const {
+	return std::pow(report.getExposure().getExposure(), 1.1f) / report.getSize().getNodes();
 }
 
 double Utility::getFactorSeeds(const LRender::ReportAgent &report) const {
-	return 1.0f / (report.getSeeds().size() * 0.05f + 1);
+	return 1.0f / (report.getSeeds().size() * 0.1f + 1);
 }
 
 double Utility::getFactorRules(const LRender::ReportAgent &report) const {
@@ -27,33 +31,23 @@ double Utility::getFactorRules(const LRender::ReportAgent &report) const {
 }
 
 double Utility::getFactorStability(const LRender::ReportAgent &report) const {
-	const auto allowedHeight = 0.05f * report.getSize().getNodes();
 	auto averageDelta = (report.getPosition() - report.getAverage());
 
-	averageDelta.y *= std::max(0.0f, averageDelta.y - allowedHeight) * 0.05f;
+	const auto eccentricity = averageDelta.length();
 
-	return 1.0f / (averageDelta.length() * 0.05f + 1);
+	return 1.0f / (eccentricity * eccentricity * 0.3f + 1);
 }
 
 double Utility::getFactorLeaves(const LRender::ReportAgent &report) const {
 	float factorLeafArea = 0;
-	float leafArea = 0;
 
 	for(const auto &leaf : report.getLeaves()) {
-		leafArea += leaf.getArea();
-
-		const auto areaFactor = std::max(0.0f, leafArea) * 7;
+		const auto areaFactor = leaf.getArea() * 8;
 
 		factorLeafArea += 1 - areaFactor * areaFactor;
 	}
 
 	factorLeafArea /= report.getLeaves().size();
 
-	// const auto factorExposure = report.getExposure().getExposure() / leafArea;
-
 	return factorLeafArea;
-}
-
-double Utility::getFactorEfficiency(const LRender::ReportAgent &report) const {
-	return report.getExposure().getExposure() / report.getSize().getNodes();
 }

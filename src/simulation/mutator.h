@@ -6,19 +6,19 @@ namespace LGen {
 	class Mutator final {
 	public:
 		Mutator(
-			float pSymbolAdd = 0.01f,
-			float pSymbolRemove = 0.01f,
+			float pSymbolAdd = 0.005f,
+			float pSymbolRemove = 0.005f,
 			float pSymbolChanceNew = 0.2f,
-			float pSymbolChanceRotation = 0.65f, // These probabilities are
+			float pSymbolChanceRotation = 0.35f, // These probabilities are
 			float pSymbolChanceSeed = 0.05f,     // relative to each other,
 			float pSymbolChanceStep = 0.4f,      // their total probability
 			float pSymbolChanceConstant = 0.2f,  // is 100%.
 			float pSymbolChanceLeaf = 0.0f,      //
-			float pBranchAdd = 0.01f,
+			float pBranchAdd = 0.002f,
 			float pBranchRemove = 0.002f,
 			float pLeafAdd = 0.002f,
 			float pLeafRemove = 0.002f,
-			float pRuleDuplicate = 0.01f,
+			float pRuleDuplicate = 0.003f,
 			float pRuleAdd = 0.001f,
 			float pRuleRemove = 0.004f);
 		LParse::System mutate(const LParse::System &system, LParse::Randomizer &randomizer) const;
@@ -93,7 +93,7 @@ namespace LGen {
 			float pLeaf;
 		};
 
-		static const size_t SENTENCE_LENGTH_LIMIT = 10;
+		static const size_t SENTENCE_LENGTH_LIMIT = 20;
 		static const std::string MSG_INTRO;
 		static const std::string MSG_PROPERTY_INDENTATION;
 		static const std::string MSG_PREFIX_P_SYMBOL_ADD;

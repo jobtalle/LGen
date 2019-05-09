@@ -27,9 +27,10 @@ double Utility::getFactorRules(const LRender::ReportAgent &report) const {
 }
 
 double Utility::getFactorStability(const LRender::ReportAgent &report) const {
+	const auto allowedHeight = 0.05f * report.getSize().getNodes();
 	auto averageDelta = (report.getPosition() - report.getAverage());
 
-	averageDelta.y *= 0.05f;
+	averageDelta.y *= std::max(0.0f, averageDelta.y - allowedHeight) * 0.05f;
 
 	return 1.0f / (averageDelta.length() * 0.05f + 1);
 }
@@ -48,9 +49,9 @@ double Utility::getFactorLeaves(const LRender::ReportAgent &report) const {
 
 	factorLeafArea /= report.getLeaves().size();
 
-	const auto factorExposure = report.getExposure().getExposure() / leafArea;
+	// const auto factorExposure = report.getExposure().getExposure() / leafArea;
 
-	return factorExposure * factorLeafArea;
+	return factorLeafArea;
 }
 
 double Utility::getFactorEfficiency(const LRender::ReportAgent &report) const {

@@ -10,6 +10,9 @@ double Utility::utility(const LRender::ReportAgent &report) const {
 		return 0;
 	}
 
+	if(report.getLimits().getMinimum().y < report.getPosition().y)
+		return -1;
+
 	return
 		getFactorSeeds(report) *
 		getFactorRules(report) *
@@ -23,11 +26,11 @@ double Utility::getFactorExposure(const LRender::ReportAgent &report) const {
 }
 
 double Utility::getFactorSeeds(const LRender::ReportAgent &report) const {
-	return 1.0f / (report.getSeeds().size() * 0.1f + 1);
+	return 1.0f / (report.getSeeds().size() * 0.05f + 1);
 }
 
 double Utility::getFactorRules(const LRender::ReportAgent &report) const {
-	return 1.0f - report.getRules().getRuleCount() * 0.01f;
+	return 1.0f / (report.getRules().getRuleCount() * 0.05f + 1);
 }
 
 double Utility::getFactorStability(const LRender::ReportAgent &report) const {

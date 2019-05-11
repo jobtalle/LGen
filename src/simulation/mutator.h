@@ -93,7 +93,7 @@ namespace LGen {
 			float pLeaf;
 		};
 
-		static const size_t SENTENCE_LENGTH_LIMIT = 20;
+		static const size_t SENTENCE_LENGTH_LIMIT = 32;
 		static const std::string MSG_INTRO;
 		static const std::string MSG_PROPERTY_INDENTATION;
 		static const std::string MSG_PREFIX_P_SYMBOL_ADD;

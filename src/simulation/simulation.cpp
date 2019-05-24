@@ -4,7 +4,7 @@
 
 using namespace LGen;
 
-const float Simulation::DENSITY_DEFAULT = 2;
+const float Simulation::DENSITY_DEFAULT = 18;
 
 Simulation::Simulation(
 	std::unique_ptr<Mutator> mutator,

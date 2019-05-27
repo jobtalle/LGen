@@ -20,6 +20,11 @@ namespace LGen {
 		static const std::string MSG_HEAD;
 		static const std::string PROPERTY_INDENT;
 		static const std::string PROPERTY_UTILITY;
+		static const std::string PROPERTY_UTILITY_EXPOSURE;
+		static const std::string PROPERTY_UTILITY_SEEDS;
+		static const std::string PROPERTY_UTILITY_RULES;
+		static const std::string PROPERTY_UTILITY_STABILITY;
+		static const std::string PROPERTY_UTILITY_LEAVES;
 		static const std::string PROPERTY_GENERATIONS;
 		static const std::string PROPERTY_SYMBOLS;
 		static const std::string PROPERTY_EXPOSURE;

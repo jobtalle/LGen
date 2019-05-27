@@ -1,5 +1,6 @@
 #include "simulationAdvanceS.h"
 #include "utils/timer.h"
+#include "file/fileSimulation.h"
 
 using namespace LGen;
 
@@ -10,7 +11,7 @@ const std::string Command::Simulation::AdvanceS::MSG_ADVANCED = "Advanced ";
 const std::string Command::Simulation::AdvanceS::MSG_OUT_OF_RANGE = "The number of seconds must be in the range ";
 const std::string Command::Simulation::AdvanceS::MSG_LEFT = "s left.";
 const float Command::Simulation::AdvanceS::TIME_MIN = 1;
-const float Command::Simulation::AdvanceS::TIME_MAX = 3600;
+const float Command::Simulation::AdvanceS::TIME_MAX = 100000;
 
 Command::Simulation::AdvanceS::AdvanceS() :
 	Command({ KEYWORD }, FILE_HELP, 1) {
@@ -45,10 +46,21 @@ void Command::Simulation::AdvanceS::application(
 		size_t generation = 0;
 		double time;
 
+		const size_t saveInterval = 1000;
+		size_t saveCountdown = saveInterval;
+
 		while((time = timer.get()) < seconds) {
 			workspace.simulation->advance(console, workspace.threadCount);
 
 			console << MSG_ADVANCED << ++generation << ", " << (seconds - time) << MSG_LEFT << std::endl;
+
+			if(--saveCountdown == 0) {
+				saveCountdown = saveInterval;
+
+				File file;
+
+				(file << *workspace.simulation).save("intervals/gen-" + std::to_string(generation));
+			}
 		}
 
 		console.getMonitor()->enqueue(workspace.simulation->getState().getTaskSceneReport(workspace.threadCount, true));

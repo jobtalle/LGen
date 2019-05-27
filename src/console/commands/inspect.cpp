@@ -10,6 +10,11 @@ const std::string Command::Inspect::MSG_NO_SIMULATION = "No simulation with a ut
 const std::string Command::Inspect::MSG_HEAD = "Reporting on agent #";
 const std::string Command::Inspect::PROPERTY_INDENT = "  ";
 const std::string Command::Inspect::PROPERTY_UTILITY = PROPERTY_INDENT + "Utility: ";
+const std::string Command::Inspect::PROPERTY_UTILITY_EXPOSURE = PROPERTY_INDENT + PROPERTY_INDENT + "Exposure: ";
+const std::string Command::Inspect::PROPERTY_UTILITY_SEEDS = PROPERTY_INDENT + PROPERTY_INDENT + "Seeds: ";
+const std::string Command::Inspect::PROPERTY_UTILITY_RULES = PROPERTY_INDENT + PROPERTY_INDENT + "Rules: ";
+const std::string Command::Inspect::PROPERTY_UTILITY_STABILITY = PROPERTY_INDENT + PROPERTY_INDENT + "Stability: ";
+const std::string Command::Inspect::PROPERTY_UTILITY_LEAVES = PROPERTY_INDENT + PROPERTY_INDENT + "Leaves: ";
 const std::string Command::Inspect::PROPERTY_GENERATIONS = PROPERTY_INDENT + "Generations: ";
 const std::string Command::Inspect::PROPERTY_SYMBOLS = PROPERTY_INDENT + "Symbols: ";
 const std::string Command::Inspect::PROPERTY_EXPOSURE = PROPERTY_INDENT + "Exposure: ";
@@ -45,6 +50,11 @@ void Command::Inspect::application(
 	
 	console << MSG_HEAD << console.getMonitor()->getSelected() << std::endl;
 	console << PROPERTY_UTILITY << workspace.simulation->getUtility().utility(reportAgent) << std::endl;
+	console << PROPERTY_UTILITY_EXPOSURE << workspace.simulation->getUtility().getFactorExposure(reportAgent) << std::endl;
+	console << PROPERTY_UTILITY_SEEDS << workspace.simulation->getUtility().getFactorSeeds(reportAgent) << std::endl;
+	console << PROPERTY_UTILITY_RULES << workspace.simulation->getUtility().getFactorRules(reportAgent) << std::endl;
+	console << PROPERTY_UTILITY_STABILITY << workspace.simulation->getUtility().getFactorStability(reportAgent) << std::endl;
+	console << PROPERTY_UTILITY_LEAVES << workspace.simulation->getUtility().getFactorLeaves(reportAgent) << std::endl;
 	console << PROPERTY_GENERATIONS << reportAgent.getGrowthProfile().getProfile().getIterations() << std::endl;
 	console << PROPERTY_SYMBOLS << reportAgent.getSize().getNodes() << '/' << totalSymbols << std::endl;
 	console << PROPERTY_EXPOSURE << reportAgent.getExposure().getExposure() << std::endl;

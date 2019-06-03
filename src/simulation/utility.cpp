@@ -22,7 +22,7 @@ double Utility::utility(const LRender::ReportAgent &report) const {
 }
 
 double Utility::getFactorExposure(const LRender::ReportAgent &report) const {
-	return std::pow(report.getExposure().getExposure(), 1.1f) / report.getSize().getNodes();
+	return std::pow(report.getExposure().getExposure(), 2.0f) / report.getSize().getNodes();
 }
 
 double Utility::getFactorSeeds(const LRender::ReportAgent &report) const {

@@ -1,0 +1,1 @@
+Revert the current simulation to its initial state.

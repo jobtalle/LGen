@@ -1,0 +1,1 @@
+Save the current environment. The parameter should be a file name to which the environment will be saved as plain text. Existing files will be overwritten.

@@ -1,11 +1,11 @@
-#include <iostream>
-
 #include "console/console.h"
 #include "monitor/monitor.h"
 
+using namespace LGen;
+
 int main(int argc, char **argv) {
-	L::Monitor monitor("Monitor");
-	L::Console console(&monitor);
+	Monitor monitor("Monitor");
+	Console console(&monitor);
 
 	monitor.start();
 

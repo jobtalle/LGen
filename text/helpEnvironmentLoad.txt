@@ -1,0 +1,1 @@
+Load an environment from file and make it the currently selected environment. The parameter should be a file name from which the environment will be loaded.

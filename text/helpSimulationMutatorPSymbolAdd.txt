@@ -1,0 +1,1 @@
+Set the chance a new symbol is added before an existing symbol or at the end of the string when mutating a string of symbols.

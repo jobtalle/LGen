@@ -1,26 +1,42 @@
 #pragma once
 
-#include "../monitor/monitor.h"
-#include "command.h"
+#include "monitor/monitor.h"
+#include "console/commandList.h"
 
 #include <thread>
 #include <memory>
-#include <vector>
+#include <ostream>
+#include <string>
 
-class L::Console {
-public:
-	Console(L::Monitor *monitor);
-	~Console();
-	void stop();
+namespace LGen {
+	class Command;
 
-private:
-	static const std::string MSG_NOT_RECOGNIZED;
+	class Console final : private std::streambuf, public std::ostream {
+	public:
+		Console(Monitor *const monitor);
+		~Console();
+		Monitor *getMonitor() const;
+		void stop();
+		void dumpFile(const std::string file, const bool prefix = true) const;
+		const CommandList &getCommandList() const;
+		std::streambuf::int_type overflow(std::streambuf::int_type c) override;
+		int sync() override;
 
-	std::vector<L::Command*> commands;
-	L::Monitor *monitor;
-	std::unique_ptr<std::thread> thread;
-	bool terminate = false;
+	private:
+		static const size_t LINE_WIDTH = 80;
+		static const size_t SPACE_SEEK = 24;
+		static const std::string MSG_NOT_RECOGNIZED;
+		static const std::string FILE_INTRO;
+		static const std::string PREFIX_COMMAND;
+		static const std::string PREFIX_LOG;
 
-	void loop();
-	void makeCommands();
-};
+		const CommandList commandList;
+		Monitor *const monitor;
+		std::unique_ptr<std::thread> thread;
+		bool terminate = false;
+		std::string line;
+
+		static void log(const std::string& message, const bool prefix = true);
+		void loop();
+	};
+}

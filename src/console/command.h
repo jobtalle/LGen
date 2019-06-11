@@ -1,22 +1,55 @@
 #pragma once
 
-#include "input.h"
+#include "console/input.h"
+#include "console/commandList.h"
+#include "console/workspace.h"
 
-#include <lgen.h>
 #include <vector>
 #include <string>
+#include <memory>
 
-class L::Command {
-public:
-	Command(const std::vector<std::string> triggers);
-	bool apply(const Input &input);
+namespace LGen {
+	class Command {
+	public:
+		class Exit;
+		class Help;
+		class System;
+		class Render;
+		class Environment;
+		class Simulation;
+		class Threads;
+		class Inspect;
 
-	class Exit;
+		Command(std::vector<std::string> triggers, char args = -1);
+		Command(std::vector<std::string> triggers, std::string help, char args = -1);
+		Command(std::vector<std::string> triggers, const std::vector<std::shared_ptr<Command>> &commands, const char args = -1);
+		virtual ~Command() = default;
+		bool apply(const Input &input, Console &console);
+		const std::string &getTrigger() const;
+		std::vector<std::string> getAliases() const;
+		size_t getArity() const;
 
-protected:
-	bool applicable(const std::string input) const;
-	virtual void application(const std::vector<std::string> input) = 0;
+	protected:
+		virtual void application(
+			const std::vector<std::string> &arguments,
+			Console &console);
 
-private:
-	const std::vector<std::string> triggers;
-};
+	private:
+		static const std::string MSG_HELP_LIST;
+		static const std::string MSG_NEED_MORE_ARGUMENTS;
+		static const std::string MSG_THIS_COMMAND_TAKES;
+		static const std::string MSG_ARGUMENT;
+		static const std::string MSG_ARGUMENTS;
+		static const std::string MSG_INVALID_INPUT;
+
+		static class Workspace workspace;
+
+		const std::vector<std::string> triggers;
+		const std::string help;
+		const bool hasHelp;
+		std::unique_ptr<CommandList> commandList;
+		const char args;
+
+		void showHelp(const Console &console) const;
+	};
+}

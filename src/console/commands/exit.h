@@ -1,14 +1,22 @@
 #pragma once
 
-#include "../command.h"
-#include "../console.h"
+#include "console/console.h"
+#include "console/command.h"
 
-class L::Command::Exit final : public L::Command {
-public:
-	Exit(Console *console);
+namespace LGen {
+	class Command::Exit final : public Command{
+	public:
+		Exit(Console *console);
 
-protected:
-	void application(const std::vector<std::string> arguments) override;
+	protected:
+		void application(
+			const std::vector<std::string> &arguments,
+			Console &console) override;
 
-	Console *console;
-};
+	private:
+		static const std::string KEYWORD;
+		static const std::string FILE_HELP;
+
+		Console *console;
+	};
+}

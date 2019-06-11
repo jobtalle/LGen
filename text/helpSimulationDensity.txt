@@ -1,0 +1,1 @@
+Set the planting density of the currently loaded simulation. This is the maximum average number of agents that are allowed to exist on the area a new agent will occupy for it to be planted.

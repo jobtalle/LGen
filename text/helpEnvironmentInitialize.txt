@@ -1,0 +1,1 @@
+Initialize the invironment with the currently loaded system. The parameter is the required spacing between the initially placed systems and the terrain borders. The systems will be placed in a grid pattern.

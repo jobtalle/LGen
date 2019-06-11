@@ -1,0 +1,1 @@
+Remove a rule from the currently selected Lindenmayer system. Two arguments are required, which are the left hand side and the right hand side of the rule as strings of symbols.

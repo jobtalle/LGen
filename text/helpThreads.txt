@@ -1,0 +1,1 @@
+Set the number of threads that will be used whenever workload can be split up. If "auto" is entered instead of a number, the system will set the thread count to the number of threads detected by the OS. This is also the default setting.

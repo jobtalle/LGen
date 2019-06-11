@@ -1,53 +1,131 @@
-#include "monitor.h"
+#include "monitor/monitor.h"
+#include "lrender.h"
 
-#include <iostream>
+using namespace LGen;
 
-const size_t L::Monitor::DEFAULT_WIDTH = 1024;
-const size_t L::Monitor::DEFAULT_HEIGHT = 768;
-const size_t L::Monitor::GL_VERSION_MAJOR = 4;
-const size_t L::Monitor::GL_VERSION_MINOR = 4;
+const size_t Monitor::DEFAULT_WIDTH = 1024;
+const size_t Monitor::DEFAULT_HEIGHT = 768;
 
-static size_t monitorCount = 0;
-
-L::Monitor::Monitor(const char *title) {
-	if(monitorCount++ == 0)
-		glfwStart();
-
-	window = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, title, NULL, NULL);
+Monitor::Monitor(const char *title) :
+	glfwLoader(DEFAULT_WIDTH, DEFAULT_HEIGHT, title) {
 	terminate = false;
+	
+	renderer = std::make_unique<LRender::Renderer>(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	glfwSetWindowUserPointer(glfwLoader.getWindow(), renderer.get());
 
-	glfwMakeContextCurrent(window);
+	glfwSetWindowSizeCallback(glfwLoader.getWindow(), [](GLFWwindow *window, int width, int height) {
+		static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->setSize(width, height);
+	});
+
+	glfwSetCursorPosCallback(glfwLoader.getWindow(), [](GLFWwindow *window, double x, double y) {
+		static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseMove(x, y);
+	});
+
+	glfwSetScrollCallback(glfwLoader.getWindow(), [](GLFWwindow *window, double dx, double dy) {
+		if(dy > 0)
+			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->scrollUp();
+		else
+			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->scrollDown();
+	});
+
+	glfwSetKeyCallback(glfwLoader.getWindow(), [](
+		GLFWwindow *window,
+		const int key,
+		const int scancode,
+		const int action,
+		const int mods) {
+		switch(key) {
+		case KEY_CENTER_VIEW:
+			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->center();
+
+			break;
+		case KEY_FOCUS_AGENT:
+			static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->focus();
+
+			break;
+		}
+	});
+
+	glfwSetMouseButtonCallback(glfwLoader.getWindow(), [](
+		GLFWwindow *window,
+		const int button,
+		const int action,
+		const int mods) {
+		switch(button) {
+		case MOUSE_BUTTON_DRAG:
+			switch(action) {
+			case MOUSE_ACTION_DRAG_START:
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress(LRender::Renderer::DRAG);
+
+				break;
+			case MOUSE_ACTION_DRAG_STOP:
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease(LRender::Renderer::DRAG);
+
+				break;
+			}
+
+			break;
+		case MOUSE_BUTTON_PAN:
+			switch(action) {
+			case MOUSE_ACTION_PAN_START:
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mousePress(LRender::Renderer::PAN);
+
+				break;
+			case MOUSE_ACTION_PAN_STOP:
+				static_cast<LRender::Renderer*>(glfwGetWindowUserPointer(window))->mouseRelease(LRender::Renderer::PAN);
+
+				break;
+			}
+			break;
+		}
+	});
 }
 
-L::Monitor::~Monitor() {
-	glfwDestroyWindow(window);
-
-	if(--monitorCount == 0)
-		glfwStop();
+Monitor::~Monitor() {
+	glfwLoader.makeCurrent();
 }
 
-void L::Monitor::start() {
-	while(!terminate)
+void Monitor::start() {
+	while(!terminate) {
 		poll();
+
+		if(glfwWindowShouldClose(glfwLoader.getWindow())) {
+			glfwHideWindow(glfwLoader.getWindow());
+			glfwSetWindowShouldClose(glfwLoader.getWindow(), GLFW_FALSE);
+		}
+
+		glfwLoader.makeCurrent();
+		renderer->update();
+
+		if(glfwGetWindowAttrib(glfwLoader.getWindow(), GLFW_VISIBLE)) {
+			renderer->bindDefault();
+			renderer->render();
+		}
+	}
 }
 
-void L::Monitor::stop() {
+void Monitor::stop() {
 	terminate = true;
 }
 
-void L::Monitor::glfwStart() {
-	glfwInit();
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VERSION_MAJOR);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VERSION_MINOR);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+void Monitor::makeVisible() const {
+	if(!glfwGetWindowAttrib(glfwLoader.getWindow(), GLFW_VISIBLE))
+		glfwShowWindow(glfwLoader.getWindow());
 }
 
-void L::Monitor::glfwStop() {
-	glfwTerminate();
+void Monitor::enqueue(const std::shared_ptr<LRender::Renderer::Task> task) {
+	renderer->enqueue(task);
 }
 
-void L::Monitor::poll() {
-	glfwSwapBuffers(window);
+int Monitor::getSelected() const {
+	return renderer->getSelected();
+}
+
+std::shared_ptr<LRender::Report> Monitor::getReport() const {
+	return renderer->getLastReport();
+}
+
+void Monitor::poll() {
+	glfwSwapBuffers(glfwLoader.getWindow());
 	glfwPollEvents();
 }

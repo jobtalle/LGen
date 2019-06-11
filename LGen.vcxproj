@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{C63F3F7A-DE7F-419C-A0A4-379A6934E640}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,10 +70,12 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>include;glfw/include;LParse/include;LRender/include;$(IncludePath)</IncludePath>
+    <IncludePath>LRender/src;LRender/include;LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>include;glfw/include;LRender/include;LParse/include;$(IncludePath)</IncludePath>
+    <IncludePath>LRender/src;LRender/include;LParse/include;src;glfw/include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -106,14 +108,16 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>_GLFW_WIN32</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_GLFW_WIN32;_SCL_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>_GLFW_WIN32</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_GLFW_WIN32;_SCL_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -133,13 +137,174 @@
     <ClCompile Include="glfw\src\win32_window.c" />
     <ClCompile Include="glfw\src\window.c" />
     <ClCompile Include="glfw\src\xkb_unicode.c" />
+    <ClCompile Include="LParse\src\growthProfile.cpp" />
+    <ClCompile Include="LParse\src\randomizer.cpp" />
+    <ClCompile Include="LParse\src\rule.cpp" />
+    <ClCompile Include="LParse\src\sentence.cpp" />
+    <ClCompile Include="LParse\src\system.cpp" />
+    <ClCompile Include="LParse\src\token.cpp" />
+    <ClCompile Include="LRender\src\lodepng\lodepng.cpp" />
+    <ClCompile Include="LRender\src\math\area.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\standardLeaf.cpp" />
+    <ClCompile Include="LRender\src\modeller\standardLeaf.cpp" />
+    <ClCompile Include="LRender\src\model\geometry.cpp" />
     <ClCompile Include="LRender\src\glad\glad.c" />
+    <ClCompile Include="LRender\src\renderer\colors\colors.cpp" />
+    <ClCompile Include="LRender\src\renderer\glFunctions.cpp" />
+    <ClCompile Include="LRender\src\math\constants.cpp" />
+    <ClCompile Include="LRender\src\math\matrix.cpp" />
+    <ClCompile Include="LRender\src\math\quaternion.cpp" />
+    <ClCompile Include="LRender\src\math\vector.cpp" />
+    <ClCompile Include="LRender\src\model\model.cpp" />
+    <ClCompile Include="LRender\src\modeller\agentModel.cpp" />
+    <ClCompile Include="LRender\src\modeller\branch.cpp" />
+    <ClCompile Include="LRender\src\modeller\leaf.cpp" />
+    <ClCompile Include="LRender\src\modeller\node.cpp" />
+    <ClCompile Include="LRender\src\modeller\radiusSampler.cpp" />
+    <ClCompile Include="LRender\src\modeller\seed.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\icosphere.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\leaf.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\seed.cpp" />
+    <ClCompile Include="LRender\src\modeller\shapes\branch.cpp" />
+    <ClCompile Include="LRender\src\modeller\terrainModel.cpp" />
+    <ClCompile Include="LRender\src\renderer\orbit.cpp" />
+    <ClCompile Include="LRender\src\renderer\passes\renderPassArea.cpp" />
+    <ClCompile Include="LRender\src\renderer\passes\renderPassInteger.cpp" />
+    <ClCompile Include="LRender\src\renderer\passes\renderPassImage.cpp" />
+    <ClCompile Include="LRender\src\renderer\passes\renderPassMasks.cpp" />
+    <ClCompile Include="LRender\src\renderer\passes\renderPassShadows.cpp" />
+    <ClCompile Include="LRender\src\renderer\passes\renderPassViewDefault.cpp" />
+    <ClCompile Include="LRender\src\renderer\passes\renderPassViewWireframe.cpp" />
+    <ClCompile Include="LRender\src\renderer\renderer.cpp" />
+    <ClCompile Include="LRender\src\renderer\shaders\shaderExposure.cpp" />
+    <ClCompile Include="LRender\src\renderer\shaders\shaderGeometryShadows.cpp" />
+    <ClCompile Include="LRender\src\renderer\shaders\shaderImage.cpp" />
+    <ClCompile Include="LRender\src\renderer\shaders\shaderInteger.cpp" />
+    <ClCompile Include="LRender\src\renderer\shaders\shaderLeavesShadows.cpp" />
+    <ClCompile Include="LRender\src\renderer\target\renderTarget.cpp" />
+    <ClCompile Include="LRender\src\renderer\target\renderTargetColor.cpp" />
+    <ClCompile Include="LRender\src\renderer\target\renderTargetDepth.cpp" />
+    <ClCompile Include="LRender\src\renderer\target\renderTargetUint.cpp" />
+    <ClCompile Include="LRender\src\renderer\tasks\taskExposure.cpp" />
+    <ClCompile Include="LRender\src\renderer\tasks\taskMode.cpp" />
+    <ClCompile Include="LRender\src\renderer\tasks\taskSceneReport.cpp" />
+    <ClCompile Include="LRender\src\renderer\tasks\taskSelect.cpp" />
+    <ClCompile Include="LRender\src\renderer\uniforms\uniforms.cpp" />
+    <ClCompile Include="LRender\src\renderer\uniforms\uniformsLight.cpp" />
+    <ClCompile Include="LRender\src\renderer\uniforms\uniformsShadows.cpp" />
+    <ClCompile Include="LRender\src\renderer\uniforms\uniformsView.cpp" />
+    <ClCompile Include="LRender\src\report\report.cpp" />
+    <ClCompile Include="LRender\src\report\reportAgent.cpp" />
+    <ClCompile Include="LRender\src\report\reportExposure.cpp" />
+    <ClCompile Include="LRender\src\report\reportGrowthProfile.cpp" />
+    <ClCompile Include="LRender\src\report\reportLeaf.cpp" />
+    <ClCompile Include="LRender\src\report\reportLimits.cpp" />
+    <ClCompile Include="LRender\src\report\reportRules.cpp" />
+    <ClCompile Include="LRender\src\report\reportSeed.cpp" />
+    <ClCompile Include="LRender\src\report\reportSize.cpp" />
+    <ClCompile Include="LRender\src\scene\agent.cpp" />
+    <ClCompile Include="LRender\src\scene\scene.cpp" />
+    <ClCompile Include="LRender\src\scene\terrain.cpp" />
+    <ClCompile Include="LRender\src\renderer\shaders\shader.cpp" />
+    <ClCompile Include="LRender\src\renderer\shaders\shaders.cpp" />
+    <ClCompile Include="LRender\src\model\vertex.cpp" />
     <ClCompile Include="src\console\command.cpp" />
+    <ClCompile Include="src\console\commandList.cpp" />
+    <ClCompile Include="src\console\commands\environment\environment.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentDelete.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentInitialize.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentLoad.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentNew.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentRender.cpp" />
+    <ClCompile Include="src\console\commands\environment\environmentSave.cpp" />
+    <ClCompile Include="src\console\commands\environment\terrain\environmentTerrain.cpp" />
+    <ClCompile Include="src\console\commands\environment\terrain\environmentTerrainDropwave.cpp" />
+    <ClCompile Include="src\console\commands\environment\terrain\environmentTerrainFlat.cpp" />
+    <ClCompile Include="src\console\commands\environment\terrain\environmentTerrainValleys.cpp" />
     <ClCompile Include="src\console\commands\exit.cpp" />
+    <ClCompile Include="src\console\commands\help.cpp" />
+    <ClCompile Include="src\console\commands\inspect.cpp" />
+    <ClCompile Include="src\console\commands\render\mode\renderMode.cpp" />
+    <ClCompile Include="src\console\commands\render\render.cpp" />
+    <ClCompile Include="src\console\commands\render\mode\renderModeDefault.cpp" />
+    <ClCompile Include="src\console\commands\render\mode\renderModeWireframe.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutator.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPBranchAdd.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPBranchRemove.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPLeafAdd.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPLeafRemove.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPRuleAdd.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPRuleDuplicate.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPRuleRemove.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolAdd.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceConstant.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceNew.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceRotation.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceSeed.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceStep.cpp" />
+    <ClCompile Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolRemove.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulation.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationAdvance.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationAdvanceN.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationAdvanceS.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationDelete.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationDensity.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationLoad.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationNew.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationRender.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationReseed.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationRevert.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationSave.cpp" />
+    <ClCompile Include="src\console\commands\simulation\simulationSummary.cpp" />
+    <ClCompile Include="src\console\commands\system\system.cpp" />
+    <ClCompile Include="src\console\commands\system\rule\systemRuleAdd.cpp" />
+    <ClCompile Include="src\console\commands\system\rule\systemRuleRemove.cpp" />
+    <ClCompile Include="src\console\commands\system\systemAxiom.cpp" />
+    <ClCompile Include="src\console\commands\system\systemDelete.cpp" />
+    <ClCompile Include="src\console\commands\system\systemExposure.cpp" />
+    <ClCompile Include="src\console\commands\system\systemGenerate.cpp" />
+    <ClCompile Include="src\console\commands\system\systemIterations.cpp" />
+    <ClCompile Include="src\console\commands\system\systemLoad.cpp" />
+    <ClCompile Include="src\console\commands\system\systemNew.cpp" />
+    <ClCompile Include="src\console\commands\system\systemPrint.cpp" />
+    <ClCompile Include="src\console\commands\system\systemRender.cpp" />
+    <ClCompile Include="src\console\commands\system\rule\systemRule.cpp" />
+    <ClCompile Include="src\console\commands\system\systemSave.cpp" />
+    <ClCompile Include="src\console\commands\system\systemSelected.cpp" />
+    <ClCompile Include="src\console\commands\threads.cpp" />
     <ClCompile Include="src\console\console.cpp" />
     <ClCompile Include="src\console\input.cpp" />
+    <ClCompile Include="src\console\workspace.cpp" />
+    <ClCompile Include="src\environment\agent\agent.cpp" />
+    <ClCompile Include="src\environment\environment.cpp" />
+    <ClCompile Include="src\environment\terrain\terrain.cpp" />
+    <ClCompile Include="src\environment\terrain\terrainDemo.cpp" />
+    <ClCompile Include="src\environment\terrain\terrainDropwave.cpp" />
+    <ClCompile Include="src\environment\terrain\terrainFlat.cpp" />
+    <ClCompile Include="src\environment\terrain\terrainValleys.cpp" />
+    <ClCompile Include="src\file\file.cpp" />
+    <ClCompile Include="src\file\fileEnvironment.cpp" />
+    <ClCompile Include="src\file\fileMutator.cpp" />
+    <ClCompile Include="src\file\fileRandomizer.cpp" />
+    <ClCompile Include="src\file\fileSimulation.cpp" />
+    <ClCompile Include="src\file\fileState.cpp" />
+    <ClCompile Include="src\file\fileSystem.cpp" />
+    <ClCompile Include="src\file\fileTerrain.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\monitor\glfwLoader.cpp" />
     <ClCompile Include="src\monitor\monitor.cpp" />
+    <ClCompile Include="src\simulation\candidate.cpp" />
+    <ClCompile Include="src\simulation\densityMap.cpp" />
+    <ClCompile Include="src\simulation\mutator.cpp" />
+    <ClCompile Include="src\simulation\planter.cpp" />
+    <ClCompile Include="src\simulation\profiles\growthProfileQuadratic.cpp" />
+    <ClCompile Include="src\simulation\profiles\growthProfileUnbounded.cpp" />
+    <ClCompile Include="src\simulation\simulation.cpp" />
+    <ClCompile Include="src\simulation\state.cpp" />
+    <ClCompile Include="src\simulation\utility.cpp" />
+    <ClCompile Include="src\utils\mathUtils.cpp" />
+    <ClCompile Include="src\utils\stringUtils.cpp" />
+    <ClCompile Include="src\utils\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glfw\include\GLFW\glfw3.h" />
@@ -153,14 +318,181 @@
     <ClInclude Include="glfw\src\win32_joystick.h" />
     <ClInclude Include="glfw\src\win32_platform.h" />
     <ClInclude Include="glfw\src\xkb_unicode.h" />
+    <ClInclude Include="LParse\include\lparse.h" />
+    <ClInclude Include="LParse\src\growthProfile.h" />
+    <ClInclude Include="LParse\src\legend.h" />
+    <ClInclude Include="LParse\src\randomizer.h" />
+    <ClInclude Include="LParse\src\rule.h" />
+    <ClInclude Include="LParse\src\sentence.h" />
+    <ClInclude Include="LParse\src\system.h" />
+    <ClInclude Include="LParse\src\token.h" />
+    <ClInclude Include="LRender\include\lrender.h" />
+    <ClInclude Include="LRender\src\lodepng\lodepng.h" />
+    <ClInclude Include="LRender\src\math\area.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\standardLeaf.h" />
+    <ClInclude Include="LRender\src\modeller\standardLeaf.h" />
+    <ClInclude Include="LRender\src\model\geometry.h" />
     <ClInclude Include="LRender\src\glad\glad.h" />
     <ClInclude Include="LRender\src\glad\khrplatform.h" />
-    <ClInclude Include="include\lgen.h" />
+    <ClInclude Include="LRender\src\renderer\colors\colors.h" />
+    <ClInclude Include="LRender\src\renderer\glFunctions.h" />
+    <ClInclude Include="LRender\src\math\constants.h" />
+    <ClInclude Include="LRender\src\math\matrix.h" />
+    <ClInclude Include="LRender\src\math\quaternion.h" />
+    <ClInclude Include="LRender\src\math\vector.h" />
+    <ClInclude Include="LRender\src\model\model.h" />
+    <ClInclude Include="LRender\src\modeller\agentModel.h" />
+    <ClInclude Include="LRender\src\modeller\branch.h" />
+    <ClInclude Include="LRender\src\modeller\leaf.h" />
+    <ClInclude Include="LRender\src\modeller\modeller.h" />
+    <ClInclude Include="LRender\src\modeller\node.h" />
+    <ClInclude Include="LRender\src\modeller\path.h" />
+    <ClInclude Include="LRender\src\modeller\radiusSampler.h" />
+    <ClInclude Include="LRender\src\modeller\seed.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\icosphere.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\leaf.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\seed.h" />
+    <ClInclude Include="LRender\src\modeller\shapes\branch.h" />
+    <ClInclude Include="LRender\src\modeller\terrainModel.h" />
+    <ClInclude Include="LRender\src\renderer\orbit.h" />
+    <ClInclude Include="LRender\src\renderer\passes\renderPass.h" />
+    <ClInclude Include="LRender\src\renderer\passes\renderPassArea.h" />
+    <ClInclude Include="LRender\src\renderer\passes\renderPassInteger.h" />
+    <ClInclude Include="LRender\src\renderer\passes\renderPassImage.h" />
+    <ClInclude Include="LRender\src\renderer\passes\renderPassMasks.h" />
+    <ClInclude Include="LRender\src\renderer\passes\renderPassShadows.h" />
+    <ClInclude Include="LRender\src\renderer\passes\renderPassViewDefault.h" />
+    <ClInclude Include="LRender\src\renderer\passes\renderPassViewWireframe.h" />
+    <ClInclude Include="LRender\src\renderer\renderer.h" />
+    <ClInclude Include="LRender\src\renderer\shaders\shaderExposure.h" />
+    <ClInclude Include="LRender\src\renderer\shaders\shaderGeometryShadows.h" />
+    <ClInclude Include="LRender\src\renderer\shaders\shaderImage.h" />
+    <ClInclude Include="LRender\src\renderer\shaders\shaderInteger.h" />
+    <ClInclude Include="LRender\src\renderer\shaders\shaderLeavesShadows.h" />
+    <ClInclude Include="LRender\src\renderer\target\renderTarget.h" />
+    <ClInclude Include="LRender\src\renderer\target\renderTargetColor.h" />
+    <ClInclude Include="LRender\src\renderer\target\renderTargetDepth.h" />
+    <ClInclude Include="LRender\src\renderer\target\renderTargetUint.h" />
+    <ClInclude Include="LRender\src\renderer\tasks\task.h" />
+    <ClInclude Include="LRender\src\renderer\tasks\taskExposure.h" />
+    <ClInclude Include="LRender\src\renderer\tasks\taskMode.h" />
+    <ClInclude Include="LRender\src\renderer\tasks\taskSceneReport.h" />
+    <ClInclude Include="LRender\src\renderer\tasks\taskSelect.h" />
+    <ClInclude Include="LRender\src\renderer\uniforms\uniforms.h" />
+    <ClInclude Include="LRender\src\renderer\uniforms\uniformsLight.h" />
+    <ClInclude Include="LRender\src\renderer\uniforms\uniformsShadows.h" />
+    <ClInclude Include="LRender\src\renderer\uniforms\uniformsView.h" />
+    <ClInclude Include="LRender\src\report\report.h" />
+    <ClInclude Include="LRender\src\report\reportAgent.h" />
+    <ClInclude Include="LRender\src\report\reportExposure.h" />
+    <ClInclude Include="LRender\src\report\reportGrowthProfile.h" />
+    <ClInclude Include="LRender\src\report\reportLeaf.h" />
+    <ClInclude Include="LRender\src\report\reportLimits.h" />
+    <ClInclude Include="LRender\src\report\reportRules.h" />
+    <ClInclude Include="LRender\src\report\reportSeed.h" />
+    <ClInclude Include="LRender\src\report\reportSize.h" />
+    <ClInclude Include="LRender\src\scene\agent.h" />
+    <ClInclude Include="LRender\src\scene\scene.h" />
+    <ClInclude Include="LRender\src\scene\terrain.h" />
+    <ClInclude Include="LRender\src\renderer\shaders\shader.h" />
+    <ClInclude Include="LRender\src\renderer\shaders\shaders.h" />
+    <ClInclude Include="LRender\src\model\vertex.h" />
     <ClInclude Include="src\console\command.h" />
+    <ClInclude Include="src\console\commandList.h" />
+    <ClInclude Include="src\console\commands\environment\environment.h" />
+    <ClInclude Include="src\console\commands\environment\environmentDelete.h" />
+    <ClInclude Include="src\console\commands\environment\environmentInitialize.h" />
+    <ClInclude Include="src\console\commands\environment\environmentLoad.h" />
+    <ClInclude Include="src\console\commands\environment\environmentNew.h" />
+    <ClInclude Include="src\console\commands\environment\environmentRender.h" />
+    <ClInclude Include="src\console\commands\environment\environmentSave.h" />
+    <ClInclude Include="src\console\commands\environment\terrain\environmentTerrain.h" />
+    <ClInclude Include="src\console\commands\environment\terrain\environmentTerrainDropwave.h" />
+    <ClInclude Include="src\console\commands\environment\terrain\environmentTerrainFlat.h" />
+    <ClInclude Include="src\console\commands\environment\terrain\environmentTerrainValleys.h" />
     <ClInclude Include="src\console\commands\exit.h" />
+    <ClInclude Include="src\console\commands\help.h" />
+    <ClInclude Include="src\console\commands\inspect.h" />
+    <ClInclude Include="src\console\commands\render\mode\renderMode.h" />
+    <ClInclude Include="src\console\commands\render\render.h" />
+    <ClInclude Include="src\console\commands\render\mode\renderModeDefault.h" />
+    <ClInclude Include="src\console\commands\render\mode\renderModeWireframe.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutator.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPBranchAdd.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPBranchRemove.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPLeafAdd.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPLeafRemove.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPRuleAdd.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPRuleDuplicate.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPRuleRemove.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolAdd.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceConstant.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceNew.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceRotation.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceSeed.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolChanceStep.h" />
+    <ClInclude Include="src\console\commands\simulation\mutator\simulationMutatorPSymbolRemove.h" />
+    <ClInclude Include="src\console\commands\simulation\simulation.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationAdvance.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationAdvanceN.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationAdvanceS.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationDelete.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationDensity.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationLoad.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationNew.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationRender.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationReseed.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationRevert.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationSave.h" />
+    <ClInclude Include="src\console\commands\simulation\simulationSummary.h" />
+    <ClInclude Include="src\console\commands\system\system.h" />
+    <ClInclude Include="src\console\commands\system\rule\systemRuleAdd.h" />
+    <ClInclude Include="src\console\commands\system\rule\systemRuleRemove.h" />
+    <ClInclude Include="src\console\commands\system\systemAxiom.h" />
+    <ClInclude Include="src\console\commands\system\systemExposure.h" />
+    <ClInclude Include="src\console\commands\system\systemGenerate.h" />
+    <ClInclude Include="src\console\commands\system\systemDelete.h" />
+    <ClInclude Include="src\console\commands\system\systemIterations.h" />
+    <ClInclude Include="src\console\commands\system\systemLoad.h" />
+    <ClInclude Include="src\console\commands\system\systemNew.h" />
+    <ClInclude Include="src\console\commands\system\systemPrint.h" />
+    <ClInclude Include="src\console\commands\system\systemRender.h" />
+    <ClInclude Include="src\console\commands\system\rule\systemRule.h" />
+    <ClInclude Include="src\console\commands\system\systemSave.h" />
+    <ClInclude Include="src\console\commands\system\systemSelected.h" />
+    <ClInclude Include="src\console\commands\threads.h" />
     <ClInclude Include="src\console\console.h" />
     <ClInclude Include="src\console\input.h" />
+    <ClInclude Include="src\console\workspace.h" />
+    <ClInclude Include="src\environment\agent\agent.h" />
+    <ClInclude Include="src\environment\environment.h" />
+    <ClInclude Include="src\environment\terrain\terrain.h" />
+    <ClInclude Include="src\environment\terrain\terrainDemo.h" />
+    <ClInclude Include="src\environment\terrain\terrainDropwave.h" />
+    <ClInclude Include="src\environment\terrain\terrainFlat.h" />
+    <ClInclude Include="src\environment\terrain\terrainValleys.h" />
+    <ClInclude Include="src\file\file.h" />
+    <ClInclude Include="src\file\fileEnvironment.h" />
+    <ClInclude Include="src\file\fileMutator.h" />
+    <ClInclude Include="src\file\fileRandomizer.h" />
+    <ClInclude Include="src\file\fileSimulation.h" />
+    <ClInclude Include="src\file\fileState.h" />
+    <ClInclude Include="src\file\fileSystem.h" />
+    <ClInclude Include="src\file\fileTerrain.h" />
+    <ClInclude Include="src\monitor\glfwLoader.h" />
     <ClInclude Include="src\monitor\monitor.h" />
+    <ClInclude Include="src\simulation\candidate.h" />
+    <ClInclude Include="src\simulation\densityMap.h" />
+    <ClInclude Include="src\simulation\mutator.h" />
+    <ClInclude Include="src\simulation\planter.h" />
+    <ClInclude Include="src\simulation\profiles\growthProfileQuadratic.h" />
+    <ClInclude Include="src\simulation\profiles\growthProfileUnbounded.h" />
+    <ClInclude Include="src\simulation\simulation.h" />
+    <ClInclude Include="src\simulation\state.h" />
+    <ClInclude Include="src\simulation\utility.h" />
+    <ClInclude Include="src\utils\mathUtils.h" />
+    <ClInclude Include="src\utils\stringUtils.h" />
+    <ClInclude Include="src\utils\timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="glfw\src\mappings.h.in" />

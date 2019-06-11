@@ -1,0 +1,1 @@
+Show the sunlight exposure map for this system when light falls directly down.

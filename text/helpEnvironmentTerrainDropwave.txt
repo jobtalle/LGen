@@ -1,0 +1,1 @@
+Create a dropwave shaped terrain. Required parameters are width, height and wave period.

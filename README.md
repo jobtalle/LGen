@@ -1,7 +1,9 @@
 # LGen
 An evolutionary approach to optimizing L-systems.
 
-See [my website](https://jobtalle.com/evolving_lindenmayer_systems.html) for an article and thesis on the experiments performed using this software.
+This is the source code for the publication [Evolving L-systems in a competitive environment](https://doi.org/10.1007/978-3-030-61864-3_28). A PDF version of the paper can be downloaded [here](jobtalle.com/posts/2020_10_21/EvolvingLSystems.pdf).
+
+See [my website](https://jobtalle.com/evolving_lindenmayer_systems.html) for a short write up on this experment.
 
 To set up a simple simulation that runs for two minutes, run the following commands:
 
